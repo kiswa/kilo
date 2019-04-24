@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "es6",
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "removeComments": true,
+    "moduleResolution": "node",
+    "outDir": "./dist/"
+  },
+  "typedocOptions": {
+    "out": "docs",
+    "excludePrivate": true,
+    "theme": "minimal",
+    "name": "kilo",
+    "hideGenerator": true
+  }
+}

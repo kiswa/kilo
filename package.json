@@ -1,0 +1,29 @@
+{
+  "name": "kilo",
+  "version": "1.0.0",
+  "description": "A simple 2D game engine.",
+  "main": "lib/index.ts",
+  "scripts": {
+    "docs": "typedoc lib",
+    "test": "TS_NODE_PROJECT=test/tsconfig.json mocha -r ts-node/register test/**/*.spec.ts",
+    "test:cov": "TS_NODE_PROJECT=test/tsconfig.json nyc -r lcov -e .ts -x test/**/*.spec.ts mocha -r ts-node/register test/**/*.spec.ts"
+  },
+  "author": "Matthew Ross",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/chai": "^4.1.7",
+    "@types/mocha": "^5.2.6",
+    "canvas": "^2.4.1",
+    "chai": "^4.2.0",
+    "jsdom": "^15.0.0",
+    "jsdom-global": "^3.0.2",
+    "mocha": "^6.1.4",
+    "node-fetch": "^2.3.0",
+    "nyc": "^14.0.0",
+    "ts-node": "^8.1.0",
+    "tslint": "^5.16.0",
+    "typedoc": "^0.14.2",
+    "typedoc-plugin-external-module-name": "^2.0.0",
+    "typescript": "^3.4.4"
+  }
+}
