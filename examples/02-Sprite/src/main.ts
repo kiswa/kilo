@@ -17,6 +17,13 @@ const banner = [
   new Sprite(texRight),
 ]
 
+const longerBanner = [
+  new Sprite(texLeft),
+  new Sprite(texCenter),
+  new Sprite(texCenter),
+  new Sprite(texRight),
+]
+
 banner.forEach((part, i) => {
   part.height = 32
   part.width = 32
@@ -27,10 +34,25 @@ banner.forEach((part, i) => {
   game.scene.add(part)
 })
 
+longerBanner.forEach((part, i) => {
+  part.height = 32
+  part.width = 32
+
+  part.anchor.set(16, 16)
+  part.pos.set(30 + (32 * i), 25)
+
+  game.scene.add(part)
+})
+
 game.run((dt: number, t: number) => {
   banner.forEach(part => {
     part.pos.x += Math.cos(t) * .3
     part.pos.y += Math.sin(t) * .3
+  })
+
+  longerBanner.forEach(part => {
+    part.pos.x += Math.sin(t) * .3
+    part.pos.y += Math.cos(t) * .3
   })
 })
 
