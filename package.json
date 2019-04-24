@@ -24,6 +24,6 @@
     "tslint": "^5.16.0",
     "typedoc": "^0.14.2",
     "typedoc-plugin-external-module-name": "^2.0.0",
-    "typescript": "^3.4.4"
+    "typescript": "^3.4.5"
   }
 }
