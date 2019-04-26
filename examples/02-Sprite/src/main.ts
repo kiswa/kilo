@@ -1,5 +1,4 @@
-import { Game } from 'kilo/lib'
-import { Sprite, Texture } from 'kilo/lib/types'
+import { Game, Types } from 'kilo/lib'
 
 const tileSize = 16
 const game = new Game(tileSize * 13, tileSize * 10)
@@ -7,21 +6,21 @@ const game = new Game(tileSize * 13, tileSize * 10)
 // Uncomment below line to show FPS & UPS counters
 // Game.debug = true
 
-const texLeft = new Texture('../assets/images/banner-left.png')
-const texCenter = new Texture('../assets/images/banner-center.png')
-const texRight = new Texture('../assets/images/banner-right.png')
+const texLeft = new Types.Texture('../assets/images/banner-left.png')
+const texCenter = new Types.Texture('../assets/images/banner-center.png')
+const texRight = new Types.Texture('../assets/images/banner-right.png')
 
 const banner = [
-  new Sprite(texLeft),
-  new Sprite(texCenter),
-  new Sprite(texRight),
+  new Types.Sprite(texLeft),
+  new Types.Sprite(texCenter),
+  new Types.Sprite(texRight),
 ]
 
 const longerBanner = [
-  new Sprite(texLeft),
-  new Sprite(texCenter),
-  new Sprite(texCenter),
-  new Sprite(texRight),
+  new Types.Sprite(texLeft),
+  new Types.Sprite(texCenter),
+  new Types.Sprite(texCenter),
+  new Types.Sprite(texRight),
 ]
 
 banner.forEach((part, i) => {

@@ -1,5 +1,4 @@
-import { Game } from 'kilo/lib'
-import { Text } from 'kilo/lib/types'
+import { Game, Types } from 'kilo/lib'
 
 const tileSize = 48
 const game = new Game(tileSize * 13, tileSize * 10)
@@ -9,7 +8,7 @@ let elapsed = 0
 // Uncomment below line to show FPS & UPS counters
 // Game.debug = true
 
-const hello = new Text('', {
+const hello = new Types.Text('', {
   font: '50px monospace',
   fill: '#efefef',
   align: 'center'
