@@ -25,14 +25,14 @@ export class TileMap extends Container {
   /**
    * Initialize TileMap object.
    *
-   * @param tiles Array of objects with at least a `frame` property.
+   * @param tiles Array of arrays of objects with at least a `frame` property.
    * @param mapWidth Width of the entire map in tiles.
    * @param mapHeight Height of the entire map in tiles.
    * @param tileWidth Width of one tile in pixels.
    * @param tileHeight Height of one tile in pixels.
    * @param texture Texture to use for tiles.
    */
-  constructor(tiles: Array<HasFrame>, mapWidth: number, mapHeight: number,
+  constructor(tiles: Array<Array<HasFrame>>, mapWidth: number, mapHeight: number,
               tileWidth: number, tileHeight: number, texture: Texture) {
     super()
 
@@ -42,13 +42,15 @@ export class TileMap extends Container {
     this.tileHeight = tileHeight
 
     for (let i = 0; i < tiles.length; i++) {
-      const s = new TileSprite(texture, tileWidth, tileHeight)
+      for (let j = 0; j < tiles[i].length; j++) {
+        const s = new TileSprite(texture, tileWidth, tileHeight)
 
-      s.frame = tiles[i].frame
-      s.pos.x = i % mapWidth * tileWidth,
-      s.pos.y = Math.floor(i / mapWidth) * tileHeight
+        s.frame = tiles[i][j].frame
+        s.pos.x = j % mapWidth * tileWidth,
+          s.pos.y = Math.floor(j / mapWidth) * tileHeight
 
-      this.children.push(s)
+        this.children.push(s)
+      }
     }
   }
 

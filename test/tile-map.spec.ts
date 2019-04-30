@@ -8,7 +8,7 @@ describe('TileMap', () => {
 
   const tex = new Texture('')
   const tiles = [
-    { frame: new Vec(0, 0) }
+    [{ frame: new Vec(0, 0) }]
   ]
 
   describe('Properties', () => {
@@ -36,8 +36,10 @@ describe('TileMap', () => {
   describe('Methods', () => {
     beforeEach(() => {
       tiles.length = 0
+      tiles.push([])
+
       for (let i = 0; i < 16; i++) {
-        tiles.push({ frame: new Vec() })
+        tiles[0].push({ frame: new Vec() })
       }
 
       map = new TileMap(tiles, 4, 4, 16, 16, tex)
@@ -58,13 +60,13 @@ describe('TileMap', () => {
     it('has method tileAtMapPos', () => {
       expect(map.tileAtMapPos).to.be.a('function')
 
-      expect(map.tileAtMapPos(new Vec()).frame).to.equal(tiles[0].frame)
+      expect(map.tileAtMapPos(new Vec()).frame).to.equal(tiles[0][0].frame)
     })
 
     it('has method tileAtPixelPos', () => {
       expect(map.tileAtPixelPos).to.be.a('function')
 
-      expect(map.tileAtPixelPos(new Vec(14, 14)).frame).to.equal(tiles[0].frame)
+      expect(map.tileAtPixelPos(new Vec(14, 14)).frame).to.equal(tiles[0][0].frame)
     })
 
     it('has method setTileFrameAtMapPos', () => {

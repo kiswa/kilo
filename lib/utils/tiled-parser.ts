@@ -15,7 +15,7 @@ export interface TiledMap {
   mapWidth: number
   /** Height of the map in tiles. */
   mapHeight: number
-  /** Array of tile objects */
+  /** Array of arrays of tile objects. */
   tiles: Array<{ [key: string]: any, x: number, y: number }>
 
   /**
@@ -38,6 +38,7 @@ let tileWidth: number
 let tileHeight: number
 let mapWidth: number
 let mapHeight: number
+let tilesPerRow: number
 
 let tileset: Tiled.Tileset
 let layers: Array<Tiled.Layer>
@@ -49,7 +50,8 @@ let entities: Array<Tiled.Object>
  *
  * @param jsonObj Object from Tiled JSON export.
  */
-export function tiledParser(jsonObj: Tiled.Map): TiledMap {
+export function tiledParser(jsonObj: Tiled.Map,
+                            extraLayers?: Array<string>): TiledMap {
   tileWidth = jsonObj.tilewidth
   tileHeight = jsonObj.tileheight
   mapWidth = jsonObj.width
@@ -77,18 +79,16 @@ export function tiledParser(jsonObj: Tiled.Map): TiledMap {
     entities.push(e)
   }
 
-  const tilesPerRow = Math.floor(tileset.imagewidth / tileset.tilewidth)
-  const tiles = []
+  tilesPerRow = Math.floor(tileset.imagewidth / tileset.tilewidth)
+  const tiles: any[] = []
 
-  for (let i = 0; i < levelLayer.data.length; i++) {
-    const idx = levelLayer.data[i] - tileset.firstgid
-    const props = getTileProps(idx)
-
-    tiles.push({ ...props, ...{
-      x: idx % tilesPerRow,
-      y: Math.floor(idx / tilesPerRow)
-    } })
+  if (extraLayers) {
+    extraLayers.forEach(layerName => {
+      loadTiles(tiles, getLayer(layerName, false))
+    })
   }
+
+  loadTiles(tiles, levelLayer)
 
   return {
     tileWidth,
@@ -101,7 +101,7 @@ export function tiledParser(jsonObj: Tiled.Map): TiledMap {
   }
 }
 
-const getLayer = (name: string) => {
+const getLayer = (name: string, mandatory = true) => {
   let layer = undefined
 
   if (!layers) {
@@ -115,11 +115,29 @@ const getLayer = (name: string) => {
     }
   }
 
-  if (!layer) {
+  if (!layer && mandatory) {
     throw new Error(`Tiled Error: Missing layer "${name}".`)
   }
 
   return layer
+}
+
+const loadTiles = (tiles: any[], layer: Tiled.Layer) => {
+  const index = tiles.push([]) - 1
+
+  if (!layer) {
+    return
+  }
+
+  for (let i = 0; i < layer.data.length; i++) {
+    const idx = layer.data[i] - tileset.firstgid
+    const props = getTileProps(idx)
+
+    tiles[index].push({ ...props, ...{
+      x: idx % tilesPerRow,
+      y: Math.floor(idx / tilesPerRow)
+    } })
+  }
 }
 
 const getTileset = () => {

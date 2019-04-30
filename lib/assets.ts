@@ -121,7 +121,7 @@ export class Assets {
     const factory = async (url: string) => {
       return await fetch(url)
         .then(res => res.json())
-        .then(json => this.onAssetLoad(json))
+        .then(json => this.onAssetLoad(json, true))
         .catch(e => Game.debug && console.error(e))
     }
 
@@ -136,8 +136,8 @@ export class Assets {
     }
   }
 
-  private onAssetLoad(asset: any) {
-    if (this.isCompleted) {
+  private onAssetLoad(asset: any, isJson = false) {
+    if (this.isCompleted || isJson) {
       return asset
     }
 

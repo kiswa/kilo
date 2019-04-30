@@ -103,12 +103,10 @@ describe('Utils - tiledParser', () => {
         }
       ],
 
-      properties: [
-
-      ],
+      properties: [],
     }
 
-    const parsedMap = tiledParser(map)
+    const parsedMap = tiledParser(map, ['bg'])
     expect(parsedMap).to.have.property('getObjectByName').that.is.a('function')
     expect(parsedMap).to.have.property('getObjectsByType').that.is.a('function')
 
