@@ -34,6 +34,16 @@ export interface TiledMap {
   getObjectsByType(type: string, mandatory?: boolean): Array<Tiled.Object>
 }
 
+/**
+ * Interface to add extra layers above or below the main level layer.
+ */
+export interface ExtraLayer {
+  /** Name of the layer to load. */
+  name: string
+  /** Whether the layer is rendered above the level or below. */
+  isAboveLevel: boolean
+}
+
 let tileWidth: number
 let tileHeight: number
 let mapWidth: number
@@ -51,7 +61,7 @@ let entities: Array<Tiled.Object>
  * @param jsonObj Object from Tiled JSON export.
  */
 export function tiledParser(jsonObj: Tiled.Map,
-                            extraLayers?: Array<string>): TiledMap {
+                            extraLayers?: Array<ExtraLayer>): TiledMap {
   tileWidth = jsonObj.tilewidth
   tileHeight = jsonObj.tileheight
   mapWidth = jsonObj.width
@@ -80,15 +90,7 @@ export function tiledParser(jsonObj: Tiled.Map,
   }
 
   tilesPerRow = Math.floor(tileset.imagewidth / tileset.tilewidth)
-  const tiles: any[] = []
-
-  if (extraLayers) {
-    extraLayers.forEach(layerName => {
-      loadTiles(tiles, getLayer(layerName, false))
-    })
-  }
-
-  loadTiles(tiles, levelLayer)
+  const tiles = loadTilesByLayer(levelLayer, extraLayers)
 
   return {
     tileWidth,
@@ -122,6 +124,29 @@ const getLayer = (name: string, mandatory = true) => {
   return layer
 }
 
+const loadTilesByLayer = (levelLayer: Tiled.Layer,
+                       extraLayers: Array<ExtraLayer>) => {
+  const tiles: any[] = []
+
+  if (extraLayers) {
+    extraLayers.filter(layer => layer.isAboveLevel === false)
+      .forEach(layer => {
+        loadTiles(tiles, getLayer(layer.name, false))
+      })
+  }
+
+  loadTiles(tiles, levelLayer)
+
+  if (extraLayers) {
+    extraLayers.filter(layer => layer.isAboveLevel === true)
+      .forEach(layer => {
+        loadTiles(tiles, getLayer(layer.name, false))
+      })
+  }
+
+  return tiles
+}
+
 const loadTiles = (tiles: any[], layer: Tiled.Layer) => {
   const index = tiles.push([]) - 1
 
@@ -149,11 +174,11 @@ const getTileset = () => {
 }
 
 const getTileProps = (id: number) => {
-  const tmp = {}
-  let tile = <any>undefined
+  const tmp: any = {}
+  let tile: any = undefined
 
   if (!tileset.tiles) {
-    throw new Error('Tiled Error: Missing tileset tiles.')
+    return tmp
   }
 
   for (let i = 0; i < tileset.tiles.length; i++) {
@@ -166,12 +191,12 @@ const getTileProps = (id: number) => {
   if (!tile) return tmp
 
   if (tile.type) {
-    (<any>tmp).type = tile.type
+    tmp.type = tile.type
   }
 
   if (tile.properties) {
     for (let i = 0; i < tile.properties.length; i++) {
-      (<any>tmp)[tile.properties[i].name] = tile.properties[i].value
+      tmp[tile.properties[i].name] = tile.properties[i].value
     }
   }
 

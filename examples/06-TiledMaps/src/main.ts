@@ -6,7 +6,8 @@ import { TiledLevel } from './tiled-map'
 // Game.debug = true
 
 const initGame = (mapData: any) => {
-  const tMap = Utils.tiledParser(mapData, ['bg'])
+  const extraLayer: Utils.ExtraLayer = { name: 'bg', isAboveLevel: false }
+  const tMap = Utils.tiledParser(mapData, [extraLayer])
   const map = new TiledLevel(tMap)
 
   const game = new Game(map.mapWidth * map.tileWidth, map.mapHeight * map.tileHeight)
