@@ -23,7 +23,7 @@ export class Camera extends Container {
    * Amount to move towards subject per update.
    *
    * Range from 0 to 1 where 0 is not moving, and 1 is always on subject.
-   * @default .03
+   * @default .3
    */
   easing: number
 
@@ -70,7 +70,7 @@ export class Camera extends Container {
     this.flashDuration = 0
     this.flashRect = null
 
-    this.easing = .03
+    this.easing = .3
 
     this.setTracking(64, 48)
     this.setSubject(subject)
@@ -192,8 +192,8 @@ export class Camera extends Container {
     }
 
     this.pos.set(
-      Utils.math.mix(this.pos.x, x, ease),
-      Utils.math.mix(this.pos.y, y, ease)
+      Utils.math.mix(this.pos.x, x, ease / 10),
+      Utils.math.mix(this.pos.y, y, ease / 10)
     )
   }
 

@@ -13,7 +13,7 @@ describe('Camera', () => {
     })
 
     it('has property easing', () => {
-      expect(camera).to.have.property('easing').that.equals(.03)
+      expect(camera).to.have.property('easing').that.equals(.3)
     })
   })
 

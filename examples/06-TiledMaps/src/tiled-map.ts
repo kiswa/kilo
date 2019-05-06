@@ -5,6 +5,7 @@ import 'kilo/lib/types/tiled'
 const texture = new Types.Texture('assets/images/tiles.png')
 
 export class TiledLevel extends TileMap {
+  // Define the customized objects that have been named in the tileset
   gameObjects: {
     player: Tiled.Object,
     pickups: Tiled.Object[]
