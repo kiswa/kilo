@@ -54,21 +54,17 @@ describe('Utils - tiledParser', () => {
     expect(badFn).to.throw('Tiled Error: Missing entities objects.')
   })
 
-  it('throws if no props in tileset tiles', () => {
+  it('should parse without entity properties', () => {
     expect(tiledParser).to.be.a('function')
 
-    const badFn = () => tiledParser((<any>{ layers: [
+    const actual = tiledParser(<any>{ layers: [
       { name: 'level' },
       { name: 'entities', objects: [
         { gid: 1, id: 1, x: 0, y: 0, height: 16, width: 16,
-          type: 'test', name: 'test', properties: [
-            { name: 'test', value: 'test', type: 'test' }
-          ] }
+          type: 'test', name: 'test' }
       ] }
     ], tilesets: [{}]
-    }))
-
-    expect(badFn).to.throw('Tiled Error: Missing tileset tiles.')
+    })
   })
 
   it('parses a Tiled map', () => {

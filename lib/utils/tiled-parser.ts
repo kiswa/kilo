@@ -150,7 +150,7 @@ const loadTilesByLayer = (levelLayer: Tiled.Layer,
 const loadTiles = (tiles: any[], layer: Tiled.Layer) => {
   const index = tiles.push([]) - 1
 
-  if (!layer) {
+  if (!layer || !layer.data) {
     return
   }
 

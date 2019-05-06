@@ -46,8 +46,8 @@ export class TileMap extends Container {
         const s = new TileSprite(texture, tileWidth, tileHeight)
 
         s.frame = tiles[i][j].frame
-        s.pos.x = j % mapWidth * tileWidth,
-          s.pos.y = Math.floor(j / mapWidth) * tileHeight
+        s.pos.x = j % mapWidth * tileWidth
+        s.pos.y = Math.floor(j / mapWidth) * tileHeight
 
         this.children.push(s)
       }
