@@ -11,17 +11,14 @@ const plane = new Types.Sprite(new Types.Texture('assets/images/plane.png'))
 const controls = new KeyControls()
 
 const speed = 0.2
-const dir = new Types.Vec(0, 0)
 
 game.scene.add(plane)
 
 game.run((dt: number, t: number) => {
   const { x, y } = controls
 
-  dir.set(x, y)
-
-  plane.pos.x += dir.x * dt * (tileSize / speed)
-  plane.pos.y += dir.y * dt * (tileSize / speed)
+  plane.pos.x += x * dt * (tileSize / speed)
+  plane.pos.y += y * dt * (tileSize / speed)
 
   // Keep the sprite inside the view
   if (plane.pos.x < -8) {
