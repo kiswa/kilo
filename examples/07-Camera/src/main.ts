@@ -29,7 +29,7 @@ const initGame = (mapData: any) => {
   invisiblePlayer.pos.set(worldSize.x / 2, worldSize.y / 2)
 
   const cam = new Camera(
-    // The play for the camera to follow
+    // The target for the camera to follow
     invisiblePlayer,
     // Size of the viewport
     <Types.Rect>{ width: game.width, height: game.height },
