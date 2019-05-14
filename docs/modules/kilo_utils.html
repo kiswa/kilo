@@ -910,6 +910,9 @@ img { max-width: 100%; }
 <nav class="tsd-navigation secondary">
 	<ul>
 		<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+			<a href="../interfaces/kilo_utils.extralayer.html" class="tsd-kind-icon">Extra<wbr>Layer</a>
+		</li>
+		<li class=" tsd-kind-interface tsd-parent-kind-external-module">
 			<a href="../interfaces/kilo_utils.tiledmap.html" class="tsd-kind-icon">Tiled<wbr>Map</a>
 		</li>
 		<li class=" tsd-kind-interface tsd-parent-kind-external-module">
@@ -938,6 +941,9 @@ img { max-width: 100%; }
 		</li>
 		<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
 			<a href="kilo_utils.html#tilewidth" class="tsd-kind-icon">tile<wbr>Width</a>
+		</li>
+		<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
+			<a href="kilo_utils.html#tilesperrow" class="tsd-kind-icon">tiles<wbr>Per<wbr>Row</a>
 		</li>
 		<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
 			<a href="kilo_utils.html#tileset" class="tsd-kind-icon">tileset</a>
@@ -1026,6 +1032,12 @@ img { max-width: 100%; }
 		<li class=" tsd-kind-function tsd-parent-kind-external-module">
 			<a href="kilo_utils.html#lerp" class="tsd-kind-icon">lerp</a>
 		</li>
+		<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
+			<a href="kilo_utils.html#loadtiles" class="tsd-kind-icon">load<wbr>Tiles</a>
+		</li>
+		<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
+			<a href="kilo_utils.html#loadtilesbylayer" class="tsd-kind-icon">load<wbr>Tiles<wbr>ByLayer</a>
+		</li>
 		<li class=" tsd-kind-function tsd-parent-kind-external-module">
 			<a href="kilo_utils.html#mix" class="tsd-kind-icon">mix</a>
 		</li>
@@ -1073,6 +1085,7 @@ img { max-width: 100%; }
 					<section class="tsd-index-section ">
 						<h3>Interfaces</h3>
 						<ul class="tsd-index-list">
+							<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/kilo_utils.extralayer.html" class="tsd-kind-icon">Extra<wbr>Layer</a></li>
 							<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/kilo_utils.tiledmap.html" class="tsd-kind-icon">Tiled<wbr>Map</a></li>
 							<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/kilo_utils.vecentity.html" class="tsd-kind-icon">Vec<wbr>Entity</a></li>
 						</ul>
@@ -1088,6 +1101,7 @@ img { max-width: 100%; }
 							<li class="tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported"><a href="kilo_utils.html#seed" class="tsd-kind-icon">seed</a></li>
 							<li class="tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported"><a href="kilo_utils.html#tileheight" class="tsd-kind-icon">tile<wbr>Height</a></li>
 							<li class="tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported"><a href="kilo_utils.html#tilewidth" class="tsd-kind-icon">tile<wbr>Width</a></li>
+							<li class="tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported"><a href="kilo_utils.html#tilesperrow" class="tsd-kind-icon">tiles<wbr>Per<wbr>Row</a></li>
 							<li class="tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported"><a href="kilo_utils.html#tileset" class="tsd-kind-icon">tileset</a></li>
 							<li class="tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported"><a href="kilo_utils.html#tilesets" class="tsd-kind-icon">tilesets</a></li>
 						</ul>
@@ -1122,6 +1136,8 @@ img { max-width: 100%; }
 							<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="kilo_utils.html#integratepos" class="tsd-kind-icon">integrate<wbr>Pos</a></li>
 							<li class="tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported"><a href="kilo_utils.html#ishit" class="tsd-kind-icon">is<wbr>Hit</a></li>
 							<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="kilo_utils.html#lerp" class="tsd-kind-icon">lerp</a></li>
+							<li class="tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported"><a href="kilo_utils.html#loadtiles" class="tsd-kind-icon">load<wbr>Tiles</a></li>
+							<li class="tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported"><a href="kilo_utils.html#loadtilesbylayer" class="tsd-kind-icon">load<wbr>Tiles<wbr>ByLayer</a></li>
 							<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="kilo_utils.html#mix" class="tsd-kind-icon">mix</a></li>
 							<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="kilo_utils.html#rand" class="tsd-kind-icon">rand</a></li>
 							<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="kilo_utils.html#randonefrom" class="tsd-kind-icon">rand<wbr>One<wbr>From</a></li>
@@ -1152,7 +1168,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">entities<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/kilo_types.tiled.object.html" class="tsd-signature-type">Object</a><span class="tsd-signature-symbol">&gt;</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/kiswa/kilo/blob/b6bedf8/lib/utils/tiled-parser.ts#L45">utils/tiled-parser.ts:45</a></li>
+						<li>Defined in <a href="https://github.com/kiswa/kilo/blob/e5ed5a7/lib/utils/tiled-parser.ts#L56">utils/tiled-parser.ts:56</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -1162,7 +1178,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">layers<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/kilo_types.tiled.layer.html" class="tsd-signature-type">Layer</a><span class="tsd-signature-symbol">&gt;</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/kiswa/kilo/blob/b6bedf8/lib/utils/tiled-parser.ts#L43">utils/tiled-parser.ts:43</a></li>
+						<li>Defined in <a href="https://github.com/kiswa/kilo/blob/e5ed5a7/lib/utils/tiled-parser.ts#L54">utils/tiled-parser.ts:54</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -1172,7 +1188,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">map<wbr>Height<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/kiswa/kilo/blob/b6bedf8/lib/utils/tiled-parser.ts#L40">utils/tiled-parser.ts:40</a></li>
+						<li>Defined in <a href="https://github.com/kiswa/kilo/blob/e5ed5a7/lib/utils/tiled-parser.ts#L50">utils/tiled-parser.ts:50</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -1182,7 +1198,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">map<wbr>Width<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/kiswa/kilo/blob/b6bedf8/lib/utils/tiled-parser.ts#L39">utils/tiled-parser.ts:39</a></li>
+						<li>Defined in <a href="https://github.com/kiswa/kilo/blob/e5ed5a7/lib/utils/tiled-parser.ts#L49">utils/tiled-parser.ts:49</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -1192,7 +1208,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">random<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">random</span><span class="tsd-signature-symbol"> =&nbsp;Math.random</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/kiswa/kilo/blob/b6bedf8/lib/utils/math.ts#L7">utils/math.ts:7</a></li>
+						<li>Defined in <a href="https://github.com/kiswa/kilo/blob/e5ed5a7/lib/utils/math.ts#L7">utils/math.ts:7</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -1202,7 +1218,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">seed<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;42</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/kiswa/kilo/blob/b6bedf8/lib/utils/math.ts#L6">utils/math.ts:6</a></li>
+						<li>Defined in <a href="https://github.com/kiswa/kilo/blob/e5ed5a7/lib/utils/math.ts#L6">utils/math.ts:6</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -1212,7 +1228,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">tile<wbr>Height<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/kiswa/kilo/blob/b6bedf8/lib/utils/tiled-parser.ts#L38">utils/tiled-parser.ts:38</a></li>
+						<li>Defined in <a href="https://github.com/kiswa/kilo/blob/e5ed5a7/lib/utils/tiled-parser.ts#L48">utils/tiled-parser.ts:48</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -1222,7 +1238,17 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">tile<wbr>Width<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/kiswa/kilo/blob/b6bedf8/lib/utils/tiled-parser.ts#L37">utils/tiled-parser.ts:37</a></li>
+						<li>Defined in <a href="https://github.com/kiswa/kilo/blob/e5ed5a7/lib/utils/tiled-parser.ts#L47">utils/tiled-parser.ts:47</a></li>
+					</ul>
+				</aside>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
+				<a name="tilesperrow" class="tsd-anchor"></a>
+				<h3><span class="tsd-flag ts-flagLet">Let</span> tiles<wbr>Per<wbr>Row</h3>
+				<div class="tsd-signature tsd-kind-icon">tiles<wbr>Per<wbr>Row<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/kiswa/kilo/blob/e5ed5a7/lib/utils/tiled-parser.ts#L51">utils/tiled-parser.ts:51</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -1232,7 +1258,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">tileset<span class="tsd-signature-symbol">:</span> <a href="../interfaces/kilo_types.tiled.tileset.html" class="tsd-signature-type">Tileset</a></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/kiswa/kilo/blob/b6bedf8/lib/utils/tiled-parser.ts#L42">utils/tiled-parser.ts:42</a></li>
+						<li>Defined in <a href="https://github.com/kiswa/kilo/blob/e5ed5a7/lib/utils/tiled-parser.ts#L53">utils/tiled-parser.ts:53</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -1242,7 +1268,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">tilesets<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/kilo_types.tiled.tileset.html" class="tsd-signature-type">Tileset</a><span class="tsd-signature-symbol">&gt;</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/kiswa/kilo/blob/b6bedf8/lib/utils/tiled-parser.ts#L44">utils/tiled-parser.ts:44</a></li>
+						<li>Defined in <a href="https://github.com/kiswa/kilo/blob/e5ed5a7/lib/utils/tiled-parser.ts#L55">utils/tiled-parser.ts:55</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -1259,7 +1285,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/b6bedf8/lib/utils/sprite.ts#L12">utils/sprite.ts:12</a></li>
+								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/e5ed5a7/lib/utils/sprite.ts#L12">utils/sprite.ts:12</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1290,7 +1316,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/b6bedf8/lib/utils/math.ts#L15">utils/math.ts:15</a></li>
+								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/e5ed5a7/lib/utils/math.ts#L15">utils/math.ts:15</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1327,7 +1353,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/b6bedf8/lib/utils/sprite.ts#L35">utils/sprite.ts:35</a></li>
+								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/e5ed5a7/lib/utils/sprite.ts#L35">utils/sprite.ts:35</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1364,7 +1390,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/b6bedf8/lib/utils/physics.ts#L26">utils/physics.ts:26</a></li>
+								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/e5ed5a7/lib/utils/physics.ts#L26">utils/physics.ts:26</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1401,7 +1427,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/b6bedf8/lib/utils/physics.ts#L37">utils/physics.ts:37</a></li>
+								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/e5ed5a7/lib/utils/physics.ts#L37">utils/physics.ts:37</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1438,7 +1464,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/b6bedf8/lib/utils/physics.ts#L48">utils/physics.ts:48</a></li>
+								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/e5ed5a7/lib/utils/physics.ts#L48">utils/physics.ts:48</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1475,7 +1501,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/b6bedf8/lib/utils/physics.ts#L62">utils/physics.ts:62</a></li>
+								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/e5ed5a7/lib/utils/physics.ts#L62">utils/physics.ts:62</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1518,7 +1544,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/b6bedf8/lib/utils/sprite.ts#L44">utils/sprite.ts:44</a></li>
+								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/e5ed5a7/lib/utils/sprite.ts#L44">utils/sprite.ts:44</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1549,7 +1575,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/b6bedf8/lib/utils/sprite.ts#L56">utils/sprite.ts:56</a></li>
+								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/e5ed5a7/lib/utils/sprite.ts#L56">utils/sprite.ts:56</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1580,7 +1606,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/b6bedf8/lib/utils/math.ts#L38">utils/math.ts:38</a></li>
+								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/e5ed5a7/lib/utils/math.ts#L38">utils/math.ts:38</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1623,7 +1649,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/b6bedf8/lib/utils/tiled-parser.ts#L163">utils/tiled-parser.ts:163</a></li>
+								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/e5ed5a7/lib/utils/tiled-parser.ts#L206">utils/tiled-parser.ts:206</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1666,7 +1692,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/b6bedf8/lib/utils/math.ts#L27">utils/math.ts:27</a></li>
+								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/e5ed5a7/lib/utils/math.ts#L27">utils/math.ts:27</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1697,7 +1723,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/b6bedf8/lib/utils/math.ts#L48">utils/math.ts:48</a></li>
+								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/e5ed5a7/lib/utils/math.ts#L48">utils/math.ts:48</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1734,7 +1760,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/b6bedf8/lib/utils/sprite.ts#L71">utils/sprite.ts:71</a></li>
+								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/e5ed5a7/lib/utils/sprite.ts#L71">utils/sprite.ts:71</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1771,7 +1797,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/b6bedf8/lib/utils/math.ts#L60">utils/math.ts:60</a></li>
+								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/e5ed5a7/lib/utils/math.ts#L60">utils/math.ts:60</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1802,7 +1828,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/b6bedf8/lib/utils/math.ts#L64">utils/math.ts:64</a></li>
+								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/e5ed5a7/lib/utils/math.ts#L64">utils/math.ts:64</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1825,19 +1851,22 @@ img { max-width: 100%; }
 				<a name="getlayer" class="tsd-anchor"></a>
 				<h3><span class="tsd-flag ts-flagConst">Const</span> get<wbr>Layer</h3>
 				<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
-					<li class="tsd-signature tsd-kind-icon">get<wbr>Layer<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/kilo_types.tiled.layer.html" class="tsd-signature-type">Layer</a></li>
+					<li class="tsd-signature tsd-kind-icon">get<wbr>Layer<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, mandatory<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/kilo_types.tiled.layer.html" class="tsd-signature-type">Layer</a></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/b6bedf8/lib/utils/tiled-parser.ts#L104">utils/tiled-parser.ts:104</a></li>
+								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/e5ed5a7/lib/utils/tiled-parser.ts#L106">utils/tiled-parser.ts:106</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
 								<h5>name: <span class="tsd-signature-type">string</span></h5>
+							</li>
+							<li>
+								<h5><span class="tsd-flag ts-flagDefault value">Default value</span> mandatory: <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> =&nbsp;true</span></h5>
 							</li>
 						</ul>
 						<h4 class="tsd-returns-title">Returns <a href="../interfaces/kilo_types.tiled.layer.html" class="tsd-signature-type">Layer</a></h4>
@@ -1854,7 +1883,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/b6bedf8/lib/utils/tiled-parser.ts#L202">utils/tiled-parser.ts:202</a></li>
+								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/e5ed5a7/lib/utils/tiled-parser.ts#L245">utils/tiled-parser.ts:245</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1880,7 +1909,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/b6bedf8/lib/utils/tiled-parser.ts#L182">utils/tiled-parser.ts:182</a></li>
+								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/e5ed5a7/lib/utils/tiled-parser.ts#L225">utils/tiled-parser.ts:225</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1900,13 +1929,13 @@ img { max-width: 100%; }
 				<a name="gettileprops" class="tsd-anchor"></a>
 				<h3><span class="tsd-flag ts-flagConst">Const</span> get<wbr>Tile<wbr>Props</h3>
 				<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
-					<li class="tsd-signature tsd-kind-icon">get<wbr>Tile<wbr>Props<span class="tsd-signature-symbol">(</span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span></li>
+					<li class="tsd-signature tsd-kind-icon">get<wbr>Tile<wbr>Props<span class="tsd-signature-symbol">(</span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/b6bedf8/lib/utils/tiled-parser.ts#L133">utils/tiled-parser.ts:133</a></li>
+								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/e5ed5a7/lib/utils/tiled-parser.ts#L176">utils/tiled-parser.ts:176</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1915,9 +1944,7 @@ img { max-width: 100%; }
 								<h5>id: <span class="tsd-signature-type">number</span></h5>
 							</li>
 						</ul>
-						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">object</span></h4>
-						<ul class="tsd-parameters">
-						</ul>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
 					</li>
 				</ul>
 			</section>
@@ -1931,7 +1958,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/b6bedf8/lib/utils/tiled-parser.ts#L125">utils/tiled-parser.ts:125</a></li>
+								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/e5ed5a7/lib/utils/tiled-parser.ts#L168">utils/tiled-parser.ts:168</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-returns-title">Returns <a href="../interfaces/kilo_types.tiled.tileset.html" class="tsd-signature-type">Tileset</a></h4>
@@ -1948,7 +1975,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/b6bedf8/lib/utils/sprite.ts#L90">utils/sprite.ts:90</a></li>
+								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/e5ed5a7/lib/utils/sprite.ts#L90">utils/sprite.ts:90</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1985,7 +2012,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/b6bedf8/lib/utils/sprite.ts#L104">utils/sprite.ts:104</a></li>
+								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/e5ed5a7/lib/utils/sprite.ts#L104">utils/sprite.ts:104</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2028,7 +2055,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/b6bedf8/lib/utils/physics.ts#L72">utils/physics.ts:72</a></li>
+								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/e5ed5a7/lib/utils/physics.ts#L72">utils/physics.ts:72</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2065,7 +2092,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/b6bedf8/lib/utils/physics.ts#L90">utils/physics.ts:90</a></li>
+								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/e5ed5a7/lib/utils/physics.ts#L90">utils/physics.ts:90</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2102,7 +2129,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/b6bedf8/lib/utils/sprite.ts#L75">utils/sprite.ts:75</a></li>
+								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/e5ed5a7/lib/utils/sprite.ts#L75">utils/sprite.ts:75</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -2128,7 +2155,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/b6bedf8/lib/utils/math.ts#L75">utils/math.ts:75</a></li>
+								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/e5ed5a7/lib/utils/math.ts#L75">utils/math.ts:75</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2161,6 +2188,58 @@ img { max-width: 100%; }
 					</li>
 				</ul>
 			</section>
+			<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
+				<a name="loadtiles" class="tsd-anchor"></a>
+				<h3><span class="tsd-flag ts-flagConst">Const</span> load<wbr>Tiles</h3>
+				<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
+					<li class="tsd-signature tsd-kind-icon">load<wbr>Tiles<span class="tsd-signature-symbol">(</span>tiles<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span>, layer<span class="tsd-signature-symbol">: </span><a href="../interfaces/kilo_types.tiled.layer.html" class="tsd-signature-type">Layer</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/e5ed5a7/lib/utils/tiled-parser.ts#L150">utils/tiled-parser.ts:150</a></li>
+							</ul>
+						</aside>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>tiles: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h5>
+							</li>
+							<li>
+								<h5>layer: <a href="../interfaces/kilo_types.tiled.layer.html" class="tsd-signature-type">Layer</a></h5>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
+				<a name="loadtilesbylayer" class="tsd-anchor"></a>
+				<h3><span class="tsd-flag ts-flagConst">Const</span> load<wbr>Tiles<wbr>ByLayer</h3>
+				<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
+					<li class="tsd-signature tsd-kind-icon">load<wbr>Tiles<wbr>ByLayer<span class="tsd-signature-symbol">(</span>levelLayer<span class="tsd-signature-symbol">: </span><a href="../interfaces/kilo_types.tiled.layer.html" class="tsd-signature-type">Layer</a>, extraLayers<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/kilo_utils.extralayer.html" class="tsd-signature-type">ExtraLayer</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/e5ed5a7/lib/utils/tiled-parser.ts#L127">utils/tiled-parser.ts:127</a></li>
+							</ul>
+						</aside>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>levelLayer: <a href="../interfaces/kilo_types.tiled.layer.html" class="tsd-signature-type">Layer</a></h5>
+							</li>
+							<li>
+								<h5>extraLayers: <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/kilo_utils.extralayer.html" class="tsd-signature-type">ExtraLayer</a><span class="tsd-signature-symbol">&gt;</span></h5>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h4>
+					</li>
+				</ul>
+			</section>
 			<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module">
 				<a name="mix" class="tsd-anchor"></a>
 				<h3>mix</h3>
@@ -2171,7 +2250,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/b6bedf8/lib/utils/math.ts#L86">utils/math.ts:86</a></li>
+								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/e5ed5a7/lib/utils/math.ts#L86">utils/math.ts:86</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2214,7 +2293,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/b6bedf8/lib/utils/math.ts#L96">utils/math.ts:96</a></li>
+								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/e5ed5a7/lib/utils/math.ts#L96">utils/math.ts:96</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2251,7 +2330,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/b6bedf8/lib/utils/math.ts#L120">utils/math.ts:120</a></li>
+								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/e5ed5a7/lib/utils/math.ts#L120">utils/math.ts:120</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2282,7 +2361,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/b6bedf8/lib/utils/math.ts#L129">utils/math.ts:129</a></li>
+								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/e5ed5a7/lib/utils/math.ts#L129">utils/math.ts:129</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2313,7 +2392,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/b6bedf8/lib/utils/math.ts#L106">utils/math.ts:106</a></li>
+								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/e5ed5a7/lib/utils/math.ts#L106">utils/math.ts:106</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2350,7 +2429,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/b6bedf8/lib/utils/math.ts#L138">utils/math.ts:138</a></li>
+								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/e5ed5a7/lib/utils/math.ts#L138">utils/math.ts:138</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2381,7 +2460,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/b6bedf8/lib/utils/math.ts#L173">utils/math.ts:173</a></li>
+								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/e5ed5a7/lib/utils/math.ts#L173">utils/math.ts:173</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2403,7 +2482,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/b6bedf8/lib/utils/math.ts#L164">utils/math.ts:164</a></li>
+								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/e5ed5a7/lib/utils/math.ts#L164">utils/math.ts:164</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2446,7 +2525,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/b6bedf8/lib/utils/physics.ts#L102">utils/physics.ts:102</a></li>
+								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/e5ed5a7/lib/utils/physics.ts#L102">utils/physics.ts:102</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2471,13 +2550,13 @@ img { max-width: 100%; }
 				<a name="tiledparser" class="tsd-anchor"></a>
 				<h3>tiled<wbr>Parser</h3>
 				<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
-					<li class="tsd-signature tsd-kind-icon">tiled<wbr>Parser<span class="tsd-signature-symbol">(</span>jsonObj<span class="tsd-signature-symbol">: </span><a href="../interfaces/kilo_types.tiled.map.html" class="tsd-signature-type">Map</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/kilo_utils.tiledmap.html" class="tsd-signature-type">TiledMap</a></li>
+					<li class="tsd-signature tsd-kind-icon">tiled<wbr>Parser<span class="tsd-signature-symbol">(</span>jsonObj<span class="tsd-signature-symbol">: </span><a href="../interfaces/kilo_types.tiled.map.html" class="tsd-signature-type">Map</a>, extraLayers<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/kilo_utils.extralayer.html" class="tsd-signature-type">ExtraLayer</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/kilo_utils.tiledmap.html" class="tsd-signature-type">TiledMap</a></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/b6bedf8/lib/utils/tiled-parser.ts#L52">utils/tiled-parser.ts:52</a></li>
+								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/e5ed5a7/lib/utils/tiled-parser.ts#L63">utils/tiled-parser.ts:63</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2492,6 +2571,9 @@ img { max-width: 100%; }
 								<div class="tsd-comment tsd-typography">
 									<p>Object from Tiled JSON export.</p>
 								</div>
+							</li>
+							<li>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> extraLayers: <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/kilo_utils.extralayer.html" class="tsd-signature-type">ExtraLayer</a><span class="tsd-signature-symbol">&gt;</span></h5>
 							</li>
 						</ul>
 						<h4 class="tsd-returns-title">Returns <a href="../interfaces/kilo_utils.tiledmap.html" class="tsd-signature-type">TiledMap</a></h4>
@@ -2508,7 +2590,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/b6bedf8/lib/utils/math.ts#L151">utils/math.ts:151</a></li>
+								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/e5ed5a7/lib/utils/math.ts#L151">utils/math.ts:151</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2538,7 +2620,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">ease<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/kiswa/kilo/blob/b6bedf8/lib/utils/math.ts#L185">utils/math.ts:185</a></li>
+						<li>Defined in <a href="https://github.com/kiswa/kilo/blob/e5ed5a7/lib/utils/math.ts#L185">utils/math.ts:185</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
@@ -2556,7 +2638,7 @@ img { max-width: 100%; }
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/kiswa/kilo/blob/b6bedf8/lib/utils/math.ts#L194">utils/math.ts:194</a></li>
+									<li>Defined in <a href="https://github.com/kiswa/kilo/blob/e5ed5a7/lib/utils/math.ts#L194">utils/math.ts:194</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -2579,7 +2661,7 @@ img { max-width: 100%; }
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/kiswa/kilo/blob/b6bedf8/lib/utils/math.ts#L202">utils/math.ts:202</a></li>
+									<li>Defined in <a href="https://github.com/kiswa/kilo/blob/e5ed5a7/lib/utils/math.ts#L202">utils/math.ts:202</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -2602,7 +2684,7 @@ img { max-width: 100%; }
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/kiswa/kilo/blob/b6bedf8/lib/utils/math.ts#L198">utils/math.ts:198</a></li>
+									<li>Defined in <a href="https://github.com/kiswa/kilo/blob/e5ed5a7/lib/utils/math.ts#L198">utils/math.ts:198</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -2625,7 +2707,7 @@ img { max-width: 100%; }
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/kiswa/kilo/blob/b6bedf8/lib/utils/math.ts#L208">utils/math.ts:208</a></li>
+									<li>Defined in <a href="https://github.com/kiswa/kilo/blob/e5ed5a7/lib/utils/math.ts#L208">utils/math.ts:208</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -2648,7 +2730,7 @@ img { max-width: 100%; }
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/kiswa/kilo/blob/b6bedf8/lib/utils/math.ts#L186">utils/math.ts:186</a></li>
+									<li>Defined in <a href="https://github.com/kiswa/kilo/blob/e5ed5a7/lib/utils/math.ts#L186">utils/math.ts:186</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -2671,7 +2753,7 @@ img { max-width: 100%; }
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/kiswa/kilo/blob/b6bedf8/lib/utils/math.ts#L190">utils/math.ts:190</a></li>
+									<li>Defined in <a href="https://github.com/kiswa/kilo/blob/e5ed5a7/lib/utils/math.ts#L190">utils/math.ts:190</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
