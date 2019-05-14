@@ -6,6 +6,7 @@ import { Container } from './container'
 
 import * as Types from './types'
 import * as Utils from './utils'
+import * as FX from './fx'
 
 import { Controls } from './controls/controls'
 import { GamepadControls } from './controls/gamepad-controls'
@@ -44,5 +45,6 @@ export {
   TileSprite,
   Timer,
   Types,
-  Utils
+  Utils,
+  FX
 }
