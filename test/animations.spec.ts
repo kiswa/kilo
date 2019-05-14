@@ -41,6 +41,8 @@ describe('Animations', () => {
 
       anims.add('test', [new Vec(1, 0)], 1)
       anims.play('test')
+
+      anims.update(0)
       anims.update(2)
 
       expect((<any>anims).anims.get('test').curFrame).to.equal(1)

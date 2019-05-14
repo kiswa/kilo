@@ -28,6 +28,8 @@ describe('Utils - Sprite', () => {
     sprite.addDebug(spr)
 
     expect(spr.hasChildren).to.equal(true)
+    spr.hitBox = null
+    sprite.addDebug(spr)
   })
 
   it('has method angle', () => {
@@ -106,6 +108,12 @@ describe('Utils - Sprite', () => {
 
     cont.add(spr2)
 
+    sprite.hits(spr, cont, (other) => {
+      expect(other).to.equal(spr2)
+      done()
+    })
+
+    spr2.pos.set(0, 0)
     sprite.hits(spr, cont, (other) => {
       expect(other).to.equal(spr2)
       done()

@@ -68,6 +68,7 @@ describe('Camera', () => {
       expect(anyCam.flashRect).to.be.instanceof(Rect)
       expect(anyCam.flashDuration).to.equal(.2)
       expect(anyCam.flashTime).to.equal(.2)
+      camera.flash()
     })
 
     it('has method focus', () => {
@@ -88,6 +89,7 @@ describe('Camera', () => {
       expect(anyCam.debug.pos.y).to.equal(-45.5)
       expect(camera.pos.x).to.equal(0)
       expect(camera.pos.y).to.equal(0)
+      camera.focus(1, false)
     })
 
     it('has method update', () => {
@@ -109,6 +111,9 @@ describe('Camera', () => {
 
       expect(camera.pos.x).to.equal(0)
       expect(camera.pos.y).to.equal(0)
+
+      anyCam.subject = undefined
+      camera.update(1, 1)
     })
   })
 })

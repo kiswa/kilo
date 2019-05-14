@@ -53,9 +53,14 @@ describe('Assets', () => {
     it('has method onReady', () => {
       expect(assets.onReady).to.be.a('function')
 
+      anyAssets.remaining = 2
       assets.onReady(() => {
-        expect(anyAssets.readyListeners.length).to.equal(1)
+        expect(anyAssets.readyListeners.length).to.equal(2)
       })
+
+      anyAssets.onAssetLoad({})
+      anyAssets.remaining = 0
+      assets.onReady(() => {})
 
       anyAssets.isCompleted = true
       anyAssets.onAssetLoad({})
@@ -84,6 +89,7 @@ describe('Assets', () => {
 
     it('has method image', () => {
       expect(assets.image).to.be.a('function')
+      anyAssets.remaining = 1
 
       const actual = assets.image('test/image')
       const evt = new Event('load')

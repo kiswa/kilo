@@ -38,6 +38,7 @@ describe('KeyControls', () => {
 
     it('has get accessor x', () => {
       expect(ctrls.x).to.equal(0)
+      keyDown(80)
 
       ctrls.key(37, true)
       keyDown(37)
@@ -66,7 +67,18 @@ describe('KeyControls', () => {
       ctrls = new KeyControls()
     })
 
+    it('has method key', () => {
+      expect(ctrls.key).to.be.a('function')
+
+      let val = ctrls.key(80)
+      expect(val).to.equal(undefined)
+
+      val = ctrls.key(80, true)
+      expect(val).to.equal(true)
+    })
+
     it('has method reset', () => {
+      expect(ctrls.reset).to.be.a('function')
       ctrls.reset()
 
       expect((<any>ctrls).keys.length).to.equal(0)
