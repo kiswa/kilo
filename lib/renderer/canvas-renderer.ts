@@ -11,6 +11,9 @@ export class CanvasRenderer {
   private width: number
   private height: number
   private ctx: CanvasRenderingContext2D
+  private ctx2: CanvasRenderingContext2D
+  private buffer: HTMLCanvasElement
+  private canvas: HTMLCanvasElement
 
   /**
    * Initialize CanvasRenderer object.
@@ -20,17 +23,20 @@ export class CanvasRenderer {
    * @param container The HTMLElement to add the canvas to.
    */
   constructor(width: number, height: number, container: HTMLElement) {
-    const canvas = document.createElement('canvas')
-    canvas.id = 'kilo-canvas'
+    this.buffer = document.createElement('canvas')
+    this.canvas = document.createElement('canvas')
+    this.canvas.id = 'kilo-canvas'
 
-    this.width = canvas.width = width
-    this.height = canvas.height = height
+    this.width = this.buffer.width = this.canvas.width = width
+    this.height = this.buffer.height = this.canvas.height = height
 
-    this.ctx = canvas.getContext('2d')
+    this.ctx = this.buffer.getContext('2d')
     this.ctx.imageSmoothingEnabled = false
     this.ctx.textBaseline = 'top'
 
-    container.appendChild(canvas)
+    this.ctx2 = this.canvas.getContext('2d')
+
+    container.appendChild(this.canvas)
   }
 
   /**
@@ -66,6 +72,8 @@ export class CanvasRenderer {
 
       ctx.restore()
     }
+
+     this.ctx2.drawImage(this.buffer, 0, 0)
   }
 
   private isInCamera(entity: Sprite, camera: any) {
