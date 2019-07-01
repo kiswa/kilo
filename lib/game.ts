@@ -75,7 +75,6 @@ export class Game {
 
   /**
    * Sets the speed multiplier of the game.
-   * @default 1
    */
   set speed(value) {
     MULTIPLIER = value
