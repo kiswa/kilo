@@ -6,7 +6,7 @@ const controls = new KeyControls()
 let gameType = 'coin'
 
 // Uncomment below line to show FPS & UPS counters
-// Game.debug = true
+Game.debug = true
 
 // Although the update loop ensures the sound can't play unless .3 seconds
 // have elapsed, it can still cause the existing sound to stop partway through.
