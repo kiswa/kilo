@@ -5,14 +5,14 @@ import { KeyControls } from '../lib/'
 describe('KeyControls', () => {
   let ctrls: KeyControls
 
-  const keyDown = id => {
-    const evt = new KeyboardEvent('keydown', <any>{ which: id })
+  const keyDown = (code: string) => {
+    const evt = new KeyboardEvent('keydown', <any>{ code })
 
     document.dispatchEvent(evt)
   }
 
-  const keyUp = id => {
-    const evt = new KeyboardEvent('keyup', <any>{ which: id })
+  const keyUp = (code: string) => {
+    const evt = new KeyboardEvent('keyup', <any>{ code })
 
     document.dispatchEvent(evt)
   }
@@ -37,28 +37,55 @@ describe('KeyControls', () => {
     })
 
     it('has get accessor x', () => {
-      expect(ctrls.x).to.equal(0)
-      keyDown(80)
-
-      ctrls.key(37, true)
-      keyDown(37)
+      keyDown('KeyA')
       expect(ctrls.x).to.equal(-1)
 
-      keyUp(37)
-      ctrls.key(37, false)
-      ctrls.key(39, true)
+      keyUp('KeyA')
+      expect(ctrls.x).to.equal(0)
+
+      keyDown('ArrowLeft')
+      expect(ctrls.x).to.equal(-1)
+
+      keyUp('ArrowLeft')
+      expect(ctrls.x).to.equal(0)
+
+      keyDown('KeyD')
       expect(ctrls.x).to.equal(1)
+
+      keyUp('KeyD')
+      expect(ctrls.x).to.equal(0)
+
+      keyDown('ArrowRight')
+      expect(ctrls.x).to.equal(1)
+
+      keyUp('ArrowRight')
+      expect(ctrls.x).to.equal(0)
     })
 
     it('has get accessor y', () => {
-      expect(ctrls.y).to.equal(0)
-
-      ctrls.key(38, true)
+      keyDown('KeyW')
       expect(ctrls.y).to.equal(-1)
 
-      ctrls.key(38, false)
-      ctrls.key(40, true)
+      keyUp('KeyW')
+      expect(ctrls.y).to.equal(0)
+
+      keyDown('ArrowUp')
+      expect(ctrls.y).to.equal(-1)
+
+      keyUp('ArrowUp')
+      expect(ctrls.y).to.equal(0)
+
+      keyDown('KeyS')
       expect(ctrls.y).to.equal(1)
+
+      keyUp('KeyS')
+      expect(ctrls.y).to.equal(0)
+
+      keyDown('ArrowDown')
+      expect(ctrls.y).to.equal(1)
+
+      keyUp('ArrowDown')
+      expect(ctrls.y).to.equal(0)
     })
   })
 
@@ -70,18 +97,21 @@ describe('KeyControls', () => {
     it('has method key', () => {
       expect(ctrls.key).to.be.a('function')
 
-      let val = ctrls.key(80)
+      let val = ctrls.key('Space')
       expect(val).to.equal(undefined)
 
-      val = ctrls.key(80, true)
+      val = ctrls.key('Space', true)
       expect(val).to.equal(true)
     })
 
     it('has method reset', () => {
       expect(ctrls.reset).to.be.a('function')
-      ctrls.reset()
 
-      expect((<any>ctrls).keys.length).to.equal(0)
+      ctrls.action = true
+      expect((<any>ctrls).keys.Space).to.equal(true)
+
+      ctrls.reset()
+      expect((<any>ctrls).keys.Space).to.equal(undefined)
     })
   })
 })
