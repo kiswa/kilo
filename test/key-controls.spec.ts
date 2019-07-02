@@ -98,7 +98,7 @@ describe('KeyControls', () => {
       expect(ctrls.key).to.be.a('function')
 
       let val = ctrls.key('Space')
-      expect(val).to.equal(undefined)
+      expect(val).to.equal(false)
 
       val = ctrls.key('Space', true)
       expect(val).to.equal(true)

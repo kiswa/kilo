@@ -97,7 +97,7 @@ export class KeyControls {
       this.keys[key] = value
     }
 
-    return this.keys[key]
+    return !!this.keys[key]
   }
 
   /**
