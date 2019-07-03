@@ -31,10 +31,12 @@ export class MouseControls {
     this.isDown = false
     this.pressed = false
     this.released = false
+    this.resize()
 
     document.addEventListener('mousedown', e => this.down(e), false)
     document.addEventListener('mouseup', _ => this.up(), false)
     document.addEventListener('mousemove', e => this.move(e), false)
+    document.addEventListener('resize', _ => this.resize(), false)
   }
 
   /**
@@ -62,12 +64,14 @@ export class MouseControls {
     this.mousePosFromEvent(e)
   }
 
+  private resize() {
+    this.rect = this.el.getBoundingClientRect()
+  }
+
   private mousePosFromEvent(e: MouseEvent) {
     const { clientX, clientY } = e
     const xr = this.el.width / this.el.clientWidth
     const yr = this.el.height / this.el.clientHeight
-
-    this.rect = this.el.getBoundingClientRect()
 
     this.pos.x = (clientX - this.rect.left) * xr
     this.pos.y = (clientY - this.rect.top) * yr

@@ -17,10 +17,16 @@ describe('MouseControls', () => {
     document.dispatchEvent(evt)
   }
 
+  const resize = () => {
+    const evt = new Event('resize')
+    document.dispatchEvent(evt)
+  }
+
   describe('Properties', () => {
     beforeEach(() => {
       canvas = document.createElement('canvas')
       mouse = new MouseControls(canvas)
+      resize()
     })
 
     it('has property isDown', () => {
