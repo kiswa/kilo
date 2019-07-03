@@ -102,7 +102,8 @@ describe('Utils - Math', () => {
   it('has method randomSeed', () => {
     expect(math.randomSeed).to.be.a('function')
 
-    expect(math.randomSeed(42)).to.equal(42)
+    expect(math.randomSeed()).to.equal(42) // Default seed
+    expect(math.randomSeed(123)).to.equal(123)
   })
 
   it('has method useSeededRandom', () => {

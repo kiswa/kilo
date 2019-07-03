@@ -61,6 +61,13 @@ export function gauss(x: number) {
   return Math.exp(-x * x)
 }
 
+/**
+ * Simple gaussian distance.
+ *
+ * @param x Number to apply gauss to.
+ * @param center Number representing center.
+ * @param dist Number represeting distance.
+ */
 export function gaussDistance(x: number, center: number, dist: number) {
   return gauss((x - center) / dist)
 }
