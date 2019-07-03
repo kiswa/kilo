@@ -72,6 +72,10 @@ describe('Game', () => {
     it('has get accessor scene', () => {
       expect(game.scene).to.be.instanceof(Container)
     })
+
+    it('has get accessor canvas', () => {
+      expect(game.canvas).to.be.instanceof(HTMLCanvasElement)
+    })
   })
 
   describe('Methods', () => {

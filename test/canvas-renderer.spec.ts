@@ -9,6 +9,12 @@ describe('CanvasRenderer', () => {
   const canvas = new CanvasRenderer(640, 480, document.body)
   const fast = 5
 
+  describe('Accessors', () => {
+    it('has get accessor canvasElement', () => {
+      expect(canvas.canvasElement).to.be.instanceof(HTMLCanvasElement)
+    })
+  })
+
   describe('Methods', () => {
     before(() => {
       Game.debug = true

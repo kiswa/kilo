@@ -39,7 +39,7 @@ export class Game {
   private destination: Scene
 
   private renderer: CanvasRenderer
-  private _scene: Container
+  private _scene: Scene | Container
 
   /** An [[Assetts]] instance for loading all game assets. */
   static assets: Assets = new Assets()
@@ -79,6 +79,10 @@ export class Game {
   set speed(value) {
     MULTIPLIER = value
     SPEED = STEP * MULTIPLIER
+  }
+
+  get canvas() {
+    return this.renderer.canvasElement
   }
 
   /**
@@ -150,8 +154,8 @@ export class Game {
       this.renderer.render(this.scene)
 
       if (Game.debug && window.performance.now() - lastTime >= 1000) {
-        Game.FPS = Math.floor(.25 * frames + .75 * Game.FPS)
-        Game.UPS = Math.floor(.25 * updates + .75 * Game.UPS)
+        Game.FPS = Math.round(.25 * frames + .75 * Game.FPS)
+        Game.UPS = Math.round(.25 * updates + .75 * Game.UPS)
 
         frames = 0
         updates = 0

@@ -15,6 +15,10 @@ export class CanvasRenderer {
   private buffer: HTMLCanvasElement
   private canvas: HTMLCanvasElement
 
+  get canvasElement() {
+    return this.canvas
+  }
+
   /**
    * Initialize CanvasRenderer object.
    *
@@ -73,7 +77,8 @@ export class CanvasRenderer {
       ctx.restore()
     }
 
-     this.ctx2.drawImage(this.buffer, 0, 0)
+    this.ctx2.clearRect(0, 0, this.width, this.height)
+    this.ctx2.drawImage(this.buffer, 0, 0)
   }
 
   private isInCamera(entity: Sprite, camera: any) {
