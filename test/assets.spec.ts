@@ -120,8 +120,8 @@ describe('Assets', () => {
       assets.json('http://jsonplaceholder.typicode.com/posts/1')
       assets.json('invalidUrl')
       restoreLog()
-
     })
+
   })
 })
 

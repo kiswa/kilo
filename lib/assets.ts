@@ -20,8 +20,8 @@ type ProgressCallback = (complete: number, total: number) => void
  */
 export class Assets {
   private cache: any
-  private readyListeners: Array<Function>
-  private progressListeners: Array<Function>
+  private readyListeners: Array<ReadyCallback>
+  private progressListeners: Array<ProgressCallback>
   private isCompleted: boolean
 
   private total: number
@@ -53,7 +53,7 @@ export class Assets {
    * @param cb Function called when all assets are loaded.
    */
   onReady(cb: ReadyCallback) {
-    if (this.completed) {
+    if (this.isCompleted) {
       return cb()
     }
 
@@ -118,8 +118,8 @@ export class Assets {
    * @param url Relative path to JSON asset.
    */
   json(url: string) {
-    const factory = async (url: string) => {
-      return await fetch(url)
+    const factory = (url: string) => {
+      return fetch(url)
         .then(res => res.json())
         .then(json => this.onAssetLoad(json, true))
         .catch(e => Game.debug && console.error(e))
@@ -158,10 +158,11 @@ export class Assets {
     }
 
     Game.debug && console.info('load', url)
-    const asset = factory(url)
 
     this.remaining++
     this.total++
+
+    const asset = factory(url)
     this.cache[url] = asset
 
     return asset
