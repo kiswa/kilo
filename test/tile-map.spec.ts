@@ -73,14 +73,14 @@ describe('TileMap', () => {
       expect(map.setTileFrameAtMapPos).to.be.a('function')
 
       map.setTileFrameAtMapPos(new Vec(0, 1), new Vec(1, 1))
-      expect((<any>map.children[4]).frame.x).to.equal(1)
+      expect((map.children[4] as any).frame.x).to.equal(1)
     })
 
     it('has method setTileFrameAtPixelPos', () => {
       expect(map.setTileFrameAtPixelPos).to.be.a('function')
 
       map.setTileFrameAtPixelPos(new Vec(8, 8), new Vec(1, 1))
-      expect((<any>map.children[0]).frame.x).to.equal(1)
+      expect((map.children[0] as any).frame.x).to.equal(1)
     })
 
     it('has method tilesAtCorners', () => {

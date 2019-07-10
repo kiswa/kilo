@@ -9,12 +9,12 @@ import { Point } from './types'
 class Animation {
   frame: Point
 
-  private frames: Array<Point>
+  private frames: Point[]
   private rate: number
   private curFrame: number
   private curTime: number
 
-  constructor(frames: Array<Point>, rate: number) {
+  constructor(frames: Point[], rate: number) {
     this.frames = frames
     this.rate = rate
   }
@@ -73,7 +73,7 @@ export class Animations {
    * @param frames Sprite frames used in the animation.
    * @param speed How quickly to change between frames (based upon delta time).
    */
-  add(name: string, frames: Array<Point>, speed: number): Animation {
+  add(name: string, frames: Point[], speed: number): Animation {
     this.anims.set(name, new Animation(frames, speed))
 
     return this.anims.get(name)

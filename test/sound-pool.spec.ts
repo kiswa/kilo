@@ -21,7 +21,7 @@ describe('SoundPool', () => {
     it('has method play', () => {
       expect(snds.play).to.be.a('function')
 
-      const anySnds = (<any>snds)
+      const anySnds = (snds as any)
       snds.play()
       snds.play()
 
@@ -32,7 +32,7 @@ describe('SoundPool', () => {
     it('has method stop', () => {
       expect(snds.stop).to.be.a('function')
 
-      const anySnds = (<any>snds)
+      const anySnds = (snds as any)
       snds.play()
       snds.play()
 

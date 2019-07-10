@@ -7,6 +7,7 @@ import { Container } from './container'
 import * as Types from './types'
 import * as Utils from './utils'
 import * as FX from './fx'
+import * as Resolvers from './resolvers'
 
 import { Controls } from './controls/controls'
 import { GamepadControls } from './controls/gamepad-controls'
@@ -32,10 +33,12 @@ export {
   Camera,
   Container,
   Controls,
+  FX,
   Game,
   GamepadControls,
   KeyControls,
   MouseControls,
+  Resolvers,
   Scene,
   Sound,
   SoundGroup,
@@ -46,5 +49,4 @@ export {
   Timer,
   Types,
   Utils,
-  FX
 }

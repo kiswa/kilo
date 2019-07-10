@@ -31,7 +31,7 @@ describe('Animations', () => {
       expect(anims.stop).to.be.a('function')
 
       anims.stop()
-      expect((<any>anims).current).to.equal(null)
+      expect((anims as any).current).to.equal(null)
     })
 
     it('has method update', () => {
@@ -45,7 +45,7 @@ describe('Animations', () => {
       anims.update(0)
       anims.update(2)
 
-      expect((<any>anims).anims.get('test').curFrame).to.equal(1)
+      expect((anims as any).anims.get('test').curFrame).to.equal(1)
     })
   })
 })

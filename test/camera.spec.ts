@@ -22,7 +22,7 @@ describe('Camera', () => {
 
     beforeEach(() => {
       camera = new Camera(new Sprite(tex), new Rect(5, 5))
-      anyCam = (<any>camera)
+      anyCam = (camera as any)
     })
 
     it('has method setDebug', () => {
@@ -75,7 +75,7 @@ describe('Camera', () => {
       expect(camera.focus).to.be.a('function')
 
       const spr = new Sprite(tex)
-      const anySpr = (<any>spr)
+      const anySpr = (spr as any)
       spr.pos.set(20, 20)
       anySpr._width = 5
       anySpr._height = 5
@@ -96,7 +96,7 @@ describe('Camera', () => {
       expect(camera.update).to.be.a('function')
 
       const spr = new Sprite(tex)
-      const anySpr = (<any>spr)
+      const anySpr = (spr as any)
       spr.pos.set(20, 20)
       anySpr._width = 5
       anySpr._height = 5

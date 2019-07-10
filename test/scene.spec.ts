@@ -7,7 +7,7 @@ class TestScene extends Scene {}
 describe('Scene', () => {
   let scene: Scene
 
-  const con = (<any>window).console
+  const con = (window as any).console
   const olds = [con.log, con.info, con.warn, con.error]
 
   const disableLog = () => {

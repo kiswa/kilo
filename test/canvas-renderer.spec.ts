@@ -30,8 +30,8 @@ describe('CanvasRenderer', () => {
     })
 
     describe('render', () => {
-      let container
-      let entity
+      let container: any
+      let entity: any
 
       const renderTiming = () => {
         const start = window.performance.now()
@@ -71,34 +71,34 @@ describe('CanvasRenderer', () => {
       it('handles alpha, scale, and anchor points', () => {
         entity.visible = true
         entity.alpha = .99
-        ; (<any>entity).anchor = { x: 5, y: 5 }
+        ; (entity as any).anchor = { x: 5, y: 5 }
 
         container.add(entity)
 
         expect(renderTiming()).to.be.below(fast)
 
-        delete (<any>entity).anchor
+        delete (entity as any).anchor
         delete entity.scale
 
         expect(renderTiming()).to.be.below(fast)
       })
 
       it('handles rotation and pivot points', () => {
-        ; (<any>entity).rotation = 15
-        ; (<any>entity).pivot = { x: 5, y: 5 }
+        (entity as any).rotation = 15
+        ; (entity as any).pivot = { x: 5, y: 5 }
 
         container.add(entity)
 
         expect(renderTiming()).to.be.below(fast)
 
-        delete (<any>entity).pivot
+        delete (entity as any).pivot
 
         expect(renderTiming()).to.be.below(fast)
       })
 
       it('handles text', () => {
-        ; (<any>entity).text = 'Testing'
-        ; (<any>entity).style = {
+        (entity as any).text = 'Testing'
+        ; (entity as any).style = {
           font: 'arial',
           fill: 'red',
           align: 'center'
@@ -108,7 +108,7 @@ describe('CanvasRenderer', () => {
 
         expect(renderTiming()).to.be.below(fast)
 
-        ; (<any>entity).style = {}
+        ; (entity as any).style = {}
 
         expect(renderTiming()).to.be.below(fast)
       })
@@ -117,7 +117,7 @@ describe('CanvasRenderer', () => {
         const img = new Image()
 
         img.onload = () => {
-          ; (<any>entity).texture = {
+          (entity as any).texture = {
             img: img
           }
 
@@ -138,11 +138,11 @@ describe('CanvasRenderer', () => {
         const img = new Image()
 
         img.onload = () => {
-          ; (<any>entity).texture = {
+          (entity as any).texture = {
             img: img
           }
-          ; (<any>entity).tileWidth = 8
-          ; (<any>entity).frame = { x: 0, y: 0 }
+          ; (entity as any).tileWidth = 8
+          ; (entity as any).frame = { x: 0, y: 0 }
 
           container.add(entity)
 
@@ -158,7 +158,7 @@ describe('CanvasRenderer', () => {
       })
 
       it('handles drawing paths', () => {
-        ; (<any>entity).path = [
+        (entity as any).path = [
           { x: 0, y: 0 },
           { x: 5, y: 5 },
           { x: 0, y: 5 },
@@ -168,13 +168,13 @@ describe('CanvasRenderer', () => {
 
         expect(renderTiming()).to.be.below(fast)
 
-        ; (<any>entity).style = { fill: null }
+        ; (entity as any).style = { fill: null }
 
         expect(renderTiming()).to.be.below(fast)
       })
 
       it('handles camera views', () => {
-        ; (<any>entity).worldSize = { x: 3, y: 3 }
+        (entity as any).worldSize = { x: 3, y: 3 }
         entity.width = 3
         entity.height = 3
         entity.pos.set(0, 0)

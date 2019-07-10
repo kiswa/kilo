@@ -175,7 +175,7 @@ export class Game {
         }
       }
 
-      if ((<any>document).testRun && frames === 0) {
+      if ((document as any).testRun && frames === 0) {
         return
       }
 

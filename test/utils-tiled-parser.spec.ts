@@ -7,36 +7,36 @@ describe('Utils - tiledParser', () => {
   it('throws if no layers found', () => {
     expect(tiledParser).to.be.a('function')
 
-    const badFn = () => tiledParser((<any>{}))
+    const badFn = () => tiledParser(({} as any))
     expect(badFn).to.throw('Tiled Error: No layers found.')
   })
 
   it('throws if no level layer found', () => {
     expect(tiledParser).to.be.a('function')
 
-    const badFn = () => tiledParser((<any>{ layers: [] }))
+    const badFn = () => tiledParser(({ layers: [] } as any))
     expect(badFn).to.throw('Tiled Error: Missing layer "level".')
   })
 
   it('throws if no entities layer found', () => {
     expect(tiledParser).to.be.a('function')
 
-    const badFn = () => tiledParser((<any>{ layers: [{ name: 'level' }] }))
+    const badFn = () => tiledParser(({ layers: [{ name: 'level' }] } as any))
     expect(badFn).to.throw('Tiled Error: Missing layer "entities".')
   })
 
   it('throws if no tilesets found', () => {
     expect(tiledParser).to.be.a('function')
 
-    const badFn = () => tiledParser((<any>{ layers: [
+    const badFn = () => tiledParser(({ layers: [
       { name: 'level' },
       { name: 'entities' }
-    ] }))
+    ] } as any))
 
-    const badFn2 = () => tiledParser((<any>{ layers: [
+    const badFn2 = () => tiledParser(({ layers: [
       { name: 'level' },
       { name: 'entities' }
-    ], tilesets: [] }))
+    ], tilesets: [] } as any))
 
     expect(badFn).to.throw('Tiled Error: Missing tileset index 0.')
     expect(badFn2).to.throw('Tiled Error: Missing tileset index 0.')
@@ -45,11 +45,11 @@ describe('Utils - tiledParser', () => {
   it('throws if no objects in entities layer', () => {
     expect(tiledParser).to.be.a('function')
 
-    const badFn = () => tiledParser((<any>{ layers: [
+    const badFn = () => tiledParser(({ layers: [
       { name: 'level' },
       { name: 'entities' },
     ], tilesets: [{}]
-    }))
+    } as any))
 
     expect(badFn).to.throw('Tiled Error: Missing entities objects.')
   })
@@ -57,14 +57,14 @@ describe('Utils - tiledParser', () => {
   it('should parse without entity properties', () => {
     expect(tiledParser).to.be.a('function')
 
-    const actual = tiledParser(<any>{ layers: [
+    tiledParser({ layers: [
       { name: 'level' },
       { name: 'entities', objects: [
         { gid: 1, id: 1, x: 0, y: 0, height: 16, width: 16,
           type: 'test', name: 'test' }
       ] }
     ], tilesets: [{}]
-    })
+    } as any)
   })
 
   it('parses a Tiled map', () => {
@@ -75,7 +75,7 @@ describe('Utils - tiledParser', () => {
       tilewidth: 16,
 
       layers: [
-        { name: 'level', type: '', opacity: 1, data: [1,2,3] },
+        { name: 'level', type: '', opacity: 1, data: [1, 2, 3] },
         { name: 'entities', type: '', opacity: 1, objects: [
           { gid: 1, id: 1, x: 0, y: 0, height: 16, width: 16,
             type: 'test', name: 'test', properties: [

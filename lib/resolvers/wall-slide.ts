@@ -20,7 +20,7 @@ type WalkableTest = (sprite: TileSprite, index: number) => boolean
  */
 export function wallSlide(ent: Sprite, map: TileMap, x = 0, y = 0,
                           walkableTest?: WalkableTest) {
-  let tiles: Array<TileSprite>
+  let tiles: TileSprite[]
   let tileEdge: number
 
   const bounds = Utils.sprite.bounds(ent)
@@ -79,5 +79,5 @@ export function wallSlide(ent: Sprite, map: TileMap, x = 0, y = 0,
     }
   }
 
-  return <any>{ x: xo, y: yo, hits }
+  return { x: xo, y: yo, hits } as any
 }

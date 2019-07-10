@@ -15,7 +15,7 @@ import { TileSprite, Utils } from '..'
  * ```typescript
  * // Inside a 'gotPickup' or similar function
  * const coin = new TileSprite(texture, 48, 48)
- * coin.anims.add('spin', [5, 6, 7, 8].map(x => (<any>{ x, y: 4 })), .1)
+ * coin.anims.add('spin', [5, 6, 7, 8].map(x => ({ x, y: 4 } as any)), .1)
  * coin.anims.play('spin')
  *
  * const one = this.add<OneUp>(new OneUp(coin))

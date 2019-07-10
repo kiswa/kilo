@@ -6,7 +6,7 @@ describe('Timer', () => {
   let tmr: Timer
 
   describe('Properties', () => {
-    tmr = new Timer((r: number) => {})
+    tmr = new Timer((_: number) => {})
 
     it('has property dead', () => {
       expect(tmr).to.have.property('dead').that.equals(false)
@@ -23,7 +23,7 @@ describe('Timer', () => {
         expect(r).to.equal(.5)
       }, () => {}, 1, .5)
 
-      const anyTmr = (<any>tmr)
+      const anyTmr = (tmr as any)
 
       tmr.update(.5)
       expect(anyTmr.elapsed).to.equal(0)

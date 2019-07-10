@@ -16,7 +16,7 @@ export interface TiledMap {
   /** Height of the map in tiles. */
   mapHeight: number
   /** Array of arrays of tile objects. */
-  tiles: Array<{ [key: string]: any, x: number, y: number }>
+  tiles: { [key: string]: any, x: number, y: number }[]
 
   /**
    * Gets an object from the map by name.
@@ -31,7 +31,7 @@ export interface TiledMap {
    * @param type Type name of the objects to get.
    * @param mandatory Whether no results is an error.
    */
-  getObjectsByType(type: string, mandatory?: boolean): Array<Tiled.Object>
+  getObjectsByType(type: string, mandatory?: boolean): Tiled.Object[]
 }
 
 /**
@@ -51,9 +51,9 @@ let mapHeight: number
 let tilesPerRow: number
 
 let tileset: Tiled.Tileset
-let layers: Array<Tiled.Layer>
-let tilesets: Array<Tiled.Tileset>
-let entities: Array<Tiled.Object>
+let layers: Tiled.Layer[]
+let tilesets: Tiled.Tileset[]
+let entities: Tiled.Object[]
 
 /**
  * Parses a Tiled map object into a simpler form.
@@ -61,7 +61,7 @@ let entities: Array<Tiled.Object>
  * @param jsonObj Object from Tiled JSON export.
  */
 export function tiledParser(jsonObj: Tiled.Map,
-                            extraLayers?: Array<ExtraLayer>): TiledMap {
+                            extraLayers?: ExtraLayer[]): TiledMap {
   tileWidth = jsonObj.tilewidth
   tileHeight = jsonObj.tileheight
   mapWidth = jsonObj.width
@@ -125,7 +125,7 @@ const getLayer = (name: string, mandatory = true) => {
 }
 
 const loadTilesByLayer = (levelLayer: Tiled.Layer,
-                       extraLayers: Array<ExtraLayer>) => {
+                       extraLayers: ExtraLayer[]) => {
   const tiles: any[] = []
 
   if (extraLayers) {
@@ -215,14 +215,14 @@ const convertEntity = (e: Tiled.Object) => {
 
   if (e.properties) {
     for (let i = 0; i < e.properties.length; i++) {
-      (<any>tmp)[e.properties[i].name] = e.properties[i].value
+      (tmp as any)[e.properties[i].name] = e.properties[i].value
     }
   }
 
   return tmp
 }
 
-const getObjectsByType = (type: string, mandatory = false): Array<Tiled.Object> => {
+const getObjectsByType = (type: string, mandatory = false): Tiled.Object[] => {
   const es = []
   for (let i = 0; i < entities.length; i++) {
     if (entities[i].type === type) {
@@ -239,11 +239,11 @@ const getObjectsByType = (type: string, mandatory = false): Array<Tiled.Object> 
     converted.push(convertEntity(es[i]))
   }
 
-  return <any>converted
+  return converted as any
 }
 
 const getObjectByName = (name: string, mandatory = false): Tiled.Object => {
-  let ent
+  let ent: any
 
   for (let i = 0; i < entities.length; i++) {
     if (entities[i].name === name) {
@@ -256,5 +256,5 @@ const getObjectByName = (name: string, mandatory = false): Tiled.Object => {
     throw new Error(`Tiled Error: Missing named object "${name}".`)
   }
 
-  return <any>convertEntity(ent)
+  return convertEntity(ent) as any
 }

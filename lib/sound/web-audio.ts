@@ -20,7 +20,7 @@
   */
 export class WebAudio {
   /** Whether or not WebAudio is supported. */
-  hasWebAudio = !!((<any>window).AudioContext || (<any>window).webkitAudioContext)
+  hasWebAudio = !!((window as any).AudioContext || (window as any).webkitAudioContext)
 
   private element: HTMLAudioElement
   private context: AudioContext

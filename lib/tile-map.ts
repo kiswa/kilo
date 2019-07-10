@@ -32,7 +32,7 @@ export class TileMap extends Container {
    * @param tileHeight Height of one tile in pixels.
    * @param texture Texture to use for tiles.
    */
-  constructor(tiles: Array<Array<HasFrame>>, mapWidth: number, mapHeight: number,
+  constructor(tiles: HasFrame[][], mapWidth: number, mapHeight: number,
               tileWidth: number, tileHeight: number, texture: Texture) {
     super()
 
@@ -129,7 +129,7 @@ export class TileMap extends Container {
    * @param xo X axis offset to check against.
    * @param yo Y axis offset to check against.
    */
-  tilesAtCorners(box: HitBox, xo = 0, yo = 0): Array<TileSprite> {
+  tilesAtCorners(box: HitBox, xo = 0, yo = 0): TileSprite[] {
     const tiles = []
     const corners = [
       [box.x, box.y],
@@ -139,10 +139,10 @@ export class TileMap extends Container {
     ]
 
     for (let i = 0; i < corners.length; i++) {
-      tiles.push(this.tileAtPixelPos(<any>{
+      tiles.push(this.tileAtPixelPos({
         x: corners[i][0] + xo,
         y: corners[i][1] + yo
-      }))
+      } as any))
     }
 
     return tiles

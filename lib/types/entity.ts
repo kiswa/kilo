@@ -27,7 +27,7 @@ export abstract class Entity {
   scale: Vec
 
   /** An array of child entities for recursive update/render. */
-  children: Array<HasUpdate>
+  children: HasUpdate[]
 
   /** Whether or not there are any child entities. */
   get hasChildren(): boolean {

@@ -124,7 +124,7 @@ export function randf(min: number, max?: number) {
  *
  * @param items Array of items to select from.
  */
-export function randOneFrom(items: Array<any>) {
+export function randOneFrom(items: any[]) {
   return items[rand(items.length)]
 }
 

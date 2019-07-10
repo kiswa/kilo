@@ -21,14 +21,14 @@ import { math } from '../utils'
  * ```
  */
 export class SoundGroup {
-  private sounds: Array<Sound>
+  private sounds: Sound[]
 
   /**
    * Initialize SoundGroup object.
    *
    * @param sounds Array of sounds to select from on play.
    */
-  constructor(sounds: Array<Sound>) {
+  constructor(sounds: Sound[]) {
     this.sounds = sounds
   }
 

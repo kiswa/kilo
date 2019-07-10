@@ -18,7 +18,7 @@ describe('Sound', () => {
     snd = new Sound('test/sound')
 
     snd.playing = true
-    const anySnd = (<any>snd)
+    const anySnd = (snd as any)
 
     anySnd.audio.dispatchEvent(end)
     expect(snd.playing).to.equal(false)
@@ -42,7 +42,7 @@ describe('Sound', () => {
 
     it('has property options', () => {
       expect(snd).to.have.property('options')
-      const anySnd = (<any>snd)
+      const anySnd = (snd as any)
       expect(anySnd.options.volume).to.equal(1)
       expect(anySnd.options.loop).to.equal(false)
     })

@@ -10,7 +10,7 @@ import { Particle, ParticleOptions } from './particle'
  * and emits them in random directions when the `play` method is called.
  */
 export class ParticleEmitter extends Container {
-  private particles: Array<Particle>
+  private particles: Particle[]
   private lastPlay: number
 
   /**
@@ -25,7 +25,7 @@ export class ParticleEmitter extends Container {
               options?: ParticleOptions) {
     super()
 
-    this.particles = new Array<Particle>()
+    this.particles = []
 
     for (let i = 0; i < numParticles; i++) {
       this.particles.push(new Particle(display, options))

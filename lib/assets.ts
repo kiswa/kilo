@@ -20,8 +20,8 @@ type ProgressCallback = (complete: number, total: number) => void
  */
 export class Assets {
   private cache: any
-  private readyListeners: Array<ReadyCallback>
-  private progressListeners: Array<ProgressCallback>
+  private readyListeners: ReadyCallback[]
+  private progressListeners: ProgressCallback[]
   private isCompleted: boolean
 
   private total: number

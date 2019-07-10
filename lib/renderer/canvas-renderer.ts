@@ -98,7 +98,7 @@ export class CanvasRenderer {
     }
 
     for (let i = 0; i < container.children.length; i++) {
-      const child = <any>container.children[i]
+      const child = (container as any).children[i]
 
       if (!child.visible || child.alpha <= 0) {
         continue
@@ -162,7 +162,7 @@ export class CanvasRenderer {
       }
 
       if (child.path) {
-        const [head, ...tail]: Array<{ x: number, y: number }> = child.path
+        const [head, ...tail]: { x: number, y: number }[] = child.path
 
         if (child.path.length) {
           ctx.fillStyle = child.style.fill || '#fff'

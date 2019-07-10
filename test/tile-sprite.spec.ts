@@ -61,7 +61,7 @@ describe('TileSprite', () => {
 
       spr.update(1, 0)
 
-      expect((<any>spr.anims).anims.get('test').curFrame).to.equal(1)
+      expect((spr.anims as any).anims.get('test').curFrame).to.equal(1)
     })
   })
 })

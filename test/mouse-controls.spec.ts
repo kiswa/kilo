@@ -8,7 +8,7 @@ describe('MouseControls', () => {
   let canvas: HTMLCanvasElement
 
   const mouseDown = () => {
-    const evt = new MouseEvent('mousedown', <any>{ clientX: 0, clientY: 0 })
+    const evt = new MouseEvent('mousedown', { clientX: 0, clientY: 0 } as any)
     document.dispatchEvent(evt)
   }
 
@@ -69,7 +69,7 @@ describe('MouseControls', () => {
     it('has method update', () => {
       expect(mouse.update).to.be.a('function')
 
-      const evt = new MouseEvent('mousemove', <any>{ clientX: 1, clientY: 0 })
+      const evt = new MouseEvent('mousemove', { clientX: 1, clientY: 0 } as any)
       document.dispatchEvent(evt)
       const up = new MouseEvent('mouseup')
       document.dispatchEvent(up)

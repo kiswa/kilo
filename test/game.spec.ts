@@ -4,12 +4,12 @@ import { Game, Container, Scene } from '../lib/'
 
 require('jsdom-global')('', { pretendToBeVisual: true })
 
-; (<any>document).testRun = true
+; (document as any).testRun = true
 
 describe('Game', () => {
   let game: Game
 
-  const con = (<any>window).console
+  const con = (window as any).console
   const olds = [con.log, con.info, con.warn, con.error]
 
   const disableLog = () => {

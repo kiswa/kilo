@@ -2,17 +2,17 @@ import { expect } from 'chai'
 
 import { Assets, Game } from '../lib/'
 
-; (<any>global).Audio = (<any>window).Audio
-; (<any>global).fetch = require('node-fetch')
+; (global as any).Audio = (window as any).Audio
+; (global as any).fetch = require('node-fetch')
 
-; (<any>window).HTMLMediaElement.prototype.load = () => {}
-; (<any>window).HTMLMediaElement.prototype.play = () => {}
-; (<any>window).HTMLMediaElement.prototype.pause = () => {}
+; (window as any).HTMLMediaElement.prototype.load = () => {}
+; (window as any).HTMLMediaElement.prototype.play = () => {}
+; (window as any).HTMLMediaElement.prototype.pause = () => {}
 
 describe('Assets', () => {
   const assets = new Assets()
 
-  const con = (<any>window).console
+  const con = (window as any).console
   const olds = [con.log, con.info, con.warn, con.error]
 
   const disableLog = () => {
@@ -44,7 +44,7 @@ describe('Assets', () => {
   })
 
   describe('Methods', () => {
-    const anyAssets = <any>assets
+    const anyAssets = assets as any
 
     beforeEach(() => {
       disableLog()

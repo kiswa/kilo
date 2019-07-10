@@ -20,6 +20,7 @@ export function stopMovement(ent: Sprite, map: TileMap, x = 0, y = 0) {
   for (let i = 0; i < tiles.length; i++) {
     if (tiles[i] && !tiles[i].frame.walkable) {
       blocked = true
+      break
     }
   }
 

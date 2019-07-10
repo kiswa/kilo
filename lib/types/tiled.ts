@@ -20,12 +20,12 @@ declare namespace Tiled {
     tilewidth: number
 
     /** Layers in map. */
-    layers: Array<Layer>
+    layers: Layer[]
     /** Tilesets in the map. */
-    tilesets: Array<Tileset>
+    tilesets: Tileset[]
 
     /** Properties set on the map. */
-    properties?: Array<Property>
+    properties?: Property[]
   }
 
   /**
@@ -50,7 +50,7 @@ declare namespace Tiled {
     type: string
 
     /** Properties set on the tile. */
-    properties?: Array<Property>
+    properties?: Property[]
   }
 
   /** An Object in Tiled. */
@@ -76,7 +76,7 @@ declare namespace Tiled {
     name: string
 
     /** Properties set on the object. */
-    properties?: Array<Property>
+    properties?: Property[]
   }
 
   /** A Layer in Tiled. */
@@ -90,11 +90,11 @@ declare namespace Tiled {
     opacity: number
 
     /** If a tile layer, this is an array of tile IDs. */
-    data?: Array<number>
+    data?: number[]
     /** If an object layer, this is an array of Objects. */
-    objects?: Array<Tiled.Object>
+    objects?: Tiled.Object[]
     /** Properties set on the layer. */
-    properties?: Array<Property>
+    properties?: Property[]
   }
 
   /** A Tileset in Tiled. */
@@ -117,8 +117,8 @@ declare namespace Tiled {
     imagewidth: number
 
     /** If set, an array of Tile data. */
-    tiles?: Array<Tile>
+    tiles?: Tile[]
     /** Properties set on the tileset. */
-    properties?: Array<Property>
+    properties?: Property[]
   }
 }

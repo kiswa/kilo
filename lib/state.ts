@@ -119,7 +119,7 @@ export class State<EnumType> {
    * Whether the current state is one of the provided states.
    * @param states Array of possible states.
    */
-  isIn(...states: Array<EnumType>) {
+  isIn(...states: EnumType[]) {
     let found = false
 
     for (let i = 0; i < states.length; i++) {

@@ -18,7 +18,7 @@ describe('GamepadControls', () => {
   describe('Accessors', () => {
     const connectPad = (x = 0, y = 0) => {
       const con = new Event('gamepadconnected')
-      ; (<any>con).gamepad = {
+      ; (con as any).gamepad = {
         index: 0,
         axes: [x, y],
         buttons: [{ pressed: true }]
@@ -29,7 +29,7 @@ describe('GamepadControls', () => {
 
     const disconnectPad = () => {
       const dis = new Event('gamepaddisconnected')
-      ; (<any>dis).gamepad = { index: 0 }
+      ; (dis as any).gamepad = { index: 0 }
 
       dispatchEvent(dis)
     }

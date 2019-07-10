@@ -6,13 +6,13 @@ describe('KeyControls', () => {
   let ctrls: KeyControls
 
   const keyDown = (code: string) => {
-    const evt = new KeyboardEvent('keydown', <any>{ code })
+    const evt = new KeyboardEvent('keydown', { code } as any)
 
     document.dispatchEvent(evt)
   }
 
   const keyUp = (code: string) => {
-    const evt = new KeyboardEvent('keyup', <any>{ code })
+    const evt = new KeyboardEvent('keyup', { code } as any)
 
     document.dispatchEvent(evt)
   }
@@ -108,10 +108,10 @@ describe('KeyControls', () => {
       expect(ctrls.reset).to.be.a('function')
 
       ctrls.action = true
-      expect((<any>ctrls).keys.Space).to.equal(true)
+      expect((ctrls as any).keys.Space).to.equal(true)
 
       ctrls.reset()
-      expect((<any>ctrls).keys.Space).to.equal(undefined)
+      expect((ctrls as any).keys.Space).to.equal(undefined)
     })
   })
 })

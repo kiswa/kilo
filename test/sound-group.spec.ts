@@ -25,7 +25,8 @@ describe('SoundGroup', () => {
       expect(snds.play).to.be.a('function')
 
       snds.play()
-      const sndsPlaying = (<any>snds).sounds.filter(snd => snd.playing).length
+      const sndsPlaying = (snds as any).sounds
+        .filter((snd: Sound) => snd.playing).length
 
       expect(sndsPlaying).to.equal(1)
     })
@@ -33,10 +34,12 @@ describe('SoundGroup', () => {
     it('has method stop', () => {
       expect(snds.stop).to.be.a('function')
 
-      ; (<any>snds).sounds.forEach(snd => { snd.playing = true })
+      ; (snds as any).sounds
+        .forEach((snd: Sound) => { snd.playing = true })
 
       snds.stop()
-      const sndsPlaying = (<any>snds).sounds.filter(snd => snd.playing).length
+      const sndsPlaying = (snds as any).sounds
+        .filter((snd: Sound) => snd.playing).length
 
       expect(sndsPlaying).to.equal(0)
     })

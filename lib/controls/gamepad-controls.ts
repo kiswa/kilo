@@ -14,7 +14,7 @@ export class GamepadControls {
   threshold: number
 
   private controller: Gamepad
-  private controllers: Array<Gamepad>
+  private controllers: Gamepad[]
 
   /** Gets status of A button (or equivalent). */
   get actionA() {
@@ -93,7 +93,7 @@ export class GamepadControls {
         : 0
   }
 
-  private action(...buttons: Array<number>) {
+  private action(...buttons: number[]) {
     if (!this.controller) {
       return false
     }

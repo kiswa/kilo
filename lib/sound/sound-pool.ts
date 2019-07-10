@@ -16,7 +16,7 @@ import { Sound, SoundOptions } from './sound'
  */
 export class SoundPool {
   private count: number
-  private sounds: Array<Sound>
+  private sounds: Sound[]
 
   /**
    * Initialize SoundPool object.
