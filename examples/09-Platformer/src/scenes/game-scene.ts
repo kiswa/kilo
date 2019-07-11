@@ -9,6 +9,8 @@ export class GameScene extends Scene {
   constructor(game: Game, controls: Controls, onComplete: Function) {
     super(game, onComplete, controls)
 
+    game.speed = 2
+
     const extraLayer = { name: 'bg', isAboveLevel: false }
 
     Game.assets.json('assets/levels/example.json').then((mapData: any) => {
@@ -25,7 +27,7 @@ export class GameScene extends Scene {
         (level.mapHeight * level.tileHeight)
       )
 
-      const player = new Player(this.controls.keys)
+      const player = new Player(this.controls.keys, level)
       const spawn = tMap.getObjectByName('spawn')
       player.pos.set(spawn.x, spawn.y - 32)
 

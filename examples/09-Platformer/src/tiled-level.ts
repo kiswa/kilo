@@ -16,8 +16,7 @@ export class TiledLevel extends TileMap {
       return tiles.map((tile: any) => ({ frame: { ...tile } }))
     })
 
-    super(tiles, data.mapWidth, data.mapHeight,
-          data.tileWidth, data.tileHeight, texture)
+    super(tiles, data, texture)
 
     this.gameObjects = this.getGameObjects(data)
   }
