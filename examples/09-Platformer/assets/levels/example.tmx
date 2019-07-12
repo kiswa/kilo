@@ -9,7 +9,7 @@
   <tile id="70" type="death"/>
   <tile id="72">
    <properties>
-    <property name="walkable" type="bool" value="false"/>
+    <property name="walkable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="75" type="door"/>
