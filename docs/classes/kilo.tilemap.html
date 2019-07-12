@@ -946,6 +946,9 @@ img { max-width: 100%; }
 					<a href="kilo.tilemap.html#dead" class="tsd-kind-icon">dead</a>
 				</li>
 				<li class=" tsd-kind-property tsd-parent-kind-class">
+					<a href="kilo.tilemap.html#levelindex" class="tsd-kind-icon">level<wbr>Index</a>
+				</li>
+				<li class=" tsd-kind-property tsd-parent-kind-class">
 					<a href="kilo.tilemap.html#mapheight" class="tsd-kind-icon">map<wbr>Height</a>
 				</li>
 				<li class=" tsd-kind-property tsd-parent-kind-class">
@@ -1035,6 +1038,7 @@ img { max-width: 100%; }
 					<p>A customized Container of <a href="kilo.tilesprite.html">TileSprite</a> objects that provides helper methods
 					for accessing tiles.</p>
 				</div>
+				<p>Only tiles on the &#39;level&#39; layer are used. Other layers are only for display.</p>
 			</div>
 		</section>
 		<section class="tsd-panel tsd-hierarchy">
@@ -1066,6 +1070,7 @@ img { max-width: 100%; }
 							<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="kilo.tilemap.html#alpha" class="tsd-kind-icon">alpha</a></li>
 							<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="kilo.tilemap.html#children" class="tsd-kind-icon">children</a></li>
 							<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="kilo.tilemap.html#dead" class="tsd-kind-icon">dead</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-class"><a href="kilo.tilemap.html#levelindex" class="tsd-kind-icon">level<wbr>Index</a></li>
 							<li class="tsd-kind-property tsd-parent-kind-class"><a href="kilo.tilemap.html#mapheight" class="tsd-kind-icon">map<wbr>Height</a></li>
 							<li class="tsd-kind-property tsd-parent-kind-class"><a href="kilo.tilemap.html#mapwidth" class="tsd-kind-icon">map<wbr>Width</a></li>
 							<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="kilo.tilemap.html#pos" class="tsd-kind-icon">pos</a></li>
@@ -1106,14 +1111,14 @@ img { max-width: 100%; }
 				<a name="constructor" class="tsd-anchor"></a>
 				<h3>constructor</h3>
 				<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite">
-					<li class="tsd-signature tsd-kind-icon">new <wbr>Tile<wbr>Map<span class="tsd-signature-symbol">(</span>tiles<span class="tsd-signature-symbol">: </span><a href="../interfaces/kilo.hasframe.html" class="tsd-signature-type">HasFrame</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">[]</span>, mapWidth<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, mapHeight<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, tileWidth<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, tileHeight<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, texture<span class="tsd-signature-symbol">: </span><a href="kilo_types.texture.html" class="tsd-signature-type">Texture</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="kilo.tilemap.html" class="tsd-signature-type">TileMap</a></li>
+					<li class="tsd-signature tsd-kind-icon">new <wbr>Tile<wbr>Map<span class="tsd-signature-symbol">(</span>tiles<span class="tsd-signature-symbol">: </span><a href="../interfaces/kilo.hasframe.html" class="tsd-signature-type">HasFrame</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">[]</span>, data<span class="tsd-signature-symbol">: </span><a href="../interfaces/kilo_utils.tiledmap.html" class="tsd-signature-type">TiledMap</a>, texture<span class="tsd-signature-symbol">: </span><a href="kilo_types.texture.html" class="tsd-signature-type">Texture</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="kilo.tilemap.html" class="tsd-signature-type">TileMap</a></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<p>Overrides <a href="kilo_types.entity.html">Entity</a>.<a href="kilo_types.entity.html#constructor">constructor</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/aae9610/lib/tile-map.ts#L23">tile-map.ts:23</a></li>
+								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/cf5fda9/lib/tile-map.ts#L28">tile-map.ts:28</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1132,34 +1137,10 @@ img { max-width: 100%; }
 								</div>
 							</li>
 							<li>
-								<h5>mapWidth: <span class="tsd-signature-type">number</span></h5>
+								<h5>data: <a href="../interfaces/kilo_utils.tiledmap.html" class="tsd-signature-type">TiledMap</a></h5>
 								<div class="tsd-comment tsd-typography">
 									<div class="lead">
-										<p>Width of the entire map in tiles.</p>
-									</div>
-								</div>
-							</li>
-							<li>
-								<h5>mapHeight: <span class="tsd-signature-type">number</span></h5>
-								<div class="tsd-comment tsd-typography">
-									<div class="lead">
-										<p>Height of the entire map in tiles.</p>
-									</div>
-								</div>
-							</li>
-							<li>
-								<h5>tileWidth: <span class="tsd-signature-type">number</span></h5>
-								<div class="tsd-comment tsd-typography">
-									<div class="lead">
-										<p>Width of one tile in pixels.</p>
-									</div>
-								</div>
-							</li>
-							<li>
-								<h5>tileHeight: <span class="tsd-signature-type">number</span></h5>
-								<div class="tsd-comment tsd-typography">
-									<div class="lead">
-										<p>Height of one tile in pixels.</p>
+										<p><a href="../interfaces/kilo_utils.tiledmap.html">TiledMap</a> object.</p>
 									</div>
 								</div>
 							</li>
@@ -1186,7 +1167,7 @@ img { max-width: 100%; }
 				<aside class="tsd-sources">
 					<p>Inherited from <a href="kilo_types.entity.html">Entity</a>.<a href="kilo_types.entity.html#alpha">alpha</a></p>
 					<ul>
-						<li>Defined in <a href="https://github.com/kiswa/kilo/blob/aae9610/lib/types/entity.ts#L22">types/entity.ts:22</a></li>
+						<li>Defined in <a href="https://github.com/kiswa/kilo/blob/cf5fda9/lib/types/entity.ts#L22">types/entity.ts:22</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
@@ -1202,7 +1183,7 @@ img { max-width: 100%; }
 				<aside class="tsd-sources">
 					<p>Inherited from <a href="kilo_types.entity.html">Entity</a>.<a href="kilo_types.entity.html#children">children</a></p>
 					<ul>
-						<li>Defined in <a href="https://github.com/kiswa/kilo/blob/aae9610/lib/types/entity.ts#L30">types/entity.ts:30</a></li>
+						<li>Defined in <a href="https://github.com/kiswa/kilo/blob/cf5fda9/lib/types/entity.ts#L30">types/entity.ts:30</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
@@ -1218,7 +1199,7 @@ img { max-width: 100%; }
 				<aside class="tsd-sources">
 					<p>Inherited from <a href="kilo_types.entity.html">Entity</a>.<a href="kilo_types.entity.html#dead">dead</a></p>
 					<ul>
-						<li>Defined in <a href="https://github.com/kiswa/kilo/blob/aae9610/lib/types/entity.ts#L19">types/entity.ts:19</a></li>
+						<li>Defined in <a href="https://github.com/kiswa/kilo/blob/cf5fda9/lib/types/entity.ts#L19">types/entity.ts:19</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
@@ -1228,12 +1209,27 @@ img { max-width: 100%; }
 				</div>
 			</section>
 			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+				<a name="levelindex" class="tsd-anchor"></a>
+				<h3>level<wbr>Index</h3>
+				<div class="tsd-signature tsd-kind-icon">level<wbr>Index<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/kiswa/kilo/blob/cf5fda9/lib/tile-map.ts#L28">tile-map.ts:28</a></li>
+					</ul>
+				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Index of the level layer in tiles data.</p>
+					</div>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 				<a name="mapheight" class="tsd-anchor"></a>
 				<h3>map<wbr>Height</h3>
 				<div class="tsd-signature tsd-kind-icon">map<wbr>Height<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/kiswa/kilo/blob/aae9610/lib/tile-map.ts#L19">tile-map.ts:19</a></li>
+						<li>Defined in <a href="https://github.com/kiswa/kilo/blob/cf5fda9/lib/tile-map.ts#L22">tile-map.ts:22</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
@@ -1248,7 +1244,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">map<wbr>Width<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/kiswa/kilo/blob/aae9610/lib/tile-map.ts#L17">tile-map.ts:17</a></li>
+						<li>Defined in <a href="https://github.com/kiswa/kilo/blob/cf5fda9/lib/tile-map.ts#L20">tile-map.ts:20</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
@@ -1264,7 +1260,7 @@ img { max-width: 100%; }
 				<aside class="tsd-sources">
 					<p>Inherited from <a href="kilo_types.entity.html">Entity</a>.<a href="kilo_types.entity.html#pos">pos</a></p>
 					<ul>
-						<li>Defined in <a href="https://github.com/kiswa/kilo/blob/aae9610/lib/types/entity.ts#L25">types/entity.ts:25</a></li>
+						<li>Defined in <a href="https://github.com/kiswa/kilo/blob/cf5fda9/lib/types/entity.ts#L25">types/entity.ts:25</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
@@ -1280,7 +1276,7 @@ img { max-width: 100%; }
 				<aside class="tsd-sources">
 					<p>Inherited from <a href="kilo_types.entity.html">Entity</a>.<a href="kilo_types.entity.html#scale">scale</a></p>
 					<ul>
-						<li>Defined in <a href="https://github.com/kiswa/kilo/blob/aae9610/lib/types/entity.ts#L27">types/entity.ts:27</a></li>
+						<li>Defined in <a href="https://github.com/kiswa/kilo/blob/cf5fda9/lib/types/entity.ts#L27">types/entity.ts:27</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
@@ -1295,7 +1291,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">tile<wbr>Height<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/kiswa/kilo/blob/aae9610/lib/tile-map.ts#L23">tile-map.ts:23</a></li>
+						<li>Defined in <a href="https://github.com/kiswa/kilo/blob/cf5fda9/lib/tile-map.ts#L26">tile-map.ts:26</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
@@ -1310,7 +1306,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">tile<wbr>Width<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/kiswa/kilo/blob/aae9610/lib/tile-map.ts#L21">tile-map.ts:21</a></li>
+						<li>Defined in <a href="https://github.com/kiswa/kilo/blob/cf5fda9/lib/tile-map.ts#L24">tile-map.ts:24</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
@@ -1326,7 +1322,7 @@ img { max-width: 100%; }
 				<aside class="tsd-sources">
 					<p>Inherited from <a href="kilo_types.entity.html">Entity</a>.<a href="kilo_types.entity.html#visible">visible</a></p>
 					<ul>
-						<li>Defined in <a href="https://github.com/kiswa/kilo/blob/aae9610/lib/types/entity.ts#L17">types/entity.ts:17</a></li>
+						<li>Defined in <a href="https://github.com/kiswa/kilo/blob/cf5fda9/lib/types/entity.ts#L17">types/entity.ts:17</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
@@ -1345,7 +1341,7 @@ img { max-width: 100%; }
 				<aside class="tsd-sources">
 					<p>Inherited from <a href="kilo_types.entity.html">Entity</a>.<a href="kilo_types.entity.html#haschildren">hasChildren</a></p>
 					<ul>
-						<li>Defined in <a href="https://github.com/kiswa/kilo/blob/aae9610/lib/types/entity.ts#L33">types/entity.ts:33</a></li>
+						<li>Defined in <a href="https://github.com/kiswa/kilo/blob/cf5fda9/lib/types/entity.ts#L33">types/entity.ts:33</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
@@ -1369,7 +1365,7 @@ img { max-width: 100%; }
 							<p>Inherited from <a href="kilo.container.html">Container</a>.<a href="kilo.container.html#add">add</a></p>
 							<p>Overrides <a href="kilo_types.entity.html">Entity</a>.<a href="kilo_types.entity.html#add">add</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/aae9610/lib/container.ts#L27">container.ts:27</a></li>
+								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/cf5fda9/lib/container.ts#L27">container.ts:27</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1407,7 +1403,7 @@ img { max-width: 100%; }
 						<aside class="tsd-sources">
 							<p>Inherited from <a href="kilo_types.entity.html">Entity</a>.<a href="kilo_types.entity.html#map">map</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/aae9610/lib/types/entity.ts#L76">types/entity.ts:76</a></li>
+								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/cf5fda9/lib/types/entity.ts#L76">types/entity.ts:76</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1459,7 +1455,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/aae9610/lib/tile-map.ts#L76">tile-map.ts:76</a></li>
+								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/cf5fda9/lib/tile-map.ts#L80">tile-map.ts:80</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1491,7 +1487,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/aae9610/lib/tile-map.ts#L62">tile-map.ts:62</a></li>
+								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/cf5fda9/lib/tile-map.ts#L66">tile-map.ts:66</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1523,7 +1519,7 @@ img { max-width: 100%; }
 						<aside class="tsd-sources">
 							<p>Inherited from <a href="kilo.container.html">Container</a>.<a href="kilo.container.html#remove">remove</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/aae9610/lib/container.ts#L38">container.ts:38</a></li>
+								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/cf5fda9/lib/container.ts#L38">container.ts:38</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1560,7 +1556,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/aae9610/lib/tile-map.ts#L107">tile-map.ts:107</a></li>
+								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/cf5fda9/lib/tile-map.ts#L112">tile-map.ts:112</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1597,7 +1593,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/aae9610/lib/tile-map.ts#L121">tile-map.ts:121</a></li>
+								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/cf5fda9/lib/tile-map.ts#L126">tile-map.ts:126</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1634,7 +1630,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/aae9610/lib/tile-map.ts#L88">tile-map.ts:88</a></li>
+								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/cf5fda9/lib/tile-map.ts#L92">tile-map.ts:92</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1665,7 +1661,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/aae9610/lib/tile-map.ts#L97">tile-map.ts:97</a></li>
+								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/cf5fda9/lib/tile-map.ts#L102">tile-map.ts:102</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1696,7 +1692,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/aae9610/lib/tile-map.ts#L132">tile-map.ts:132</a></li>
+								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/cf5fda9/lib/tile-map.ts#L137">tile-map.ts:137</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1741,7 +1737,7 @@ img { max-width: 100%; }
 							<p>Inherited from <a href="kilo.container.html">Container</a>.<a href="kilo.container.html#update">update</a></p>
 							<p>Overrides <a href="kilo_types.entity.html">Entity</a>.<a href="kilo_types.entity.html#update">update</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/aae9610/lib/container.ts#L59">container.ts:59</a></li>
+								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/cf5fda9/lib/container.ts#L59">container.ts:59</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">

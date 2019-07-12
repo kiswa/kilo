@@ -913,6 +913,9 @@ img { max-width: 100%; }
 			<a href="kilo_utils.tiledmap.html" class="tsd-kind-icon">Tiled<wbr>Map</a>
 			<ul>
 				<li class=" tsd-kind-property tsd-parent-kind-interface">
+					<a href="kilo_utils.tiledmap.html#levelindex" class="tsd-kind-icon">level<wbr>Index</a>
+				</li>
+				<li class=" tsd-kind-property tsd-parent-kind-interface">
 					<a href="kilo_utils.tiledmap.html#mapheight" class="tsd-kind-icon">map<wbr>Height</a>
 				</li>
 				<li class=" tsd-kind-property tsd-parent-kind-interface">
@@ -961,6 +964,7 @@ img { max-width: 100%; }
 					<section class="tsd-index-section ">
 						<h3>Properties</h3>
 						<ul class="tsd-index-list">
+							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="kilo_utils.tiledmap.html#levelindex" class="tsd-kind-icon">level<wbr>Index</a></li>
 							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="kilo_utils.tiledmap.html#mapheight" class="tsd-kind-icon">map<wbr>Height</a></li>
 							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="kilo_utils.tiledmap.html#mapwidth" class="tsd-kind-icon">map<wbr>Width</a></li>
 							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="kilo_utils.tiledmap.html#tileheight" class="tsd-kind-icon">tile<wbr>Height</a></li>
@@ -981,12 +985,27 @@ img { max-width: 100%; }
 		<section class="tsd-panel-group tsd-member-group ">
 			<h2>Properties</h2>
 			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+				<a name="levelindex" class="tsd-anchor"></a>
+				<h3>level<wbr>Index</h3>
+				<div class="tsd-signature tsd-kind-icon">level<wbr>Index<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/kiswa/kilo/blob/cf5fda9/lib/utils/tiled-parser.ts#L25">utils/tiled-parser.ts:25</a></li>
+					</ul>
+				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Index of the level layer in tiles array.</p>
+					</div>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 				<a name="mapheight" class="tsd-anchor"></a>
 				<h3>map<wbr>Height</h3>
 				<div class="tsd-signature tsd-kind-icon">map<wbr>Height<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/kiswa/kilo/blob/aae9610/lib/utils/tiled-parser.ts#L17">utils/tiled-parser.ts:17</a></li>
+						<li>Defined in <a href="https://github.com/kiswa/kilo/blob/cf5fda9/lib/utils/tiled-parser.ts#L21">utils/tiled-parser.ts:21</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
@@ -1001,7 +1020,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">map<wbr>Width<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/kiswa/kilo/blob/aae9610/lib/utils/tiled-parser.ts#L15">utils/tiled-parser.ts:15</a></li>
+						<li>Defined in <a href="https://github.com/kiswa/kilo/blob/cf5fda9/lib/utils/tiled-parser.ts#L19">utils/tiled-parser.ts:19</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
@@ -1016,7 +1035,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">tile<wbr>Height<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/kiswa/kilo/blob/aae9610/lib/utils/tiled-parser.ts#L13">utils/tiled-parser.ts:13</a></li>
+						<li>Defined in <a href="https://github.com/kiswa/kilo/blob/cf5fda9/lib/utils/tiled-parser.ts#L17">utils/tiled-parser.ts:17</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
@@ -1031,7 +1050,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">tile<wbr>Width<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/kiswa/kilo/blob/aae9610/lib/utils/tiled-parser.ts#L11">utils/tiled-parser.ts:11</a></li>
+						<li>Defined in <a href="https://github.com/kiswa/kilo/blob/cf5fda9/lib/utils/tiled-parser.ts#L15">utils/tiled-parser.ts:15</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
@@ -1043,10 +1062,10 @@ img { max-width: 100%; }
 			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 				<a name="tiles" class="tsd-anchor"></a>
 				<h3>tiles</h3>
-				<div class="tsd-signature tsd-kind-icon">tiles<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">[]</span></div>
+				<div class="tsd-signature tsd-kind-icon">tiles<span class="tsd-signature-symbol">:</span> <a href="../modules/kilo_utils.html#tiledata" class="tsd-signature-type">TileData</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">[]</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/kiswa/kilo/blob/aae9610/lib/utils/tiled-parser.ts#L19">utils/tiled-parser.ts:19</a></li>
+						<li>Defined in <a href="https://github.com/kiswa/kilo/blob/cf5fda9/lib/utils/tiled-parser.ts#L23">utils/tiled-parser.ts:23</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
@@ -1068,7 +1087,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/aae9610/lib/utils/tiled-parser.ts#L27">utils/tiled-parser.ts:27</a></li>
+								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/cf5fda9/lib/utils/tiled-parser.ts#L33">utils/tiled-parser.ts:33</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1105,7 +1124,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/aae9610/lib/utils/tiled-parser.ts#L34">utils/tiled-parser.ts:34</a></li>
+								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/cf5fda9/lib/utils/tiled-parser.ts#L40">utils/tiled-parser.ts:40</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
