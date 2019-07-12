@@ -2,6 +2,10 @@
  * @module kilo/utils
  */
 /// <reference path="../types/tiled.ts" />
+import {Point} from '../types'
+
+/** Type for tile data.  */
+export type TileData = { [key: string]: any, frame: Point, x: number, y: number }
 
 /**
  * Interface for a Tiled map object.
@@ -16,7 +20,9 @@ export interface TiledMap {
   /** Height of the map in tiles. */
   mapHeight: number
   /** Array of arrays of tile objects. */
-  tiles: { [key: string]: any, x: number, y: number }[]
+  tiles: TileData[][]
+  /** Index of the level layer in tiles array. */
+  levelIndex: number
 
   /**
    * Gets an object from the map by name.
@@ -49,6 +55,7 @@ let tileHeight: number
 let mapWidth: number
 let mapHeight: number
 let tilesPerRow: number
+let levelIndex: number
 
 let tileset: Tiled.Tileset
 let layers: Tiled.Layer[]
@@ -57,6 +64,10 @@ let entities: Tiled.Object[]
 
 /**
  * Parses a Tiled map object into a simpler form.
+ *
+ * There must be at least two layers in the Tiled map:
+ * "level"    - containing the tiles for the level
+ * "entities" - containing at least one entity
  *
  * @param jsonObj Object from Tiled JSON export.
  */
@@ -98,6 +109,7 @@ export function tiledParser(jsonObj: Tiled.Map,
     mapWidth,
     mapHeight,
     tiles,
+    levelIndex,
     getObjectByName,
     getObjectsByType
   }
@@ -152,6 +164,10 @@ const loadTiles = (tiles: any[], layer: Tiled.Layer) => {
 
   if (!layer || !layer.data) {
     return
+  }
+
+  if (layer.name === 'level') {
+    levelIndex = index
   }
 
   for (let i = 0; i < layer.data.length; i++) {

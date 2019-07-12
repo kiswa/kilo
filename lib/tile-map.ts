@@ -3,6 +3,7 @@
  */
 import { Container, TileSprite } from '.'
 import { HitBox, Point, Texture, Vec } from './types'
+import { TiledMap } from './utils'
 
 interface HasFrame {
   frame: Point
@@ -11,6 +12,8 @@ interface HasFrame {
 /**
  * A customized Container of [[TileSprite]] objects that provides helper methods
  * for accessing tiles.
+ *
+ * Only tiles on the 'level' layer are used. Other layers are only for display.
  */
 export class TileMap extends Container {
   /** Width of the entire map in tiles. */
@@ -21,35 +24,36 @@ export class TileMap extends Container {
   tileWidth: number
   /** Height of one tile in pixels. */
   tileHeight: number
+  /** Index of the level layer in tiles data. */
+  levelIndex: number
 
   /**
    * Initialize TileMap object.
    *
    * @param tiles Array of arrays of objects with at least a `frame` property.
-   * @param mapWidth Width of the entire map in tiles.
-   * @param mapHeight Height of the entire map in tiles.
-   * @param tileWidth Width of one tile in pixels.
-   * @param tileHeight Height of one tile in pixels.
+   * @param data [[TiledMap]] object.
    * @param texture Texture to use for tiles.
    */
-  constructor(tiles: HasFrame[][], mapWidth: number, mapHeight: number,
-              tileWidth: number, tileHeight: number, texture: Texture) {
+  constructor(tiles: HasFrame[][], data: TiledMap, texture: Texture) {
     super()
 
-    this.mapWidth = mapWidth
-    this.mapHeight = mapHeight
-    this.tileWidth = tileWidth
-    this.tileHeight = tileHeight
+    this.mapWidth = data.mapWidth
+    this.mapHeight = data.mapHeight
+    this.tileWidth = data.tileWidth
+    this.tileHeight = data.tileHeight
+    this.levelIndex = data.levelIndex
 
     for (let i = 0; i < tiles.length; i++) {
+      let layer = this.add<Container>(new Container())
+
       for (let j = 0; j < tiles[i].length; j++) {
-        const s = new TileSprite(texture, tileWidth, tileHeight)
+        const s = new TileSprite(texture, data.tileWidth, data.tileHeight)
 
         s.frame = tiles[i][j].frame
-        s.pos.x = j % mapWidth * tileWidth
-        s.pos.y = Math.floor(j / mapWidth) * tileHeight
+        s.pos.x = j % data.mapWidth * data.tileWidth
+        s.pos.y = Math.floor(j / data.mapWidth) * data.tileHeight
 
-        this.children.push(s)
+        layer.add(s)
       }
     }
   }
@@ -86,7 +90,8 @@ export class TileMap extends Container {
    * @param mapPos Tile location to lookup tile.
    */
   tileAtMapPos(mapPos: Vec) {
-    return <TileSprite>this.children[mapPos.y * this.mapWidth + mapPos.x]
+    return <TileSprite>(this.children as any)
+      [this.levelIndex].children[mapPos.y * this.mapWidth + mapPos.x]
   }
 
   /**
