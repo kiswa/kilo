@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>kilo/types | kilo</title>
+	<title>Speed | kilo</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<style type="text/css">/*! normalize.css v1.1.3 | MIT License | git.io/normalize */
@@ -909,113 +909,124 @@ img { max-width: 100%; }
 </header>
 <nav class="tsd-navigation secondary">
 	<ul>
-		<li class=" tsd-kind-class tsd-parent-kind-external-module">
-			<a href="../classes/kilo_types.entity.html" class="tsd-kind-icon">Entity</a>
+		<li class="current tsd-kind-enum tsd-parent-kind-external-module">
+			<a href="kilo.speed.html" class="tsd-kind-icon">Speed</a>
+			<ul>
+				<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
+					<a href="kilo.speed.html#fast" class="tsd-kind-icon">Fast</a>
+				</li>
+				<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
+					<a href="kilo.speed.html#normal" class="tsd-kind-icon">Normal</a>
+				</li>
+				<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
+					<a href="kilo.speed.html#slow" class="tsd-kind-icon">Slow</a>
+				</li>
+			</ul>
 		</li>
 		<li class=" tsd-kind-class tsd-parent-kind-external-module">
-			<a href="../classes/kilo_types.hitbox.html" class="tsd-kind-icon">Hit<wbr>Box</a>
+			<a href="../classes/kilo.animations.html" class="tsd-kind-icon">Animations</a>
 		</li>
 		<li class=" tsd-kind-class tsd-parent-kind-external-module">
-			<a href="../classes/kilo_types.rect.html" class="tsd-kind-icon">Rect</a>
+			<a href="../classes/kilo.assets.html" class="tsd-kind-icon">Assets</a>
 		</li>
 		<li class=" tsd-kind-class tsd-parent-kind-external-module">
-			<a href="../classes/kilo_types.sprite.html" class="tsd-kind-icon">Sprite</a>
+			<a href="../classes/kilo.camera.html" class="tsd-kind-icon">Camera</a>
 		</li>
 		<li class=" tsd-kind-class tsd-parent-kind-external-module">
-			<a href="../classes/kilo_types.text.html" class="tsd-kind-icon">Text</a>
+			<a href="../classes/kilo.container.html" class="tsd-kind-icon">Container</a>
 		</li>
 		<li class=" tsd-kind-class tsd-parent-kind-external-module">
-			<a href="../classes/kilo_types.texture.html" class="tsd-kind-icon">Texture</a>
+			<a href="../classes/kilo.game.html" class="tsd-kind-icon">Game</a>
 		</li>
 		<li class=" tsd-kind-class tsd-parent-kind-external-module">
-			<a href="../classes/kilo_types.trigger.html" class="tsd-kind-icon">Trigger</a>
+			<a href="../classes/kilo.scene.html" class="tsd-kind-icon">Scene</a>
+		</li>
+		<li class=" tsd-kind-class tsd-parent-kind-external-module tsd-has-type-parameter">
+			<a href="../classes/kilo.state.html" class="tsd-kind-icon">State</a>
 		</li>
 		<li class=" tsd-kind-class tsd-parent-kind-external-module">
-			<a href="../classes/kilo_types.vec.html" class="tsd-kind-icon">Vec</a>
+			<a href="../classes/kilo.tilemap.html" class="tsd-kind-icon">Tile<wbr>Map</a>
 		</li>
-		<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-			<a href="../interfaces/kilo_types.point.html" class="tsd-kind-icon">Point</a>
+		<li class=" tsd-kind-class tsd-parent-kind-external-module">
+			<a href="../classes/kilo.tilesprite.html" class="tsd-kind-icon">Tile<wbr>Sprite</a>
 		</li>
-		<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-			<a href="../interfaces/kilo_types.rectstyleoptions.html" class="tsd-kind-icon">Rect<wbr>Style<wbr>Options</a>
+		<li class=" tsd-kind-class tsd-parent-kind-external-module">
+			<a href="../classes/kilo.timer.html" class="tsd-kind-icon">Timer</a>
 		</li>
-		<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-			<a href="../interfaces/kilo_types.textoptions.html" class="tsd-kind-icon">Text<wbr>Options</a>
+		<li class=" tsd-kind-interface tsd-parent-kind-external-module tsd-is-not-exported">
+			<a href="../interfaces/kilo.hasframe.html" class="tsd-kind-icon">Has<wbr>Frame</a>
 		</li>
 		<li class=" tsd-kind-type-alias tsd-parent-kind-external-module tsd-is-not-exported">
-			<a href="kilo_types.html#hasupdate" class="tsd-kind-icon">Has<wbr>Update</a>
+			<a href="../modules/kilo.html#gameupdate" class="tsd-kind-icon">Game<wbr>Update</a>
+		</li>
+		<li class=" tsd-kind-type-alias tsd-parent-kind-external-module tsd-is-not-exported">
+			<a href="../modules/kilo.html#progresscallback" class="tsd-kind-icon">Progress<wbr>Callback</a>
+		</li>
+		<li class=" tsd-kind-type-alias tsd-parent-kind-external-module tsd-is-not-exported">
+			<a href="../modules/kilo.html#readycallback" class="tsd-kind-icon">Ready<wbr>Callback</a>
+		</li>
+		<li class=" tsd-kind-type-alias tsd-parent-kind-external-module tsd-is-not-exported">
+			<a href="../modules/kilo.html#tickfunc" class="tsd-kind-icon">Tick<wbr>Func</a>
 		</li>
 	</ul>
 </nav>
 <div class="container container-main">
 	<div class="content-wrap">
+		<section class="tsd-panel tsd-comment">
+			<div class="tsd-comment tsd-typography">
+				<div class="lead">
+					<p>Enum of pre-defined speeds for a game.
+					Default game speed is &quot;Normal&quot;.</p>
+				</div>
+				<p>Can also be any number, but be careful.</p>
+			</div>
+		</section>
 		<section class="tsd-panel-group tsd-index-group">
 			<h2>Index</h2>
 			<section class="tsd-panel tsd-index-panel">
 				<div class="tsd-index-content">
-					<section class="tsd-index-section tsd-is-not-exported">
-						<h3>Modules</h3>
-						<ul class="tsd-index-list">
-							<li class="tsd-kind-module tsd-parent-kind-external-module tsd-is-not-exported"><a href="kilo_types.tiled.html" class="tsd-kind-icon">Tiled</a></li>
-						</ul>
-					</section>
 					<section class="tsd-index-section ">
-						<h3>Classes</h3>
+						<h3>Enumeration members</h3>
 						<ul class="tsd-index-list">
-							<li class="tsd-kind-class tsd-parent-kind-external-module"><a href="../classes/kilo_types.entity.html" class="tsd-kind-icon">Entity</a></li>
-							<li class="tsd-kind-class tsd-parent-kind-external-module"><a href="../classes/kilo_types.hitbox.html" class="tsd-kind-icon">Hit<wbr>Box</a></li>
-							<li class="tsd-kind-class tsd-parent-kind-external-module"><a href="../classes/kilo_types.rect.html" class="tsd-kind-icon">Rect</a></li>
-							<li class="tsd-kind-class tsd-parent-kind-external-module"><a href="../classes/kilo_types.sprite.html" class="tsd-kind-icon">Sprite</a></li>
-							<li class="tsd-kind-class tsd-parent-kind-external-module"><a href="../classes/kilo_types.text.html" class="tsd-kind-icon">Text</a></li>
-							<li class="tsd-kind-class tsd-parent-kind-external-module"><a href="../classes/kilo_types.texture.html" class="tsd-kind-icon">Texture</a></li>
-							<li class="tsd-kind-class tsd-parent-kind-external-module"><a href="../classes/kilo_types.trigger.html" class="tsd-kind-icon">Trigger</a></li>
-							<li class="tsd-kind-class tsd-parent-kind-external-module"><a href="../classes/kilo_types.vec.html" class="tsd-kind-icon">Vec</a></li>
-						</ul>
-					</section>
-					<section class="tsd-index-section ">
-						<h3>Interfaces</h3>
-						<ul class="tsd-index-list">
-							<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/kilo_types.point.html" class="tsd-kind-icon">Point</a></li>
-							<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/kilo_types.rectstyleoptions.html" class="tsd-kind-icon">Rect<wbr>Style<wbr>Options</a></li>
-							<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/kilo_types.textoptions.html" class="tsd-kind-icon">Text<wbr>Options</a></li>
-						</ul>
-					</section>
-					<section class="tsd-index-section tsd-is-not-exported">
-						<h3>Type aliases</h3>
-						<ul class="tsd-index-list">
-							<li class="tsd-kind-type-alias tsd-parent-kind-external-module tsd-is-not-exported"><a href="kilo_types.html#hasupdate" class="tsd-kind-icon">Has<wbr>Update</a></li>
+							<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="kilo.speed.html#fast" class="tsd-kind-icon">Fast</a></li>
+							<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="kilo.speed.html#normal" class="tsd-kind-icon">Normal</a></li>
+							<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="kilo.speed.html#slow" class="tsd-kind-icon">Slow</a></li>
 						</ul>
 					</section>
 				</div>
 			</section>
 		</section>
-		<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
-			<h2>Type aliases</h2>
-			<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-external-module tsd-is-not-exported">
-				<a name="hasupdate" class="tsd-anchor"></a>
-				<h3>Has<wbr>Update</h3>
-				<div class="tsd-signature tsd-kind-icon">Has<wbr>Update<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+		<section class="tsd-panel-group tsd-member-group ">
+			<h2>Enumeration members</h2>
+			<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
+				<a name="fast" class="tsd-anchor"></a>
+				<h3>Fast</h3>
+				<div class="tsd-signature tsd-kind-icon">Fast<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> =&nbsp;2</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/kiswa/kilo/blob/c5454c9/lib/types/entity.ts#L7">types/entity.ts:7</a></li>
+						<li>Defined in <a href="https://github.com/kiswa/kilo/blob/c5454c9/lib/game.ts#L22">game.ts:22</a></li>
 					</ul>
 				</aside>
-				<div class="tsd-comment tsd-typography">
-					<div class="lead">
-						<p>A type with an update function.</p>
-					</div>
-				</div>
-				<div class="tsd-type-declaration">
-					<h4>Type declaration</h4>
-					<ul class="tsd-parameters">
-						<li class="tsd-parameter">
-							<h5>dead<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></h5>
-						</li>
-						<li class="tsd-parameter">
-							<h5>update<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Function</span></h5>
-						</li>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
+				<a name="normal" class="tsd-anchor"></a>
+				<h3>Normal</h3>
+				<div class="tsd-signature tsd-kind-icon">Normal<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> =&nbsp;1</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/kiswa/kilo/blob/c5454c9/lib/game.ts#L21">game.ts:21</a></li>
 					</ul>
-				</div>
+				</aside>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
+				<a name="slow" class="tsd-anchor"></a>
+				<h3>Slow</h3>
+				<div class="tsd-signature tsd-kind-icon">Slow<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> =&nbsp;0.5</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/kiswa/kilo/blob/c5454c9/lib/game.ts#L20">game.ts:20</a></li>
+					</ul>
+				</aside>
 			</section>
 		</section>
 		<footer>
