@@ -10,12 +10,24 @@ import { Container, Scene } from '.'
  */
 type GameUpdate = (dt: number, t: number) => void
 
+/**
+ * Enum of pre-defined speeds for a game.
+ * Default game speed is "Normal".
+ *
+ * Can also be any number, but be careful.
+ */
+export enum Speed {
+  Slow = .5,
+  Normal = 1,
+  Fast = 2
+}
+
 /** @hidden */
 const STEP = 1 / 60
 /** @hidden */
-let MULTIPLIER = 1
+let MULTIPLIER = Speed.Normal
 /** @hidden */
-let SPEED = STEP * MULTIPLIER
+let SPEED = STEP / MULTIPLIER
 /** @hidden */
 const MAX_FRAME = SPEED * 5
 
@@ -67,7 +79,7 @@ export class Game {
 
   /**
    * Gets the current speed multiplier of the game.
-   * @default 1
+   * @default Speed.Normal
    */
   get speed() {
     return MULTIPLIER
@@ -76,9 +88,9 @@ export class Game {
   /**
    * Sets the speed multiplier of the game.
    */
-  set speed(value) {
+  set speed(value: Speed | number) {
     MULTIPLIER = value
-    SPEED = STEP * MULTIPLIER
+    SPEED = STEP / MULTIPLIER
   }
 
   get canvas() {

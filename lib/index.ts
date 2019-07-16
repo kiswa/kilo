@@ -1,7 +1,7 @@
 /**
  * @module kilo
  */
-import { Game } from './game'
+import { Game, Speed } from './game'
 import { Container } from './container'
 
 import * as Types from './types'
@@ -43,6 +43,7 @@ export {
   Sound,
   SoundGroup,
   SoundPool,
+  Speed,
   State,
   TileMap,
   TileSprite,
