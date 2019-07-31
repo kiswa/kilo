@@ -1,4 +1,11 @@
-import { TileSprite, Types, KeyControls, Utils, Resolvers, TileMap } from 'kilo/lib'
+import {
+  TileSprite,
+  Types,
+  KeyControls,
+  Utils,
+  Resolvers,
+  TileMap,
+} from 'kilo/lib'
 
 const GRAVITY = 2900
 const STEER_FORCE = 2000
@@ -21,6 +28,7 @@ export class Player extends TileSprite {
   mass: number
 
   falling: boolean
+  fallingTimer: number
 
   constructor(controls: KeyControls, gameMap: TileMap) {
     super(new Types.Texture('assets/images/character.png'), 48, 48)
@@ -32,6 +40,9 @@ export class Player extends TileSprite {
     this.vel = new Types.Vec()
     this.acc = new Types.Vec()
     this.mass = 1
+
+    this.falling = false
+    this.fallingTimer = 0
 
     this.anims.add('idle', [{ x: 0, y: 0 }], 0)
     this.anims.add('walk', [{ x: 2, y: 0 }, { x: 3, y: 0 }], .2)
@@ -99,6 +110,27 @@ export class Player extends TileSprite {
     if (hits.left || hits.right) {
       this.vel.x = 0
     }
+
+    if (!this.falling && !hits.down) {
+      const b = Utils.sprite.bounds(this)
+      const leftFoot = this.gameMap.pixelToMapPos(
+        { x: b.x, y: b.y + b.height + 1 } as Types.Vec
+      )
+      const rightFoot = this.gameMap.pixelToMapPos(
+        { x: b.x + b.width, y: b.y + b.height + 1 } as Types.Vec
+      )
+      const left = this.gameMap.tileAtMapPos(leftFoot)
+      const right = this.gameMap.tileAtMapPos(rightFoot)
+
+      if (left.frame.walkable && right.frame.walkable) {
+        if (this.fallingTimer <= 0) {
+          this.fallingTimer = JUMP_FORGIVENESS
+        } else if ((this.fallingTimer -= dt) <= 0) {
+          this.falling = true
+        }
+      }
+    }
+
   }
 }
 

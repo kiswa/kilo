@@ -1,4 +1,4 @@
-import { Camera, Controls, Game, Scene, Speed, Types, Utils } from 'kilo/lib'
+import { Camera, Controls, Game, Scene, Types, Utils } from 'kilo/lib'
 
 import { TiledLevel } from '../tiled-level'
 import { Player } from '../entities/player'
@@ -8,8 +8,6 @@ export class GameScene extends Scene {
 
   constructor(game: Game, controls: Controls, onComplete: Function) {
     super(game, onComplete, controls)
-
-    game.speed = Speed.Slow
 
     const extraLayer = { name: 'bg', isAboveLevel: false }
 

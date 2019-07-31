@@ -1,5 +1,5 @@
 {
-  "name": "00-platformer",
+  "name": "09-platformer",
   "version": "1.0.0",
   "main": "src/main.ts",
   "private": true,
