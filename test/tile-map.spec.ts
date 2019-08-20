@@ -2,18 +2,30 @@ import { expect } from 'chai'
 
 import { TileMap } from '../lib/'
 import { Texture, Vec, HitBox } from '../lib/types/'
+import { TiledMap } from '../lib/utils/'
 
 describe('TileMap', () => {
   let map: TileMap
 
   const tex = new Texture('')
   const tiles = [
-    [{ frame: new Vec(0, 0) }]
+    [{ frame: new Vec(0, 0), x: 0, y: 0 }]
   ]
+  const data: TiledMap = {
+    tileWidth: 16,
+    tileHeight: 16,
+    mapWidth: 32,
+    mapHeight: 32,
+    tiles: tiles,
+    levelIndex: 0,
+
+    getObjectByName: (_) => undefined,
+    getObjectsByType: (_) => undefined
+  }
 
   describe('Properties', () => {
     beforeEach(() => {
-      map = new TileMap(tiles, 32, 32, 16, 16, tex)
+      map = new TileMap(tiles, data, tex)
     })
 
     it('has property mapHeight', () => {
@@ -39,10 +51,16 @@ describe('TileMap', () => {
       tiles.push([])
 
       for (let i = 0; i < 16; i++) {
-        tiles[0].push({ frame: new Vec() })
+        tiles[0].push({ frame: new Vec(), x: 0, y: 0 })
       }
 
-      map = new TileMap(tiles, 4, 4, 16, 16, tex)
+      data.tileWidth = 16
+      data.tileHeight = 16
+      data.mapWidth = 4
+      data.mapHeight = 4
+      data.tiles = tiles as any
+
+      map = new TileMap(tiles, data, tex)
     })
 
     it('has method pixelToMapPos', () => {
@@ -73,14 +91,16 @@ describe('TileMap', () => {
       expect(map.setTileFrameAtMapPos).to.be.a('function')
 
       map.setTileFrameAtMapPos(new Vec(0, 1), new Vec(1, 1))
-      expect((map.children[4] as any).frame.x).to.equal(1)
+      const layer = map.children[0] as any
+      expect(layer.children[4].frame.x).to.equal(1)
     })
 
     it('has method setTileFrameAtPixelPos', () => {
       expect(map.setTileFrameAtPixelPos).to.be.a('function')
 
       map.setTileFrameAtPixelPos(new Vec(8, 8), new Vec(1, 1))
-      expect((map.children[0] as any).frame.x).to.equal(1)
+      const layer = map.children[0] as any
+      expect(layer.children[0].frame.x).to.equal(1)
     })
 
     it('has method tilesAtCorners', () => {
