@@ -11,9 +11,10 @@
   "author": "Matthew Ross",
   "license": "MIT",
   "devDependencies": {
-    "@types/chai": "^4.1.7",
+    "@types/chai": "^4.2.0",
     "@types/mocha": "^5.2.7",
-    "canvas": "^2.5.0",
+    "@types/node": "^12.7.2",
+    "canvas": "^2.6.0",
     "chai": "^4.2.0",
     "jsdom": "^15.1.1",
     "jsdom-global": "^3.0.2",
