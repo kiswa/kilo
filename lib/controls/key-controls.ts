@@ -9,6 +9,10 @@ type KeyMap = {
   [s: string]: boolean
 }
 
+const passThroughKeys = [
+  'F5', 'F12'
+]
+
  /**
   * Provides access to keyboard inputs.
   */
@@ -76,11 +80,21 @@ export class KeyControls {
 
     document.addEventListener('keydown', e => {
       this.keys[e.code] = true
+
+      if (passThroughKeys.indexOf(e.code.toString()) > -1) {
+        return
+      }
+
       e.preventDefault()
     }, false)
 
     document.addEventListener('keyup', e => {
       this.keys[e.code] = false
+
+      if (passThroughKeys.indexOf(e.code.toString()) > -1) {
+        return
+      }
+
       e.preventDefault()
     }, false)
   }
