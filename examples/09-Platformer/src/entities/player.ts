@@ -27,6 +27,7 @@ export class Player extends TileSprite {
   acc: Types.Vec
   mass: number
 
+  releasedAction: boolean
   falling: boolean
   fallingTimer: number
 
@@ -41,6 +42,7 @@ export class Player extends TileSprite {
     this.acc = new Types.Vec()
     this.mass = 1
 
+    this.releasedAction = false
     this.falling = false
     this.fallingTimer = 0
 
@@ -58,6 +60,10 @@ export class Player extends TileSprite {
     if (x) {
       this.scale.x = x
       this.anchor.x = x > 0 ? 0 : this.width
+    }
+
+    if (!jump) {
+      this.releasedAction = true
     }
 
     if (jump && !this.falling) {
@@ -89,7 +95,13 @@ export class Player extends TileSprite {
 
     this.anims.play(x ? 'walk' : 'idle')
 
-    const isWalkable = (s: TileSprite) => {
+    let isJumpthrough = false
+    const isWalkable = (s: TileSprite, i: number) => {
+      if (s.frame.type === 'jumpthrough') {
+        isJumpthrough = true
+        return i < 2
+      }
+
       return s.frame.walkable
     }
 
@@ -98,27 +110,44 @@ export class Player extends TileSprite {
     this.pos.add(r)
 
     const hits = (r as any).hits
+    const bounds = Utils.sprite.bounds(this)
 
-    if (hits.down || hits.up) {
+    if (hits.up) {
+      const topLeft = this.gameMap.pixelToMapPos({
+        x: bounds.x,
+        y: bounds.y - 1
+      } as Types.Vec)
+      const topRight = this.gameMap.pixelToMapPos({
+        x: bounds.x + bounds.width,
+        y: bounds.y - 1
+      } as Types.Vec)
+      const tileLeft = this.gameMap.tileAtMapPos(topLeft)
+      const tileRight = this.gameMap.tileAtMapPos(topRight)
+
+      if (tileLeft.frame.type !== 'jumpthrough'
+          && tileRight.frame.type !== 'jumpthrough') {
+        this.vel.y = 0
+      }
+    }
+
+    if (hits.down && !hits.up) {
+      this.falling = false
       this.vel.y = 0
     }
 
-    if (hits.down) {
-      this.falling = false
-    }
-
-    if (hits.left || hits.right) {
+    if ((!isJumpthrough && !this.falling) && (hits.left || hits.right)) {
       this.vel.x = 0
     }
 
     if (!this.falling && !hits.down) {
-      const b = Utils.sprite.bounds(this)
-      const leftFoot = this.gameMap.pixelToMapPos(
-        { x: b.x, y: b.y + b.height + 1 } as Types.Vec
-      )
-      const rightFoot = this.gameMap.pixelToMapPos(
-        { x: b.x + b.width, y: b.y + b.height + 1 } as Types.Vec
-      )
+      const leftFoot = this.gameMap.pixelToMapPos({
+        x: bounds.x,
+        y: bounds.y + bounds.height + 1
+      } as Types.Vec)
+      const rightFoot = this.gameMap.pixelToMapPos({
+        x: bounds.x + bounds.width,
+        y: bounds.y + bounds.height + 1
+      } as Types.Vec)
       const left = this.gameMap.tileAtMapPos(leftFoot)
       const right = this.gameMap.tileAtMapPos(rightFoot)
 
