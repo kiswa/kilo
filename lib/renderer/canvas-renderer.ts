@@ -1,23 +1,17 @@
 /**
  * @module kilo/renderer
  */
+import { Renderer } from './renderer'
 import { Container, Game } from '../'
 import { Entity, Sprite, Text } from '../types'
 
 /**
  * Recursive rendering utilizing HTML5 canvas.
  */
-export class CanvasRenderer {
-  private width: number
-  private height: number
+export class CanvasRenderer extends Renderer {
   private ctx: CanvasRenderingContext2D
   private ctx2: CanvasRenderingContext2D
   private buffer: HTMLCanvasElement
-  private canvas: HTMLCanvasElement
-
-  get canvasElement() {
-    return this.canvas
-  }
 
   /**
    * Initialize CanvasRenderer object.
@@ -27,12 +21,12 @@ export class CanvasRenderer {
    * @param container The HTMLElement to add the canvas to.
    */
   constructor(width: number, height: number, container: HTMLElement) {
-    this.buffer = document.createElement('canvas')
-    this.canvas = document.createElement('canvas')
-    this.canvas.id = 'kilo-canvas'
+    super(width, height)
 
-    this.width = this.buffer.width = this.canvas.width = width
-    this.height = this.buffer.height = this.canvas.height = height
+    this.buffer = document.createElement('canvas')
+
+    this.buffer.width = this.canvas.width = width
+    this.buffer.height = this.canvas.height = height
 
     this.ctx = this.buffer.getContext('2d')
     this.ctx.imageSmoothingEnabled = false
@@ -81,7 +75,7 @@ export class CanvasRenderer {
     this.ctx2.drawImage(this.buffer, 0, 0)
   }
 
-  private isInCamera(entity: Sprite, camera: any) {
+  isInCamera(entity: Sprite, camera: any) {
     return entity.pos.x + entity.width >= -camera.pos.x &&
       entity.pos.x <= -camera.pos.x + camera.width &&
       entity.pos.y + entity.height >= -camera.pos.y &&

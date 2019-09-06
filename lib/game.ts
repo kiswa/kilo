@@ -2,7 +2,7 @@
  * @module kilo
  */
 import { Assets } from './assets'
-import { CanvasRenderer } from './renderer/canvas-renderer'
+import { Renderer, CanvasRenderer, WebGLRenderer } from './renderer'
 import { Container, Scene } from '.'
 
 /**
@@ -50,7 +50,8 @@ export class Game {
   private fadeDuration: number
   private destination: Scene
 
-  private renderer: CanvasRenderer
+  private isWebGL: boolean
+  private renderer: Renderer
   private _scene: Scene | Container
 
   /** An [[Assetts]] instance for loading all game assets. */
@@ -104,12 +105,23 @@ export class Game {
    * @param height Height of the game screen.
    * @param container The element to append the canvas to.
    */
-  constructor(width: number, height: number,
+  constructor(width: number, height: number, useWebGL: boolean = true,
               container: HTMLElement = document.body) {
     this._width = width
     this._height = height
 
-    this.renderer = new CanvasRenderer(width, height, container)
+    const canvas = document.createElement('canvas')
+    if (useWebGL) {
+      this.checkWebGL(canvas)
+    }
+
+    if (useWebGL && this.isWebGL) {
+      this.renderer = new WebGLRenderer(width, height, container)
+    }
+
+    if (!useWebGL || !this.isWebGL) {
+      this.renderer = new CanvasRenderer(width, height, container)
+    }
     this._scene = new Container()
     this.destination = null
 
@@ -197,14 +209,31 @@ export class Game {
     window.requestAnimationFrame(loop)
   }
 
+  private checkWebGL(canvas: HTMLCanvasElement) {
+    let gl = null
+
+    try {
+      gl = canvas.getContext('webgl')
+    } catch (x) {
+      gl = null
+    }
+
+    this.isWebGL = gl !== null
+  }
+
   private logInfo() {
     const kilo = `background-color: #fff;
       font-size: 14px;
-      color: purple`
+      color: rebeccapurple;`
+    const hearts = `background-color: #fff;
+      font-size: 14px;
+      color: rebeccapurple;`
     const ver = `background-color: #fff;
       font-size: 14px;
-      color: grey`
+      color: grey;`
 
-    console.log('%ckilo %cv1.0.0', kilo, ver)
+    const heartText = '❤' + (this.isWebGL ? '❤' : '')
+
+    console.log(`%ckilo %c${heartText} %cv1.0.0`, kilo, hearts, ver)
   }
 }
