@@ -11,9 +11,9 @@
   "author": "Matthew Ross",
   "license": "MIT",
   "devDependencies": {
-    "@types/chai": "^4.2.0",
+    "@types/chai": "^4.2.1",
     "@types/mocha": "^5.2.7",
-    "@types/node": "^12.7.2",
+    "@types/node": "^12.7.4",
     "canvas": "^2.6.0",
     "chai": "^4.2.0",
     "jsdom": "^15.1.1",
@@ -23,9 +23,9 @@
     "nyc": "^14.1.1",
     "request": "^2.88.0",
     "ts-node": "^8.3.0",
-    "tslint": "^5.18.0",
+    "tslint": "^5.19.0",
     "typedoc": "^0.15.0",
     "typedoc-plugin-external-module-name": "^2.1.0",
-    "typescript": "^3.5.3"
+    "typescript": "^3.6.2"
   }
 }
