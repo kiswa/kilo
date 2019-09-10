@@ -21,7 +21,7 @@ export class CanvasRenderer extends Renderer {
    * @param container The HTMLElement to add the canvas to.
    */
   constructor(width: number, height: number, container: HTMLElement) {
-    super(width, height)
+    super(width, height, container)
 
     this.buffer = document.createElement('canvas')
 
@@ -33,8 +33,6 @@ export class CanvasRenderer extends Renderer {
     this.ctx.textBaseline = 'top'
 
     this.ctx2 = this.canvas.getContext('2d')
-
-    container.appendChild(this.canvas)
   }
 
   /**

@@ -118,14 +118,14 @@ export class Assets {
    * @param url Relative path to JSON asset.
    */
   json(url: string) {
-    const factory = (url: string) => {
-      return fetch(url)
+    const factory = async (url: string) => {
+      return await fetch(url)
         .then(res => res.json())
         .then(json => this.onAssetLoad(json, true))
         .catch(e => Game.debug && console.error(e))
     }
 
-    return this.load(url, factory)
+    return this.load(url, factory, true)
   }
 
   private done() {
@@ -151,7 +151,7 @@ export class Assets {
     }
   }
 
-  private load(url: string, factory: (url: string) => any) {
+  private load(url: string, factory: (url: string) => any, isJson = false) {
     if (this.cache[url]) {
       Game.debug && console.info('cached', url)
       return this.cache[url]
@@ -164,6 +164,8 @@ export class Assets {
 
     const asset = factory(url)
     this.cache[url] = asset
+
+    this.onAssetLoad(asset, isJson)
 
     return asset
   }
