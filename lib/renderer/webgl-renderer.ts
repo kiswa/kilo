@@ -140,6 +140,7 @@ export class WebGLRenderer extends Renderer {
     gl.uniformMatrix3fv(this.uniforms.posMatrix, false, posMatrix)
     gl.uniformMatrix3fv(this.uniforms.texMatrix, false, texMatrix)
 
+    gl.uniform1i(this.uniforms.sampler2D, 0)
     gl.drawArrays(gl.TRIANGLES, 0, 6)
   }
 
@@ -183,7 +184,7 @@ export class WebGLRenderer extends Renderer {
     this.program = utils.createProgramFromScripts(gl, scripts)
 
     gl.viewport(0, 0, this.width, this.height)
-    gl.clearColor(0, 0, 0, 0)
+    gl.clearColor(0, 0, 0, 1)
     gl.useProgram(this.program)
     gl.enable(gl.BLEND)
     gl.blendEquation(gl.FUNC_ADD)
