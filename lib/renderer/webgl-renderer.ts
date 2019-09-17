@@ -4,8 +4,10 @@
 import { Renderer } from './renderer'
 import { Container, Game, TileSprite } from '../'
 import { Entity, Sprite, Text } from '../types'
-import * as utils from './webgl/utils'
+import { Utils } from './webgl/utils'
 import { defaults } from './webgl/defaults'
+import { Shader } from './webgl/shader'
+import { GLBuffer } from './webgl/glbuffer'
 
 interface TextureInfo {
   texture: WebGLTexture
@@ -16,7 +18,7 @@ interface TextureInfo {
  */
 export class WebGLRenderer extends Renderer {
   private ctx: WebGLRenderingContext
-  private program: WebGLProgram
+  private shader: Shader
 
   private attribs: any
   private uniforms: any
@@ -112,36 +114,48 @@ export class WebGLRenderer extends Renderer {
   }
 
   private drawTileSprite(gl: WebGLRenderingContext, sprite: TileSprite) {
-    const tex = this.getTexture(gl, sprite)
+    const pos = this.shader.getAttribLocation('a_position')
+    const tex = this.shader.getAttribLocation('a_texCoord')
 
-    this.setBuffer(gl, this.textureBuffer, this.attribs.texCoord)
-    gl.bindTexture(gl.TEXTURE_2D, tex)
+    const buf = new GLBuffer(gl, 6)
+    buf.addAttribInfo({
+      location: pos,
+      size: 3,
+      offset: 0
+    })
+    buf.addAttribInfo({
+      location: tex,
+      size: 3,
+      offset: 0
+    })
 
-    const originMatrix = utils.getTranslation(0, 0)
-    const projectionMatrix = utils.get2DProjectionMatrix(this.width, this.height)
-    const translationMatrix = utils.getTranslation(sprite.pos.x, sprite.pos.y)
-    const scaleMatrix = utils.getScale(sprite.tileWidth, sprite.tileHeight)
+    const originMatrix = Utils.getTranslation(0, 0)
+    const projectionMatrix = Utils.get2DProjectionMatrix(this.width, this.height)
+    const translationMatrix = Utils.getTranslation(sprite.pos.x, sprite.pos.y)
+    const scaleMatrix = Utils.getScale(sprite.tileWidth, sprite.tileHeight)
 
-    let posMatrix = utils.multiplyMatrices(scaleMatrix, originMatrix)
-    posMatrix = utils.multiplyMatrices(posMatrix, translationMatrix)
-    posMatrix = utils.multiplyMatrices(posMatrix, projectionMatrix)
+    let posMatrix = Utils.multiplyMatrices(scaleMatrix, originMatrix)
+    posMatrix = Utils.multiplyMatrices(posMatrix, translationMatrix)
+    posMatrix = Utils.multiplyMatrices(posMatrix, projectionMatrix)
 
-    const texScaleMatrix = utils.getScale(
+    const texScaleMatrix = Utils.getScale(
       sprite.tileWidth / sprite.texture.img.width,
       sprite.tileHeight / sprite.texture.img.height
     )
-    const texOffsetMatrix = utils.getTranslation(
+    const texOffsetMatrix = Utils.getTranslation(
       sprite.frame.x * sprite.tileWidth / sprite.texture.img.width,
       sprite.frame.y * sprite.tileHeight / sprite.texture.img.height
     )
 
-    const texMatrix = utils.multiplyMatrices(texScaleMatrix, texOffsetMatrix)
+    const texMatrix = Utils.multiplyMatrices(texScaleMatrix, texOffsetMatrix)
 
-    gl.uniformMatrix3fv(this.uniforms.posMatrix, false, posMatrix)
-    gl.uniformMatrix3fv(this.uniforms.texMatrix, false, texMatrix)
+    buf.bind()
+    buf.pushData(posMatrix)
+    buf.pushData(texMatrix)
+    buf.upload()
 
-    gl.uniform1i(this.uniforms.sampler2D, 0)
-    gl.drawArrays(gl.TRIANGLES, 0, 6)
+    buf.draw()
+    buf.unbind()
   }
 
   private getTexture(gl: WebGLRenderingContext, sprite: Sprite | TileSprite) {
@@ -181,26 +195,18 @@ export class WebGLRenderer extends Renderer {
     const gl = this.ctx
     const scripts = defaults.shaders
 
-    this.program = utils.createProgramFromScripts(gl, scripts)
+    this.shader = new Shader(gl)
+    this.shader.load(scripts.vertex, scripts.fragment)
 
     gl.viewport(0, 0, this.width, this.height)
     gl.clearColor(0, 0, 0, 1)
-    gl.useProgram(this.program)
+
+    gl.useProgram(this.shader.program)
+
     gl.enable(gl.BLEND)
     gl.blendEquation(gl.FUNC_ADD)
     gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA)
+
     gl.disable(gl.DEPTH_TEST)
-
-    this.attribs.position =
-      gl.getAttribLocation(this.program, 'a_position')
-
-    this.attribs.texCoord =
-      gl.getAttribLocation(this.program, 'a_texCoord')
-
-    this.uniforms.posMatrix =
-      gl.getUniformLocation(this.program, 'u_posMatrix')
-
-    this.uniforms.texMatrix =
-      gl.getUniformLocation(this.program, 'u_texMatrix')
   }
 }
