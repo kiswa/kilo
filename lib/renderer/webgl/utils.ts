@@ -1,5 +1,5 @@
-export class Utils {
-  public static getScale(x: number, y: number) {
+export class GLUtils {
+  static getScale(x: number, y: number) {
     return [
       x, 0, 0,
       0, y, 0,
@@ -7,15 +7,15 @@ export class Utils {
     ]
   }
 
-  public static get2DProjectionMatrix(width: number, height: number) {
+  static get2DProjectionMatrix(width: number, height: number) {
     return [
-      2 / width, 0,          0,
-      0,        -2 / height, 0,
-      -1,         1,          1
+      2 / width, 0, 0,
+      0, -2 / height, 0,
+      -1, 1, 1
     ]
   }
 
-  public static getTranslation(x: number, y: number) {
+  static getTranslation(x: number, y: number) {
     return [
       1, 0, 0,
       0, 1, 0,
@@ -23,7 +23,7 @@ export class Utils {
     ]
   }
 
-  public static multiplyMatrices(a: number[], b: number[]) {
+  static multiplyMatrices(a: number[], b: number[]) {
     const a00 = a[0 * 3 + 0]
     const a01 = a[0 * 3 + 1]
     const a02 = a[0 * 3 + 2]
