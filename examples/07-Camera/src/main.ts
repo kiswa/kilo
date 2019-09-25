@@ -20,8 +20,7 @@ const initGame = (mapData: any) => {
     tMap.tiles.map(
       (tiles: any) => tiles.map((tile: any) => ({ frame: { ...tile } }))
     ),
-    tMap.mapWidth, tMap.mapHeight,
-    tMap.tileWidth, tMap.tileHeight,
+    tMap,
     mapTexture
   )
 

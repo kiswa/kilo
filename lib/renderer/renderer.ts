@@ -8,6 +8,7 @@ export abstract class Renderer {
   protected width: number
   protected height: number
   protected canvas: HTMLCanvasElement
+  protected container: HTMLElement
 
   get canvasElement() {
     return this.canvas
@@ -22,7 +23,17 @@ export abstract class Renderer {
     this.canvas.width = width
     this.canvas.height = height
 
-    container.appendChild(this.canvas)
+    const div = document.createElement('div')
+    div.id = 'kilo-container'
+    div.style.position = 'relative'
+    div.style.height = this.height + 'px'
+    div.style.width = this.width + 'px'
+    div.style.margin = '0 auto'
+
+    div.appendChild(this.canvas)
+    container.appendChild(div)
+
+    this.container = div
   }
 
   abstract render(container: Container, clear?: boolean): void
