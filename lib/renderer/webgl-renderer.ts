@@ -2,7 +2,7 @@
  * @module kilo/renderer
  */
 import { Renderer } from './renderer'
-import { Container, Game, TileSprite } from '../'
+import { Camera, Container, Game, TileSprite } from '../'
 import { Entity, Sprite, Text } from '../types'
 import { ShaderProgram, GLUtils } from './webgl'
 import { defaults } from './webgl/defaults'
@@ -83,7 +83,7 @@ export class WebGLRenderer extends Renderer {
   }
 
   private renderRecursive(container: Entity | Container,
-                          camera?: Entity | Container) {
+                          camera?: Camera) {
     const { gl } = this
 
     this.setBuffer(gl, this.positionBuffer,
@@ -103,19 +103,23 @@ export class WebGLRenderer extends Renderer {
 
       if (child.texture) {
         if (child.tileWidth && child.frame) {
-          this.drawTileSprite(gl, child)
+          this.drawTileSprite(gl, child, camera)
         } else {
-          this.drawSprite(gl, child)
+          this.drawSprite(gl, child, camera)
         }
       }
 
       if (child.hasChildren) {
-        this.renderRecursive(child, child.worldSize ? child : camera)
+        this.renderRecursive(child, child.worldSize
+          ? (child as Camera)
+          : camera)
       }
     }
   }
 
-  private drawSprite(gl: WebGLRenderingContext, sprite: Sprite) {
+  private drawSprite(gl: WebGLRenderingContext,
+                     sprite: Sprite,
+                     camera: Camera) {
     const { shaderProgram } = this
 
     this.setBuffer(gl, this.textureBuffer,
@@ -123,6 +127,12 @@ export class WebGLRenderer extends Renderer {
 
     const tex = this.getTexture(gl, sprite)
     gl.bindTexture(gl.TEXTURE_2D, tex)
+
+    let cameraTranslation = GLUtils.getTranslation(0, 0)
+
+    if (camera) {
+      cameraTranslation = GLUtils.getTranslation(camera.pos.x, camera.pos.y)
+    }
 
     const originMatrix = GLUtils.getTranslation(0, 0)
     const projectionMatrix = GLUtils.get2DProjectionMatrix(this.width, this.height)
@@ -135,6 +145,7 @@ export class WebGLRenderer extends Renderer {
     }
 
     let posMatrix = GLUtils.multiplyMatrices(scaleMatrix, originMatrix)
+    posMatrix = GLUtils.multiplyMatrices(posMatrix, cameraTranslation)
     posMatrix = GLUtils.multiplyMatrices(posMatrix, translationMatrix)
 
     if (sprite.anchor) {
@@ -162,7 +173,9 @@ export class WebGLRenderer extends Renderer {
     gl.drawArrays(gl.TRIANGLES, 0, 6)
   }
 
-  private drawTileSprite(gl: WebGLRenderingContext, sprite: TileSprite) {
+  private drawTileSprite(gl: WebGLRenderingContext,
+                         sprite: TileSprite,
+                         camera: Camera) {
     const { shaderProgram } = this
 
     this.setBuffer(gl, this.textureBuffer,
@@ -170,6 +183,12 @@ export class WebGLRenderer extends Renderer {
 
     const tex = this.getTexture(gl, sprite)
     gl.bindTexture(gl.TEXTURE_2D, tex)
+
+    let cameraTranslation = GLUtils.getTranslation(0, 0)
+
+    if (camera) {
+      cameraTranslation = GLUtils.getTranslation(camera.pos.x, camera.pos.y)
+    }
 
     const originMatrix = GLUtils.getTranslation(0, 0)
     const projectionMatrix = GLUtils.get2DProjectionMatrix(this.width, this.height)
@@ -182,6 +201,7 @@ export class WebGLRenderer extends Renderer {
     }
 
     let posMatrix = GLUtils.multiplyMatrices(scaleMatrix, originMatrix)
+    posMatrix = GLUtils.multiplyMatrices(posMatrix, cameraTranslation)
     posMatrix = GLUtils.multiplyMatrices(posMatrix, translationMatrix)
 
     if (sprite.anchor) {
