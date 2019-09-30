@@ -23,7 +23,7 @@ export class WebGLRenderer extends Renderer {
   private textureBuffer: WebGLBuffer
   private textures: Map<string, TextureInfo>
 
-  private identity = new Float32Array([0, 0, 1, 0, 0, 1, 0, 1, 1, 0, 1, 1])
+  private fullArea = new Float32Array([0, 0, 1, 0, 0, 1, 0, 1, 1, 0, 1, 1])
 
     /**
      * Initialize CanvasRenderer object.
@@ -126,7 +126,6 @@ export class WebGLRenderer extends Renderer {
       shaderProgram.getAttribLocation('a_texCoord'))
 
     const tex = this.getTexture(gl, sprite)
-    gl.bindTexture(gl.TEXTURE_2D, tex)
 
     let cameraTranslation = GLUtils.getTranslation(0, 0)
 
@@ -155,14 +154,8 @@ export class WebGLRenderer extends Renderer {
 
     posMatrix = GLUtils.multiplyMatrices(posMatrix, projectionMatrix)
 
-    const texScaleMatrix = GLUtils.getScale(
-      sprite.width / sprite.texture.img.width,
-      sprite.height / sprite.texture.img.height
-    )
-    const texOffsetMatrix = GLUtils.getTranslation(sprite.texture.img.width,
-       sprite.texture.img.height)
-
-    const texMatrix = GLUtils.multiplyMatrices(texScaleMatrix, texOffsetMatrix)
+    const texMatrix = GLUtils.getScale( sprite.width / sprite.texture.img.width,
+      sprite.height / sprite.texture.img.height)
 
     gl.uniformMatrix3fv(shaderProgram.getUniformLocation('u_posMatrix'),
       false, posMatrix)
@@ -182,7 +175,6 @@ export class WebGLRenderer extends Renderer {
       shaderProgram.getAttribLocation('a_texCoord'))
 
     const tex = this.getTexture(gl, sprite)
-    gl.bindTexture(gl.TEXTURE_2D, tex)
 
     let cameraTranslation = GLUtils.getTranslation(0, 0)
 
@@ -247,7 +239,10 @@ export class WebGLRenderer extends Renderer {
     }
 
     if (this.textures.has(img.src)) {
-      return this.textures.get(img.src).texture
+      const texture = this.textures.get(img.src).texture
+      gl.bindTexture(gl.TEXTURE_2D, texture)
+
+      return texture
     }
 
     const texture = gl.createTexture()
@@ -268,7 +263,7 @@ export class WebGLRenderer extends Renderer {
   private setBuffer(gl: WebGLRenderingContext,
                     buffer: WebGLBuffer, attrib: number) {
     gl.bindBuffer(gl.ARRAY_BUFFER, buffer)
-    gl.bufferData(gl.ARRAY_BUFFER, this.identity, gl.STATIC_DRAW)
+    gl.bufferData(gl.ARRAY_BUFFER, this.fullArea, gl.STATIC_DRAW)
     gl.enableVertexAttribArray(attrib)
     gl.vertexAttribPointer(attrib, 2, gl.FLOAT, false, 0, 0)
   }
