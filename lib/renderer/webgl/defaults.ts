@@ -8,6 +8,7 @@ export const defaults = {
   uniform mat3 u_texMatrix;
 
   varying vec2 v_texCoord;
+  varying float v_texAlpha;
 
   void main() {
     gl_Position = vec4((u_posMatrix * vec3(a_position, 1)).xy, 0, 1);
@@ -17,11 +18,12 @@ export const defaults = {
 `,
 
     fragment: `
-  precision mediump float;
+  precision highp float;
 
   uniform sampler2D u_sampler;
 
   varying vec2 v_texCoord;
+  varying float v_texAlpha;
 
   void main() {
     gl_FragColor = texture2D(u_sampler, v_texCoord);

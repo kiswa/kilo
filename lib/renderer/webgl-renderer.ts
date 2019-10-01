@@ -125,7 +125,7 @@ export class WebGLRenderer extends Renderer {
     this.setBuffer(gl, this.textureBuffer,
       shaderProgram.getAttribLocation('a_texCoord'))
 
-    const tex = this.getTexture(gl, sprite)
+    this.getTexture(gl, sprite)
 
     let cameraTranslation = GLUtils.getTranslation(0, 0)
 
@@ -174,7 +174,7 @@ export class WebGLRenderer extends Renderer {
     this.setBuffer(gl, this.textureBuffer,
       shaderProgram.getAttribLocation('a_texCoord'))
 
-    const tex = this.getTexture(gl, sprite)
+    this.getTexture(gl, sprite)
 
     let cameraTranslation = GLUtils.getTranslation(0, 0)
 
