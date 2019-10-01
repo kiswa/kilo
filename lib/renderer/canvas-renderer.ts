@@ -73,13 +73,6 @@ export class CanvasRenderer extends Renderer {
     this.ctx2.drawImage(this.buffer, 0, 0)
   }
 
-  isInCamera(entity: Sprite, camera: any) {
-    return entity.pos.x + entity.width >= -camera.pos.x &&
-      entity.pos.x <= -camera.pos.x + camera.width &&
-      entity.pos.y + entity.height >= -camera.pos.y &&
-      entity.pos.y <= -camera.pos.y + camera.height
-  }
-
   private renderRecursive(container: Entity | Container,
                           camera?: Entity | Container) {
     const { ctx } = this

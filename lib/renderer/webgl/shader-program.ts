@@ -5,10 +5,14 @@ interface Scripts {
 
 export class ShaderProgram {
   private gl: WebGLRenderingContext
-  private program: WebGLProgram
+  private _program: WebGLProgram
   private attributes: { [name: string]: number }
   private uniforms: { [name: string]: WebGLUniformLocation }
   private name: string
+
+  get program() {
+    return this._program
+  }
 
   constructor(gl: WebGLRenderingContext, scripts: Scripts, name = 'default') {
     this.gl = gl
@@ -48,7 +52,6 @@ export class ShaderProgram {
   private initWebGl() {
     const { gl } = this
 
-    gl.useProgram(this.program)
     gl.clearColor(0, 0, 0, 1)
 
     gl.enable(gl.BLEND)
@@ -60,7 +63,7 @@ export class ShaderProgram {
 
   private createProgram(vertexShader: WebGLShader, fragmentShader: WebGLShader) {
     const { gl } = this
-    this.program = gl.createProgram()
+    this._program = gl.createProgram()
 
     gl.attachShader(this.program, vertexShader)
     gl.attachShader(this.program, fragmentShader)

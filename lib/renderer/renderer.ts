@@ -38,5 +38,11 @@ export abstract class Renderer {
 
   abstract render(container: Container, clear?: boolean): void
 
-  abstract isInCamera(entity: Sprite, camera: any): boolean
+  protected isInCamera(entity: Sprite, camera: any) {
+    return entity.pos.x + entity.width >= -camera.pos.x &&
+      entity.pos.x <= -camera.pos.x + camera.width &&
+      entity.pos.y + entity.height >= -camera.pos.y &&
+      entity.pos.y <= -camera.pos.y + camera.height
+  }
+
 }

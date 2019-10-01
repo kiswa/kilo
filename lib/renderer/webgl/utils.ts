@@ -1,4 +1,45 @@
+import { Sprite, Rect } from '../../types'
+import { TileSprite } from '../../tile-sprite'
+
 export class GLUtils {
+  static getHexColorMatrix(color: string) {
+    if (color[0] === '#') {
+      color = color.substr(1)
+    }
+
+    if (color.length === 3) {
+      color = color[0] + color[0] + color[1] + color[1] + color[2] + color[2]
+    }
+
+    const r = parseInt(color.substr(0, 2), 16) / 255
+    const g = parseInt(color.substr(2, 2), 16) / 255
+    const b = parseInt(color.substr(4, 2), 16) / 255
+
+    return [r, g, b]
+  }
+
+  static getCameraTranslation(camera: any) {
+    let cameraTranslation = GLUtils.getTranslation(0, 0)
+
+    if (camera) {
+      cameraTranslation = GLUtils.getTranslation(camera.pos.x, camera.pos.y)
+    }
+
+    return cameraTranslation
+  }
+
+  static getScaleMatrix(sprite: Sprite | TileSprite | Rect,
+                        width: number, height: number) {
+    let scaleMatrix = GLUtils.getScale(width, height)
+
+    if (sprite.scale) {
+      scaleMatrix = GLUtils.getScale(width * sprite.scale.x,
+        height * sprite.scale.y)
+    }
+
+    return scaleMatrix
+  }
+
   static getScale(x: number, y: number) {
     return [
       x, 0, 0,
@@ -24,24 +65,8 @@ export class GLUtils {
   }
 
   static multiplyMatrices(a: number[], b: number[]) {
-    const a00 = a[0 * 3 + 0]
-    const a01 = a[0 * 3 + 1]
-    const a02 = a[0 * 3 + 2]
-    const a10 = a[1 * 3 + 0]
-    const a11 = a[1 * 3 + 1]
-    const a12 = a[1 * 3 + 2]
-    const a20 = a[2 * 3 + 0]
-    const a21 = a[2 * 3 + 1]
-    const a22 = a[2 * 3 + 2]
-    const b00 = b[0 * 3 + 0]
-    const b01 = b[0 * 3 + 1]
-    const b02 = b[0 * 3 + 2]
-    const b10 = b[1 * 3 + 0]
-    const b11 = b[1 * 3 + 1]
-    const b12 = b[1 * 3 + 2]
-    const b20 = b[2 * 3 + 0]
-    const b21 = b[2 * 3 + 1]
-    const b22 = b[2 * 3 + 2]
+    const [a00, a01, a02, a10, a11, a12, a20, a21, a22] = a
+    const [b00, b01, b02, b10, b11, b12, b20, b21, b22] = b
 
     return [
       a00 * b00 + a01 * b10 + a02 * b20,

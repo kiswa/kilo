@@ -3,7 +3,7 @@
  */
 import { Renderer } from './renderer'
 import { Camera, Container, Game, TileSprite } from '../'
-import { Entity, Sprite, Text } from '../types'
+import { Entity, Sprite, Text, Rect } from '../types'
 import { ShaderProgram, GLUtils } from './webgl'
 import { defaults } from './webgl/defaults'
 
@@ -17,11 +17,14 @@ interface TextureInfo {
 export class WebGLRenderer extends Renderer {
   private gl: WebGLRenderingContext
   private ctx: CanvasRenderingContext2D
-  private shaderProgram: ShaderProgram
+  private shaderProgramTex: ShaderProgram
+  private shaderProgramCol: ShaderProgram
 
   private positionBuffer: WebGLBuffer
   private textureBuffer: WebGLBuffer
+  private rectBuffer: WebGLBuffer
   private textures: Map<string, TextureInfo>
+  private globalAlpha: number
 
   private fullArea = new Float32Array([0, 0, 1, 0, 0, 1, 0, 1, 1, 0, 1, 1])
 
@@ -36,13 +39,24 @@ export class WebGLRenderer extends Renderer {
       super(width, height, container)
 
       this.gl = this.canvas.getContext('webgl', { antialias: false })
+
       this.positionBuffer = this.gl.createBuffer()
       this.textureBuffer = this.gl.createBuffer()
+      this.rectBuffer = this.gl.createBuffer()
 
       this.createTextCanvas()
 
       this.textures = new Map<string, TextureInfo>()
-      this.shaderProgram = new ShaderProgram(this.gl, defaults.shaders)
+      this.shaderProgramTex = new ShaderProgram(this.gl, {
+        vertex: defaults.shaders.vertexTexture,
+        fragment: defaults.shaders.fragmentTexture,
+      }, 'default-texture')
+      this.shaderProgramCol = new ShaderProgram(this.gl, {
+        vertex: defaults.shaders.vertexColor,
+        fragment: defaults.shaders.fragmentColor,
+      }, 'default-color')
+
+      this.gl.useProgram(this.shaderProgramTex.program)
     }
 
   render(container: Container, clear = true) {
@@ -75,19 +89,16 @@ export class WebGLRenderer extends Renderer {
     }
   }
 
-  isInCamera(entity: Sprite, camera: any) {
-    return entity.pos.x + entity.width >= -camera.pos.x &&
-      entity.pos.x <= -camera.pos.x + camera.width &&
-      entity.pos.y + entity.height >= -camera.pos.y &&
-      entity.pos.y <= -camera.pos.y + camera.height
-  }
-
   private renderRecursive(container: Entity | Container,
                           camera?: Camera) {
     const { gl } = this
 
+    if (container.alpha) {
+      this.globalAlpha = container.alpha
+    }
+
     this.setBuffer(gl, this.positionBuffer,
-      this.shaderProgram.getAttribLocation('a_position'))
+      this.shaderProgramTex.getAttribLocation('a_position'))
 
     for (let i = 0; i < container.children.length; i++) {
       const child = (container as any).children[i]
@@ -103,9 +114,9 @@ export class WebGLRenderer extends Renderer {
 
       if (child.texture) {
         if (child.tileWidth && child.frame) {
-          this.drawTileSprite(gl, child, camera)
+          this.drawTileSprite(child, camera)
         } else {
-          this.drawSprite(gl, child, camera)
+          this.drawSprite(child, camera)
         }
       }
 
@@ -114,96 +125,44 @@ export class WebGLRenderer extends Renderer {
           ? (child as Camera)
           : camera)
       }
+
+      if (child.style && child.width && child.height) {
+        this.drawRect(child, camera)
+      }
     }
   }
 
-  private drawSprite(gl: WebGLRenderingContext,
-                     sprite: Sprite,
-                     camera: Camera) {
-    const { shaderProgram } = this
+  private drawSprite(sprite: Sprite, camera: Camera) {
+    const { gl, shaderProgramTex } = this
 
     this.setBuffer(gl, this.textureBuffer,
-      shaderProgram.getAttribLocation('a_texCoord'))
-
+      shaderProgramTex.getAttribLocation('a_texCoord'))
     this.getTexture(gl, sprite)
 
-    let cameraTranslation = GLUtils.getTranslation(0, 0)
-
-    if (camera) {
-      cameraTranslation = GLUtils.getTranslation(camera.pos.x, camera.pos.y)
-    }
-
-    const originMatrix = GLUtils.getTranslation(0, 0)
-    const projectionMatrix = GLUtils.get2DProjectionMatrix(this.width, this.height)
-    const translationMatrix = GLUtils.getTranslation(sprite.pos.x, sprite.pos.y)
-    let scaleMatrix = GLUtils.getScale(sprite.width, sprite.height)
-
-    if (sprite.scale) {
-      scaleMatrix = GLUtils.getScale(sprite.width * sprite.scale.x,
-        sprite.height * sprite.scale.y)
-    }
-
-    let posMatrix = GLUtils.multiplyMatrices(scaleMatrix, originMatrix)
-    posMatrix = GLUtils.multiplyMatrices(posMatrix, cameraTranslation)
-    posMatrix = GLUtils.multiplyMatrices(posMatrix, translationMatrix)
-
-    if (sprite.anchor) {
-      const anchorMatrix = GLUtils.getTranslation(sprite.anchor.x, sprite.anchor.y)
-      posMatrix = GLUtils.multiplyMatrices(posMatrix, anchorMatrix)
-    }
-
-    posMatrix = GLUtils.multiplyMatrices(posMatrix, projectionMatrix)
-
+    const posMatrix = this.getPositionMatrix(camera, sprite)
     const texMatrix = GLUtils.getScale( sprite.width / sprite.texture.img.width,
       sprite.height / sprite.texture.img.height)
 
-    gl.uniformMatrix3fv(shaderProgram.getUniformLocation('u_posMatrix'),
+    gl.uniformMatrix3fv(shaderProgramTex.getUniformLocation('u_posMatrix'),
       false, posMatrix)
-    gl.uniformMatrix3fv(shaderProgram.getUniformLocation('u_texMatrix'),
+    gl.uniformMatrix3fv(shaderProgramTex.getUniformLocation('u_texMatrix'),
       false, texMatrix)
 
-    gl.uniform1i(shaderProgram.getUniformLocation('u_sampler'), 0)
+    gl.uniform1f(shaderProgramTex.getUniformLocation('u_texAlpha'),
+      this.globalAlpha)
+    gl.uniform1i(shaderProgramTex.getUniformLocation('u_sampler'), 0)
+
     gl.drawArrays(gl.TRIANGLES, 0, 6)
   }
 
-  private drawTileSprite(gl: WebGLRenderingContext,
-                         sprite: TileSprite,
-                         camera: Camera) {
-    const { shaderProgram } = this
+  private drawTileSprite(sprite: TileSprite, camera: Camera) {
+    const { gl, shaderProgramTex } = this
 
     this.setBuffer(gl, this.textureBuffer,
-      shaderProgram.getAttribLocation('a_texCoord'))
-
+      shaderProgramTex.getAttribLocation('a_texCoord'))
     this.getTexture(gl, sprite)
 
-    let cameraTranslation = GLUtils.getTranslation(0, 0)
-
-    if (camera) {
-      cameraTranslation = GLUtils.getTranslation(
-        Math.floor(camera.pos.x), Math.floor(camera.pos.y))
-    }
-
-    const originMatrix = GLUtils.getTranslation(0, 0)
-    const projectionMatrix = GLUtils.get2DProjectionMatrix(this.width, this.height)
-    const translationMatrix = GLUtils.getTranslation(sprite.pos.x, sprite.pos.y)
-    let scaleMatrix = GLUtils.getScale(sprite.tileWidth, sprite.tileHeight)
-
-    if (sprite.scale) {
-      scaleMatrix = GLUtils.getScale(sprite.tileWidth * sprite.scale.x,
-        sprite.tileHeight * sprite.scale.y)
-    }
-
-    let posMatrix = GLUtils.multiplyMatrices(scaleMatrix, originMatrix)
-    posMatrix = GLUtils.multiplyMatrices(posMatrix, cameraTranslation)
-    posMatrix = GLUtils.multiplyMatrices(posMatrix, translationMatrix)
-
-    if (sprite.anchor) {
-      const anchorMatrix = GLUtils.getTranslation(sprite.anchor.x, sprite.anchor.y)
-      posMatrix = GLUtils.multiplyMatrices(posMatrix, anchorMatrix)
-    }
-
-    posMatrix = GLUtils.multiplyMatrices(posMatrix, projectionMatrix)
-
+    const posMatrix = this.getPositionMatrix(camera, sprite)
     const texScaleMatrix = GLUtils.getScale(
       sprite.tileWidth / sprite.texture.img.width,
       sprite.tileHeight / sprite.texture.img.height
@@ -212,16 +171,39 @@ export class WebGLRenderer extends Renderer {
       sprite.frame.x * sprite.tileWidth / sprite.texture.img.width,
       sprite.frame.y * sprite.tileHeight / sprite.texture.img.height
     )
-
     const texMatrix = GLUtils.multiplyMatrices(texScaleMatrix, texOffsetMatrix)
 
-    gl.uniformMatrix3fv(shaderProgram.getUniformLocation('u_posMatrix'),
+    gl.uniformMatrix3fv(shaderProgramTex.getUniformLocation('u_posMatrix'),
       false, posMatrix)
-    gl.uniformMatrix3fv(shaderProgram.getUniformLocation('u_texMatrix'),
+    gl.uniformMatrix3fv(shaderProgramTex.getUniformLocation('u_texMatrix'),
       false, texMatrix)
 
-    gl.uniform1i(shaderProgram.getUniformLocation('u_sampler'), 0)
+    gl.uniform1f(shaderProgramTex.getUniformLocation('u_texAlpha'),
+      this.globalAlpha)
+    gl.uniform1i(shaderProgramTex.getUniformLocation('u_sampler'), 0)
+
     gl.drawArrays(gl.TRIANGLES, 0, 6)
+  }
+
+  private drawRect(rect: Rect, camera: Camera) {
+    const { gl, shaderProgramCol } = this
+    const attrib = shaderProgramCol.getAttribLocation('a_color')
+
+    gl.useProgram(this.shaderProgramCol.program)
+
+    this.setBuffer(gl, this.rectBuffer, attrib)
+
+    const posMatrix = this.getPositionMatrix(camera, rect)
+    const color = GLUtils.getHexColorMatrix(rect.style.fill)
+
+    gl.uniformMatrix3fv(shaderProgramCol.getUniformLocation('u_posMatrix'),
+      false, posMatrix)
+    gl.uniform1f(shaderProgramCol.getUniformLocation('u_alpha'), rect.alpha)
+
+    gl.vertexAttrib3fv(attrib, new Float32Array(color))
+
+    gl.drawArrays(gl.TRIANGLES, 0, 6)
+    gl.useProgram(this.shaderProgramTex.program)
   }
 
   private getTexture(gl: WebGLRenderingContext, sprite: Sprite | TileSprite) {
@@ -246,6 +228,16 @@ export class WebGLRenderer extends Renderer {
       return texture
     }
 
+    const texture = this.createTexture()
+    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, img)
+
+    this.textures.set(img.src, { texture })
+
+    return texture
+  }
+
+  private createTexture() {
+    const { gl } = this
     const texture = gl.createTexture()
     gl.bindTexture(gl.TEXTURE_2D, texture)
 
@@ -253,10 +245,6 @@ export class WebGLRenderer extends Renderer {
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE)
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST)
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST)
-
-    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, img)
-
-    this.textures.set(img.src, { texture })
 
     return texture
   }
@@ -267,6 +255,32 @@ export class WebGLRenderer extends Renderer {
     gl.bufferData(gl.ARRAY_BUFFER, this.fullArea, gl.STATIC_DRAW)
     gl.enableVertexAttribArray(attrib)
     gl.vertexAttribPointer(attrib, 2, gl.FLOAT, false, 0, 0)
+  }
+
+  private getPositionMatrix(camera: any, sprite: Sprite | TileSprite | Rect) {
+    const cameraTranslation = GLUtils.getCameraTranslation(camera)
+    const originMatrix = GLUtils.getTranslation(0, 0)
+
+    const projectionMatrix =
+      GLUtils.get2DProjectionMatrix(this.width, this.height)
+    const translationMatrix =
+      GLUtils.getTranslation(sprite.pos.x, sprite.pos.y)
+    const scaleMatrix =
+      GLUtils.getScaleMatrix(sprite, sprite.width, sprite.height)
+
+    let posMatrix = GLUtils.multiplyMatrices(scaleMatrix, originMatrix)
+    posMatrix = GLUtils.multiplyMatrices(posMatrix, cameraTranslation)
+    posMatrix = GLUtils.multiplyMatrices(posMatrix, translationMatrix)
+
+    const sp = (sprite as Sprite | TileSprite)
+    if (sp.anchor) {
+      const anchorMatrix = GLUtils.getTranslation(sp.anchor.x, sp.anchor.y)
+      posMatrix = GLUtils.multiplyMatrices(posMatrix, anchorMatrix)
+    }
+
+    posMatrix = GLUtils.multiplyMatrices(posMatrix, projectionMatrix)
+
+    return posMatrix
   }
 
   private createTextCanvas() {
