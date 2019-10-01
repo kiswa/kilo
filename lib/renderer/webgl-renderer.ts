@@ -35,7 +35,7 @@ export class WebGLRenderer extends Renderer {
     constructor(width: number, height: number, container: HTMLElement) {
       super(width, height, container)
 
-      this.gl = this.canvas.getContext('webgl')
+      this.gl = this.canvas.getContext('webgl', { antialias: false })
       this.positionBuffer = this.gl.createBuffer()
       this.textureBuffer = this.gl.createBuffer()
 
@@ -179,7 +179,8 @@ export class WebGLRenderer extends Renderer {
     let cameraTranslation = GLUtils.getTranslation(0, 0)
 
     if (camera) {
-      cameraTranslation = GLUtils.getTranslation(camera.pos.x, camera.pos.y)
+      cameraTranslation = GLUtils.getTranslation(
+        Math.floor(camera.pos.x), Math.floor(camera.pos.y))
     }
 
     const originMatrix = GLUtils.getTranslation(0, 0)
