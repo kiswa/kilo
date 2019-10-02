@@ -2,22 +2,6 @@ import { Sprite, Rect } from '../../types'
 import { TileSprite } from '../../tile-sprite'
 
 export class GLUtils {
-  static getHexColorMatrix(color: string) {
-    if (color[0] === '#') {
-      color = color.substr(1)
-    }
-
-    if (color.length === 3) {
-      color = color[0] + color[0] + color[1] + color[1] + color[2] + color[2]
-    }
-
-    const r = parseInt(color.substr(0, 2), 16) / 255
-    const g = parseInt(color.substr(2, 2), 16) / 255
-    const b = parseInt(color.substr(4, 2), 16) / 255
-
-    return [r, g, b]
-  }
-
   static getCameraTranslation(camera: any) {
     let cameraTranslation = GLUtils.getTranslation(0, 0)
 

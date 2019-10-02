@@ -37,16 +37,10 @@ export const defaults = {
 
     vertexColor: `
   attribute vec2 a_position;
-  attribute vec3 a_color;
 
   uniform mat3 u_posMatrix;
-  uniform float u_alpha;
-
-  varying vec4 v_color;
 
   void main() {
-    v_color = vec4(a_color, u_alpha);
-
     gl_Position = vec4((u_posMatrix * vec3(a_position, 1)).xy, 0, 1);
   }
 `,
@@ -54,10 +48,10 @@ export const defaults = {
     fragmentColor: `
   precision mediump float;
 
-  varying vec4 v_color;
+  uniform vec4 u_color;
 
   void main() {
-    gl_FragColor = v_color;
+    gl_FragColor = u_color;
   }
 `,
   },

@@ -3,7 +3,7 @@
  */
 import { Renderer } from './renderer'
 import { Container, Game } from '../'
-import { Entity, Sprite, Text } from '../types'
+import { Entity, Text } from '../types'
 
 /**
  * Recursive rendering utilizing HTML5 canvas.

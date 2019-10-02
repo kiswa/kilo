@@ -55,8 +55,6 @@ export class WebGLRenderer extends Renderer {
         vertex: defaults.shaders.vertexColor,
         fragment: defaults.shaders.fragmentColor,
       }, 'default-color')
-
-      this.gl.useProgram(this.shaderProgramTex.program)
     }
 
   render(container: Container, clear = true) {
@@ -91,7 +89,9 @@ export class WebGLRenderer extends Renderer {
 
   private renderRecursive(container: Entity | Container,
                           camera?: Camera) {
-    const { gl } = this
+    const { gl, ctx } = this
+
+    gl.useProgram(this.shaderProgramTex.program)
 
     if (container.alpha) {
       this.globalAlpha = container.alpha
@@ -110,6 +110,16 @@ export class WebGLRenderer extends Renderer {
       if (camera && !(child instanceof Container || child instanceof Text) &&
         !this.isInCamera(child, camera)) {
         continue
+      }
+
+      if (child.text) {
+        const { font, fill, align } = child.style
+
+        if (font && font.length) ctx.font = font
+        if (fill && fill.length) ctx.fillStyle = fill
+        if (align && align.length) ctx.textAlign = align
+
+        ctx.fillText(child.text, child.pos.x, child.pos.y)
       }
 
       if (child.texture) {
@@ -140,7 +150,7 @@ export class WebGLRenderer extends Renderer {
     this.getTexture(gl, sprite)
 
     const posMatrix = this.getPositionMatrix(camera, sprite)
-    const texMatrix = GLUtils.getScale( sprite.width / sprite.texture.img.width,
+    const texMatrix = GLUtils.getScale(sprite.width / sprite.texture.img.width,
       sprite.height / sprite.texture.img.height)
 
     gl.uniformMatrix3fv(shaderProgramTex.getUniformLocation('u_posMatrix'),
@@ -187,23 +197,55 @@ export class WebGLRenderer extends Renderer {
 
   private drawRect(rect: Rect, camera: Camera) {
     const { gl, shaderProgramCol } = this
-    const attrib = shaderProgramCol.getAttribLocation('a_color')
 
     gl.useProgram(this.shaderProgramCol.program)
-
-    this.setBuffer(gl, this.rectBuffer, attrib)
+    gl.bindBuffer(gl.ARRAY_BUFFER, this.rectBuffer)
 
     const posMatrix = this.getPositionMatrix(camera, rect)
-    const color = GLUtils.getHexColorMatrix(rect.style.fill)
+    const color = this.getColorFromFillString(rect.style.fill, rect.alpha)
 
     gl.uniformMatrix3fv(shaderProgramCol.getUniformLocation('u_posMatrix'),
       false, posMatrix)
-    gl.uniform1f(shaderProgramCol.getUniformLocation('u_alpha'), rect.alpha)
+    gl.uniform4fv(shaderProgramCol.getUniformLocation('u_color'), color)
 
-    gl.vertexAttrib3fv(attrib, new Float32Array(color))
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 6)
+  }
 
-    gl.drawArrays(gl.TRIANGLES, 0, 6)
-    gl.useProgram(this.shaderProgramTex.program)
+  private getColorFromFillString(color: string, alpha: number = 1) {
+    if (color[0] === '#') {
+      color = color.substr(1)
+    }
+
+    if (color.length === 3) {
+      color = color[0] + color[0] + color[1] + color[1] + color[2] + color[2]
+    }
+
+    if (color.length > 6) {
+      const parts = color.split(',')
+      parts[0] = parts[0].substr(parts[0].indexOf('(') + 1)
+
+      if (parts.length > 4) {
+        throw new Error(`Invalid color string ${color}`)
+      }
+
+      if (parts.length === 3) {
+        return [
+          parseInt(parts[0]), parseInt(parts[1]),
+          parseInt(parts[2].replace(')', '')), alpha
+        ]
+      }
+
+      return [
+        parseInt(parts[0]), parseInt(parts[1]),
+        parseInt(parts[2]), parseFloat(parts[3].replace(')', ''))
+      ]
+    }
+
+    const r = parseInt(color.substr(0, 2), 16) / 255
+    const g = parseInt(color.substr(2, 2), 16) / 255
+    const b = parseInt(color.substr(4, 2), 16) / 255
+
+    return [r, g, b, alpha]
   }
 
   private getTexture(gl: WebGLRenderingContext, sprite: Sprite | TileSprite) {
@@ -250,11 +292,11 @@ export class WebGLRenderer extends Renderer {
   }
 
   private setBuffer(gl: WebGLRenderingContext,
-                    buffer: WebGLBuffer, attrib: number) {
+                    buffer: WebGLBuffer, attrib: number, components: number = 2) {
     gl.bindBuffer(gl.ARRAY_BUFFER, buffer)
     gl.bufferData(gl.ARRAY_BUFFER, this.fullArea, gl.STATIC_DRAW)
+    gl.vertexAttribPointer(attrib, components, gl.FLOAT, false, 0, 0)
     gl.enableVertexAttribArray(attrib)
-    gl.vertexAttribPointer(attrib, 2, gl.FLOAT, false, 0, 0)
   }
 
   private getPositionMatrix(camera: any, sprite: Sprite | TileSprite | Rect) {

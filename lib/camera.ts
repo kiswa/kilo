@@ -85,7 +85,7 @@ export class Camera extends Container {
    */
   setDebug(debug = true) {
     if (debug) {
-      this.debug = <Rect>this.add(
+      this.debug = this.add<Rect>(
         new Rect(
           this.tracking.x * 2,
           this.tracking.y * 2,
