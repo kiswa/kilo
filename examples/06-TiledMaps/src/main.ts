@@ -29,7 +29,7 @@ const initGame = (mapData: any) => {
   const tilesTex = new Types.Texture('assets/images/tiles.png')
 
   // Add the 'pickups' game objects from entities layer data
-  gameMap.gameObjects.pickups.forEach(pickup => {
+  gameMap.gameObjects.pickups.forEach((pickup: any) => {
     const sprite = new TileSprite(tilesTex, pickup.width, pickup.height)
 
     sprite.frame.set(28, 2)

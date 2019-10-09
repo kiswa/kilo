@@ -65,6 +65,8 @@ export class ShaderProgram {
     const { gl } = this
     this._program = gl.createProgram()
 
+    ; (this._program as any).__SPECTOR_Metadata = { name: this.name }
+
     gl.attachShader(this.program, vertexShader)
     gl.attachShader(this.program, fragmentShader)
     gl.linkProgram(this.program)
