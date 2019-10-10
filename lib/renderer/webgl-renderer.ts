@@ -199,7 +199,7 @@ export class WebGLRenderer extends Renderer {
   }
 
   private drawTileSprite(sprite: TileSprite, camera: Camera) {
-    if (sprite.frame.x < 0) {
+    if (sprite.frame.x < 0 || sprite.frame.y < 0) {
       return
     }
 
