@@ -41,8 +41,6 @@ const initGame = (mapData: any) => {
       index -= 2
     }
 
-    console.log(pickup, 28 + index, row)
-
     sprite.frame.set(28 + index, row)
     sprite.pos.set(pickup.x, pickup.y)
 
