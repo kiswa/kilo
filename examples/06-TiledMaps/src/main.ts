@@ -29,10 +29,21 @@ const initGame = (mapData: any) => {
   const tilesTex = new Types.Texture('assets/images/tiles.png')
 
   // Add the 'pickups' game objects from entities layer data
-  gameMap.gameObjects.pickups.forEach((pickup: any) => {
+  gameMap.gameObjects.pickups
+    .sort((a, b) => a.x - b.x)
+    .sort((a, b) => a.y - b.y)
+    .forEach((pickup: any, index: number) => {
     const sprite = new TileSprite(tilesTex, pickup.width, pickup.height)
+    let row = 2
 
-    sprite.frame.set(28, 2)
+    if (index > 1) {
+      row = 3
+      index -= 2
+    }
+
+    console.log(pickup, 28 + index, row)
+
+    sprite.frame.set(28 + index, row)
     sprite.pos.set(pickup.x, pickup.y)
 
     game.scene.add(sprite)
