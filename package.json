@@ -16,7 +16,7 @@
     "@types/node": "^12.7.12",
     "canvas": "^2.6.0",
     "chai": "^4.2.0",
-    "jsdom": "^15.1.1",
+    "jsdom": "^15.2.0",
     "jsdom-global": "^3.0.2",
     "mocha": "^6.2.1",
     "node-fetch": "^2.6.0",
