@@ -13,7 +13,7 @@ class TestEntity extends Entity {
 }
 
 describe('Entity', () => {
-  let entity
+  let entity: TestEntity
 
   describe('Properties', () => {
     beforeEach(() => {
@@ -70,7 +70,7 @@ describe('Entity', () => {
     it('has method update', () => {
       expect(entity.update).to.be.a('function')
 
-      entity.update()
+      entity.update(0, 0)
 
       expect(entity.visible).to.equal(false)
     })

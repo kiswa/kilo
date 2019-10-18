@@ -3,7 +3,7 @@ import { expect } from 'chai'
 import { Text } from '../lib/types'
 
 describe('Sprite', () => {
-  let text
+  let text: Text
 
   describe('Properties', () => {
     const style = { font: 'Arial', fill: 'red' }
@@ -30,7 +30,7 @@ describe('Sprite', () => {
 
     it('has method update', () => {
       expect(text.update).to.be.a('function')
-      text.update()
+      text.update(0, 0)
     })
   })
 })

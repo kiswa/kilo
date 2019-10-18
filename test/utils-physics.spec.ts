@@ -4,7 +4,7 @@ import { physics } from '../lib/utils'
 import { Vec } from '../lib/types'
 
 describe('Utils - Physics', () => {
-  let vecEnt
+  let vecEnt: any
 
   beforeEach(() => {
     vecEnt = {

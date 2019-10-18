@@ -1,7 +1,7 @@
 import { expect } from 'chai'
 
 import { Types } from '../lib'
-import { OneUp, ParticleEmitter, Particle, ParticleOptions } from '../lib/fx'
+import { OneUp, ParticleEmitter, Particle } from '../lib/fx'
 
 describe('FX', () => {
   describe('OneUp', () => {

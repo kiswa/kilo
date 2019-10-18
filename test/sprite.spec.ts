@@ -4,7 +4,7 @@ import { Sprite, Texture, HitBox, Vec } from '../lib/types'
 
 describe('Sprite', () => {
   const tex = new Texture('')
-  let sprite
+  let sprite: Sprite
 
   describe('Properties', () => {
     beforeEach(() => {
@@ -63,7 +63,7 @@ describe('Sprite', () => {
 
     it('has method update', () => {
       expect(sprite.update).to.be.a('function')
-      sprite.update()
+      sprite.update(0, 0)
     })
   })
 })

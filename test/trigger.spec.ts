@@ -21,7 +21,7 @@ describe('Trigger', () => {
 
   describe('Methods', () => {
     it('has method onEnter', done => {
-      const enter = (...args) => {
+      const enter = (...args: any[]) => {
         expect(args[0]).to.equal('test')
         done()
       }
@@ -31,7 +31,7 @@ describe('Trigger', () => {
     })
 
     it('has method onExit', done => {
-      const exit = (...args) => {
+      const exit = (...args: any[]) => {
         expect(args[0]).to.equal('test')
         done()
       }

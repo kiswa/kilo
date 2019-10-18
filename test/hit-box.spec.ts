@@ -3,7 +3,7 @@ import { expect } from 'chai'
 import { HitBox } from '../lib/types'
 
 describe('HitBox', () => {
-  let hitbox
+  let hitbox: HitBox
 
   describe('Accessors', () => {
     beforeEach(() => {

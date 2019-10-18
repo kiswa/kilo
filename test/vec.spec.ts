@@ -3,7 +3,7 @@ import { expect } from 'chai'
 import { Vec } from '../lib/types'
 
 describe('Vec', () => {
-  let vec
+  let vec: Vec
 
   describe('Properties', () => {
     beforeEach(() => {

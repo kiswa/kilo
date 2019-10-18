@@ -5,7 +5,7 @@ import { Sprite, Texture, HitBox } from '../lib/types'
 import { sprite } from '../lib/utils'
 
 describe('Utils - Sprite', () => {
-  let spr
+  let spr: Sprite
 
   before(() => {
     Game.debug = false
@@ -108,13 +108,13 @@ describe('Utils - Sprite', () => {
 
     cont.add(spr2)
 
-    sprite.hits(spr, cont, (other) => {
+    sprite.hits(spr, cont, (other: Sprite) => {
       expect(other).to.equal(spr2)
       done()
     })
 
     spr2.pos.set(0, 0)
-    sprite.hits(spr, cont, (other) => {
+    sprite.hits(spr, cont, (other: Sprite) => {
       expect(other).to.equal(spr2)
       done()
     })
