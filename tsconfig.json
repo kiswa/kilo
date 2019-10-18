@@ -10,6 +10,9 @@
   },
   "typedocOptions": {
     "out": "docs",
+    "categorizeByGroup": false,
+    "categoryOrder": ["kilo", "*"],
+    "excludeNotExported": true,
     "excludePrivate": true,
     "theme": "minimal",
     "name": "kilo",

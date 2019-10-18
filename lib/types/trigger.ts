@@ -1,6 +1,3 @@
-/**
- * @module kilo/types
- */
 import { HitBox, Rect, Sprite } from '.'
 
 /**
@@ -32,6 +29,8 @@ import { HitBox, Rect, Sprite } from '.'
  *   door.onExit()
  * }
  * ```
+ *
+ * @category kilo/types
  */
 export class Trigger extends Sprite {
   private _onEnter: Function

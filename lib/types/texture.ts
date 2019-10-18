@@ -1,6 +1,3 @@
-/**
- * @module kilo/types
- */
 import { Game } from '..'
 
 /**
@@ -10,6 +7,8 @@ import { Game } from '..'
  * ```typescript
  * const texture = new Texture('assets/images/tilesheet.png')
  * ```
+ *
+ * @category kilo/types
  */
 export class Texture {
   /** The loaded image. */

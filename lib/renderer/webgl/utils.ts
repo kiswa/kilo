@@ -1,6 +1,9 @@
 import { Sprite, Rect } from '../../types'
 import { TileSprite } from '../../tile-sprite'
 
+/**
+ * @category kilo/renderer/webgl
+ */
 export class GLUtils {
   static getCameraTranslation(camera: any) {
     let cameraTranslation = GLUtils.getTranslation(0, 0)
@@ -45,6 +48,14 @@ export class GLUtils {
       1, 0, 0,
       0, 1, 0,
       x, y, 1
+    ]
+  }
+
+  static getRotation(angle: number) {
+    return [
+      Math.cos(angle), -Math.sin(angle), 0,
+      Math.sin(angle), Math.cos(angle), 0,
+      0, 0, 1
     ]
   }
 

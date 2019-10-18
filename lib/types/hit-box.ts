@@ -1,17 +1,15 @@
 /**
- * @module kilo/types
+ * Allows for more precise collision detection.
+ *
+ * ### Example
+ * ```typescript
+ * // Creates a hitbox 4 pixels right and down from the top left of the sprite,
+ * // with a width of 32 pixels and a height of 40 pixels.
+ * player.hitbox = new HitBox(4, 4, 32, 40)
+ * ```
+ *
+ * @category kilo/types
  */
-
- /**
-  * Allows for more precise collision detection.
-  *
-  * ### Example
-  * ```typescript
-  * // Creates a hitbox 4 pixels right and down from the top left of the sprite,
-  * // with a width of 32 pixels and a height of 40 pixels.
-  * player.hitbox = new HitBox(4, 4, 32, 40)
-  * ```
-  */
 export class HitBox {
   private _x: number
   private _y: number

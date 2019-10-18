@@ -1,24 +1,22 @@
-/**
- * @module kilo
- */
-
  /**
   * Function called on each tick of a Timer.
   */
  type TickFunc = (r: number) => void
 
- /**
-  * Countdown timer that calls a function on each tick, and optionally
-  * on completion.
-  *
-  * ### Example
-  * ```typescript
-  * // Moving a sprite into position on a game scene over 2 seconds.
-  * const timer = new Timer(2, (r: number) =>
-  *   (sprite.pos.y = elasticOut(r) * game.height - game.height / 1.6)
-  * )
-  * ```
-  */
+/**
+ * Countdown timer that calls a function on each tick, and optionally
+ * on completion.
+ *
+ * ### Example
+ * ```typescript
+ * // Moving a sprite into position on a game scene over 2 seconds.
+ * const timer = new Timer(2, (r: number) =>
+ *   (sprite.pos.y = elasticOut(r) * game.height - game.height / 1.6)
+ * )
+ * ```
+ *
+ * @category kilo
+ */
 export class Timer {
   /** Used by core loop to remove the object when dead. */
   dead: boolean

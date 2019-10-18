@@ -1,6 +1,3 @@
-/**
- * @module kilo/types
- */
 import { Entity, Vec, Texture, HitBox } from '.'
 
 /**
@@ -14,6 +11,8 @@ import { Entity, Vec, Texture, HitBox } from '.'
  * bullet.hitBox.set(4, 2, 16, 12)
  * bullet.anchor.set(16, 16)
  * ```
+ *
+ * @category kilo/types
  */
 export class Sprite extends Entity {
   /** The hitbox of the sprite. */

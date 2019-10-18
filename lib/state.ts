@@ -1,44 +1,42 @@
 /**
- * @module kilo
+ * Tracks state as provided, and provides information on status of the current
+ * state. Also allows transitioning to a prior state from a temporary state
+ * (e.g. a pause dialog back to game play).
+ *
+ * ### Example
+ * ```typescript
+ * enum GameState {
+ *   Ready,
+ *   Playing,
+ *   Paused,
+ *   GameOver
+ * }
+ *
+ * // In the constructor of whatever needs state.
+ * this.state = new State<GameState>(GameState.Ready)
+ *
+ * // In the update of the scene/object/whatever.
+ * this.state.update(dt)
+ *
+ * switch (this.state) {
+ *   case GameState.Ready:
+ *     if (this.state.first) {
+ *       console.log('First frame of this state')
+ *     }
+ *
+ *     // Go to Playing state after 1.5 seconds
+ *     if (this.state.time > 1.5) {
+ *       this.state.set(GameState.Playing)
+ *     }
+ *   break
+ *
+ *   default:
+ *     console.log(this.state.get())
+ * }
+ * ```
+ *
+ * @category kilo
  */
-
- /**
-  * Tracks state as provided, and provides information on status of the current
-  * state. Also allows transitioning to a prior state from a temporary state
-  * (e.g. a pause dialog back to game play).
-  *
-  * ### Example
-  * ```typescript
-  * enum GameState {
-  *   Ready,
-  *   Playing,
-  *   Paused,
-  *   GameOver
-  * }
-  *
-  * // In the constructor of whatever needs state.
-  * this.state = new State<GameState>(GameState.Ready)
-  *
-  * // In the update of the scene/object/whatever.
-  * this.state.update(dt)
-  *
-  * switch (this.state) {
-  *   case GameState.Ready:
-  *     if (this.state.first) {
-  *       console.log('First frame of this state')
-  *     }
-  *
-  *     // Go to Playing state after 1.5 seconds
-  *     if (this.state.time > 1.5) {
-  *       this.state.set(GameState.Playing)
-  *     }
-  *   break
-  *
-  *   default:
-  *     console.log(this.state.get())
-  * }
-  * ```
-  */
 export class State<EnumType> {
   /** Number of seconds in the current state. */
   time: number

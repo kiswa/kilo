@@ -1,6 +1,3 @@
-/**
- * @module kilo/utils
- */
 import { Vec } from './../types'
 
 let seed = 42
@@ -11,6 +8,8 @@ let random = Math.random
  *
  * @param a Vec to get angle from.
  * @param b Vec to get angle to.
+ *
+ * @category kilo/utils
  */
 export function angle(a: Vec, b: Vec) {
   const dx = a.x - b.x
@@ -23,6 +22,8 @@ export function angle(a: Vec, b: Vec) {
  * Gets a direction Vec to the provided angle.
  *
  * @param angle An angle in radians.
+ *
+ * @category kilo/utils
  */
 export function dirTo(angle: number) {
   return new Vec(Math.cos(angle), Math.sin(angle))
@@ -34,6 +35,8 @@ export function dirTo(angle: number) {
  * @param x Value to be clamped.
  * @param min Minimum allowed value.
  * @param max Maximum allowed value.
+ *
+ * @category kilo/utils
  */
 export function clamp(x: number, min = 0, max = 1) {
   return Math.max(min, Math.min(x, max))
@@ -44,6 +47,8 @@ export function clamp(x: number, min = 0, max = 1) {
  *
  * @param a Vec to get distance from.
  * @param b Vec to get distance to.
+ *
+ * @category kilo/utils
  */
 export function distance(a: Vec, b: Vec) {
   const dx = a.x - b.x
@@ -56,6 +61,8 @@ export function distance(a: Vec, b: Vec) {
  * Simple gaussian implementation.
  *
  * @param x Number to apply gauss to.
+ *
+ * @category kilo/utils
  */
 export function gauss(x: number) {
   return Math.exp(-x * x)
@@ -67,6 +74,8 @@ export function gauss(x: number) {
  * @param x Number to apply gauss to.
  * @param center Number representing center.
  * @param dist Number represeting distance.
+ *
+ * @category kilo/utils
  */
 export function gaussDistance(x: number, center: number, dist: number) {
   return gauss((x - center) / dist)
@@ -78,6 +87,8 @@ export function gaussDistance(x: number, center: number, dist: number) {
  * @param x Number to interpolate from.
  * @param min Minimum interpolation value.
  * @param max Maximum interpolation value.
+ *
+ * @category kilo/utils
  */
 export function lerp(x: number, min = 0, max = 1) {
   return (x - min) / (max - min)
@@ -89,6 +100,8 @@ export function lerp(x: number, min = 0, max = 1) {
  * @param min Minimum number to mix.
  * @param max Maximum number to mix.
  * @param p Number to mix.
+ *
+ * @category kilo/utils
  */
 export function mix(min: number, max: number, p: number) {
   return min * (1 - p) + max * p
@@ -99,6 +112,8 @@ export function mix(min: number, max: number, p: number) {
  *
  * @param min Minimum random value.
  * @param max Maximum random value.
+ *
+ * @category kilo/utils
  */
 export function rand(min = 0, max?: number) {
   return Math.floor(randf(min, max))
@@ -109,6 +124,8 @@ export function rand(min = 0, max?: number) {
  *
  * @param min Minimum random value.
  * @param max Maximum random value.
+ *
+ * @category kilo/utils
  */
 export function randf(min: number, max?: number) {
   if (max === null || max === undefined) {
@@ -123,6 +140,8 @@ export function randf(min: number, max?: number) {
  * Returns a random item from an array.
  *
  * @param items Array of items to select from.
+ *
+ * @category kilo/utils
  */
 export function randOneFrom(items: any[]) {
   return items[rand(items.length)]
@@ -132,6 +151,8 @@ export function randOneFrom(items: any[]) {
  * Returns a boolean with a probability for true of 1 in the provided max.
  *
  * @param max Maximum random value
+ *
+ * @category kilo/utils
  */
 export function randOneIn(max = 2) {
   return rand(0, max) === 0
@@ -141,6 +162,8 @@ export function randOneIn(max = 2) {
  * Sets the seed value for random number generation.
  *
  * @param s Seed value to use for random numbers.
+ *
+ * @category kilo/utils
  */
 export function randomSeed(s?: number) {
   if  (!isNaN(s)) {
@@ -154,6 +177,8 @@ export function randomSeed(s?: number) {
  * Sets whether or not to use the seeded random number generator.
  *
  * @param useSeeded If seeded random number generator should be used.
+ *
+ * @category kilo/utils
  */
 export function useSeededRandom(useSeeded = true) {
   randomSeeded()
@@ -167,6 +192,8 @@ export function useSeededRandom(useSeeded = true) {
  * @param value Value to step.
  * @param min Minimum interpolation value.
  * @param max Maximum interpolation value.
+ *
+ * @category kilo/utils
  */
 export function smoothStep(value: number, min = 0, max = 1) {
   const x = clamp(lerp(value, min, max))
@@ -188,6 +215,8 @@ function randomSeeded() {
 
 /**
  * A collection of easing functions.
+ *
+ * @category kilo/utils
  */
 export const ease = {
   quadIn(x: number) {

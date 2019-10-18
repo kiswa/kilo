@@ -1,6 +1,3 @@
-/**
- * @module kilo
- */
 import { Assets } from './assets'
 import { Renderer, CanvasRenderer, WebGLRenderer } from './renderer'
 import { Container, Scene } from '.'
@@ -15,6 +12,8 @@ type GameUpdate = (dt: number, t: number) => void
  * Default game speed is "Normal".
  *
  * Can also be any number, but be careful.
+ *
+ * @category kilo
  */
 export enum Speed {
   Slow = .5,
@@ -41,6 +40,8 @@ const MAX_FRAME = SPEED * 5
  *
  * game.run()
  * ```
+ *
+ * @category kilo
  */
 export class Game {
   private _width: number

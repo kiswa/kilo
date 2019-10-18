@@ -1,10 +1,9 @@
-/**
- * @module kilo/sound
- */
 import { Assets } from '../assets'
 
 /**
  * Options for a Sound object.
+ *
+ * @category kilo/sound
  */
 export interface SoundOptions {
   /** Volume of the sound (from 0 to 1). */
@@ -23,6 +22,8 @@ export interface SoundOptions {
  * // When the sound should play.
  * ding.play()
  * ```
+ *
+ * @category kilo/sound
  */
 export class Sound {
   /** Whether or not the sound is currently playing. */

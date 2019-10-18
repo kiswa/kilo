@@ -1,6 +1,3 @@
-/**
- * @module kilo/types
- */
 import { Vec } from '.'
 
 /** A type with an update function. */
@@ -11,6 +8,8 @@ type HasUpdate = {
 
 /**
  * An abstract base class for all entities.
+ *
+ * @category kilo/types
  */
 export abstract class Entity {
   /** Whether or not the entity is visible. */

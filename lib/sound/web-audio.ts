@@ -1,23 +1,21 @@
 /**
- * @module kilo/sound
+ * Provides support for playing sounds using the
+ * [Web Audio API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API).
+ *
+ * ### Example
+ * ```typescript
+ * const audio = new WebAudio('assets/sounds/theme.ogg')
+ *
+ * if (!audio.hasWebAudio) {
+ *   // Do something else for sounds.
+ * }
+ *
+ * audio.master.value = .3 // Low volume
+ * audio.play()
+ * ```
+ *
+ * @category kilo/sound
  */
-
- /**
-  * Provides support for playing sounds using the
-  * [Web Audio API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API).
-  *
-  * ### Example
-  * ```typescript
-  * const audio = new WebAudio('assets/sounds/theme.ogg')
-  *
-  * if (!audio.hasWebAudio) {
-  *   // Do something else for sounds.
-  * }
-  *
-  * audio.master.value = .3 // Low volume
-  * audio.play()
-  * ```
-  */
 export class WebAudio {
   /** Whether or not WebAudio is supported. */
   hasWebAudio = !!((window as any).AudioContext || (window as any).webkitAudioContext)

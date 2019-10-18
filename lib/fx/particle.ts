@@ -1,6 +1,3 @@
-/**
- * @module kilo/fx
- */
 import { Container, TileSprite } from '../'
 import { Rect, Vec } from '../types'
 import { math } from '../utils'
@@ -9,6 +6,8 @@ import { math } from '../utils'
  * Options used to determine particle behaviors.
  *
  * Ranges use a [[Vec]] where the x value is the minimum, and y is the maximum.
+ *
+ * @category kilo/fx
  */
 export interface ParticleOptions {
   /**
@@ -46,6 +45,8 @@ export interface ParticleOptions {
  * A single particle whose lifecycle is controlled by a [[ParticleEmitter]].
  *
  * Can be used alone if desired as a randomly moving and fading entity.
+ *
+ * @category kilo/fx
  */
 export class Particle extends Container {
   private options: ParticleOptions

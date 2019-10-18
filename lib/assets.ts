@@ -1,6 +1,3 @@
-/**
- * @module kilo
- */
 import { Game } from '.'
 
 /**
@@ -17,6 +14,8 @@ type ProgressCallback = (complete: number, total: number) => void
  * Loads assets for use in a game.
  *
  * Assets are cached by URI to prevent multiple network calls for the same asset.
+ *
+ * @category kilo
  */
 export class Assets {
   private cache: any

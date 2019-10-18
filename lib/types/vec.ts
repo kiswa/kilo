@@ -1,10 +1,8 @@
 /**
- * @module kilo/types
+ * Interface with x and y coordinates.
+ *
+ * @category kilo/types
  */
-
- /**
-  * Interface with x and y coordinates.
-  */
 export interface Point {
   /** X axis coordinate */
   x: number
@@ -24,6 +22,8 @@ export interface Point {
  *
  * vector1.add(vector2).multiply(3)
  * ```
+ *
+ * @category kilo/types
  */
 export class Vec implements Point {
   /** X coordinate value. */

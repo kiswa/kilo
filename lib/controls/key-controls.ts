@@ -1,8 +1,4 @@
 /**
- * @module kilo/controls
- */
-
-/**
  * Type to enforce that keys object uses strings as keys, and boolean as values.
  */
 type KeyMap = {
@@ -13,9 +9,11 @@ const passThroughKeys = [
   'F5', 'F12'
 ]
 
- /**
-  * Provides access to keyboard inputs.
-  */
+/**
+ * Provides access to keyboard inputs.
+ *
+ * @category kilo/controls
+ */
 export class KeyControls {
   private keys: KeyMap
 

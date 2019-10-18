@@ -1,6 +1,3 @@
-/**
- * @module kilo
- */
 import { Game, Speed } from './game'
 import { Container } from './container'
 
@@ -27,6 +24,9 @@ import { TileMap } from './tile-map'
 import { TileSprite } from './tile-sprite'
 import { Timer } from './timer'
 
+/**
+ * @category kilo
+ */
 export {
   Animations,
   Assets,

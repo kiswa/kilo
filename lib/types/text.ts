@@ -1,10 +1,9 @@
-/**
- * @module kilo/types
- */
 import { Entity } from '.'
 
 /**
  * Options for text display.
+ *
+ * @category kilo/types
  */
 export interface TextOptions {
   /** The font to use. */
@@ -23,6 +22,8 @@ export interface TextOptions {
  * const text = new Text('Hello world.', { '20px monospace', '#333' })
  * text.pos.set(20, 20)
  * ```
+ *
+ * @category kilo/types
  */
 export class Text extends Entity {
   /** The text to display. */

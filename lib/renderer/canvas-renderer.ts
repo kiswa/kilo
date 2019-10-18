@@ -1,12 +1,11 @@
-/**
- * @module kilo/renderer
- */
 import { Renderer } from './renderer'
 import { Container, Game } from '../'
 import { Entity, Text } from '../types'
 
 /**
  * Recursive rendering utilizing HTML5 canvas.
+ *
+ * @category kilo/renderer
  */
 export class CanvasRenderer extends Renderer {
   private ctx: CanvasRenderingContext2D

@@ -1,6 +1,3 @@
-/**
- * @module kilo
- */
 import { Container, TileSprite, Utils } from '.'
 import { Sprite, Rect, Vec } from './types'
 
@@ -17,6 +14,8 @@ import { Sprite, Rect, Vec } from './types'
  *
  * this.camera = this.add<Camera>(camera)
  * ```
+ *
+ * @category kilo
  */
 export class Camera extends Container {
   /**

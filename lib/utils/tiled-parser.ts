@@ -1,14 +1,17 @@
-/**
- * @module kilo/utils
- */
 /// <reference path="../types/tiled.ts" />
-import {Point} from '../types'
+import { Point } from '../types'
 
-/** Type for tile data.  */
+/**
+ * Type for tile data.
+ *
+ * @category kilo/utils
+ */
 export type TileData = { [key: string]: any, frame: Point, x: number, y: number }
 
 /**
  * Interface for a Tiled map object.
+ *
+ * @category kilo/utils
  */
 export interface TiledMap {
   /** Width of a tile in pixels. */
@@ -42,6 +45,8 @@ export interface TiledMap {
 
 /**
  * Interface to add extra layers above or below the main level layer.
+ *
+ * @category kilo/utils
  */
 export interface ExtraLayer {
   /** Name of the layer to load. */
@@ -70,6 +75,8 @@ let entities: Tiled.Object[]
  * "entities" - containing at least one entity
  *
  * @param jsonObj Object from Tiled JSON export.
+ *
+ * @category kilo/utils
  */
 export function tiledParser(jsonObj: Tiled.Map,
                             extraLayers?: ExtraLayer[]): TiledMap {

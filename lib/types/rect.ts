@@ -1,10 +1,9 @@
-/**
- * @module kilo/types
- */
 import { Vec, Entity } from '.'
 
 /**
  * Style options for a Rect.
+ *
+ * @category kilo/types
  */
 export interface RectStyleOptions {
   /** The fill color. */
@@ -18,6 +17,8 @@ export interface RectStyleOptions {
  * ```typescript
  * const testObj = new Rect(32, 32, { fill: '#f00' })
  * ```
+ *
+ * @category kilo/types
  */
 export class Rect extends Entity {
   /** Height of the rectangle in pixels. */

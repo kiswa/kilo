@@ -1,6 +1,3 @@
-/**
- * @module kilo
- */
 import { Point } from './types'
 
 /**
@@ -47,6 +44,8 @@ class Animation {
  * // In the update of the same class
  * this.anims.play('idle')
  * ```
+ *
+ * @category kilo
  */
 export class Animations {
   private anims: Map<string, Animation>

@@ -1,6 +1,3 @@
-/**
- * @module kilo/resolvers
- */
 import { Sprite } from '../types'
 import { TileMap, Utils, TileSprite } from '..'
 
@@ -17,6 +14,8 @@ type WalkableTest = (sprite: TileSprite, index: number) => boolean
  * @param x Desired movement in the X axis.
  * @param y Desired movement in the Y axis.
  * @param walkableTest Callback function to test for walkable tiles.
+ *
+ * @category kilo/resolvers
  */
 export function wallSlide(ent: Sprite, map: TileMap, x = 0, y = 0,
                           walkableTest?: WalkableTest) {

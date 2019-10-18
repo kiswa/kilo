@@ -3,6 +3,8 @@ import { Sprite } from '../types'
 
 /**
  * Abstract class to extend for specific renderers.
+ *
+ * @category kilo/renderer
  */
 export abstract class Renderer {
   protected width: number

@@ -1,6 +1,3 @@
-/**
- * @module kilo/sound
- */
 import { Sound, SoundOptions } from './sound'
 import { math } from '../utils'
 
@@ -19,6 +16,8 @@ import { math } from '../utils'
  * // When one of the sounds should play.
  * ding.play()
  * ```
+ *
+ * @category kilo/sound
  */
 export class SoundGroup {
   private sounds: Sound[]

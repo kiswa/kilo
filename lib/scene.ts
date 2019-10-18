@@ -1,6 +1,3 @@
-/**
- * @module kilo
- */
 import { Container, Game } from '.'
 import { Controls } from './controls/controls'
 
@@ -9,6 +6,8 @@ import { Controls } from './controls/controls'
  * and a callback for the completion of the scene.
  *
  * To be implemented as your unique scenes.
+ *
+ * @category kilo
  */
 export abstract class Scene extends Container {
   /** The game. */

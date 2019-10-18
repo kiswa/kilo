@@ -1,6 +1,3 @@
-/**
- * @module kilo/fx
- */
 import { Container } from '../container'
 import { Vec, Rect } from '../types'
 import { TileSprite, Utils } from '..'
@@ -22,6 +19,8 @@ import { TileSprite, Utils } from '..'
  * one.pos.copy(this.player.pos)
  * ```
  * @remarks Default behavior is moving up and fading out over 0.6 seconds.
+ *
+ * @category kilo/fx
  */
 export class OneUp extends Container {
   private vel: Vec

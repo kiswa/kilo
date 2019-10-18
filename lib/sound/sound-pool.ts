@@ -1,6 +1,3 @@
-/**
- * @module kilo/sound
- */
 import { Sound, SoundOptions } from './sound'
 
 /**
@@ -13,6 +10,8 @@ import { Sound, SoundOptions } from './sound'
  * // When the sound should play (and may already be playing).
  * dings.play()
  * ```
+ *
+ * @category kilo/sound
  */
 export class SoundPool {
   private count: number

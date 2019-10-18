@@ -1,6 +1,3 @@
-/**
- * @module kilo
- */
 import { Container, TileSprite } from '.'
 import { HitBox, Point, Texture, Vec } from './types'
 import { TiledMap } from './utils'
@@ -14,6 +11,8 @@ interface HasFrame {
  * for accessing tiles.
  *
  * Only tiles on the 'level' layer are used. Other layers are only for display.
+ *
+ * @category kilo
  */
 export class TileMap extends Container {
   /** Width of the entire map in tiles. */

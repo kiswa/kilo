@@ -1,6 +1,3 @@
-/**
- * @module kilo
- */
 import { Entity } from './types'
 
 /**
@@ -17,6 +14,8 @@ import { Entity } from './types'
  *  pickups.push(new Pickup(pos))
  * })
  * ```
+ *
+ * @category kilo
  */
 export class Container extends Entity {
   /**

@@ -3,6 +3,9 @@ interface Scripts {
   fragment: string
 }
 
+/**
+ * @category kilo/renderer/webgl
+ */
 export class ShaderProgram {
   private gl: WebGLRenderingContext
   private _program: WebGLProgram
