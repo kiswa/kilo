@@ -1,6 +1,3 @@
-/**
- * @module kilo/renderer
- */
 import { Renderer } from './renderer'
 import { Camera, Container, Game, TileSprite } from '../'
 import { Entity, Sprite, Text, Rect } from '../types'
@@ -15,6 +12,8 @@ declare const spector: any
 
 /**
  * Recursive rendering utilizing HTML5 canvas and WebGL.
+ *
+ * @category kilo/renderer
  */
 export class WebGLRenderer extends Renderer {
   private gl: WebGLRenderingContext
@@ -354,6 +353,12 @@ export class WebGLRenderer extends Renderer {
       GLUtils.getScaleMatrix(sprite, sprite.width, sprite.height)
 
     let posMatrix = GLUtils.multiplyMatrices(scaleMatrix, originMatrix)
+
+    if (sprite instanceof TileSprite) {
+      let rotMatrix = GLUtils.getRotation(sprite.rotation)
+      posMatrix = GLUtils.multiplyMatrices(posMatrix, rotMatrix)
+    }
+
     posMatrix = GLUtils.multiplyMatrices(posMatrix, cameraTranslation)
     posMatrix = GLUtils.multiplyMatrices(posMatrix, translationMatrix)
 
