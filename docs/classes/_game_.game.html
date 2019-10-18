@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>kilo | kilo</title>
+	<title>Game | kilo</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<style type="text/css">/*! normalize.css v1.1.3 | MIT License | git.io/normalize */
@@ -2347,7 +2347,7 @@ img {
 		<div class="container">
 			<div class="table-wrap">
 				<div class="table-cell">
-					<strong><a href="index.html">kilo</a></strong>
+					<strong><a href="../index.html">kilo</a></strong>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -2377,75 +2377,382 @@ img {
 </header>
 <nav class="tsd-navigation secondary">
 	<ul>
+		<li class=" tsd-kind-enum tsd-parent-kind-external-module">
+			<a href="../enums/_game_.speed.html" class="tsd-kind-icon">Speed</a>
+		</li>
+		<li class="current tsd-kind-class tsd-parent-kind-external-module">
+			<a href="_game_.game.html" class="tsd-kind-icon">Game</a>
+			<ul>
+				<li class=" tsd-kind-constructor tsd-parent-kind-class">
+					<a href="_game_.game.html#constructor" class="tsd-kind-icon">constructor</a>
+				</li>
+				<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-static">
+					<a href="_game_.game.html#fps" class="tsd-kind-icon">FPS</a>
+				</li>
+				<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-static">
+					<a href="_game_.game.html#ups" class="tsd-kind-icon">UPS</a>
+				</li>
+				<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-static">
+					<a href="_game_.game.html#assets" class="tsd-kind-icon">assets</a>
+				</li>
+				<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-static">
+					<a href="_game_.game.html#debug" class="tsd-kind-icon">debug</a>
+				</li>
+				<li class=" tsd-kind-get-signature tsd-parent-kind-class">
+					<a href="_game_.game.html#canvas" class="tsd-kind-icon">canvas</a>
+				</li>
+				<li class=" tsd-kind-get-signature tsd-parent-kind-class">
+					<a href="_game_.game.html#height" class="tsd-kind-icon">height</a>
+				</li>
+				<li class=" tsd-kind-get-signature tsd-parent-kind-class">
+					<a href="_game_.game.html#scene" class="tsd-kind-icon">scene</a>
+				</li>
+				<li class=" tsd-kind-accessor tsd-parent-kind-class">
+					<a href="_game_.game.html#speed" class="tsd-kind-icon">speed</a>
+				</li>
+				<li class=" tsd-kind-get-signature tsd-parent-kind-class">
+					<a href="_game_.game.html#width" class="tsd-kind-icon">width</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class">
+					<a href="_game_.game.html#run" class="tsd-kind-icon">run</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class">
+					<a href="_game_.game.html#setscene" class="tsd-kind-icon">set<wbr>Scene</a>
+				</li>
+			</ul>
+		</li>
 	</ul>
 </nav>
 <div class="container container-main">
 	<div class="content-wrap">
-		<div class="tsd-panel tsd-typography">
-			<a href="#kilo" id="kilo" style="color: inherit; text-decoration: none;">
-				<h1>kilo</h1>
-			</a>
-			<p>A 2D game library written in TypeScript.</p>
-		</div>
+		<section class="tsd-panel tsd-comment">
+			<div class="tsd-comment tsd-typography">
+				<div class="lead">
+					<p>Contains all aspects of a game.</p>
+				</div>
+				<a href="#example" id="example" style="color: inherit; text-decoration: none;">
+					<h3>Example</h3>
+				</a>
+				<pre><code class="language-typescript"><span class="hljs-comment">// This is a boring 'game'.</span>
+<span class="hljs-keyword">const</span> game = <span class="hljs-keyword">new</span> Game(<span class="hljs-number">640</span>, <span class="hljs-number">480</span>)
+
+game.run()</code></pre>
+			</div>
+		</section>
+		<section class="tsd-panel tsd-hierarchy">
+			<h3>Hierarchy</h3>
+			<ul class="tsd-hierarchy">
+				<li>
+					<span class="target">Game</span>
+				</li>
+			</ul>
+		</section>
 		<section class="tsd-panel-group tsd-index-group">
 			<h2>Index</h2>
 			<section class="tsd-panel tsd-index-panel">
 				<div class="tsd-index-content">
 					<section class="tsd-index-section ">
-						<h3>External modules</h3>
+						<h3>Constructors</h3>
 						<ul class="tsd-index-list">
-							<li class="tsd-kind-external-module"><a href="modules/_animations_.html" class="tsd-kind-icon">"animations"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_assets_.html" class="tsd-kind-icon">"assets"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_camera_.html" class="tsd-kind-icon">"camera"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_container_.html" class="tsd-kind-icon">"container"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_controls_controls_.html" class="tsd-kind-icon">"controls/controls"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_controls_gamepad_controls_.html" class="tsd-kind-icon">"controls/gamepad-<wbr>controls"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_controls_key_controls_.html" class="tsd-kind-icon">"controls/key-<wbr>controls"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_controls_mouse_controls_.html" class="tsd-kind-icon">"controls/mouse-<wbr>controls"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_fx_index_.html" class="tsd-kind-icon">"fx/index"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_fx_one_up_.html" class="tsd-kind-icon">"fx/one-<wbr>up"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_fx_particle_.html" class="tsd-kind-icon">"fx/particle"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_fx_particle_emitter_.html" class="tsd-kind-icon">"fx/particle-<wbr>emitter"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_game_.html" class="tsd-kind-icon">"game"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_index_.html" class="tsd-kind-icon">"index"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_renderer_canvas_renderer_.html" class="tsd-kind-icon">"renderer/canvas-<wbr>renderer"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_renderer_index_.html" class="tsd-kind-icon">"renderer/index"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_renderer_renderer_.html" class="tsd-kind-icon">"renderer/renderer"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_renderer_webgl_renderer_.html" class="tsd-kind-icon">"renderer/webgl-<wbr>renderer"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_renderer_webgl_defaults_.html" class="tsd-kind-icon">"renderer/webgl/defaults"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_renderer_webgl_index_.html" class="tsd-kind-icon">"renderer/webgl/index"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_renderer_webgl_shader_program_.html" class="tsd-kind-icon">"renderer/webgl/shader-<wbr>program"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_renderer_webgl_utils_.html" class="tsd-kind-icon">"renderer/webgl/utils"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_resolvers_index_.html" class="tsd-kind-icon">"resolvers/index"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_resolvers_stop_move_.html" class="tsd-kind-icon">"resolvers/stop-<wbr>move"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_resolvers_wall_slide_.html" class="tsd-kind-icon">"resolvers/wall-<wbr>slide"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_scene_.html" class="tsd-kind-icon">"scene"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_sound_sound_.html" class="tsd-kind-icon">"sound/sound"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_sound_sound_group_.html" class="tsd-kind-icon">"sound/sound-<wbr>group"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_sound_sound_pool_.html" class="tsd-kind-icon">"sound/sound-<wbr>pool"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_sound_web_audio_.html" class="tsd-kind-icon">"sound/web-<wbr>audio"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_state_.html" class="tsd-kind-icon">"state"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_tile_map_.html" class="tsd-kind-icon">"tile-<wbr>map"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_tile_sprite_.html" class="tsd-kind-icon">"tile-<wbr>sprite"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_timer_.html" class="tsd-kind-icon">"timer"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_types_entity_.html" class="tsd-kind-icon">"types/entity"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_types_hit_box_.html" class="tsd-kind-icon">"types/hit-<wbr>box"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_types_index_.html" class="tsd-kind-icon">"types/index"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_types_rect_.html" class="tsd-kind-icon">"types/rect"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_types_sprite_.html" class="tsd-kind-icon">"types/sprite"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_types_text_.html" class="tsd-kind-icon">"types/text"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_types_texture_.html" class="tsd-kind-icon">"types/texture"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_types_tiled_.html" class="tsd-kind-icon">"types/tiled"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_types_trigger_.html" class="tsd-kind-icon">"types/trigger"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_types_vec_.html" class="tsd-kind-icon">"types/vec"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_utils_index_.html" class="tsd-kind-icon">"utils/index"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_utils_math_.html" class="tsd-kind-icon">"utils/math"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_utils_physics_.html" class="tsd-kind-icon">"utils/physics"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_utils_sprite_.html" class="tsd-kind-icon">"utils/sprite"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_utils_tiled_parser_.html" class="tsd-kind-icon">"utils/tiled-<wbr>parser"</a></li>
+							<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="_game_.game.html#constructor" class="tsd-kind-icon">constructor</a></li>
+						</ul>
+					</section>
+					<section class="tsd-index-section ">
+						<h3>Properties</h3>
+						<ul class="tsd-index-list">
+							<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><a href="_game_.game.html#fps" class="tsd-kind-icon">FPS</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><a href="_game_.game.html#ups" class="tsd-kind-icon">UPS</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><a href="_game_.game.html#assets" class="tsd-kind-icon">assets</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><a href="_game_.game.html#debug" class="tsd-kind-icon">debug</a></li>
+						</ul>
+					</section>
+					<section class="tsd-index-section ">
+						<h3>Accessors</h3>
+						<ul class="tsd-index-list">
+							<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_game_.game.html#canvas" class="tsd-kind-icon">canvas</a></li>
+							<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_game_.game.html#height" class="tsd-kind-icon">height</a></li>
+							<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_game_.game.html#scene" class="tsd-kind-icon">scene</a></li>
+							<li class="tsd-kind-accessor tsd-parent-kind-class"><a href="_game_.game.html#speed" class="tsd-kind-icon">speed</a></li>
+							<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_game_.game.html#width" class="tsd-kind-icon">width</a></li>
+						</ul>
+					</section>
+					<section class="tsd-index-section ">
+						<h3>Methods</h3>
+						<ul class="tsd-index-list">
+							<li class="tsd-kind-method tsd-parent-kind-class"><a href="_game_.game.html#run" class="tsd-kind-icon">run</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class"><a href="_game_.game.html#setscene" class="tsd-kind-icon">set<wbr>Scene</a></li>
 						</ul>
 					</section>
 				</div>
+			</section>
+		</section>
+		<section class="tsd-panel-group tsd-member-group ">
+			<h2>Constructors</h2>
+			<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class">
+				<a name="constructor" class="tsd-anchor"></a>
+				<h3>constructor</h3>
+				<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
+					<li class="tsd-signature tsd-kind-icon">new <wbr>Game<span class="tsd-signature-symbol">(</span>width<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, height<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, useWebGL<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span>, container<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">HTMLElement</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_game_.game.html" class="tsd-signature-type">Game</a></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/bdbe1bc/lib/game.ts#L100">game.ts:100</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Initialize Game object.</p>
+							</div>
+						</div>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>width: <span class="tsd-signature-type">number</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<div class="lead">
+										<p>Width of the game screen.</p>
+									</div>
+								</div>
+							</li>
+							<li>
+								<h5>height: <span class="tsd-signature-type">number</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<div class="lead">
+										<p>Height of the game screen.</p>
+									</div>
+								</div>
+							</li>
+							<li>
+								<h5><span class="tsd-flag ts-flagDefault value">Default value</span> useWebGL: <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> =&nbsp;true</span></h5>
+							</li>
+							<li>
+								<h5><span class="tsd-flag ts-flagDefault value">Default value</span> container: <span class="tsd-signature-type">HTMLElement</span><span class="tsd-signature-symbol"> =&nbsp;document.body</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<div class="lead">
+										<p>The element to append the canvas to.</p>
+									</div>
+								</div>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <a href="_game_.game.html" class="tsd-signature-type">Game</a></h4>
+					</li>
+				</ul>
+			</section>
+		</section>
+		<section class="tsd-panel-group tsd-member-group ">
+			<h2>Properties</h2>
+			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-static">
+				<a name="fps" class="tsd-anchor"></a>
+				<h3><span class="tsd-flag ts-flagStatic">Static</span> FPS</h3>
+				<div class="tsd-signature tsd-kind-icon">FPS<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;60</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/kiswa/kilo/blob/bdbe1bc/lib/game.ts#L63">game.ts:63</a></li>
+					</ul>
+				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Frames per second.</p>
+					</div>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-static">
+				<a name="ups" class="tsd-anchor"></a>
+				<h3><span class="tsd-flag ts-flagStatic">Static</span> UPS</h3>
+				<div class="tsd-signature tsd-kind-icon">UPS<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;60</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/kiswa/kilo/blob/bdbe1bc/lib/game.ts#L65">game.ts:65</a></li>
+					</ul>
+				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Updates per second.</p>
+					</div>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-static">
+				<a name="assets" class="tsd-anchor"></a>
+				<h3><span class="tsd-flag ts-flagStatic">Static</span> assets</h3>
+				<div class="tsd-signature tsd-kind-icon">assets<span class="tsd-signature-symbol">:</span> <a href="_assets_.assets.html" class="tsd-signature-type">Assets</a><span class="tsd-signature-symbol"> =&nbsp;new Assets()</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/kiswa/kilo/blob/bdbe1bc/lib/game.ts#L59">game.ts:59</a></li>
+					</ul>
+				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>An [[Assetts]] instance for loading all game assets.</p>
+					</div>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-static">
+				<a name="debug" class="tsd-anchor"></a>
+				<h3><span class="tsd-flag ts-flagStatic">Static</span> debug</h3>
+				<div class="tsd-signature tsd-kind-icon">debug<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> =&nbsp;false</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/kiswa/kilo/blob/bdbe1bc/lib/game.ts#L61">game.ts:61</a></li>
+					</ul>
+				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Whether or not to enable debug display.</p>
+					</div>
+				</div>
+			</section>
+		</section>
+		<section class="tsd-panel-group tsd-member-group ">
+			<h2>Accessors</h2>
+			<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
+				<a name="canvas" class="tsd-anchor"></a>
+				<h3>canvas</h3>
+				<div class="tsd-signature tsd-kind-icon">canvas<span class="tsd-signature-symbol">:</span> </div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/kiswa/kilo/blob/bdbe1bc/lib/game.ts#L98">game.ts:98</a></li>
+					</ul>
+				</aside>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
+				<a name="height" class="tsd-anchor"></a>
+				<h3>height</h3>
+				<div class="tsd-signature tsd-kind-icon">height<span class="tsd-signature-symbol">:</span> </div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/kiswa/kilo/blob/bdbe1bc/lib/game.ts#L73">game.ts:73</a></li>
+					</ul>
+				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Gets the height of the game screen.</p>
+					</div>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
+				<a name="scene" class="tsd-anchor"></a>
+				<h3>scene</h3>
+				<div class="tsd-signature tsd-kind-icon">scene<span class="tsd-signature-symbol">:</span> </div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/kiswa/kilo/blob/bdbe1bc/lib/game.ts#L78">game.ts:78</a></li>
+					</ul>
+				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Gets the game scene.</p>
+					</div>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-accessor tsd-parent-kind-class">
+				<a name="speed" class="tsd-anchor"></a>
+				<h3>speed</h3>
+				<div class="tsd-signature tsd-kind-icon">speed<span class="tsd-signature-symbol">:</span> </div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/kiswa/kilo/blob/bdbe1bc/lib/game.ts#L86">game.ts:86</a></li>
+						<li>Defined in <a href="https://github.com/kiswa/kilo/blob/bdbe1bc/lib/game.ts#L93">game.ts:93</a></li>
+					</ul>
+				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Gets the current speed multiplier of the game.
+						Sets the speed multiplier of the game.</p>
+					</div>
+					<dl class="tsd-comment-tags">
+						<dt>default</dt>
+						<dd><p>Speed.Normal</p>
+						</dd>
+					</dl>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
+				<a name="width" class="tsd-anchor"></a>
+				<h3>width</h3>
+				<div class="tsd-signature tsd-kind-icon">width<span class="tsd-signature-symbol">:</span> </div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/kiswa/kilo/blob/bdbe1bc/lib/game.ts#L68">game.ts:68</a></li>
+					</ul>
+				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Gets the width of the game screen.</p>
+					</div>
+				</div>
+			</section>
+		</section>
+		<section class="tsd-panel-group tsd-member-group ">
+			<h2>Methods</h2>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+				<a name="run" class="tsd-anchor"></a>
+				<h3>run</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+					<li class="tsd-signature tsd-kind-icon">run<span class="tsd-signature-symbol">(</span>gameUpdate<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">GameUpdate</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/bdbe1bc/lib/game.ts#L157">game.ts:157</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Start the game loop.</p>
+							</div>
+						</div>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5><span class="tsd-flag ts-flagDefault value">Default value</span> gameUpdate: <span class="tsd-signature-type">GameUpdate</span><span class="tsd-signature-symbol"> =&nbsp;() &#x3D;&gt; {}</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<p>An update function to run for the game.</p>
+								</div>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+				<a name="setscene" class="tsd-anchor"></a>
+				<h3>set<wbr>Scene</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+					<li class="tsd-signature tsd-kind-icon">set<wbr>Scene<span class="tsd-signature-symbol">(</span>scene<span class="tsd-signature-symbol">: </span><a href="_scene_.scene.html" class="tsd-signature-type">Scene</a>, fadeInSeconds<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/bdbe1bc/lib/game.ts#L141">game.ts:141</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Change to a new scene in the game.</p>
+							</div>
+						</div>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>scene: <a href="_scene_.scene.html" class="tsd-signature-type">Scene</a></h5>
+								<div class="tsd-comment tsd-typography">
+									<p>The new scene to transition into.</p>
+								</div>
+							</li>
+							<li>
+								<h5><span class="tsd-flag ts-flagDefault value">Default value</span> fadeInSeconds: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;0.5</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<p>Time in seconds for the transition.</p>
+								</div>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+					</li>
+				</ul>
 			</section>
 		</section>
 		<footer>

@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>kilo | kilo</title>
+	<title>OneUp | kilo</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<style type="text/css">/*! normalize.css v1.1.3 | MIT License | git.io/normalize */
@@ -2347,7 +2347,7 @@ img {
 		<div class="container">
 			<div class="table-wrap">
 				<div class="table-cell">
-					<strong><a href="index.html">kilo</a></strong>
+					<strong><a href="../index.html">kilo</a></strong>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -2377,75 +2377,469 @@ img {
 </header>
 <nav class="tsd-navigation secondary">
 	<ul>
+		<li class="current tsd-kind-class tsd-parent-kind-external-module">
+			<a href="_fx_one_up_.oneup.html" class="tsd-kind-icon">One<wbr>Up</a>
+			<ul>
+				<li class=" tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite">
+					<a href="_fx_one_up_.oneup.html#constructor" class="tsd-kind-icon">constructor</a>
+				</li>
+				<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+					<a href="_fx_one_up_.oneup.html#alpha" class="tsd-kind-icon">alpha</a>
+				</li>
+				<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+					<a href="_fx_one_up_.oneup.html#children" class="tsd-kind-icon">children</a>
+				</li>
+				<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+					<a href="_fx_one_up_.oneup.html#dead" class="tsd-kind-icon">dead</a>
+				</li>
+				<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+					<a href="_fx_one_up_.oneup.html#pos" class="tsd-kind-icon">pos</a>
+				</li>
+				<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+					<a href="_fx_one_up_.oneup.html#scale" class="tsd-kind-icon">scale</a>
+				</li>
+				<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+					<a href="_fx_one_up_.oneup.html#visible" class="tsd-kind-icon">visible</a>
+				</li>
+				<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+					<a href="_fx_one_up_.oneup.html#haschildren" class="tsd-kind-icon">has<wbr>Children</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-overwrite tsd-is-inherited">
+					<a href="_fx_one_up_.oneup.html#add" class="tsd-kind-icon">add</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+					<a href="_fx_one_up_.oneup.html#map" class="tsd-kind-icon">map</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited">
+					<a href="_fx_one_up_.oneup.html#remove" class="tsd-kind-icon">remove</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
+					<a href="_fx_one_up_.oneup.html#update" class="tsd-kind-icon">update</a>
+				</li>
+			</ul>
+		</li>
 	</ul>
 </nav>
 <div class="container container-main">
 	<div class="content-wrap">
-		<div class="tsd-panel tsd-typography">
-			<a href="#kilo" id="kilo" style="color: inherit; text-decoration: none;">
-				<h1>kilo</h1>
-			</a>
-			<p>A 2D game library written in TypeScript.</p>
-		</div>
+		<section class="tsd-panel tsd-comment">
+			<div class="tsd-comment tsd-typography">
+				<div class="lead">
+					<p>An effect where the provided <a href="_tile_sprite_.tilesprite.html">TileSprite</a> or <a href="_types_rect_.rect.html">Rect</a> (defaults to rectangle
+						if not provided) is moved away from its starting position at the specified
+					speed and duration.</p>
+				</div>
+				<a href="#example" id="example" style="color: inherit; text-decoration: none;">
+					<h3>Example</h3>
+				</a>
+				<pre><code class="language-typescript"><span class="hljs-comment">// Inside a 'gotPickup' or similar function</span>
+<span class="hljs-keyword">const</span> coin = <span class="hljs-keyword">new</span> TileSprite(texture, <span class="hljs-number">48</span>, <span class="hljs-number">48</span>)
+coin.anims.add(<span class="hljs-string">'spin'</span>, [<span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">8</span>].map(<span class="hljs-function"><span class="hljs-params">x</span> =&gt;</span> ({ x, y: <span class="hljs-number">4</span> } <span class="hljs-keyword">as</span> <span class="hljs-built_in">any</span>)), <span class="hljs-number">.1</span>)
+coin.anims.play(<span class="hljs-string">'spin'</span>)
+
+<span class="hljs-keyword">const</span> one = <span class="hljs-keyword">this</span>.add&lt;OneUp&gt;(<span class="hljs-keyword">new</span> OneUp(coin))
+one.pos.copy(<span class="hljs-keyword">this</span>.player.pos)</code></pre>
+				<dl class="tsd-comment-tags">
+					<dt>remarks</dt>
+					<dd><p>Default behavior is moving up and fading out over 0.6 seconds.</p>
+					</dd>
+				</dl>
+			</div>
+		</section>
+		<section class="tsd-panel tsd-hierarchy">
+			<h3>Hierarchy</h3>
+			<ul class="tsd-hierarchy">
+				<li>
+					<a href="_container_.container.html" class="tsd-signature-type">Container</a>
+					<ul class="tsd-hierarchy">
+						<li>
+							<span class="target">OneUp</span>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</section>
 		<section class="tsd-panel-group tsd-index-group">
 			<h2>Index</h2>
 			<section class="tsd-panel tsd-index-panel">
 				<div class="tsd-index-content">
 					<section class="tsd-index-section ">
-						<h3>External modules</h3>
+						<h3>Constructors</h3>
 						<ul class="tsd-index-list">
-							<li class="tsd-kind-external-module"><a href="modules/_animations_.html" class="tsd-kind-icon">"animations"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_assets_.html" class="tsd-kind-icon">"assets"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_camera_.html" class="tsd-kind-icon">"camera"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_container_.html" class="tsd-kind-icon">"container"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_controls_controls_.html" class="tsd-kind-icon">"controls/controls"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_controls_gamepad_controls_.html" class="tsd-kind-icon">"controls/gamepad-<wbr>controls"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_controls_key_controls_.html" class="tsd-kind-icon">"controls/key-<wbr>controls"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_controls_mouse_controls_.html" class="tsd-kind-icon">"controls/mouse-<wbr>controls"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_fx_index_.html" class="tsd-kind-icon">"fx/index"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_fx_one_up_.html" class="tsd-kind-icon">"fx/one-<wbr>up"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_fx_particle_.html" class="tsd-kind-icon">"fx/particle"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_fx_particle_emitter_.html" class="tsd-kind-icon">"fx/particle-<wbr>emitter"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_game_.html" class="tsd-kind-icon">"game"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_index_.html" class="tsd-kind-icon">"index"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_renderer_canvas_renderer_.html" class="tsd-kind-icon">"renderer/canvas-<wbr>renderer"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_renderer_index_.html" class="tsd-kind-icon">"renderer/index"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_renderer_renderer_.html" class="tsd-kind-icon">"renderer/renderer"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_renderer_webgl_renderer_.html" class="tsd-kind-icon">"renderer/webgl-<wbr>renderer"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_renderer_webgl_defaults_.html" class="tsd-kind-icon">"renderer/webgl/defaults"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_renderer_webgl_index_.html" class="tsd-kind-icon">"renderer/webgl/index"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_renderer_webgl_shader_program_.html" class="tsd-kind-icon">"renderer/webgl/shader-<wbr>program"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_renderer_webgl_utils_.html" class="tsd-kind-icon">"renderer/webgl/utils"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_resolvers_index_.html" class="tsd-kind-icon">"resolvers/index"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_resolvers_stop_move_.html" class="tsd-kind-icon">"resolvers/stop-<wbr>move"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_resolvers_wall_slide_.html" class="tsd-kind-icon">"resolvers/wall-<wbr>slide"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_scene_.html" class="tsd-kind-icon">"scene"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_sound_sound_.html" class="tsd-kind-icon">"sound/sound"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_sound_sound_group_.html" class="tsd-kind-icon">"sound/sound-<wbr>group"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_sound_sound_pool_.html" class="tsd-kind-icon">"sound/sound-<wbr>pool"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_sound_web_audio_.html" class="tsd-kind-icon">"sound/web-<wbr>audio"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_state_.html" class="tsd-kind-icon">"state"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_tile_map_.html" class="tsd-kind-icon">"tile-<wbr>map"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_tile_sprite_.html" class="tsd-kind-icon">"tile-<wbr>sprite"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_timer_.html" class="tsd-kind-icon">"timer"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_types_entity_.html" class="tsd-kind-icon">"types/entity"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_types_hit_box_.html" class="tsd-kind-icon">"types/hit-<wbr>box"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_types_index_.html" class="tsd-kind-icon">"types/index"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_types_rect_.html" class="tsd-kind-icon">"types/rect"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_types_sprite_.html" class="tsd-kind-icon">"types/sprite"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_types_text_.html" class="tsd-kind-icon">"types/text"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_types_texture_.html" class="tsd-kind-icon">"types/texture"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_types_tiled_.html" class="tsd-kind-icon">"types/tiled"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_types_trigger_.html" class="tsd-kind-icon">"types/trigger"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_types_vec_.html" class="tsd-kind-icon">"types/vec"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_utils_index_.html" class="tsd-kind-icon">"utils/index"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_utils_math_.html" class="tsd-kind-icon">"utils/math"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_utils_physics_.html" class="tsd-kind-icon">"utils/physics"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_utils_sprite_.html" class="tsd-kind-icon">"utils/sprite"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_utils_tiled_parser_.html" class="tsd-kind-icon">"utils/tiled-<wbr>parser"</a></li>
+							<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite"><a href="_fx_one_up_.oneup.html#constructor" class="tsd-kind-icon">constructor</a></li>
+						</ul>
+					</section>
+					<section class="tsd-index-section tsd-is-inherited">
+						<h3>Properties</h3>
+						<ul class="tsd-index-list">
+							<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_fx_one_up_.oneup.html#alpha" class="tsd-kind-icon">alpha</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_fx_one_up_.oneup.html#children" class="tsd-kind-icon">children</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_fx_one_up_.oneup.html#dead" class="tsd-kind-icon">dead</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_fx_one_up_.oneup.html#pos" class="tsd-kind-icon">pos</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_fx_one_up_.oneup.html#scale" class="tsd-kind-icon">scale</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_fx_one_up_.oneup.html#visible" class="tsd-kind-icon">visible</a></li>
+						</ul>
+					</section>
+					<section class="tsd-index-section tsd-is-inherited">
+						<h3>Accessors</h3>
+						<ul class="tsd-index-list">
+							<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited"><a href="_fx_one_up_.oneup.html#haschildren" class="tsd-kind-icon">has<wbr>Children</a></li>
+						</ul>
+					</section>
+					<section class="tsd-index-section ">
+						<h3>Methods</h3>
+						<ul class="tsd-index-list">
+							<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-overwrite tsd-is-inherited"><a href="_fx_one_up_.oneup.html#add" class="tsd-kind-icon">add</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_fx_one_up_.oneup.html#map" class="tsd-kind-icon">map</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited"><a href="_fx_one_up_.oneup.html#remove" class="tsd-kind-icon">remove</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite"><a href="_fx_one_up_.oneup.html#update" class="tsd-kind-icon">update</a></li>
 						</ul>
 					</section>
 				</div>
+			</section>
+		</section>
+		<section class="tsd-panel-group tsd-member-group ">
+			<h2>Constructors</h2>
+			<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite">
+				<a name="constructor" class="tsd-anchor"></a>
+				<h3>constructor</h3>
+				<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite">
+					<li class="tsd-signature tsd-kind-icon">new <wbr>One<wbr>Up<span class="tsd-signature-symbol">(</span>display<span class="tsd-signature-symbol">?: </span><a href="_tile_sprite_.tilesprite.html" class="tsd-signature-type">TileSprite</a><span class="tsd-signature-symbol"> | </span><a href="_types_rect_.rect.html" class="tsd-signature-type">Rect</a>, speed<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span>, duration<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_fx_one_up_.oneup.html" class="tsd-signature-type">OneUp</a></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<p>Overrides <a href="_types_entity_.entity.html">Entity</a>.<a href="_types_entity_.entity.html#constructor">constructor</a></p>
+							<ul>
+								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/bdbe1bc/lib/fx/one-up.ts#L29">fx/one-up.ts:29</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Initialize OneUp object.</p>
+							</div>
+						</div>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> display: <a href="_tile_sprite_.tilesprite.html" class="tsd-signature-type">TileSprite</a><span class="tsd-signature-symbol"> | </span><a href="_types_rect_.rect.html" class="tsd-signature-type">Rect</a></h5>
+								<div class="tsd-comment tsd-typography">
+									<div class="lead">
+										<p>TileSprite (or Rect) to use for display.
+										Rectangle created if not provided.</p>
+									</div>
+								</div>
+							</li>
+							<li>
+								<h5><span class="tsd-flag ts-flagDefault value">Default value</span> speed: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;2</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<div class="lead">
+										<p>Speed (and x-axis direction by numeric sign) to move from
+										initial point.</p>
+									</div>
+								</div>
+							</li>
+							<li>
+								<h5><span class="tsd-flag ts-flagDefault value">Default value</span> duration: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;0.6</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<div class="lead">
+										<p>Time in seconds to fade out.</p>
+									</div>
+								</div>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <a href="_fx_one_up_.oneup.html" class="tsd-signature-type">OneUp</a></h4>
+					</li>
+				</ul>
+			</section>
+		</section>
+		<section class="tsd-panel-group tsd-member-group tsd-is-inherited">
+			<h2>Properties</h2>
+			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+				<a name="alpha" class="tsd-anchor"></a>
+				<h3>alpha</h3>
+				<div class="tsd-signature tsd-kind-icon">alpha<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+				<aside class="tsd-sources">
+					<p>Inherited from <a href="_types_entity_.entity.html">Entity</a>.<a href="_types_entity_.entity.html#alpha">alpha</a></p>
+					<ul>
+						<li>Defined in <a href="https://github.com/kiswa/kilo/blob/bdbe1bc/lib/types/entity.ts#L21">types/entity.ts:21</a></li>
+					</ul>
+				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>The opacity of the entity (from 0 to 1)</p>
+					</div>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+				<a name="children" class="tsd-anchor"></a>
+				<h3>children</h3>
+				<div class="tsd-signature tsd-kind-icon">children<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">HasUpdate</span><span class="tsd-signature-symbol">[]</span></div>
+				<aside class="tsd-sources">
+					<p>Inherited from <a href="_types_entity_.entity.html">Entity</a>.<a href="_types_entity_.entity.html#children">children</a></p>
+					<ul>
+						<li>Defined in <a href="https://github.com/kiswa/kilo/blob/bdbe1bc/lib/types/entity.ts#L29">types/entity.ts:29</a></li>
+					</ul>
+				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>An array of child entities for recursive update/render.</p>
+					</div>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+				<a name="dead" class="tsd-anchor"></a>
+				<h3>dead</h3>
+				<div class="tsd-signature tsd-kind-icon">dead<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+				<aside class="tsd-sources">
+					<p>Inherited from <a href="_types_entity_.entity.html">Entity</a>.<a href="_types_entity_.entity.html#dead">dead</a></p>
+					<ul>
+						<li>Defined in <a href="https://github.com/kiswa/kilo/blob/bdbe1bc/lib/types/entity.ts#L18">types/entity.ts:18</a></li>
+					</ul>
+				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Whether or not the entity is dead.</p>
+					</div>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+				<a name="pos" class="tsd-anchor"></a>
+				<h3>pos</h3>
+				<div class="tsd-signature tsd-kind-icon">pos<span class="tsd-signature-symbol">:</span> <a href="_types_vec_.vec.html" class="tsd-signature-type">Vec</a></div>
+				<aside class="tsd-sources">
+					<p>Inherited from <a href="_types_entity_.entity.html">Entity</a>.<a href="_types_entity_.entity.html#pos">pos</a></p>
+					<ul>
+						<li>Defined in <a href="https://github.com/kiswa/kilo/blob/bdbe1bc/lib/types/entity.ts#L24">types/entity.ts:24</a></li>
+					</ul>
+				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Position of the entity.</p>
+					</div>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+				<a name="scale" class="tsd-anchor"></a>
+				<h3>scale</h3>
+				<div class="tsd-signature tsd-kind-icon">scale<span class="tsd-signature-symbol">:</span> <a href="_types_vec_.vec.html" class="tsd-signature-type">Vec</a></div>
+				<aside class="tsd-sources">
+					<p>Inherited from <a href="_types_entity_.entity.html">Entity</a>.<a href="_types_entity_.entity.html#scale">scale</a></p>
+					<ul>
+						<li>Defined in <a href="https://github.com/kiswa/kilo/blob/bdbe1bc/lib/types/entity.ts#L26">types/entity.ts:26</a></li>
+					</ul>
+				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Scale of the entity.</p>
+					</div>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+				<a name="visible" class="tsd-anchor"></a>
+				<h3>visible</h3>
+				<div class="tsd-signature tsd-kind-icon">visible<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+				<aside class="tsd-sources">
+					<p>Inherited from <a href="_types_entity_.entity.html">Entity</a>.<a href="_types_entity_.entity.html#visible">visible</a></p>
+					<ul>
+						<li>Defined in <a href="https://github.com/kiswa/kilo/blob/bdbe1bc/lib/types/entity.ts#L16">types/entity.ts:16</a></li>
+					</ul>
+				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Whether or not the entity is visible.</p>
+					</div>
+				</div>
+			</section>
+		</section>
+		<section class="tsd-panel-group tsd-member-group tsd-is-inherited">
+			<h2>Accessors</h2>
+			<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+				<a name="haschildren" class="tsd-anchor"></a>
+				<h3>has<wbr>Children</h3>
+				<div class="tsd-signature tsd-kind-icon">has<wbr>Children<span class="tsd-signature-symbol">:</span> </div>
+				<aside class="tsd-sources">
+					<p>Inherited from <a href="_types_entity_.entity.html">Entity</a>.<a href="_types_entity_.entity.html#haschildren">hasChildren</a></p>
+					<ul>
+						<li>Defined in <a href="https://github.com/kiswa/kilo/blob/bdbe1bc/lib/types/entity.ts#L32">types/entity.ts:32</a></li>
+					</ul>
+				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Whether or not there are any child entities.</p>
+					</div>
+				</div>
+			</section>
+		</section>
+		<section class="tsd-panel-group tsd-member-group ">
+			<h2>Methods</h2>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-overwrite tsd-is-inherited">
+				<a name="add" class="tsd-anchor"></a>
+				<h3>add</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-overwrite tsd-is-inherited">
+					<li class="tsd-signature tsd-kind-icon">add&lt;T&gt;<span class="tsd-signature-symbol">(</span>child<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<p>Inherited from <a href="_container_.container.html">Container</a>.<a href="_container_.container.html#add">add</a></p>
+							<p>Overrides <a href="_types_entity_.entity.html">Entity</a>.<a href="_types_entity_.entity.html#add">add</a></p>
+							<ul>
+								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/bdbe1bc/lib/container.ts#L26">container.ts:26</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Add a child object.</p>
+							</div>
+						</div>
+						<h4 class="tsd-type-parameters-title">Type parameters</h4>
+						<ul class="tsd-type-parameters">
+							<li>
+								<h4>T</h4>
+							</li>
+						</ul>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>child: <span class="tsd-signature-type">any</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<p>Object to add to the container.</p>
+								</div>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">T</span></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+				<a name="map" class="tsd-anchor"></a>
+				<h3>map</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+					<li class="tsd-signature tsd-kind-icon">map<span class="tsd-signature-symbol">(</span>fn<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<p>Inherited from <a href="_types_entity_.entity.html">Entity</a>.<a href="_types_entity_.entity.html#map">map</a></p>
+							<ul>
+								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/bdbe1bc/lib/types/entity.ts#L75">types/entity.ts:75</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Maps a function across all children.</p>
+							</div>
+						</div>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>fn: <span class="tsd-signature-type">function</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<p>Function to call for each child.</p>
+								</div>
+								<ul class="tsd-parameters">
+									<li class="tsd-parameter-siganture">
+										<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
+											<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>child<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">HasUpdate</span>, index<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+										</ul>
+										<ul class="tsd-descriptions">
+											<li class="tsd-description">
+												<h4 class="tsd-parameters-title">Parameters</h4>
+												<ul class="tsd-parameters">
+													<li>
+														<h5>child: <span class="tsd-signature-type">HasUpdate</span></h5>
+													</li>
+													<li>
+														<h5><span class="tsd-flag ts-flagOptional">Optional</span> index: <span class="tsd-signature-type">number</span></h5>
+													</li>
+												</ul>
+												<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+											</li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited">
+				<a name="remove" class="tsd-anchor"></a>
+				<h3>remove</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited">
+					<li class="tsd-signature tsd-kind-icon">remove&lt;T&gt;<span class="tsd-signature-symbol">(</span>child<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<p>Inherited from <a href="_container_.container.html">Container</a>.<a href="_container_.container.html#remove">remove</a></p>
+							<ul>
+								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/bdbe1bc/lib/container.ts#L37">container.ts:37</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Remove a child object.</p>
+							</div>
+						</div>
+						<h4 class="tsd-type-parameters-title">Type parameters</h4>
+						<ul class="tsd-type-parameters">
+							<li>
+								<h4>T</h4>
+							</li>
+						</ul>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>child: <span class="tsd-signature-type">any</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<p>Object to remove from the container.</p>
+								</div>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">T</span></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
+				<a name="update" class="tsd-anchor"></a>
+				<h3>update</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
+					<li class="tsd-signature tsd-kind-icon">update<span class="tsd-signature-symbol">(</span>dt<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, t<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<p>Overrides <a href="_container_.container.html">Container</a>.<a href="_container_.container.html#update">update</a></p>
+							<ul>
+								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/bdbe1bc/lib/fx/one-up.ts#L55">fx/one-up.ts:55</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Update the state of the OneUp.</p>
+							</div>
+						</div>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>dt: <span class="tsd-signature-type">number</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<p>Delta time since last update.</p>
+								</div>
+							</li>
+							<li>
+								<h5>t: <span class="tsd-signature-type">number</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<p>Timestamp in seconds.</p>
+								</div>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+					</li>
+				</ul>
 			</section>
 		</section>
 		<footer>

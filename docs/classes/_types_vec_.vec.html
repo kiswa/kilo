@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>kilo | kilo</title>
+	<title>Vec | kilo</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<style type="text/css">/*! normalize.css v1.1.3 | MIT License | git.io/normalize */
@@ -2347,7 +2347,7 @@ img {
 		<div class="container">
 			<div class="table-wrap">
 				<div class="table-cell">
-					<strong><a href="index.html">kilo</a></strong>
+					<strong><a href="../index.html">kilo</a></strong>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -2377,75 +2377,548 @@ img {
 </header>
 <nav class="tsd-navigation secondary">
 	<ul>
+		<li class="current tsd-kind-class tsd-parent-kind-external-module">
+			<a href="_types_vec_.vec.html" class="tsd-kind-icon">Vec</a>
+			<ul>
+				<li class=" tsd-kind-constructor tsd-parent-kind-class">
+					<a href="_types_vec_.vec.html#constructor" class="tsd-kind-icon">constructor</a>
+				</li>
+				<li class=" tsd-kind-property tsd-parent-kind-class">
+					<a href="_types_vec_.vec.html#x" class="tsd-kind-icon">x</a>
+				</li>
+				<li class=" tsd-kind-property tsd-parent-kind-class">
+					<a href="_types_vec_.vec.html#y" class="tsd-kind-icon">y</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class">
+					<a href="_types_vec_.vec.html#add" class="tsd-kind-icon">add</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class">
+					<a href="_types_vec_.vec.html#clone" class="tsd-kind-icon">clone</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class">
+					<a href="_types_vec_.vec.html#copy" class="tsd-kind-icon">copy</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class">
+					<a href="_types_vec_.vec.html#divide" class="tsd-kind-icon">divide</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class">
+					<a href="_types_vec_.vec.html#dot" class="tsd-kind-icon">dot</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class">
+					<a href="_types_vec_.vec.html#mag" class="tsd-kind-icon">mag</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class">
+					<a href="_types_vec_.vec.html#multiply" class="tsd-kind-icon">multiply</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class">
+					<a href="_types_vec_.vec.html#normalize" class="tsd-kind-icon">normalize</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class">
+					<a href="_types_vec_.vec.html#set" class="tsd-kind-icon">set</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class">
+					<a href="_types_vec_.vec.html#subtract" class="tsd-kind-icon">subtract</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class">
+					<a href="_types_vec_.vec.html#tostring" class="tsd-kind-icon">to<wbr>String</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a href="_types_vec_.vec.html#from" class="tsd-kind-icon">from</a>
+				</li>
+			</ul>
+		</li>
+		<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+			<a href="../interfaces/_types_vec_.point.html" class="tsd-kind-icon">Point</a>
+		</li>
 	</ul>
 </nav>
 <div class="container container-main">
 	<div class="content-wrap">
-		<div class="tsd-panel tsd-typography">
-			<a href="#kilo" id="kilo" style="color: inherit; text-decoration: none;">
-				<h1>kilo</h1>
-			</a>
-			<p>A 2D game library written in TypeScript.</p>
-		</div>
+		<section class="tsd-panel tsd-comment">
+			<div class="tsd-comment tsd-typography">
+				<div class="lead">
+					<p>Simple 2D vector that provides vector math helpers.</p>
+				</div>
+				<p>Most methods are chainable.</p>
+				<a href="#example" id="example" style="color: inherit; text-decoration: none;">
+					<h3>Example</h3>
+				</a>
+				<pre><code class="language-typescript"><span class="hljs-keyword">const</span> vector1 = <span class="hljs-keyword">new</span> Vec(<span class="hljs-number">4</span>, <span class="hljs-number">8</span>)
+<span class="hljs-keyword">const</span> vector2 = Vec.from(vector1)
+
+vector1.add(vector2).multiply(<span class="hljs-number">3</span>)</code></pre>
+			</div>
+		</section>
+		<section class="tsd-panel tsd-hierarchy">
+			<h3>Hierarchy</h3>
+			<ul class="tsd-hierarchy">
+				<li>
+					<span class="target">Vec</span>
+				</li>
+			</ul>
+		</section>
+		<section class="tsd-panel">
+			<h3>Implements</h3>
+			<ul class="tsd-hierarchy">
+				<li><a href="../interfaces/_types_vec_.point.html" class="tsd-signature-type">Point</a></li>
+			</ul>
+		</section>
 		<section class="tsd-panel-group tsd-index-group">
 			<h2>Index</h2>
 			<section class="tsd-panel tsd-index-panel">
 				<div class="tsd-index-content">
 					<section class="tsd-index-section ">
-						<h3>External modules</h3>
+						<h3>Constructors</h3>
 						<ul class="tsd-index-list">
-							<li class="tsd-kind-external-module"><a href="modules/_animations_.html" class="tsd-kind-icon">"animations"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_assets_.html" class="tsd-kind-icon">"assets"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_camera_.html" class="tsd-kind-icon">"camera"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_container_.html" class="tsd-kind-icon">"container"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_controls_controls_.html" class="tsd-kind-icon">"controls/controls"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_controls_gamepad_controls_.html" class="tsd-kind-icon">"controls/gamepad-<wbr>controls"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_controls_key_controls_.html" class="tsd-kind-icon">"controls/key-<wbr>controls"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_controls_mouse_controls_.html" class="tsd-kind-icon">"controls/mouse-<wbr>controls"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_fx_index_.html" class="tsd-kind-icon">"fx/index"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_fx_one_up_.html" class="tsd-kind-icon">"fx/one-<wbr>up"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_fx_particle_.html" class="tsd-kind-icon">"fx/particle"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_fx_particle_emitter_.html" class="tsd-kind-icon">"fx/particle-<wbr>emitter"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_game_.html" class="tsd-kind-icon">"game"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_index_.html" class="tsd-kind-icon">"index"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_renderer_canvas_renderer_.html" class="tsd-kind-icon">"renderer/canvas-<wbr>renderer"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_renderer_index_.html" class="tsd-kind-icon">"renderer/index"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_renderer_renderer_.html" class="tsd-kind-icon">"renderer/renderer"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_renderer_webgl_renderer_.html" class="tsd-kind-icon">"renderer/webgl-<wbr>renderer"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_renderer_webgl_defaults_.html" class="tsd-kind-icon">"renderer/webgl/defaults"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_renderer_webgl_index_.html" class="tsd-kind-icon">"renderer/webgl/index"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_renderer_webgl_shader_program_.html" class="tsd-kind-icon">"renderer/webgl/shader-<wbr>program"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_renderer_webgl_utils_.html" class="tsd-kind-icon">"renderer/webgl/utils"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_resolvers_index_.html" class="tsd-kind-icon">"resolvers/index"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_resolvers_stop_move_.html" class="tsd-kind-icon">"resolvers/stop-<wbr>move"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_resolvers_wall_slide_.html" class="tsd-kind-icon">"resolvers/wall-<wbr>slide"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_scene_.html" class="tsd-kind-icon">"scene"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_sound_sound_.html" class="tsd-kind-icon">"sound/sound"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_sound_sound_group_.html" class="tsd-kind-icon">"sound/sound-<wbr>group"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_sound_sound_pool_.html" class="tsd-kind-icon">"sound/sound-<wbr>pool"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_sound_web_audio_.html" class="tsd-kind-icon">"sound/web-<wbr>audio"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_state_.html" class="tsd-kind-icon">"state"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_tile_map_.html" class="tsd-kind-icon">"tile-<wbr>map"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_tile_sprite_.html" class="tsd-kind-icon">"tile-<wbr>sprite"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_timer_.html" class="tsd-kind-icon">"timer"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_types_entity_.html" class="tsd-kind-icon">"types/entity"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_types_hit_box_.html" class="tsd-kind-icon">"types/hit-<wbr>box"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_types_index_.html" class="tsd-kind-icon">"types/index"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_types_rect_.html" class="tsd-kind-icon">"types/rect"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_types_sprite_.html" class="tsd-kind-icon">"types/sprite"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_types_text_.html" class="tsd-kind-icon">"types/text"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_types_texture_.html" class="tsd-kind-icon">"types/texture"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_types_tiled_.html" class="tsd-kind-icon">"types/tiled"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_types_trigger_.html" class="tsd-kind-icon">"types/trigger"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_types_vec_.html" class="tsd-kind-icon">"types/vec"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_utils_index_.html" class="tsd-kind-icon">"utils/index"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_utils_math_.html" class="tsd-kind-icon">"utils/math"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_utils_physics_.html" class="tsd-kind-icon">"utils/physics"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_utils_sprite_.html" class="tsd-kind-icon">"utils/sprite"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_utils_tiled_parser_.html" class="tsd-kind-icon">"utils/tiled-<wbr>parser"</a></li>
+							<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="_types_vec_.vec.html#constructor" class="tsd-kind-icon">constructor</a></li>
+						</ul>
+					</section>
+					<section class="tsd-index-section ">
+						<h3>Properties</h3>
+						<ul class="tsd-index-list">
+							<li class="tsd-kind-property tsd-parent-kind-class"><a href="_types_vec_.vec.html#x" class="tsd-kind-icon">x</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-class"><a href="_types_vec_.vec.html#y" class="tsd-kind-icon">y</a></li>
+						</ul>
+					</section>
+					<section class="tsd-index-section ">
+						<h3>Methods</h3>
+						<ul class="tsd-index-list">
+							<li class="tsd-kind-method tsd-parent-kind-class"><a href="_types_vec_.vec.html#add" class="tsd-kind-icon">add</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class"><a href="_types_vec_.vec.html#clone" class="tsd-kind-icon">clone</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class"><a href="_types_vec_.vec.html#copy" class="tsd-kind-icon">copy</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class"><a href="_types_vec_.vec.html#divide" class="tsd-kind-icon">divide</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class"><a href="_types_vec_.vec.html#dot" class="tsd-kind-icon">dot</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class"><a href="_types_vec_.vec.html#mag" class="tsd-kind-icon">mag</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class"><a href="_types_vec_.vec.html#multiply" class="tsd-kind-icon">multiply</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class"><a href="_types_vec_.vec.html#normalize" class="tsd-kind-icon">normalize</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class"><a href="_types_vec_.vec.html#set" class="tsd-kind-icon">set</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class"><a href="_types_vec_.vec.html#subtract" class="tsd-kind-icon">subtract</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class"><a href="_types_vec_.vec.html#tostring" class="tsd-kind-icon">to<wbr>String</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_types_vec_.vec.html#from" class="tsd-kind-icon">from</a></li>
 						</ul>
 					</section>
 				</div>
+			</section>
+		</section>
+		<section class="tsd-panel-group tsd-member-group ">
+			<h2>Constructors</h2>
+			<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class">
+				<a name="constructor" class="tsd-anchor"></a>
+				<h3>constructor</h3>
+				<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
+					<li class="tsd-signature tsd-kind-icon">new <wbr>Vec<span class="tsd-signature-symbol">(</span>x<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span>, y<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_types_vec_.vec.html" class="tsd-signature-type">Vec</a></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/bdbe1bc/lib/types/vec.ts#L41">types/vec.ts:41</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Initialize Vec object.</p>
+							</div>
+						</div>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5><span class="tsd-flag ts-flagDefault value">Default value</span> x: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;0</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<div class="lead">
+										<p>X coordinate value.</p>
+									</div>
+								</div>
+							</li>
+							<li>
+								<h5><span class="tsd-flag ts-flagDefault value">Default value</span> y: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;0</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<div class="lead">
+										<p>Y coordinate value.</p>
+									</div>
+								</div>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <a href="_types_vec_.vec.html" class="tsd-signature-type">Vec</a></h4>
+					</li>
+				</ul>
+			</section>
+		</section>
+		<section class="tsd-panel-group tsd-member-group ">
+			<h2>Properties</h2>
+			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+				<a name="x" class="tsd-anchor"></a>
+				<h3>x</h3>
+				<div class="tsd-signature tsd-kind-icon">x<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+				<aside class="tsd-sources">
+					<p>Implementation of <a href="../interfaces/_types_vec_.point.html">Point</a>.<a href="../interfaces/_types_vec_.point.html#x">x</a></p>
+					<ul>
+						<li>Defined in <a href="https://github.com/kiswa/kilo/blob/bdbe1bc/lib/types/vec.ts#L30">types/vec.ts:30</a></li>
+					</ul>
+				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>X coordinate value.</p>
+					</div>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+				<a name="y" class="tsd-anchor"></a>
+				<h3>y</h3>
+				<div class="tsd-signature tsd-kind-icon">y<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+				<aside class="tsd-sources">
+					<p>Implementation of <a href="../interfaces/_types_vec_.point.html">Point</a>.<a href="../interfaces/_types_vec_.point.html#y">y</a></p>
+					<ul>
+						<li>Defined in <a href="https://github.com/kiswa/kilo/blob/bdbe1bc/lib/types/vec.ts#L32">types/vec.ts:32</a></li>
+					</ul>
+				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Y coordinate value.</p>
+					</div>
+				</div>
+			</section>
+		</section>
+		<section class="tsd-panel-group tsd-member-group ">
+			<h2>Methods</h2>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+				<a name="add" class="tsd-anchor"></a>
+				<h3>add</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+					<li class="tsd-signature tsd-kind-icon">add<span class="tsd-signature-symbol">(</span>__namedParameters<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/bdbe1bc/lib/types/vec.ts#L88">types/vec.ts:88</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Adds the x and y values from the provided Vec.</p>
+							</div>
+						</div>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>__namedParameters: <span class="tsd-signature-type">object</span></h5>
+								<ul class="tsd-parameters">
+								</ul>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+				<a name="clone" class="tsd-anchor"></a>
+				<h3>clone</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+					<li class="tsd-signature tsd-kind-icon">clone<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_types_vec_.vec.html" class="tsd-signature-type">Vec</a></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/bdbe1bc/lib/types/vec.ts#L79">types/vec.ts:79</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Creates a cloned copy of the Vec.</p>
+							</div>
+						</div>
+						<h4 class="tsd-returns-title">Returns <a href="_types_vec_.vec.html" class="tsd-signature-type">Vec</a></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+				<a name="copy" class="tsd-anchor"></a>
+				<h3>copy</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+					<li class="tsd-signature tsd-kind-icon">copy<span class="tsd-signature-symbol">(</span>__namedParameters<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/bdbe1bc/lib/types/vec.ts#L72">types/vec.ts:72</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Copies the x and y values from the provided Vec.</p>
+							</div>
+						</div>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>__namedParameters: <span class="tsd-signature-type">object</span></h5>
+								<ul class="tsd-parameters">
+								</ul>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+				<a name="divide" class="tsd-anchor"></a>
+				<h3>divide</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+					<li class="tsd-signature tsd-kind-icon">divide<span class="tsd-signature-symbol">(</span>s<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/bdbe1bc/lib/types/vec.ts#L124">types/vec.ts:124</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Multiplies the x and y values by the provided value.</p>
+							</div>
+						</div>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>s: <span class="tsd-signature-type">number</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<p>The scalar value to multiply.</p>
+								</div>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+				<a name="dot" class="tsd-anchor"></a>
+				<h3>dot</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+					<li class="tsd-signature tsd-kind-icon">dot<span class="tsd-signature-symbol">(</span>__namedParameters<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/bdbe1bc/lib/types/vec.ts#L156">types/vec.ts:156</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Gets the dot product of two Vecs.</p>
+							</div>
+						</div>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>__namedParameters: <span class="tsd-signature-type">object</span></h5>
+								<ul class="tsd-parameters">
+								</ul>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+				<a name="mag" class="tsd-anchor"></a>
+				<h3>mag</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+					<li class="tsd-signature tsd-kind-icon">mag<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/bdbe1bc/lib/types/vec.ts#L134">types/vec.ts:134</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Gets the magnitude of the Vec.</p>
+							</div>
+						</div>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+				<a name="multiply" class="tsd-anchor"></a>
+				<h3>multiply</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+					<li class="tsd-signature tsd-kind-icon">multiply<span class="tsd-signature-symbol">(</span>s<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/bdbe1bc/lib/types/vec.ts#L112">types/vec.ts:112</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Multiplies the x and y values by the provided value.</p>
+							</div>
+						</div>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>s: <span class="tsd-signature-type">number</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<p>The scalar value to multiply.</p>
+								</div>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+				<a name="normalize" class="tsd-anchor"></a>
+				<h3>normalize</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+					<li class="tsd-signature tsd-kind-icon">normalize<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/bdbe1bc/lib/types/vec.ts#L141">types/vec.ts:141</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Gets the normal of the Vec.</p>
+							</div>
+						</div>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+				<a name="set" class="tsd-anchor"></a>
+				<h3>set</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+					<li class="tsd-signature tsd-kind-icon">set<span class="tsd-signature-symbol">(</span>x<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, y<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/bdbe1bc/lib/types/vec.ts#L60">types/vec.ts:60</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Set the coordinates of the Vec.</p>
+							</div>
+						</div>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>x: <span class="tsd-signature-type">number</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<p>X coordinate value.</p>
+								</div>
+							</li>
+							<li>
+								<h5>y: <span class="tsd-signature-type">number</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<p>Y coordinate value.</p>
+								</div>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+				<a name="subtract" class="tsd-anchor"></a>
+				<h3>subtract</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+					<li class="tsd-signature tsd-kind-icon">subtract<span class="tsd-signature-symbol">(</span>__namedParameters<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/bdbe1bc/lib/types/vec.ts#L100">types/vec.ts:100</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Subtracts the x and y values from the provided Vec.</p>
+							</div>
+						</div>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>__namedParameters: <span class="tsd-signature-type">object</span></h5>
+								<ul class="tsd-parameters">
+								</ul>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+				<a name="tostring" class="tsd-anchor"></a>
+				<h3>to<wbr>String</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+					<li class="tsd-signature tsd-kind-icon">to<wbr>String<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/bdbe1bc/lib/types/vec.ts#L165">types/vec.ts:165</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Custom string representation.</p>
+							</div>
+						</div>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						<p>String formatted as &quot;(x, y)&quot;</p>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+				<a name="from" class="tsd-anchor"></a>
+				<h3><span class="tsd-flag ts-flagStatic">Static</span> from</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<li class="tsd-signature tsd-kind-icon">from<span class="tsd-signature-symbol">(</span>v<span class="tsd-signature-symbol">: </span><a href="_types_vec_.vec.html" class="tsd-signature-type">Vec</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_types_vec_.vec.html" class="tsd-signature-type">Vec</a></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/bdbe1bc/lib/types/vec.ts#L39">types/vec.ts:39</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Creates a new Vec from the provided Vec.</p>
+							</div>
+						</div>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>v: <a href="_types_vec_.vec.html" class="tsd-signature-type">Vec</a></h5>
+								<div class="tsd-comment tsd-typography">
+									<p>Vec to copy into new Vec.</p>
+								</div>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <a href="_types_vec_.vec.html" class="tsd-signature-type">Vec</a></h4>
+					</li>
+				</ul>
 			</section>
 		</section>
 		<footer>

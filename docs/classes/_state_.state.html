@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>kilo | kilo</title>
+	<title>State | kilo</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<style type="text/css">/*! normalize.css v1.1.3 | MIT License | git.io/normalize */
@@ -2347,7 +2347,7 @@ img {
 		<div class="container">
 			<div class="table-wrap">
 				<div class="table-cell">
-					<strong><a href="index.html">kilo</a></strong>
+					<strong><a href="../index.html">kilo</a></strong>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -2377,75 +2377,368 @@ img {
 </header>
 <nav class="tsd-navigation secondary">
 	<ul>
+		<li class="current tsd-kind-class tsd-parent-kind-external-module tsd-has-type-parameter">
+			<a href="_state_.state.html" class="tsd-kind-icon">State</a>
+			<ul>
+				<li class=" tsd-kind-constructor tsd-parent-kind-class">
+					<a href="_state_.state.html#constructor" class="tsd-kind-icon">constructor</a>
+				</li>
+				<li class=" tsd-kind-property tsd-parent-kind-class">
+					<a href="_state_.state.html#first" class="tsd-kind-icon">first</a>
+				</li>
+				<li class=" tsd-kind-property tsd-parent-kind-class">
+					<a href="_state_.state.html#time" class="tsd-kind-icon">time</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class">
+					<a href="_state_.state.html#back" class="tsd-kind-icon">back</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class">
+					<a href="_state_.state.html#get" class="tsd-kind-icon">get</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class">
+					<a href="_state_.state.html#is" class="tsd-kind-icon">is</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class">
+					<a href="_state_.state.html#isin" class="tsd-kind-icon">is<wbr>In</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class">
+					<a href="_state_.state.html#set" class="tsd-kind-icon">set</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class">
+					<a href="_state_.state.html#update" class="tsd-kind-icon">update</a>
+				</li>
+			</ul>
+		</li>
 	</ul>
 </nav>
 <div class="container container-main">
 	<div class="content-wrap">
-		<div class="tsd-panel tsd-typography">
-			<a href="#kilo" id="kilo" style="color: inherit; text-decoration: none;">
-				<h1>kilo</h1>
-			</a>
-			<p>A 2D game library written in TypeScript.</p>
-		</div>
+		<section class="tsd-panel tsd-comment">
+			<div class="tsd-comment tsd-typography">
+				<div class="lead">
+					<p>Tracks state as provided, and provides information on status of the current
+						state. Also allows transitioning to a prior state from a temporary state
+					(e.g. a pause dialog back to game play).</p>
+				</div>
+				<a href="#example" id="example" style="color: inherit; text-decoration: none;">
+					<h3>Example</h3>
+				</a>
+				<pre><code class="language-typescript"><span class="hljs-keyword">enum</span> GameState {
+  Ready,
+  Playing,
+  Paused,
+  GameOver
+}
+
+<span class="hljs-comment">// In the constructor of whatever needs state.</span>
+<span class="hljs-keyword">this</span>.state = <span class="hljs-keyword">new</span> State&lt;GameState&gt;(GameState.Ready)
+
+<span class="hljs-comment">// In the update of the scene/object/whatever.</span>
+<span class="hljs-keyword">this</span>.state.update(dt)
+
+<span class="hljs-keyword">switch</span> (<span class="hljs-keyword">this</span>.state) {
+  <span class="hljs-keyword">case</span> GameState.Ready:
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.state.first) {
+      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'First frame of this state'</span>)
+    }
+
+    <span class="hljs-comment">// Go to Playing state after 1.5 seconds</span>
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.state.time &gt; <span class="hljs-number">1.5</span>) {
+      <span class="hljs-keyword">this</span>.state.set(GameState.Playing)
+    }
+  <span class="hljs-keyword">break</span>
+
+  <span class="hljs-keyword">default</span>:
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>.state.get())
+}</code></pre>
+			</div>
+		</section>
+		<section class="tsd-panel tsd-type-parameters">
+			<h3>Type parameters</h3>
+			<ul class="tsd-type-parameters">
+				<li>
+					<h4>EnumType</h4>
+				</li>
+			</ul>
+		</section>
+		<section class="tsd-panel tsd-hierarchy">
+			<h3>Hierarchy</h3>
+			<ul class="tsd-hierarchy">
+				<li>
+					<span class="target">State</span>
+				</li>
+			</ul>
+		</section>
 		<section class="tsd-panel-group tsd-index-group">
 			<h2>Index</h2>
 			<section class="tsd-panel tsd-index-panel">
 				<div class="tsd-index-content">
 					<section class="tsd-index-section ">
-						<h3>External modules</h3>
+						<h3>Constructors</h3>
 						<ul class="tsd-index-list">
-							<li class="tsd-kind-external-module"><a href="modules/_animations_.html" class="tsd-kind-icon">"animations"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_assets_.html" class="tsd-kind-icon">"assets"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_camera_.html" class="tsd-kind-icon">"camera"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_container_.html" class="tsd-kind-icon">"container"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_controls_controls_.html" class="tsd-kind-icon">"controls/controls"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_controls_gamepad_controls_.html" class="tsd-kind-icon">"controls/gamepad-<wbr>controls"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_controls_key_controls_.html" class="tsd-kind-icon">"controls/key-<wbr>controls"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_controls_mouse_controls_.html" class="tsd-kind-icon">"controls/mouse-<wbr>controls"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_fx_index_.html" class="tsd-kind-icon">"fx/index"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_fx_one_up_.html" class="tsd-kind-icon">"fx/one-<wbr>up"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_fx_particle_.html" class="tsd-kind-icon">"fx/particle"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_fx_particle_emitter_.html" class="tsd-kind-icon">"fx/particle-<wbr>emitter"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_game_.html" class="tsd-kind-icon">"game"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_index_.html" class="tsd-kind-icon">"index"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_renderer_canvas_renderer_.html" class="tsd-kind-icon">"renderer/canvas-<wbr>renderer"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_renderer_index_.html" class="tsd-kind-icon">"renderer/index"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_renderer_renderer_.html" class="tsd-kind-icon">"renderer/renderer"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_renderer_webgl_renderer_.html" class="tsd-kind-icon">"renderer/webgl-<wbr>renderer"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_renderer_webgl_defaults_.html" class="tsd-kind-icon">"renderer/webgl/defaults"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_renderer_webgl_index_.html" class="tsd-kind-icon">"renderer/webgl/index"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_renderer_webgl_shader_program_.html" class="tsd-kind-icon">"renderer/webgl/shader-<wbr>program"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_renderer_webgl_utils_.html" class="tsd-kind-icon">"renderer/webgl/utils"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_resolvers_index_.html" class="tsd-kind-icon">"resolvers/index"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_resolvers_stop_move_.html" class="tsd-kind-icon">"resolvers/stop-<wbr>move"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_resolvers_wall_slide_.html" class="tsd-kind-icon">"resolvers/wall-<wbr>slide"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_scene_.html" class="tsd-kind-icon">"scene"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_sound_sound_.html" class="tsd-kind-icon">"sound/sound"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_sound_sound_group_.html" class="tsd-kind-icon">"sound/sound-<wbr>group"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_sound_sound_pool_.html" class="tsd-kind-icon">"sound/sound-<wbr>pool"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_sound_web_audio_.html" class="tsd-kind-icon">"sound/web-<wbr>audio"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_state_.html" class="tsd-kind-icon">"state"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_tile_map_.html" class="tsd-kind-icon">"tile-<wbr>map"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_tile_sprite_.html" class="tsd-kind-icon">"tile-<wbr>sprite"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_timer_.html" class="tsd-kind-icon">"timer"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_types_entity_.html" class="tsd-kind-icon">"types/entity"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_types_hit_box_.html" class="tsd-kind-icon">"types/hit-<wbr>box"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_types_index_.html" class="tsd-kind-icon">"types/index"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_types_rect_.html" class="tsd-kind-icon">"types/rect"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_types_sprite_.html" class="tsd-kind-icon">"types/sprite"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_types_text_.html" class="tsd-kind-icon">"types/text"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_types_texture_.html" class="tsd-kind-icon">"types/texture"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_types_tiled_.html" class="tsd-kind-icon">"types/tiled"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_types_trigger_.html" class="tsd-kind-icon">"types/trigger"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_types_vec_.html" class="tsd-kind-icon">"types/vec"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_utils_index_.html" class="tsd-kind-icon">"utils/index"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_utils_math_.html" class="tsd-kind-icon">"utils/math"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_utils_physics_.html" class="tsd-kind-icon">"utils/physics"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_utils_sprite_.html" class="tsd-kind-icon">"utils/sprite"</a></li>
-							<li class="tsd-kind-external-module"><a href="modules/_utils_tiled_parser_.html" class="tsd-kind-icon">"utils/tiled-<wbr>parser"</a></li>
+							<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="_state_.state.html#constructor" class="tsd-kind-icon">constructor</a></li>
+						</ul>
+					</section>
+					<section class="tsd-index-section ">
+						<h3>Properties</h3>
+						<ul class="tsd-index-list">
+							<li class="tsd-kind-property tsd-parent-kind-class"><a href="_state_.state.html#first" class="tsd-kind-icon">first</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-class"><a href="_state_.state.html#time" class="tsd-kind-icon">time</a></li>
+						</ul>
+					</section>
+					<section class="tsd-index-section ">
+						<h3>Methods</h3>
+						<ul class="tsd-index-list">
+							<li class="tsd-kind-method tsd-parent-kind-class"><a href="_state_.state.html#back" class="tsd-kind-icon">back</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class"><a href="_state_.state.html#get" class="tsd-kind-icon">get</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class"><a href="_state_.state.html#is" class="tsd-kind-icon">is</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class"><a href="_state_.state.html#isin" class="tsd-kind-icon">is<wbr>In</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class"><a href="_state_.state.html#set" class="tsd-kind-icon">set</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class"><a href="_state_.state.html#update" class="tsd-kind-icon">update</a></li>
 						</ul>
 					</section>
 				</div>
+			</section>
+		</section>
+		<section class="tsd-panel-group tsd-member-group ">
+			<h2>Constructors</h2>
+			<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class">
+				<a name="constructor" class="tsd-anchor"></a>
+				<h3>constructor</h3>
+				<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
+					<li class="tsd-signature tsd-kind-icon">new <wbr>State<span class="tsd-signature-symbol">(</span>state<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">EnumType</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_state_.state.html" class="tsd-signature-type">State</a></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/bdbe1bc/lib/state.ts#L49">state.ts:49</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Initialize State object.</p>
+							</div>
+						</div>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>state: <span class="tsd-signature-type">EnumType</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<div class="lead">
+										<p>The initial state to set.</p>
+									</div>
+								</div>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <a href="_state_.state.html" class="tsd-signature-type">State</a></h4>
+					</li>
+				</ul>
+			</section>
+		</section>
+		<section class="tsd-panel-group tsd-member-group ">
+			<h2>Properties</h2>
+			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+				<a name="first" class="tsd-anchor"></a>
+				<h3>first</h3>
+				<div class="tsd-signature tsd-kind-icon">first<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/kiswa/kilo/blob/bdbe1bc/lib/state.ts#L44">state.ts:44</a></li>
+					</ul>
+				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Whether this is the first frame of the current state.</p>
+					</div>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+				<a name="time" class="tsd-anchor"></a>
+				<h3>time</h3>
+				<div class="tsd-signature tsd-kind-icon">time<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/kiswa/kilo/blob/bdbe1bc/lib/state.ts#L42">state.ts:42</a></li>
+					</ul>
+				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Number of seconds in the current state.</p>
+					</div>
+				</div>
+			</section>
+		</section>
+		<section class="tsd-panel-group tsd-member-group ">
+			<h2>Methods</h2>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+				<a name="back" class="tsd-anchor"></a>
+				<h3>back</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+					<li class="tsd-signature tsd-kind-icon">back<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/bdbe1bc/lib/state.ts#L63">state.ts:63</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Return to the previous state (if there is one).</p>
+							</div>
+						</div>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+				<a name="get" class="tsd-anchor"></a>
+				<h3>get</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+					<li class="tsd-signature tsd-kind-icon">get<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">EnumType</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/bdbe1bc/lib/state.ts#L90">state.ts:90</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Get the current state.</p>
+							</div>
+						</div>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">EnumType</span></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+				<a name="is" class="tsd-anchor"></a>
+				<h3>is</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+					<li class="tsd-signature tsd-kind-icon">is<span class="tsd-signature-symbol">(</span>state<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">EnumType</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/bdbe1bc/lib/state.ts#L112">state.ts:112</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Whether the current state is the one provided.</p>
+							</div>
+						</div>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>state: <span class="tsd-signature-type">EnumType</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<p>State to check for.</p>
+								</div>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+				<a name="isin" class="tsd-anchor"></a>
+				<h3>is<wbr>In</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+					<li class="tsd-signature tsd-kind-icon">is<wbr>In<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span>states<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">EnumType</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/bdbe1bc/lib/state.ts#L120">state.ts:120</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Whether the current state is one of the provided states.</p>
+							</div>
+						</div>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>states: <span class="tsd-signature-type">EnumType</span><span class="tsd-signature-symbol">[]</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<p>Array of possible states.</p>
+								</div>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+				<a name="set" class="tsd-anchor"></a>
+				<h3>set</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+					<li class="tsd-signature tsd-kind-icon">set<span class="tsd-signature-symbol">(</span>state<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">EnumType</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/bdbe1bc/lib/state.ts#L78">state.ts:78</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Set the current state and store the previous state to allow going back.</p>
+							</div>
+						</div>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>state: <span class="tsd-signature-type">EnumType</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<p>The new state to change to.</p>
+								</div>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+				<a name="update" class="tsd-anchor"></a>
+				<h3>update</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+					<li class="tsd-signature tsd-kind-icon">update<span class="tsd-signature-symbol">(</span>dt<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/kiswa/kilo/blob/bdbe1bc/lib/state.ts#L101">state.ts:101</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Update the state.</p>
+							</div>
+							<p>Should be called in parent object&#39;s update function.</p>
+						</div>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>dt: <span class="tsd-signature-type">number</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<p>Delta time since last update.</p>
+								</div>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+					</li>
+				</ul>
 			</section>
 		</section>
 		<footer>
