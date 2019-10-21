@@ -26,6 +26,13 @@ describe('Game', () => {
     con.error = olds[3]
   }
 
+  it('can be forced to use canvas instead of WebGL', () => {
+    const game = new Game(320, 240, false)
+    const anyGame = game as any
+
+    expect(anyGame.isWebGL).to.be.undefined
+  })
+
   describe('Properties', () => {
     it('has static property FPS with default value', () => {
       expect(Game).to.have.property('FPS').that.equals(60)

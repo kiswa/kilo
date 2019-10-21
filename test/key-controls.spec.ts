@@ -17,6 +17,16 @@ describe('KeyControls', () => {
     document.dispatchEvent(evt)
   }
 
+  it('allows certain keys to bubble their events', () => {
+    ctrls = new KeyControls()
+
+    keyDown('F5')
+    expect(ctrls.key('F5')).to.equal(true)
+
+    keyUp('F5')
+    expect(ctrls.key('F5')).to.equal(false)
+  })
+
   describe('Accessors', () => {
     beforeEach(() => {
       ctrls = new KeyControls()
@@ -24,6 +34,8 @@ describe('KeyControls', () => {
 
     it('has get accessor action', () => {
       expect(ctrls.action).to.be.undefined
+      keyDown('Space')
+      expect(ctrls.action).to.equal(true)
     })
 
     it('has set accessor action', () => {

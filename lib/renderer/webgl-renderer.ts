@@ -8,8 +8,6 @@ interface TextureInfo {
   texture: WebGLTexture
 }
 
-declare const spector: any
-
 /**
  * Recursive rendering utilizing HTML5 canvas and WebGL.
  *
@@ -42,11 +40,8 @@ export class WebGLRenderer extends Renderer {
       this.gl = this.canvas.getContext('webgl', { antialias: false })
 
       this.positionBuffer = this.gl.createBuffer()
-      ; (this.positionBuffer as any).__SPECTOR_Metadata = { name: 'positionBuffer' }
       this.textureBuffer = this.gl.createBuffer()
-      ; (this.textureBuffer as any).__SPECTOR_Metadata = { name: 'textureBuffer' }
       this.rectBuffer = this.gl.createBuffer()
-      ; (this.rectBuffer as any).__SPECTOR_Metadata = { name: 'rectBuffer' }
 
       this.createTextCanvas()
 
@@ -67,10 +62,6 @@ export class WebGLRenderer extends Renderer {
     }
 
     const { gl } = this
-
-    if (spector) {
-      spector.setMarker('Render')
-    }
 
     if (clear) {
       gl.clear(gl.COLOR_BUFFER_BIT)
@@ -102,10 +93,6 @@ export class WebGLRenderer extends Renderer {
   private renderRecursive(container: Entity | Container,
                           camera?: Camera) {
     const { gl, ctx } = this
-    if (spector) {
-      spector.setMarker('Recursive')
-      ; (gl as any).__SPECTOR_Metadata = { name: container }
-    }
 
     if (container.alpha) {
       this.globalAlpha = container.alpha
@@ -138,16 +125,8 @@ export class WebGLRenderer extends Renderer {
 
       if (child.texture) {
         if (child.tileWidth && child.frame) {
-          if (spector) {
-            spector.setMarker('Tile Sprite')
-          }
-
           this.drawTileSprite(child, camera)
         } else {
-          if (spector) {
-            spector.setMarker('Sprite')
-          }
-
           this.drawSprite(child, camera)
         }
       }
@@ -159,18 +138,10 @@ export class WebGLRenderer extends Renderer {
       }
 
       if (child.style && child.width && child.height) {
-        if (spector) {
-          spector.setMarker('Rect')
-        }
-
         gl.useProgram(this.shaderProgramCol.program)
         this.drawRect(child, camera)
         gl.useProgram(this.shaderProgramTex.program)
       }
-    }
-
-    if (spector) {
-      spector.clearMarker()
     }
   }
 
@@ -300,9 +271,6 @@ export class WebGLRenderer extends Renderer {
 
     if (this.textures.has(img.src)) {
       const texture = this.textures.get(img.src).texture
-      ; (texture as any).__SPECTOR_Metadata = {
-        frame: (sprite as any).frame,  name: img.src
-      }
       gl.bindTexture(gl.TEXTURE_2D, texture)
 
       return texture
@@ -310,10 +278,6 @@ export class WebGLRenderer extends Renderer {
 
     const texture = this.createTexture()
     gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, img)
-
-    ; (texture as any).__SPECTOR_Metadata = {
-      frame: (sprite as any).frame,  name: img.src
-    }
 
     this.textures.set(img.src, { texture })
 

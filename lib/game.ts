@@ -112,6 +112,7 @@ export class Game {
     this._height = height
 
     const canvas = document.createElement('canvas')
+
     if (useWebGL) {
       this.checkWebGL(canvas)
     }
@@ -123,6 +124,7 @@ export class Game {
     if (!useWebGL || !this.isWebGL) {
       this.renderer = new CanvasRenderer(width, height, container)
     }
+
     this._scene = new Container()
     this.destination = null
 
