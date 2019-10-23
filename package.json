@@ -6,14 +6,14 @@
   "scripts": {
     "docs": "typedoc lib",
     "test": "TS_NODE_PROJECT=test/tsconfig.json mocha -r ts-node/register test/**/*.spec.ts",
-    "test:cov": "TS_NODE_PROJECT=test/tsconfig.json nyc -r lcov -e .ts -x test/**/*.spec.ts mocha -r ts-node/register test/**/*.spec.ts"
+    "test:cov": "TS_NODE_PROJECT=test/tsconfig.json nyc -r lcov -e .ts -x test/**/*.spec.ts wtfnode node_modules/.bin/mocha -r ts-node/register test/**/*.spec.ts"
   },
   "author": "Matthew Ross",
   "license": "MIT",
   "devDependencies": {
-    "@types/chai": "^4.2.3",
+    "@types/chai": "^4.2.4",
     "@types/mocha": "^5.2.7",
-    "@types/node": "^12.11.2",
+    "@types/node": "^12.11.5",
     "canvas": "^2.6.0",
     "chai": "^4.2.0",
     "gl": "^4.4.0",

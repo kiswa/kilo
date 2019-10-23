@@ -1,8 +1,7 @@
 import { Renderer } from './renderer'
 import { Camera, Container, Game, TileSprite } from '../'
 import { Entity, Sprite, Text, Rect } from '../types'
-import { ShaderProgram, GLUtils } from './webgl'
-import { defaults } from './webgl/defaults'
+import { defaults, ShaderProgram, GlBuffer,  GLUtils } from './webgl'
 
 interface TextureInfo {
   texture: WebGLTexture
@@ -19,13 +18,10 @@ export class WebGLRenderer extends Renderer {
   private shaderProgramTex: ShaderProgram
   private shaderProgramCol: ShaderProgram
 
-  private positionBuffer: WebGLBuffer
-  private textureBuffer: WebGLBuffer
-  private rectBuffer: WebGLBuffer
+  private buffers: GlBuffer
   private textures: Map<string, TextureInfo>
+  private boundTexture: string
   private globalAlpha: number
-
-  private fullArea = new Float32Array([0, 0, 1, 0, 0, 1, 0, 1, 1, 0, 1, 1])
 
     /**
      * Initialize CanvasRenderer object.
@@ -39,9 +35,10 @@ export class WebGLRenderer extends Renderer {
 
       this.gl = this.canvas.getContext('webgl', { antialias: false })
 
-      this.positionBuffer = this.gl.createBuffer()
-      this.textureBuffer = this.gl.createBuffer()
-      this.rectBuffer = this.gl.createBuffer()
+      this.buffers = new GlBuffer(this.gl)
+      this.buffers.create('position')
+      this.buffers.create('texture')
+      this.buffers.create('rect')
 
       this.createTextCanvas()
 
@@ -98,7 +95,7 @@ export class WebGLRenderer extends Renderer {
       this.globalAlpha = container.alpha
     }
 
-    this.setBuffer(gl, this.positionBuffer,
+    this.buffers.setActive('position',
       this.shaderProgramTex.getAttribLocation('a_position'))
 
     for (let i = 0; i < container.children.length; i++) {
@@ -131,24 +128,24 @@ export class WebGLRenderer extends Renderer {
         }
       }
 
-      if (child.hasChildren) {
-        this.renderRecursive(child, child.worldSize
-          ? (child as Camera)
-          : camera)
-      }
-
       if (child.style && child.width && child.height) {
         gl.useProgram(this.shaderProgramCol.program)
         this.drawRect(child, camera)
         gl.useProgram(this.shaderProgramTex.program)
       }
+
+      if (child.hasChildren) {
+        this.renderRecursive(child, child.worldSize ? child : camera)
+      }
+
+      ctx.restore()
     }
   }
 
   private drawSprite(sprite: Sprite, camera: Camera) {
     const { gl, shaderProgramTex } = this
 
-    this.setBuffer(gl, this.textureBuffer,
+    this.buffers.setActive('texture',
       shaderProgramTex.getAttribLocation('a_texCoord'))
     this.getTexture(gl, sprite)
 
@@ -175,7 +172,7 @@ export class WebGLRenderer extends Renderer {
 
     const { gl, shaderProgramTex } = this
 
-    this.setBuffer(gl, this.textureBuffer,
+    this.buffers.setActive('texture',
       shaderProgramTex.getAttribLocation('a_texCoord'))
     this.getTexture(gl, sprite)
 
@@ -205,7 +202,7 @@ export class WebGLRenderer extends Renderer {
   private drawRect(rect: Rect, camera: Camera) {
     const { gl, shaderProgramCol } = this
 
-    gl.bindBuffer(gl.ARRAY_BUFFER, this.rectBuffer)
+    gl.bindBuffer(gl.ARRAY_BUFFER, this.buffers.buffer('rect'))
 
     const posMatrix = this.getPositionMatrix(camera, rect)
     const color = this.getColorFromFillString(rect.style.fill, rect.alpha)
@@ -271,7 +268,10 @@ export class WebGLRenderer extends Renderer {
 
     if (this.textures.has(img.src)) {
       const texture = this.textures.get(img.src).texture
-      gl.bindTexture(gl.TEXTURE_2D, texture)
+      if (this.boundTexture !== img.src) {
+        gl.bindTexture(gl.TEXTURE_2D, texture)
+        this.boundTexture = img.src
+      }
 
       return texture
     }
@@ -280,6 +280,7 @@ export class WebGLRenderer extends Renderer {
     gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, img)
 
     this.textures.set(img.src, { texture })
+    this.boundTexture = img.src
 
     return texture
   }
@@ -295,14 +296,6 @@ export class WebGLRenderer extends Renderer {
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST)
 
     return texture
-  }
-
-  private setBuffer(gl: WebGLRenderingContext,
-                    buffer: WebGLBuffer, attrib: number, components: number = 2) {
-    gl.bindBuffer(gl.ARRAY_BUFFER, buffer)
-    gl.bufferData(gl.ARRAY_BUFFER, this.fullArea, gl.STATIC_DRAW)
-    gl.vertexAttribPointer(attrib, components, gl.FLOAT, false, 0, 0)
-    gl.enableVertexAttribArray(attrib)
   }
 
   private getPositionMatrix(camera: any, sprite: Sprite | TileSprite | Rect) {

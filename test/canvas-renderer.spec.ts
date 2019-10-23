@@ -1,9 +1,9 @@
 import { expect } from 'chai'
 import { Image } from 'canvas'
 
-import { CanvasRenderer } from '../lib/renderer/canvas-renderer'
 import { Container, Game } from '../lib'
 import { Rect } from '../lib/types'
+import { CanvasRenderer } from '../lib/renderer/canvas-renderer'
 
 describe('CanvasRenderer', () => {
   const canvas = new CanvasRenderer(640, 480, document.body)

@@ -86,14 +86,15 @@ describe('ShaderProgram', () => {
   })
 
   describe('Methods', () => {
-    it('has method getAttribLocation', () => {
+    it('has method getAttribLocation', function() {
+      this.retries(2)
       expect(prog).to.have.property('getAttribLocation').that.is.a('function')
 
       const badFn = () => prog.getAttribLocation('bad')
       expect(badFn).to.throw('Unknown attribute bad in shader program test.')
 
       gl.getProgramParameter = () => 100
-      gl.getActiveAttrib = () => Math.random() < .2 ? null : { name: 'test' }
+      gl.getActiveAttrib = () => Math.random() < .1 ? null : { name: 'test' }
       gl.getAttribLocation = () => 0
 
       prog = new ShaderProgram(gl, {
@@ -106,20 +107,22 @@ describe('ShaderProgram', () => {
       restoreFns()
     })
 
-    it('has method getUniformLocation', () => {
+    it('has method getUniformLocation', function() {
+      this.retries(2)
       expect(prog).to.have.property('getUniformLocation').that.is.a('function')
 
       const badFn = () => prog.getUniformLocation('bad')
       expect(badFn).to.throw('Unknown uniform bad in shader program test.')
 
       gl.getProgramParameter = () => 100
-      gl.getActiveUniform = () => Math.random() < .2 ? null : { name: 'test' }
+      gl.getActiveUniform = () => Math.random() < .1 ? null : { name: 'test' }
       gl.getUniformLocation = () => 0
 
       prog = new ShaderProgram(gl, {
         vertex: `void main() {}`,
         fragment: `void main() {}`
       })
+
       expect(prog.getUniformLocation('test')).to.equal(0)
 
       restoreFns()

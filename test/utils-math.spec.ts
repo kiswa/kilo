@@ -96,7 +96,7 @@ describe('Utils - Math', () => {
       trues += math.randOneIn(10) ? 1 : 0
     }
 
-    expect(trues).to.be.closeTo(100, 20)
+    expect(trues).to.be.closeTo(100, 25)
   })
 
   it('has method randomSeed', () => {

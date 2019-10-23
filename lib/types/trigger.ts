@@ -69,10 +69,10 @@ export class Trigger extends Sprite {
   }
 
   onEnter(...args: any): any {
-    this._onEnter(...arguments)
+    this._onEnter(...args)
   }
 
   onExit(...args: any): any {
-    this._onExit(...arguments)
+    this._onExit(...args)
   }
 }
