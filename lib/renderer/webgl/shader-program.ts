@@ -1,11 +1,7 @@
-import { GlBuffer } from './gl-buffer'
-
 interface Scripts {
   vertex: string
   fragment: string
 }
-
-const fullArea = new Float32Array([0, 0, 1, 0, 0, 1, 0, 1, 1, 0, 1, 1])
 
 /**
  * @category kilo/renderer/webgl

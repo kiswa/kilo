@@ -268,6 +268,7 @@ export class WebGLRenderer extends Renderer {
 
     if (this.textures.has(img.src)) {
       const texture = this.textures.get(img.src).texture
+
       if (this.boundTexture !== img.src) {
         gl.bindTexture(gl.TEXTURE_2D, texture)
         this.boundTexture = img.src
