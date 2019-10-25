@@ -9,7 +9,8 @@ export class GLUtils {
     let cameraTranslation = GLUtils.getTranslation(0, 0)
 
     if (camera) {
-      cameraTranslation = GLUtils.getTranslation(camera.pos.x, camera.pos.y)
+      cameraTranslation = GLUtils.getTranslation(
+        Math.floor(camera.pos.x), Math.floor(camera.pos.y))
     }
 
     return cameraTranslation
