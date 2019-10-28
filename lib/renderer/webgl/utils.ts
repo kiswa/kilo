@@ -54,8 +54,8 @@ export class GLUtils {
 
   static getRotation(angle: number) {
     return [
-      Math.cos(angle), -Math.sin(angle), 0,
-      Math.sin(angle), Math.cos(angle), 0,
+      Math.cos(-angle), -Math.sin(-angle), 0,
+      Math.sin(-angle), Math.cos(-angle), 0,
       0, 0, 1
     ]
   }

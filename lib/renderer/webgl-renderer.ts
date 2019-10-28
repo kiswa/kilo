@@ -300,32 +300,35 @@ export class WebGLRenderer extends Renderer {
   }
 
   private getPositionMatrix(camera: any, sprite: Sprite | TileSprite | Rect) {
-    const cameraTranslation = GLUtils.getCameraTranslation(camera)
-    const originMatrix = GLUtils.getTranslation(0, 0)
+    const hasAnchor = (sp: any) => sp.anchor && (sp.anchor.x || sp.anchor.y)
 
+    const cameraTranslation = GLUtils.getCameraTranslation(camera)
     const projectionMatrix =
       GLUtils.get2DProjectionMatrix(this.width, this.height)
-    const translationMatrix =
-      GLUtils.getTranslation(sprite.pos.x, sprite.pos.y)
+    const translationMatrix = hasAnchor(sprite)
+      ? GLUtils.getTranslation(sprite.pos.x + (sprite as any).anchor.x,
+                               sprite.pos.y + (sprite as any).anchor.y)
+      : GLUtils.getTranslation(sprite.pos.x, sprite.pos.y)
     const scaleMatrix =
       GLUtils.getScaleMatrix(sprite, sprite.width, sprite.height)
 
-    let posMatrix = GLUtils.multiplyMatrices(scaleMatrix, originMatrix)
+    let originMatrix = GLUtils.getTranslation(0, 0)
 
-    if (sprite instanceof TileSprite) {
+    if ((sprite instanceof Sprite || sprite instanceof TileSprite)
+        && sprite.rotation) {
+      const pivotMatrix = GLUtils.getTranslation(-sprite.pivot.x, -sprite.pivot.y)
+      const unpivotMatrix = GLUtils.getTranslation(sprite.pivot.x, sprite.pivot.y)
+
       let rotMatrix = GLUtils.getRotation(sprite.rotation)
-      posMatrix = GLUtils.multiplyMatrices(posMatrix, rotMatrix)
+      rotMatrix = GLUtils.multiplyMatrices(pivotMatrix, rotMatrix)
+
+      originMatrix = GLUtils.multiplyMatrices(originMatrix, rotMatrix)
+      originMatrix = GLUtils.multiplyMatrices(originMatrix, unpivotMatrix)
     }
 
+    let posMatrix = GLUtils.multiplyMatrices(scaleMatrix, originMatrix)
     posMatrix = GLUtils.multiplyMatrices(posMatrix, cameraTranslation)
     posMatrix = GLUtils.multiplyMatrices(posMatrix, translationMatrix)
-
-    const sp = (sprite as Sprite | TileSprite)
-    if (sp.anchor) {
-      const anchorMatrix = GLUtils.getTranslation(sp.anchor.x, sp.anchor.y)
-      posMatrix = GLUtils.multiplyMatrices(posMatrix, anchorMatrix)
-    }
-
     posMatrix = GLUtils.multiplyMatrices(posMatrix, projectionMatrix)
 
     return posMatrix

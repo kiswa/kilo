@@ -51,11 +51,15 @@ export class Player extends TileSprite {
     this.anims.add('jump', [{ x: 1, y: 0 }], 0)
 
     this.anims.play('idle')
+    const center = Utils.sprite.center(this)
+    this.pivot.set(center.x, center.y)
   }
 
   update(dt: number, t: number) {
     super.update(dt, t)
     const { x, action: jump } = this.controls
+
+    // this.rotation += .3 * (Math.cos(1) - Math.sin(1))
 
     if (x) {
       this.scale.x = x
