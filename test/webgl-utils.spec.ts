@@ -61,8 +61,8 @@ describe('GLUtils', () => {
 
     const rotation = GLUtils.getRotation(.5)
     expect(JSON.stringify(rotation)).to.equal(JSON.stringify([
-      0.8775825618903728, -0.479425538604203, 0,
-      0.479425538604203, 0.8775825618903728, 0,
+      0.8775825618903728, 0.479425538604203, 0,
+      -0.479425538604203, 0.8775825618903728, 0,
       0, 0, 1
     ]))
   })
