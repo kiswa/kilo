@@ -27,7 +27,7 @@ npc2.hitBox.set(6, 6, 24, 49)
 game.scene.add(npc)
 game.scene.add(npc2)
 
-game.run((dt: number, t: number) => {
+game.run((dt: number, _: number) => {
   npc.pos.x += (npc.scale.x * dt * 100)
   npc2.pos.x += (npc2.scale.x * dt * 200)
 

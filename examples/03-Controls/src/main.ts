@@ -16,9 +16,12 @@ const controls: Controls = {
 
 const speed = 0.2
 
+// When using WebGLRenderer these must be set
+plane.width = plane.height = 64
+
 game.scene.add(plane)
 
-game.run((dt: number, t: number) => {
+game.run((dt: number, _: number) => {
   const { x, y } = controls.keys
   const { mouse } = controls
 
