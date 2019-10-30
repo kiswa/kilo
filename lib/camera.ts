@@ -1,16 +1,19 @@
+/**
+ * @module kilo
+ */
 import { Container, TileSprite, Utils } from '.'
 import { Sprite, Rect, Vec } from './types'
 
 /**
- * Follows a subject to provide a viewport into a game.
+ * Follows a subject to provide a viewport into a game world.
  *
  * ### Example
  * Assuming this is in a [[Scene]].
  * ```typescript
- * const camera = new Camera(player, <Rect>{ width: 640, height: 480 }, <Rect>{
+ * const camera = new Camera(player, { width: 640, height: 480 } as Rect, {
  *    width: map.mapWidth * map.tileWidth,
  *    height: map.mapHeight * map.tileHeight
- *  })
+ *  } as Rect)
  *
  * this.camera = this.add<Camera>(camera)
  * ```
@@ -49,7 +52,7 @@ export class Camera extends Container {
    *
    * The [[Rect]] parameters only require `width` and `height` properties.
    *
-   * @param subject A [[TileSprite]] for the camera to follow.
+   * @param subject The [[TileSprite]] or [[Sprite]] for the camera to follow.
    * @param viewport Size of the camera's view into the game.
    * @param worldSize Size of the game world.
    */
@@ -129,7 +132,7 @@ export class Camera extends Container {
   }
 
   /**
-   * Shake the camera randomly.
+   * Shake the camera randomly for a short time.
    *
    * @param power Number of pixels to shake the camera.
    * @param duration Time in seconds to shake.
@@ -140,7 +143,7 @@ export class Camera extends Container {
   }
 
   /**
-   * Add an overlay to 'flash' the viewport.
+   * Add a brief  overlay to 'flash' the viewport.
    *
    * @param duration Time in seconds for flash to fade out.
    * @param color Color of the overlay used.

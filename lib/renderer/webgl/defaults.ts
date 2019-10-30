@@ -1,8 +1,13 @@
 /**
- * @category kilo/renderer/webgl
+ * @module kilo/renderer/webgl
+ */
+
+/**
+ * Default shader sources for both texture and color-based rendering.
  */
 export const defaults = {
   shaders: {
+    /** Texture-based rendering vertex shader. */
     vertexTexture: `
   attribute vec2 a_position;
   attribute vec2 a_texCoord;
@@ -22,6 +27,7 @@ export const defaults = {
   }
 `,
 
+    /** Texture-based rendering fragment shader. */
     fragmentTexture: `
   precision highp float;
 
@@ -38,6 +44,7 @@ export const defaults = {
   }
 `,
 
+    /** Color-based rendering vertex shader. */
     vertexColor: `
   attribute vec2 a_position;
 
@@ -48,6 +55,7 @@ export const defaults = {
   }
 `,
 
+    /** Color-based rendering fragment shader. */
     fragmentColor: `
   precision highp float;
 

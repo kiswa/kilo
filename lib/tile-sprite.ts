@@ -1,8 +1,11 @@
+/**
+ * @module kilo
+ */
 import { Animations } from '.'
 import { Point, Sprite, Texture, Vec } from './types'
 
 /**
- * A custom sprite that adds frame data and animations.
+ * An extended [[Sprite]] that adds frame data, animations, and tile size.
  *
  * @category kilo
  */
@@ -17,12 +20,12 @@ export class TileSprite extends Sprite {
   /** Height of the sprite in pixels */
   tileHeight: number
 
-  /** Gets the width of the sprite in pixels accounting for scale. */
+  /** Gets the width of the sprite in pixels, accounting for scale. */
   get width () {
     return this.tileWidth * Math.abs(this.scale.x)
   }
 
-  /** Gets the height of the sprite in pixels accounting for scale. */
+  /** Gets the height of the sprite in pixels, accounting for scale. */
   get height () {
     return this.tileHeight * Math.abs(this.scale.y)
   }

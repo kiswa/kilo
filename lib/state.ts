@@ -1,4 +1,8 @@
 /**
+ * @module kilo
+ */
+
+/**
  * Tracks state as provided, and provides information on status of the current
  * state. Also allows transitioning to a prior state from a temporary state
  * (e.g. a pause dialog back to game play).
@@ -50,6 +54,11 @@ export class State<EnumType> {
 
   /**
    * Initialize State object.
+   *
+   * #### Example
+   * ```typescript
+   * const state = new State<MyEnum>(MyEnum.StateOne)
+   * ```
    *
    * @param state The initial state to set.
    */

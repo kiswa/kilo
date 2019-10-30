@@ -1,3 +1,6 @@
+/**
+ * @module kilo
+ */
 import { Game } from '.'
 
 /**

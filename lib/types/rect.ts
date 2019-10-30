@@ -1,3 +1,6 @@
+/**
+ * @module kilo/types
+ */
 import { Vec, Entity } from '.'
 
 /**
@@ -38,7 +41,8 @@ export class Rect extends Entity {
    * @param height Height in pixels.
    * @param style Style options.
    */
-  constructor(width: number, height: number, style = { fill: '#333'}) {
+  constructor(width: number, height: number,
+              style: RectStyleOptions = { fill: '#333' }) {
     super()
 
     this.height = height

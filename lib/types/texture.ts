@@ -1,7 +1,10 @@
+/**
+ * @module kilo/types
+ */
 import { Game } from '..'
 
 /**
- * Loads an image and provides access to it.
+ * Loads an image into an HTMLImageElement and provides access to it.
  *
  * ### Example
  * ```typescript
@@ -15,7 +18,7 @@ export class Texture {
   img: HTMLImageElement
 
   /**
-   * Initialize Texture oobject.
+   * Initialize Texture object.
    *
    * @param url Relative path to image file.
    */

@@ -1,3 +1,6 @@
+/**
+ * @module kilo/types
+ */
 import { Vec } from '.'
 
 /** A type with an update function. */
@@ -73,7 +76,7 @@ export abstract class Entity {
    * @param fn Function to call for each child.
    */
   map(fn: (child: HasUpdate, index?: number) => void): any {
-    const result = []
+    const result: any[] = []
 
     for (const [i, child] of this.children.entries()) {
       result[i] = fn(child, i)

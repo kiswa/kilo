@@ -1,4 +1,8 @@
 /**
+ * @module kilo/types
+ */
+
+/**
  * Allows for more precise collision detection.
  *
  * ### Example
@@ -40,8 +44,8 @@ export class HitBox {
   /**
    * Initialize HitBox object.
    *
-   * @param x X axis offset.
-   * @param y Y axis offset.
+   * @param x X axis offset from top left.
+   * @param y Y axis offset from top left.
    * @param width Width of hitbox.
    * @param height Height of hitbox.
    */
@@ -56,8 +60,8 @@ export class HitBox {
   /**
    * Set new values for the hitbox.
    *
-   * @param x X axis offset.
-   * @param y Y axis offset.
+   * @param x X axis offset from top left.
+   * @param y Y axis offset from top left.
    * @param width Width of hitbox.
    * @param height Height of hitbox.
    */

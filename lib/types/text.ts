@@ -1,3 +1,6 @@
+/**
+ * @module kilo/types
+ */
 import { Entity } from '.'
 
 /**
@@ -23,6 +26,7 @@ export interface TextOptions {
  * text.pos.set(20, 20)
  * ```
  *
+ * @remarks When using WebGL for rendering a second canvas is used for text.
  * @category kilo/types
  */
 export class Text extends Entity {

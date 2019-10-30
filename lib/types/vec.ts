@@ -1,4 +1,8 @@
 /**
+ * @module kilo/types
+ */
+
+/**
  * Interface with x and y coordinates.
  *
  * @category kilo/types
@@ -68,6 +72,7 @@ export class Vec implements Point {
    * Copies the x and y values from the provided Vec.
    *
    * @param vec The Vec to copy values from.
+   * @remarks Actual Parameters:<br> **vec**: *[[Vec]]* The Vec to copy values from.
    */
   copy({ x, y }: Vec) {
     return this.set(x, y)
@@ -84,6 +89,7 @@ export class Vec implements Point {
    * Adds the x and y values from the provided Vec.
    *
    * @param vec The Vec to add values from.
+   * @remarks Actual Parameters:<br> **vec**: *[[Vec]]* The Vec to add values from.
    */
   add({ x, y }: Vec) {
     this.x += x
@@ -96,6 +102,7 @@ export class Vec implements Point {
    * Subtracts the x and y values from the provided Vec.
    *
    * @param vec The Vec to subtract values from.
+   * @remarks Actual Parameters:<br> **vec**: *[[Vec]]* The Vec to subtract values from.
    */
   subtract({ x, y }: Vec) {
     this.x -= x
@@ -117,9 +124,9 @@ export class Vec implements Point {
   }
 
   /**
-   * Multiplies the x and y values by the provided value.
+   * Divides the x and y values by the provided value.
    *
-   * @param s The scalar value to multiply.
+   * @param s The scalar value to divide by.
    */
   divide(s: number) {
     this.x /= s
@@ -152,6 +159,7 @@ export class Vec implements Point {
    * Gets the dot product of two Vecs.
    *
    * @param vec The Vec to get dot product from.
+   * @remarks Actual Parameters:<br> **vec**: *[[Vec]]* The Vec to get dot product from.
    */
   dot({ x, y }: Vec) {
     return this.x * x + this.y * y

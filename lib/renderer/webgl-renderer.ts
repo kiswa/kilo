@@ -1,3 +1,6 @@
+/**
+ * @module kilo/renderer
+ */
 import { Renderer } from './renderer'
 import { Camera, Container, Game, TileSprite } from '../'
 import { Entity, Sprite, Text, Rect } from '../types'
@@ -53,6 +56,12 @@ export class WebGLRenderer extends Renderer {
       }, 'default-color')
     }
 
+  /**
+   * Recursive method for rendering the provided container and all its children.
+   *
+   * @param container Container object to render recursively.
+   * @param clear Whether or not to clear the canvas before rendering.
+   */
   render(container: Container, clear = true) {
     if (!container.visible || container.alpha <= 0) {
       return

@@ -1,10 +1,13 @@
+/**
+ * @module kilo/renderer/webgl
+ */
 import { defaults } from'./defaults'
 import { ShaderProgram } from './shader-program'
 import { GlBuffer } from './gl-buffer'
 import { GLUtils } from './utils'
 
 /**
- * @category kilo/renderer/webgl
+ * @hidden
  */
 export {
   defaults,

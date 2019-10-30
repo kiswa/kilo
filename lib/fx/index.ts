@@ -1,12 +1,15 @@
 /**
- * @category kilo/fx
+ * @module kilo/fx
+ */
+/**
+ * @hidden
  */
 export { OneUp } from './one-up'
 /**
- * @category kilo/fx
+ * @hidden
  */
 export { ParticleEmitter } from './particle-emitter'
 /**
- * @category kilo/fx
+ * @hidden
  */
 export { Particle, ParticleOptions } from './particle'

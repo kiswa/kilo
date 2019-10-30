@@ -1,3 +1,6 @@
+/**
+ * @module kilo/sound
+ */
 import { Assets } from '../assets'
 
 /**
@@ -31,6 +34,20 @@ export class Sound {
 
   private options: SoundOptions
   private audio: HTMLAudioElement
+
+  /**
+   * Gets the current volume setting.
+   */
+  get volume() {
+    return this.audio.volume
+  }
+
+  /**
+   * Sets the volume of the sound.
+   */
+  set volume(volume) {
+    this.options.volume = this.audio.volume = volume
+  }
 
   /**
    * Initialize Sound object.
@@ -79,19 +96,5 @@ export class Sound {
   stop() {
     this.audio.pause()
     this.playing = false
-  }
-
-  /**
-   * Gets the current volume setting.
-   */
-  get volume() {
-    return this.audio.volume
-  }
-
-  /**
-   * Sets the volume of the sound.
-   */
-  set volume(volume) {
-    this.options.volume = this.audio.volume = volume
   }
 }

@@ -1,3 +1,6 @@
+/**
+ * @module kilo
+ */
 import { Container, Game } from '.'
 import { Controls } from './controls/controls'
 
@@ -10,9 +13,9 @@ import { Controls } from './controls/controls'
  * @category kilo
  */
 export abstract class Scene extends Container {
-  /** The game. */
+  /** The game object. */
   game: Game
-  /** The game controls. */
+  /** The game controls to be used. */
   controls: Controls
   /** Function to call when the scene is completed. */
   onSceneComplete: Function

@@ -1,3 +1,6 @@
+/**
+ * @module kilo/fx
+ */
 import { Container, TileSprite } from '../'
 import { Rect, Vec } from '../types'
 import { math } from '../utils'
@@ -29,7 +32,7 @@ export interface ParticleOptions {
   lifeSecRange: Vec
 
   /**
-   * Default size to use if no display object passed in.
+   * Default particle size to use if no display object passed in.
    * @default 10 by 10
    */
   defaultSize: Vec
@@ -114,7 +117,7 @@ export class Particle extends Container {
     this.life -= dt
 
     this.pos.add(this.vel)
-    this.vel.add(<Vec>{ x: 0, y: 30 * dt })
+    this.vel.add({ x: 0, y: 30 * dt } as Vec)
     this.alpha = math.clamp(this.life)
   }
 }

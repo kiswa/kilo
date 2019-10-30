@@ -1,10 +1,20 @@
+/**
+ * @module kilo/renderer/webgl
+ */
 import { Sprite, Rect } from '../../types'
 import { TileSprite } from '../../tile-sprite'
 
 /**
+ * Provides static methods for working with WebGL.
+ *
  * @category kilo/renderer/webgl
  */
 export class GLUtils {
+  /**
+   * Gets a translation matrix based upon camera position.
+   *
+   * @param camera Camera object to translate.
+   */
   static getCameraTranslation(camera: any) {
     let cameraTranslation = GLUtils.getTranslation(0, 0)
 
@@ -16,6 +26,13 @@ export class GLUtils {
     return cameraTranslation
   }
 
+  /**
+   * Gets a scale matrix based upon entity scale.
+   *
+   * @param sprite Entity with `scale` property.
+   * @param width Width of the entity in pixels.
+   * @param height Height of the entity in pixels.
+   */
   static getScaleMatrix(sprite: Sprite | TileSprite | Rect,
                         width: number, height: number) {
     let scaleMatrix = GLUtils.getScale(width, height)
@@ -28,6 +45,12 @@ export class GLUtils {
     return scaleMatrix
   }
 
+  /**
+   * Gets a scale matrix based upon provided sizes.
+   *
+   * @param x Size to scale to in x dimension.
+   * @param y Size to scale to in y dimension.
+   */
   static getScale(x: number, y: number) {
     return [
       x, 0, 0,
@@ -36,6 +59,12 @@ export class GLUtils {
     ]
   }
 
+  /**
+   * Gets a simple 2D flat projection matrix from the provided dimensions.
+   *
+   * @param width Width of view in pixels.
+   * @param height Height of view in pixels.
+   */
   static get2DProjectionMatrix(width: number, height: number) {
     return [
       2 / width, 0, 0,
@@ -44,6 +73,12 @@ export class GLUtils {
     ]
   }
 
+  /**
+   * Gets a translation matrix from the provided coordinates.
+   *
+   * @param x Translation for the x dimension.
+   * @param y Translation for the y dimension.
+   */
   static getTranslation(x: number, y: number) {
     return [
       1, 0, 0,
@@ -52,6 +87,11 @@ export class GLUtils {
     ]
   }
 
+  /**
+   * Gets a rotation matrix from the provided angle.
+   *
+   * @param angle Angle in radians.
+   */
   static getRotation(angle: number) {
     return [
       Math.cos(-angle), -Math.sin(-angle), 0,
@@ -60,6 +100,12 @@ export class GLUtils {
     ]
   }
 
+  /**
+   * Multiplies two matrices together.
+   *
+   * @param a The first matrix for multiplication.
+   * @param b The second matrix for multiplication.
+   */
   static multiplyMatrices(a: number[], b: number[]) {
     const [a00, a01, a02, a10, a11, a12, a20, a21, a22] = a
     const [b00, b01, b02, b10, b11, b12, b20, b21, b22] = b

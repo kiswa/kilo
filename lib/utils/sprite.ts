@@ -1,3 +1,6 @@
+/**
+ * @module kilo/utils
+ */
 import { Container, Utils } from '../'
 import { Vec, Rect, Sprite, HitBox } from '../types'
 

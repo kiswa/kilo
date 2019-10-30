@@ -10,7 +10,7 @@ describe('Container', () => {
     updated = false
     dead = false
 
-    update(dt: number, t: number) {
+    update(_: number, __: number) {
       this.updated = true
     }
   }

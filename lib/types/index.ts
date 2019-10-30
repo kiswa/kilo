@@ -1,32 +1,36 @@
 /**
- * @category kilo/types
+ * @module kilo/types
+ */
+
+/**
+ * @hidden
  */
 export { Entity } from './entity'
 /**
- * @category kilo/types
+ * @hidden
  */
 export { HitBox } from './hit-box'
 /**
- * @category kilo/types
+ * @hidden
  */
 export { Point, Vec } from './vec'
 /**
- * @category kilo/types
+ * @hidden
  */
 export { Rect } from './rect'
 /**
- * @category kilo/types
+ * @hidden
  */
 export { Sprite } from './sprite'
 /**
- * @category kilo/types
+ * @hidden
  */
 export { Text, TextOptions } from './text'
 /**
- * @category kilo/types
+ * @hidden
  */
 export { Texture } from './texture'
 /**
- * @category kilo/types
+ * @hidden
  */
 export { Trigger } from './trigger'

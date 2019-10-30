@@ -1,3 +1,6 @@
+/**
+ * @module kilo/renderer
+ */
 import { Renderer } from './renderer'
 import { Container, Game } from '../'
 import { Entity, Text } from '../types'

@@ -1,10 +1,23 @@
+/**
+ * @module kilo/resolvers
+ */
 import { Sprite } from '../types'
 import { TileMap, Utils, TileSprite } from '..'
 
 /**
  * Function used to provide collision resolver with walkable tile status.
  */
-type WalkableTest = (sprite: TileSprite, index: number) => boolean
+export type WalkableTest = (sprite: TileSprite, index: number) => boolean
+
+/**
+ * Directions where collisions are detected.
+ */
+export interface Hits { up: boolean, down: boolean, left: boolean, right: boolean }
+
+/**
+ * The offsets to apply to resolve collisions, as well as the hit directions.
+ */
+export interface Resolution { x: number, y: number, hits: Hits  }
 
 /**
  * Collision resolver that only prevents invalid movements.
@@ -18,7 +31,7 @@ type WalkableTest = (sprite: TileSprite, index: number) => boolean
  * @category kilo/resolvers
  */
 export function wallSlide(ent: Sprite, map: TileMap, x = 0, y = 0,
-                          walkableTest?: WalkableTest) {
+                          walkableTest?: WalkableTest): Resolution {
   let tiles: TileSprite[]
   let tileEdge: number
 
@@ -78,5 +91,5 @@ export function wallSlide(ent: Sprite, map: TileMap, x = 0, y = 0,
     }
   }
 
-  return { x: xo, y: yo, hits } as any
+  return { x: xo, y: yo, hits }
 }

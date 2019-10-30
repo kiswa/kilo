@@ -1,3 +1,6 @@
+/**
+ * @module kilo
+ */
 import { Container, TileSprite } from '.'
 import { HitBox, Point, Texture, Vec } from './types'
 import { TiledMap } from './utils'
@@ -29,8 +32,8 @@ export class TileMap extends Container {
   /**
    * Initialize TileMap object.
    *
-   * @param tiles Array of arrays of objects with at least a `frame` property.
-   * @param data [[TiledMap]] object.
+   * @param tiles Array of arrays of objects with at least a [[Point]] `frame` property.
+   * @param data TiledMap object.
    * @param texture Texture to use for tiles.
    */
   constructor(tiles: HasFrame[][], data: TiledMap, texture: Texture) {

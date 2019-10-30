@@ -1,3 +1,6 @@
+/**
+ * @module kilo
+ */
 import { Point } from './types'
 
 /**
@@ -37,7 +40,7 @@ class Animation {
  * ### Example
  * ```typescript
  * // In the implementation of a class
- * this.anims = new Animations({ x: 0, y: 0, custom: 'properties })
+ * this.anims = new Animations({ x: 0, y: 0, custom: 'properties' })
  * // Create 'idle' animation with two frames that change every half second.
  * this.anims.add('idle', [{ x: 0, y: 0 }, { x: 1, y: 0}], .5)
  *

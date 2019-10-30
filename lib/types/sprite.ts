@@ -1,3 +1,6 @@
+/**
+ * @module kilo/types
+ */
 import { Entity, Vec, Texture, HitBox } from '.'
 
 /**
@@ -5,9 +8,15 @@ import { Entity, Vec, Texture, HitBox } from '.'
  *
  * ### Example
  * ```typescript
+ * // A 32x32 image is loaded into a texture, then the sprite
+ * // is created from that texture
  * const texture = new Texture('assets/images/bullet.png')
  * const bullet = new Sprite(texture)
  *
+ * // Can also be combined into one line, e.g.
+ * // const bullet = new Sprite(new Texture('assets/images/bullet.png'))
+ *
+ * // Properties can then be set on the sprite.
  * bullet.hitBox.set(4, 2, 16, 12)
  * bullet.anchor.set(16, 16)
  * ```
@@ -38,7 +47,7 @@ export class Sprite extends Entity {
     return this._anchor
   }
 
-  /** Gets the pivot point. */
+  /** Gets the pivot point (used for rotations). */
   get pivot() {
     return this._pivot
   }

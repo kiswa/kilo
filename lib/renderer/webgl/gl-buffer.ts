@@ -1,3 +1,6 @@
+/**
+ * @module kilo/renderer/webgl
+ */
 const fullArea = new Float32Array([0, 0, 1, 0, 0, 1, 0, 1, 1, 0, 1, 1])
 
 class BufferInfo {
@@ -7,6 +10,8 @@ class BufferInfo {
 }
 
 /**
+ * Thin wrapper around WebGLBuffer objects, making them easier to manage.
+ *
  * @category kilo/renderer/webgl
  */
 export class GlBuffer {
@@ -14,17 +19,32 @@ export class GlBuffer {
   private buffers: BufferInfo[]
   private activeBuffer: BufferInfo
 
+  /**
+   * Initialize GlBuffer object.
+   *
+   * @param gl WebGLRenderingContext to use for buffer actions.
+   */
   constructor(gl: WebGLRenderingContext) {
     this.gl = gl
     this.buffers = []
   }
 
+  /**
+   * Gets the buffer with the provided name.
+   *
+   * @param bufferName The name of the buffer to return.
+   */
   buffer(bufferName: string) {
     const buffer = this.buffers.find(x => x.name === bufferName)
 
     return buffer.buffer
   }
 
+  /**
+   * Creates a new buffer with the provided name.
+   *
+   * @param bufferName The name of the buffer to create.
+   */
   create(bufferName: string) {
     const buff = new BufferInfo()
     buff.buffer = this.gl.createBuffer()
@@ -35,6 +55,14 @@ export class GlBuffer {
     this.buffers.push(buff)
   }
 
+  /**
+   * Sets the named buffer as active, enables the provided attribute,
+   * and prepares the buffer for use.
+   *
+   * @param bufferName The name of the buffer to activate.
+   * @param attribLocation The location of the attribute to enable.
+   * @param components The number of components per vertex.
+   */
   setActive(bufferName: string, attribLocation: number, components: number = 2) {
     const { gl } = this
 

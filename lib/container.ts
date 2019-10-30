@@ -1,3 +1,6 @@
+/**
+ * @module kilo
+ */
 import { Entity } from './types'
 
 /**
@@ -35,22 +38,15 @@ export class Container extends Entity {
    * @param child Object to remove from the container.
    */
   remove<T>(child: any) {
-    const filtered = []
-    for (let i = 0; i < this.children.length; i++) {
-      if (this.children[i] === child) {
-        continue
-      }
-
-      filtered.push(this.children[i])
-    }
-
-    this.children = filtered.slice()
+    this.children = this.children.filter(ch => ch !== child)
 
     return <T>child
   }
 
   /**
    * Update each child in the container.
+   *
+   * Automatically removes any child object marked as dead.
    *
    * @param dt Delta time since last update.
    * @param t Timestamp in seconds.

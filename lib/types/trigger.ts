@@ -1,3 +1,6 @@
+/**
+ * @module kilo/types
+ */
 import { HitBox, Rect, Sprite } from '.'
 
 /**
@@ -13,6 +16,8 @@ import { HitBox, Rect, Sprite } from '.'
  * )
  *
  * // In collision checks.
+ *
+ * // Sprite collides, call onEnter if first time.
  * if (sprite.hit(player, door)) {
  *   if (doorEntered) {
  *     return
@@ -24,6 +29,7 @@ import { HitBox, Rect, Sprite } from '.'
  *   return
  * }
  *
+ * // Sprite does not collide, call onExit if previously entered.
  * if (doorEntered) {
  *   doorEntered = false
  *   door.onExit()
@@ -40,8 +46,8 @@ export class Trigger extends Sprite {
    * Initialize Trigger object.
    *
    * @param hitBox The hitbox to use for the trigger.
-   * @param onEnter Callback used when the trigger is entered.
-   * @param onExit Callbak used when the trigger is exited.
+   * @param onEnter Callback used when the trigger area is entered.
+   * @param onExit Callback used when the trigger area is exited.
    * @param debug Whether to display a debug rectangle for the trigger.
    */
   constructor(hitBox: HitBox, onEnter: Function,

@@ -1,9 +1,18 @@
-interface Scripts {
+/**
+ * @module kilo/renderer/webgl
+ */
+
+/**
+ * Interface for WebGL shader script sources.
+ */
+export interface Scripts {
   vertex: string
   fragment: string
 }
 
 /**
+ * Thin wrapper around WebGLProgram, and WebGLShader to simplify usage.
+ *
  * @category kilo/renderer/webgl
  */
 export class ShaderProgram {
@@ -13,10 +22,20 @@ export class ShaderProgram {
   private uniforms: { [name: string]: WebGLUniformLocation }
   private name: string
 
+  /**
+   * Gets the compiled WebGLProgram.
+   */
   get program() {
     return this._program
   }
 
+  /**
+   * Initialize ShaderProgram object.
+   *
+   * @param gl WebGLRenderingContext to use for the shaders and program.
+   * @param scripts Sources for both vertex and fragment shaders to be used.
+   * @param name The name of the program (useful in debugging).
+   */
   constructor(gl: WebGLRenderingContext, scripts: Scripts, name = 'default') {
     this.gl = gl
     this.name = name
@@ -26,6 +45,13 @@ export class ShaderProgram {
     this.load(scripts.vertex, scripts.fragment)
   }
 
+  /**
+   * Gets the attribute location for the provided name.
+   *
+   * @param name Name of the attribute to locate.
+   *
+   * @throws Error if no attribute with the provided name.
+   */
   getAttribLocation(name: string) {
     if (this.attributes[name] === undefined) {
       throw new Error(`Unknown attribute ${name} in shader program ${this.name}.`)
@@ -34,6 +60,13 @@ export class ShaderProgram {
     return this.attributes[name]
   }
 
+  /**
+   * Gets the uniform location for the provided name.
+   *
+   * @param name Name of the uniform to locate.
+   *
+   * @throws Error if no uniform with the provided name.
+   */
   getUniformLocation(name: string) {
     if (this.uniforms[name] === undefined) {
       throw new Error(`Unknown uniform ${name} in shader program ${this.name}.`)
@@ -42,6 +75,12 @@ export class ShaderProgram {
     return this.uniforms[name]
   }
 
+  /**
+   * Loads the provided sources into a compiled program.
+   *
+   * @param vertexSource Source for the vertex shader.
+   * @param fragmentSource Source for the fragment shader.
+   */
   protected load(vertexSource: string, fragmentSource: string) {
     const vertexShader =
       this.loadShader(vertexSource, this.gl.VERTEX_SHADER)

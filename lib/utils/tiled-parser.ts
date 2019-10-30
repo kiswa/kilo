@@ -1,3 +1,7 @@
+/**
+ * @module kilo/utils
+ */
+
 /// <reference path="../types/tiled.ts" />
 import { Point } from '../types'
 

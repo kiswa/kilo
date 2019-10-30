@@ -1,3 +1,6 @@
+/**
+ * @module kilo
+ */
 import { Assets } from './assets'
 import { Renderer, CanvasRenderer, WebGLRenderer } from './renderer'
 import { Container, Scene } from '.'
@@ -55,9 +58,9 @@ export class Game {
   private renderer: Renderer
   private _scene: Scene | Container
 
-  /** An [[Assetts]] instance for loading all game assets. */
+  /** An Assetts instance for loading all game assets. */
   static assets: Assets = new Assets()
-  /** Whether or not to enable debug display. */
+  /** Whether or not to enable debug display (shows FPS and UPS). */
   static debug: boolean = false
   /** Frames per second. */
   static FPS: number = 60
@@ -79,9 +82,14 @@ export class Game {
     return this._scene
   }
 
+  /** Gets the canvas element used by the renderer. */
+  get canvas() {
+    return this.renderer.canvasElement
+  }
+
   /**
    * Gets the current speed multiplier of the game.
-   * @default Speed.Normal
+   * @default [[Speed.Normal]]
    */
   get speed() {
     return MULTIPLIER
@@ -95,15 +103,12 @@ export class Game {
     SPEED = STEP / MULTIPLIER
   }
 
-  get canvas() {
-    return this.renderer.canvasElement
-  }
-
   /**
    * Initialize Game object.
    *
    * @param width Width of the game screen.
    * @param height Height of the game screen.
+   * @param useWebGL Whether or not to render with WebGL. Falls back to canvas.
    * @param container The element to append the canvas to.
    */
   constructor(width: number, height: number, useWebGL: boolean = true,

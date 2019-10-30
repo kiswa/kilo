@@ -1,3 +1,6 @@
+/**
+ * @module kilo/utils
+ */
 import { Vec } from './../types'
 
 let seed = 42

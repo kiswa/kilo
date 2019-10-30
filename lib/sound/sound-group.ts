@@ -1,3 +1,6 @@
+/**
+ * @module kilo/sound
+ */
 import { Sound, SoundOptions } from './sound'
 import { math } from '../utils'
 

@@ -1,3 +1,6 @@
+/**
+ * @module kilo/controls
+ */
 import { Vec } from '../types'
 
 /**
