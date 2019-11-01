@@ -207,10 +207,6 @@ export class Game {
         }
       }
 
-      if ((document as any).testRun && frames === 0) {
-        return
-      }
-
       window.requestAnimationFrame(loop)
     }
 

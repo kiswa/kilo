@@ -12,12 +12,28 @@ export type WalkableTest = (sprite: TileSprite, index: number) => boolean
 /**
  * Directions where collisions are detected.
  */
-export interface Hits { up: boolean, down: boolean, left: boolean, right: boolean }
+export interface Hits {
+  /** Whether or not a collision was detected from above.  */
+  up: boolean
+  /** Whether or not a collision was detected from below.  */
+  down: boolean
+  /** Whether or not a collision was detected from the left.  */
+  left: boolean
+  /** Whether or not a collision was detected from the right.  */
+  right: boolean
+}
 
 /**
  * The offsets to apply to resolve collisions, as well as the hit directions.
  */
-export interface Resolution { x: number, y: number, hits: Hits  }
+export interface Resolution {
+  /** Correction needed in the x axis. */
+  x: number
+  /** Correction needed in the y axis. */
+  y: number
+  /** Directions where collisions were detected. */
+  hits: Hits
+}
 
 /**
  * Collision resolver that only prevents invalid movements.

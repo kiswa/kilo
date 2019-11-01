@@ -6,7 +6,7 @@
   "scripts": {
     "docs": "typedoc lib",
     "test": "TS_NODE_PROJECT=test/tsconfig.json mocha -r ts-node/register test/**/*.spec.ts",
-    "test:cov": "TS_NODE_PROJECT=test/tsconfig.json nyc -r lcov -e .ts -x test/**/*.spec.ts wtfnode node_modules/.bin/mocha -r ts-node/register test/**/*.spec.ts"
+    "test:cov": "TS_NODE_PROJECT=test/tsconfig.json nyc -r lcov -e .ts -x test/**/*.spec.ts node_modules/.bin/mocha -r ts-node/register test/**/*.spec.ts"
   },
   "author": "Matthew Ross",
   "license": "MIT",

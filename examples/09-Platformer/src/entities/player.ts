@@ -109,7 +109,7 @@ export class Player extends TileSprite {
       return s.frame.walkable
     }
 
-    r = Resolvers.wallSlide(this, this.gameMap, r.x, r.y, isWalkable)
+    r = Resolvers.wallSlide(this, this.gameMap, r.x, r.y, isWalkable) as any
 
     this.pos.add(r)
 

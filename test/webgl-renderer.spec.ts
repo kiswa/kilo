@@ -1,7 +1,7 @@
 import { expect } from 'chai'
 
 import { Container, Game } from '../lib'
-import { Rect } from '../lib/types'
+import { Rect, Sprite, Texture } from '../lib/types'
 import { WebGLRenderer } from '../lib/renderer/webgl-renderer'
 import { Image } from 'canvas'
 
@@ -117,12 +117,13 @@ describe('WebGLRenderer', () => {
       })
 
       it('handles rotation and pivot points', () => {
-        (entity as any).rotation = 15
-        ; (entity as any).pivot = { x: 5, y: 5 }
+        entity = new Sprite(new Texture(''))
+        entity.rotation = 15
+        entity.pivot.set(5, 5)
 
         container.add(entity)
 
-        expect(renderTiming()).to.be.below(fast)
+        expect(renderTiming()).to.be.above(fast)
 
         delete (entity as any).pivot
 

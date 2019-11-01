@@ -4,8 +4,6 @@ import { Game, Container, Scene } from '../lib/'
 
 require('jsdom-global')('', { pretendToBeVisual: true })
 
-; (document as any).testRun = true
-
 describe('Game', () => {
   let game: Game
 
@@ -25,6 +23,31 @@ describe('Game', () => {
     con.warn = olds[2]
     con.error = olds[3]
   }
+
+  const orig = document.createElement
+
+  before(() => {
+    const gl = require('gl')(640, 480)
+    //
+    // Provide webgl context to canvas for tests
+    ; (document.createElement as any) = (el: string) => {
+      if (el === 'canvas') {
+        const newEl = orig.call(document, el)
+
+        ; (newEl as any).getContext = (ctx: string) => {
+          if (ctx === 'webgl') {
+            return gl
+          }
+
+          return orig.call(document, 'canvas').getContext(ctx)
+        }
+
+        return newEl
+      }
+
+      return orig.call(document, el)
+    }
+  })
 
   describe('Properties', () => {
     it('has static property FPS with default value', () => {
@@ -85,16 +108,20 @@ describe('Game', () => {
       restoreLog()
     })
 
-    it('has method run', () => {
+    it('has method run', done => {
+      game = new Game(640, 480)
       expect(game.run).to.be.a('function')
 
       Game.debug = true
 
-      game.run()
       game.run((dt: number, t: number) => {
         expect(dt).to.be.above(0)
         expect(t).to.be.above(0)
       })
+
+      setTimeout(() => {
+        done()
+      }, 1000)
     })
 
     it('has method setScene', () => {
