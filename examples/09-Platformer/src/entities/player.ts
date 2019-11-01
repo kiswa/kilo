@@ -50,6 +50,8 @@ export class Player extends TileSprite {
     this.anims.add('walk', [{ x: 2, y: 0 }, { x: 3, y: 0 }], .2)
     this.anims.add('jump', [{ x: 1, y: 0 }], 0)
 
+    this.add(new Types.Text('', { fill: '#333', font: '9pt monospace' }))
+
     this.anims.play('idle')
     const center = Utils.sprite.center(this)
     this.pivot.set(center.x, center.y)
@@ -59,7 +61,7 @@ export class Player extends TileSprite {
     super.update(dt, t)
     const { x, action: jump } = this.controls
 
-    // this.rotation += .3 * (Math.cos(1) - Math.sin(1))
+    ; (this.children[0] as Types.Text).text = this.pos.toString()
 
     if (x) {
       this.scale.x = x

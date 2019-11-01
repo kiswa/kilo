@@ -2,7 +2,7 @@
  * @module kilo/renderer
  */
 import { Renderer } from './renderer'
-import { Camera, Container, Game, TileSprite } from '../'
+import { Camera, Container, Game, Scene, TileSprite } from '../'
 import { Entity, Sprite, Text, Rect } from '../types'
 import { defaults, ShaderProgram, GlBuffer,  GLUtils } from './webgl'
 
@@ -25,6 +25,7 @@ export class WebGLRenderer extends Renderer {
   private textures: Map<string, TextureInfo>
   private boundTexture: string
   private globalAlpha: number
+  private game: Game
 
     /**
      * Initialize CanvasRenderer object.
@@ -76,6 +77,10 @@ export class WebGLRenderer extends Renderer {
 
     gl.useProgram(this.shaderProgramTex.program)
 
+    if (container instanceof Scene) {
+      this.game = container.game
+    }
+
     this.renderRecursive(container)
 
     if (Game.debug) {
@@ -96,8 +101,7 @@ export class WebGLRenderer extends Renderer {
     }
   }
 
-  private renderRecursive(container: Entity | Container,
-                          camera?: Camera) {
+  private renderRecursive(container: Entity | Container, camera?: Camera) {
     const { gl, ctx } = this
 
     if (container.alpha) {
@@ -122,11 +126,28 @@ export class WebGLRenderer extends Renderer {
       if (child.text) {
         const { font, fill, align } = child.style
 
+        ctx.save()
+
         if (font && font.length) ctx.font = font
         if (fill && fill.length) ctx.fillStyle = fill
         if (align && align.length) ctx.textAlign = align
 
+        if (this.game) {
+          child.pos.set(container.pos.x, container.pos.y)
+
+          child.pos.x = child.pos.x % this.game.width
+          child.pos.y = child.pos.y % this.game.height
+          // while (child.pos.x > this.game.width) {
+          //   child.pos.x -= this.game.width
+          // }
+
+          // while (child.pos.y > this.game.height) {
+          //   child.pos.y -= this.game.height
+          // }
+        }
+
         ctx.fillText(child.text, child.pos.x, child.pos.y)
+        ctx.restore()
       }
 
       if (child.texture) {

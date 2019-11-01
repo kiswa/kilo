@@ -19,25 +19,25 @@ export class GameScene extends Scene {
   }
 
   private setupCamera(tMap: Utils.TiledMap, game: Game) {
-      const level = new TiledLevel(tMap)
-      const worldSize = new Types.Vec(
-        (level.mapWidth * level.tileWidth),
-        (level.mapHeight * level.tileHeight)
-      )
+    const level = new TiledLevel(tMap)
+    const worldSize = new Types.Vec(
+      (level.mapWidth * level.tileWidth),
+      (level.mapHeight * level.tileHeight)
+    )
 
-      const player = new Player(this.controls.keys, level)
-      const spawn = tMap.getObjectByName('spawn')
-      player.pos.set(spawn.x, spawn.y - 30)
+    const player = new Player(this.controls.keys, level)
+    const spawn = tMap.getObjectByName('spawn')
+    player.pos.set(spawn.x, spawn.y - 30)
 
-      const cam = new Camera(player,
-        new Types.Rect(game.width, game.height),
-        new Types.Rect(worldSize.x, worldSize.y)
-      )
+    const cam = new Camera(player,
+      new Types.Rect(game.width, game.height),
+      new Types.Rect(worldSize.x, worldSize.y)
+    )
 
-      this.camera = this.add<Camera>(cam)
+    this.camera = this.add<Camera>(cam)
 
-      this.camera.add<TiledLevel>(level)
-      this.camera.add(player)
+    this.camera.add(level)
+    this.camera.add(player)
   }
 }
 
