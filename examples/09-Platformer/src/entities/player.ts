@@ -61,7 +61,8 @@ export class Player extends TileSprite {
     super.update(dt, t)
     const { x, action: jump } = this.controls
 
-    ; (this.children[0] as Types.Text).text = this.pos.toString()
+    const text = (this.children[0] as Types.Text)
+    text.text = text.pos.toString()
 
     if (x) {
       this.scale.x = x

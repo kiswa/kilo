@@ -135,15 +135,8 @@ export class WebGLRenderer extends Renderer {
         if (this.game) {
           child.pos.set(container.pos.x, container.pos.y)
 
-          child.pos.x = child.pos.x % this.game.width
-          child.pos.y = child.pos.y % this.game.height
-          // while (child.pos.x > this.game.width) {
-          //   child.pos.x -= this.game.width
-          // }
-
-          // while (child.pos.y > this.game.height) {
-          //   child.pos.y -= this.game.height
-          // }
+          child.pos.x = child.pos.x / ((camera as any).worldSize.width / this.game.height)
+          child.pos.y = child.pos.y / ((camera as any).worldSize.height / this.game.height)
         }
 
         ctx.fillText(child.text, child.pos.x, child.pos.y)
