@@ -12,9 +12,7 @@ const STEER_FORCE = 2000
 const FRICTION_GROUND = 1800
 
 const JUMP_IMPULSE = 780
-const JUMP_WALL_IMPULSE = 500
 const JUMP_FORGIVENESS = .08
-const JUMP_WALL_FORGIVENESS = .4
 
 const MAX_VEL = 300
 const MIN_VEL = 200
@@ -50,91 +48,49 @@ export class Player extends TileSprite {
     this.anims.add('walk', [{ x: 2, y: 0 }, { x: 3, y: 0 }], .2)
     this.anims.add('jump', [{ x: 1, y: 0 }], 0)
 
-    this.add(new Types.Text('', { fill: '#333', font: '9pt monospace' }))
-
     this.anims.play('idle')
+
     const center = Utils.sprite.center(this)
     this.pivot.set(center.x, center.y)
   }
 
   update(dt: number, t: number) {
     super.update(dt, t)
+
     const { x, action: jump } = this.controls
 
-    const text = (this.children[0] as Types.Text)
-    text.text = text.pos.toString()
+    this.keepInMap()
+    this.flipIfNeeded(x)
+    this.handleJumpAndFall(jump, dt)
 
-    if (x) {
-      this.scale.x = x
-      this.anchor.x = x > 0 ? 0 : this.width
-    }
-
-    if (!jump) {
-      this.releasedAction = true
-    }
-
-    if (jump && !this.falling) {
-      Utils.physics.applyImpulse(this, { x: 0, y: -JUMP_IMPULSE } as any, dt)
-
-      this.falling = true
-    }
-
-    if (this.falling) {
-      Utils.physics.applyForce(this, { x: 0, y: GRAVITY } as any)
-    }
-
-    const changingDirection = (x > 0 && this.vel.x < 0) ||
-                              (x < 0 && this.vel.x > 0)
-
-    if (x !== 0 && Math.abs(this.vel.x) < MIN_VEL) {
-      Utils.physics.applyForce(this, { x: x * STEER_FORCE * 2, y: 0 } as any)
-    } else if (changingDirection || (x && this.vel.mag() < MAX_VEL)) {
-      Utils.physics.applyForce(this, { x: x * STEER_FORCE, y: 0 } as any)
-    }
-
-    Utils.physics.applyHorizontalFriction(this, FRICTION_GROUND)
-
-    let r = Utils.physics.integrate(this, dt)
-
-    if (this.vel.mag() <= 15) {
-      this.vel.set(0, 0)
-    }
-
-    this.anims.play(x ? 'walk' : 'idle')
-
+    let vec = this.handleMovement(x, dt)
     let isJumpthrough = false
+
     const isWalkable = (s: TileSprite, i: number) => {
       if (s.frame.type === 'jumpthrough') {
         isJumpthrough = true
+
+        // Only allow jumping through if it's one of
+        // the first two tiles (which are above the player)
         return i < 2
       }
 
       return s.frame.walkable
     }
 
-    r = Resolvers.wallSlide(this, this.gameMap, r.x, r.y, isWalkable) as any
+    const res = Resolvers.wallSlide(this, this.gameMap, vec.x, vec.y, isWalkable)
+    const resVec = new Types.Vec(res.x, res.y)
 
-    this.pos.add(r)
+    this.pos.add(resVec)
+    this.handleCollisions(res, isJumpthrough, dt)
+  }
 
-    const hits = (r as any).hits
+  private handleCollisions(r: any, isJumpthrough: boolean, dt: number) {
+    const { hits } = r
     const bounds = Utils.sprite.bounds(this)
 
     if (hits.up) {
-      const topLeft = this.gameMap.pixelToMapPos({
-        x: bounds.x,
-        y: bounds.y - 1
-      } as Types.Vec)
-      const topRight = this.gameMap.pixelToMapPos({
-        x: bounds.x + bounds.width,
-        y: bounds.y - 1
-      } as Types.Vec)
-      const tileLeft = this.gameMap.tileAtMapPos(topLeft)
-      const tileRight = this.gameMap.tileAtMapPos(topRight)
-
-      if (tileLeft.frame.type !== 'jumpthrough'
-          && tileRight.frame.type !== 'jumpthrough') {
-        this.vel.y = 0
-      }
+      this.stopIfNotJumpthrough(bounds)
     }
 
     if (hits.down && !hits.up) {
@@ -147,14 +103,21 @@ export class Player extends TileSprite {
     }
 
     if (!this.falling && !hits.down) {
+      this.handleFalling(bounds, dt)
+    }
+  }
+
+  private handleFalling(bounds: Types.HitBox, dt: number) {
       const leftFoot = this.gameMap.pixelToMapPos({
         x: bounds.x,
         y: bounds.y + bounds.height + 1
       } as Types.Vec)
+
       const rightFoot = this.gameMap.pixelToMapPos({
         x: bounds.x + bounds.width,
         y: bounds.y + bounds.height + 1
       } as Types.Vec)
+
       const left = this.gameMap.tileAtMapPos(leftFoot)
       const right = this.gameMap.tileAtMapPos(rightFoot)
 
@@ -165,8 +128,111 @@ export class Player extends TileSprite {
           this.falling = true
         }
       }
+  }
+
+  private stopIfNotJumpthrough(bounds: Types.HitBox) {
+      const topLeft = this.gameMap.pixelToMapPos({
+        x: bounds.x,
+        y: bounds.y - 1
+      } as Types.Vec)
+
+      const topRight = this.gameMap.pixelToMapPos({
+        x: bounds.x + bounds.width,
+        y: bounds.y - 1
+      } as Types.Vec)
+
+      const tileLeft = this.gameMap.tileAtMapPos(topLeft)
+      const tileRight = this.gameMap.tileAtMapPos(topRight)
+
+      if (tileLeft.frame.type !== 'jumpthrough'
+          && tileRight.frame.type !== 'jumpthrough') {
+        this.vel.y = 0
+      }
+  }
+
+  /**
+   * Handles x movements, applying friction and steering forces
+   * Also sets the animation if walking or idling
+   */
+  private handleMovement(x: number, dt: number) {
+    const changingDirection = (x > 0 && this.vel.x < 0) ||
+                              (x < 0 && this.vel.x > 0)
+
+    if (x !== 0 && Math.abs(this.vel.x) < MIN_VEL) {
+      Utils.physics.applyForce(this, {
+        x: x * STEER_FORCE * 2,
+        y: 0
+      } as any)
+    } else if (changingDirection || (x && this.vel.mag() < MAX_VEL)) {
+      Utils.physics.applyForce(this, {
+        x: x * STEER_FORCE,
+        y: 0
+      } as any)
     }
 
+    Utils.physics.applyHorizontalFriction(this, FRICTION_GROUND)
+
+    let vec = Utils.physics.integrate(this, dt)
+
+    if (this.vel.mag() <= 15) {
+      this.vel.set(0, 0)
+    }
+
+    this.anims.play(x ? 'walk' : 'idle')
+
+    return vec
+  }
+
+  /** Apply physics for either jumping or falling */
+  private handleJumpAndFall(jump: boolean, dt: number) {
+    if (!jump) {
+      this.releasedAction = true
+    }
+
+    if (jump && !this.falling) {
+      Utils.physics.applyImpulse(this, { x: 0, y: -JUMP_IMPULSE } as any, dt)
+      this.falling = true
+    }
+
+    if (this.falling) {
+      Utils.physics.applyForce(this, { x: 0, y: GRAVITY } as any)
+    }
+  }
+
+  /** Set the scale and anchor points based on facing direction */
+  private flipIfNeeded(x: number) {
+    if (!x) {
+      return
+    }
+
+    this.scale.x = x
+    this.anchor.x = x > 0 ? 0 : this.width
+  }
+
+  /** Prevent the player from moving outside the map boundaries */
+  private keepInMap() {
+    const width = this.gameMap.mapWidth * this.gameMap.tileWidth
+    const height = this.gameMap.mapHeight * this.gameMap.tileHeight
+
+    if (this.pos.x < -3) {
+      this.pos.x = -3
+      this.vel.x = 0
+    }
+
+    if (this.pos.x > width + 3 - this.width) {
+      this.pos.x = width + 3 - this.width
+      this.vel.x = 0
+    }
+
+    if (this.pos.y < -3) {
+      this.pos.y = -3
+      this.vel.y = 0
+    }
+
+    if (this.pos.y > height) {
+      this.pos.y = height
+      this.vel.y = 0
+    }
   }
 }
 

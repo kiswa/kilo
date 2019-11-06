@@ -27,7 +27,7 @@ export class GameScene extends Scene {
 
     const player = new Player(this.controls.keys, level)
     const spawn = tMap.getObjectByName('spawn')
-    player.pos.set(spawn.x, spawn.y - 30)
+    player.pos.set(spawn.x, spawn.y - 31)
 
     const cam = new Camera(player,
       new Types.Rect(game.width, game.height),
