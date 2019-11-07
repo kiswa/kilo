@@ -34,6 +34,7 @@ export class GameScene extends Scene {
       new Types.Rect(worldSize.x, worldSize.y)
     )
 
+    cam.setDebug()
     this.camera = this.add<Camera>(cam)
 
     this.camera.add(level)

@@ -7,6 +7,7 @@ import {
   TileMap,
 } from 'kilo/lib'
 
+/* These values should be tailored to the game experience */
 const GRAVITY = 2900
 const STEER_FORCE = 2000
 const FRICTION_GROUND = 1800
@@ -16,6 +17,7 @@ const JUMP_FORGIVENESS = .08
 
 const MAX_VEL = 300
 const MIN_VEL = 200
+/*                                                        */
 
 export class Player extends TileSprite {
   private controls: KeyControls
@@ -51,7 +53,7 @@ export class Player extends TileSprite {
     this.anims.play('idle')
 
     const center = Utils.sprite.center(this)
-    this.pivot.set(center.x, center.y)
+    this.pivot.copy(center)
   }
 
   update(dt: number, t: number) {
@@ -72,16 +74,15 @@ export class Player extends TileSprite {
 
         // Only allow jumping through if it's one of
         // the first two tiles (which are above the player)
-        return i < 2
+        return i < 2 ? true : !this.falling
       }
 
       return s.frame.walkable
     }
 
     const res = Resolvers.wallSlide(this, this.gameMap, vec.x, vec.y, isWalkable)
-    const resVec = new Types.Vec(res.x, res.y)
 
-    this.pos.add(resVec)
+    this.pos.add(Types.Vec.from(res as any))
     this.handleCollisions(res, isJumpthrough, dt)
   }
 
