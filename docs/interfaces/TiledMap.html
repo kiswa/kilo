@@ -1,0 +1,882 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>kilo documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/stripe.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">kilo documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content interface">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Interfaces</li>
+  <li>TiledMap</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>lib/utils/tiled-parser.ts</code>
+        </p>
+
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Interface for a Tiled map object.</p>
+
+            </p>
+
+
+        <section>
+            <h3 id="index">Index</h3>
+            <table class="table table-sm table-bordered index-table">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Properties</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                        <a href="#levelIndex">levelIndex</a>
+                                </li>
+                                <li>
+                                        <a href="#mapHeight">mapHeight</a>
+                                </li>
+                                <li>
+                                        <a href="#mapWidth">mapWidth</a>
+                                </li>
+                                <li>
+                                        <a href="#tileHeight">tileHeight</a>
+                                </li>
+                                <li>
+                                        <a href="#tiles">tiles</a>
+                                </li>
+                                <li>
+                                        <a href="#tileWidth">tileWidth</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Methods</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#getObjectByName">getObjectByName</a>
+                                </li>
+                                <li>
+                                    <a href="#getObjectsByType">getObjectsByType</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+            <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getObjectByName"></a>
+                    <span class="name">
+                        <b>
+                            getObjectByName
+                        </b>
+                        <a href="#getObjectByName"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getObjectByName(name: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, mandatory?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="40"
+                            class="link-to-prism">lib/utils/tiled-parser.ts:40</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Gets an object from the map by name.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>name</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>Name of object to get.</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>mandatory</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                    </td>
+
+                                    <td>
+                                        Yes
+                                    </td>
+
+
+                                    <td>
+                                        <p>Whether a missing object is an error.</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Tiled.Object</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getObjectsByType"></a>
+                    <span class="name">
+                        <b>
+                            getObjectsByType
+                        </b>
+                        <a href="#getObjectsByType"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getObjectsByType(type: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, mandatory?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="47"
+                            class="link-to-prism">lib/utils/tiled-parser.ts:47</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Gets an array of objects from the map by type.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>type</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>Type name of the objects to get.</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>mandatory</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                    </td>
+
+                                    <td>
+                                        Yes
+                                    </td>
+
+
+                                    <td>
+                                        <p>Whether no results is an error.</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Tiled.Object[]</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+            <section>
+                <h3 id="inputs">Properties</h3>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="levelIndex"></a>
+                                        <span class="name"><b>levelIndex</b><a href="#levelIndex"><span class="icon ion-ios-link"></span></a></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>levelIndex:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Index of the level layer in tiles array. </p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="mapHeight"></a>
+                                        <span class="name"><b>mapHeight</b><a href="#mapHeight"><span class="icon ion-ios-link"></span></a></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>mapHeight:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Height of the map in tiles. </p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="mapWidth"></a>
+                                        <span class="name"><b>mapWidth</b><a href="#mapWidth"><span class="icon ion-ios-link"></span></a></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>mapWidth:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Width of the map in tiles. </p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="tileHeight"></a>
+                                        <span class="name"><b>tileHeight</b><a href="#tileHeight"><span class="icon ion-ios-link"></span></a></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>tileHeight:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Height of a tile in pixels. </p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="tiles"></a>
+                                        <span class="name"><b>tiles</b><a href="#tiles"><span class="icon ion-ios-link"></span></a></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>tiles:         <code><a href="../interfaces/Tile.html" target="_self" >TileData[][]</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="../interfaces/Tile.html" target="_self" >TileData[][]</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Array of arrays of tile objects. </p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="tileWidth"></a>
+                                        <span class="name"><b>tileWidth</b><a href="#tileWidth"><span class="icon ion-ios-link"></span></a></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>tileWidth:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Width of a tile in pixels. </p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+            </section>
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Point } from &#x27;../types&#x27;
+
+/**
+ * Type for tile data.
+ *
+ * @category kilo/utils
+ */
+export type TileData &#x3D; { [key: string]: any, frame: Point, x: number, y: number }
+
+/**
+ * Interface for a Tiled map object.
+ *
+ * @category kilo/utils
+ */
+export interface TiledMap {
+  /** Width of a tile in pixels. */
+  tileWidth: number
+  /** Height of a tile in pixels. */
+  tileHeight: number
+  /** Width of the map in tiles. */
+  mapWidth: number
+  /** Height of the map in tiles. */
+  mapHeight: number
+  /** Array of arrays of tile objects. */
+  tiles: TileData[][]
+  /** Index of the level layer in tiles array. */
+  levelIndex: number
+
+  /**
+   * Gets an object from the map by name.
+   *
+   * @param name Name of object to get.
+   * @param mandatory Whether a missing object is an error.
+   */
+  getObjectByName(name: string, mandatory?: boolean): Tiled.Object
+  /**
+   * Gets an array of objects from the map by type.
+   *
+   * @param type Type name of the objects to get.
+   * @param mandatory Whether no results is an error.
+   */
+  getObjectsByType(type: string, mandatory?: boolean): Tiled.Object[]
+}
+
+/**
+ * Interface to add extra layers above or below the main level layer.
+ *
+ * @category kilo/utils
+ */
+export interface ExtraLayer {
+  /** Name of the layer to load. */
+  name: string
+  /** Whether the layer is rendered above the level or below. */
+  isAboveLevel: boolean
+}
+
+let tileWidth: number
+let tileHeight: number
+let mapWidth: number
+let mapHeight: number
+let tilesPerRow: number
+let levelIndex: number
+
+let tileset: Tiled.Tileset
+let layers: Tiled.Layer[]
+let tilesets: Tiled.Tileset[]
+let entities: Tiled.Object[]
+
+/**
+ * Parses a Tiled map object into a simpler form.
+ *
+ * There must be at least two layers in the Tiled map:
+ * &quot;level&quot;    - containing the tiles for the level
+ * &quot;entities&quot; - containing at least one entity
+ *
+ * @param jsonObj Object from Tiled JSON export.
+ *
+ * @category kilo/utils
+ */
+export function tiledParser(jsonObj: Tiled.Map,
+                            extraLayers?: ExtraLayer[]): TiledMap {
+  tileWidth &#x3D; jsonObj.tilewidth
+  tileHeight &#x3D; jsonObj.tileheight
+  mapWidth &#x3D; jsonObj.width
+  mapHeight &#x3D; jsonObj.height
+  layers &#x3D; jsonObj.layers
+  tilesets &#x3D; jsonObj.tilesets
+
+  const levelLayer &#x3D; getLayer(&#x27;level&#x27;)
+  const entitiesLayer &#x3D; getLayer(&#x27;entities&#x27;)
+
+  tileset &#x3D; getTileset()
+
+  if (!entitiesLayer.objects) {
+    throw new Error(&#x27;Tiled Error: Missing entities objects.&#x27;)
+  }
+
+  entities &#x3D; []
+  for (let i &#x3D; 0; i &lt; entitiesLayer.objects.length; i++) {
+    let e &#x3D; entitiesLayer.objects[i]
+    const props &#x3D; getTileProps(e.gid - tileset.firstgid)
+
+    e &#x3D; { ...e, ...props }
+    e.y -&#x3D; e.height
+
+    entities.push(e)
+  }
+
+  tilesPerRow &#x3D; Math.floor(tileset.imagewidth / tileset.tilewidth)
+  const tiles &#x3D; loadTilesByLayer(levelLayer, extraLayers)
+
+  return {
+    tileWidth,
+    tileHeight,
+    mapWidth,
+    mapHeight,
+    tiles,
+    levelIndex,
+    getObjectByName,
+    getObjectsByType
+  }
+}
+
+const getLayer &#x3D; (name: string, mandatory &#x3D; true) &#x3D;&gt; {
+  let layer &#x3D; undefined
+
+  if (!layers) {
+    throw new Error(&#x27;Tiled Error: No layers found.&#x27;)
+  }
+
+  for (let i &#x3D; 0; i &lt; layers.length; i++) {
+    if (layers[i].name &#x3D;&#x3D;&#x3D; name) {
+      layer &#x3D; layers[i]
+      break
+    }
+  }
+
+  if (!layer &amp;&amp; mandatory) {
+    throw new Error(&#x60;Tiled Error: Missing layer &quot;${name}&quot;.&#x60;)
+  }
+
+  return layer
+}
+
+const loadTilesByLayer &#x3D; (levelLayer: Tiled.Layer,
+                       extraLayers: ExtraLayer[]) &#x3D;&gt; {
+  const tiles: any[] &#x3D; []
+
+  if (extraLayers) {
+    extraLayers.filter(layer &#x3D;&gt; layer.isAboveLevel &#x3D;&#x3D;&#x3D; false)
+      .forEach(layer &#x3D;&gt; {
+        loadTiles(tiles, getLayer(layer.name, false))
+      })
+  }
+
+  loadTiles(tiles, levelLayer)
+
+  if (extraLayers) {
+    extraLayers.filter(layer &#x3D;&gt; layer.isAboveLevel &#x3D;&#x3D;&#x3D; true)
+      .forEach(layer &#x3D;&gt; {
+        loadTiles(tiles, getLayer(layer.name, false))
+      })
+  }
+
+  return tiles
+}
+
+const loadTiles &#x3D; (tiles: any[], layer: Tiled.Layer) &#x3D;&gt; {
+  const index &#x3D; tiles.push([]) - 1
+
+  if (!layer || !layer.data) {
+    return
+  }
+
+  if (layer.name &#x3D;&#x3D;&#x3D; &#x27;level&#x27;) {
+    levelIndex &#x3D; index
+  }
+
+  for (let i &#x3D; 0; i &lt; layer.data.length; i++) {
+    const idx &#x3D; layer.data[i] - tileset.firstgid
+    const props &#x3D; getTileProps(idx)
+
+    tiles[index].push({ ...props, ...{
+      x: idx % tilesPerRow,
+      y: Math.floor(idx / tilesPerRow)
+    } })
+  }
+}
+
+const getTileset &#x3D; () &#x3D;&gt; {
+  if (!tilesets || !tilesets[0]) {
+    throw new Error(&#x27;Tiled Error: Missing tileset index 0.&#x27;)
+  }
+
+  return tilesets[0]
+}
+
+const getTileProps &#x3D; (id: number) &#x3D;&gt; {
+  const tmp: any &#x3D; {}
+  let tile: any &#x3D; undefined
+
+  if (!tileset.tiles) {
+    return tmp
+  }
+
+  for (let i &#x3D; 0; i &lt; tileset.tiles.length; i++) {
+    if (tileset.tiles[i].id &#x3D;&#x3D;&#x3D; id) {
+      tile &#x3D; tileset.tiles[i]
+      break
+    }
+  }
+
+  if (!tile) return tmp
+
+  if (tile.type) {
+    tmp.type &#x3D; tile.type
+  }
+
+  if (tile.properties) {
+    for (let i &#x3D; 0; i &lt; tile.properties.length; i++) {
+      tmp[tile.properties[i].name] &#x3D; tile.properties[i].value
+    }
+  }
+
+  return tmp
+}
+
+const convertEntity &#x3D; (e: Tiled.Object) &#x3D;&gt; {
+  const tmp &#x3D; {
+    x: e.x,
+    y: e.y,
+    type: e.type,
+    name: e.name,
+    width: e.width,
+    height: e.height
+  }
+
+  if (e.properties) {
+    for (let i &#x3D; 0; i &lt; e.properties.length; i++) {
+      (tmp as any)[e.properties[i].name] &#x3D; e.properties[i].value
+    }
+  }
+
+  return tmp
+}
+
+const getObjectsByType &#x3D; (type: string, mandatory &#x3D; false): Tiled.Object[] &#x3D;&gt; {
+  const es &#x3D; []
+  for (let i &#x3D; 0; i &lt; entities.length; i++) {
+    if (entities[i].type &#x3D;&#x3D;&#x3D; type) {
+      es.push(entities[i])
+    }
+  }
+
+  if (!es.length &amp;&amp; mandatory) {
+    throw new Error(&#x60;Tiled Error: Missing an object of type &quot;${type}&quot;.&#x60;)
+  }
+
+  const converted &#x3D; []
+  for (let i &#x3D; 0; i &lt; es.length; i++) {
+    converted.push(convertEntity(es[i]))
+  }
+
+  return converted as any
+}
+
+const getObjectByName &#x3D; (name: string, mandatory &#x3D; false): Tiled.Object &#x3D;&gt; {
+  let ent: any
+
+  for (let i &#x3D; 0; i &lt; entities.length; i++) {
+    if (entities[i].name &#x3D;&#x3D;&#x3D; name) {
+      ent &#x3D; entities[i]
+      break
+    }
+  }
+
+  if (!ent &amp;&amp; mandatory) {
+    throw new Error(&#x60;Tiled Error: Missing named object &quot;${name}&quot;.&#x60;)
+  }
+
+  return convertEntity(ent) as any
+}
+</code></pre>
+    </div>
+</div>
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'interface';
+            var COMPODOC_CURRENT_PAGE_URL = 'TiledMap.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

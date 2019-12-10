@@ -1,0 +1,561 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>kilo documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/stripe.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">kilo documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content interface">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Interfaces</li>
+  <li>TextureInfo</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>lib/renderer/webgl-renderer.ts</code>
+        </p>
+
+
+
+        <section>
+            <h3 id="index">Index</h3>
+            <table class="table table-sm table-bordered index-table">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Properties</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                        <a href="#texture">texture</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+
+
+            <section>
+                <h3 id="inputs">Properties</h3>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="texture"></a>
+                                        <span class="name"><b>texture</b><a href="#texture"><span class="icon ion-ios-link"></span></a></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>texture:     <code>WebGLTexture</code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code>WebGLTexture</code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+            </section>
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Renderer } from &#x27;./renderer&#x27;
+import { Camera, Container, Game, Scene, TileSprite } from &#x27;../&#x27;
+import { Entity, Sprite, Text, Rect } from &#x27;../types&#x27;
+import { defaults, ShaderProgram, GlBuffer,  GLUtils } from &#x27;./webgl&#x27;
+
+interface TextureInfo {
+  texture: WebGLTexture
+}
+
+/**
+ * Recursive rendering utilizing HTML5 canvas and WebGL.
+ *
+ * @category kilo/renderer
+ */
+export class WebGLRenderer extends Renderer {
+  private gl: WebGLRenderingContext
+  private ctx: CanvasRenderingContext2D
+  private shaderProgramTex: ShaderProgram
+  private shaderProgramCol: ShaderProgram
+
+  private buffers: GlBuffer
+  private textures: Map&lt;string, TextureInfo&gt;
+  private boundTexture: string
+  private globalAlpha: number
+  private game: Game
+
+    /**
+     * Initialize CanvasRenderer object.
+     *
+     * @param width Width of the canvas in pixels.
+     * @param height Height of the canvas in pixels.
+     * @param container The HTMLElement to add the canvas to.
+     */
+    constructor(width: number, height: number, container: HTMLElement) {
+      super(width, height, container)
+
+      this.gl &#x3D; this.canvas.getContext(&#x27;webgl&#x27;, { antialias: false })
+
+      this.buffers &#x3D; new GlBuffer(this.gl)
+      this.buffers.create(&#x27;position&#x27;)
+      this.buffers.create(&#x27;texture&#x27;)
+      this.buffers.create(&#x27;rect&#x27;)
+
+      this.createTextCanvas()
+
+      this.textures &#x3D; new Map&lt;string, TextureInfo&gt;()
+      this.shaderProgramTex &#x3D; new ShaderProgram(this.gl, {
+        vertex: defaults.shaders.vertexTexture,
+        fragment: defaults.shaders.fragmentTexture,
+      }, &#x27;default-texture&#x27;)
+      this.shaderProgramCol &#x3D; new ShaderProgram(this.gl, {
+        vertex: defaults.shaders.vertexColor,
+        fragment: defaults.shaders.fragmentColor,
+      }, &#x27;default-color&#x27;)
+    }
+
+  /**
+   * Recursive method for rendering the provided container and all its children.
+   *
+   * @param container Container object to render recursively.
+   * @param clear Whether or not to clear the canvas before rendering.
+   */
+  render(container: Container, clear &#x3D; true) {
+    if (!container.visible || container.alpha &lt;&#x3D; 0) {
+      return
+    }
+
+    const { gl } &#x3D; this
+
+    if (clear) {
+      gl.clear(gl.COLOR_BUFFER_BIT)
+      this.ctx.clearRect(0, 0, this.width, this.height)
+    }
+
+    gl.useProgram(this.shaderProgramTex.program)
+
+    if (container instanceof Scene) {
+      this.game &#x3D; container.game
+    }
+
+    this.renderRecursive(container)
+
+    if (Game.debug) {
+      const { ctx } &#x3D; this
+
+      ctx.save()
+
+      ctx.fillStyle &#x3D; &#x27;rgba(51, 51, 51, .5)&#x27;
+      ctx.fillRect(0, 0, 160, 25)
+
+      ctx.font &#x3D; &#x27;12pt monospace&#x27;
+      ctx.fillStyle &#x3D; &#x27;#fff&#x27;
+      ctx.textAlign &#x3D; &#x27;left&#x27;
+
+      ctx.fillText(&#x60;FPS: ${Game.FPS} UPS: ${Game.UPS}&#x60;, 7, 17)
+
+      ctx.restore()
+    }
+  }
+
+  private renderRecursive(container: Entity | Container, camera?: Camera) {
+    const { gl, ctx } &#x3D; this
+
+    if (container.alpha) {
+      this.globalAlpha &#x3D; container.alpha
+    }
+
+    this.buffers.setActive(&#x27;position&#x27;,
+      this.shaderProgramTex.getAttribLocation(&#x27;a_position&#x27;))
+
+    for (let i &#x3D; 0; i &lt; container.children.length; i++) {
+      const child &#x3D; (container as any).children[i]
+
+      if (!child.visible || child.alpha &lt;&#x3D; 0) {
+        continue
+      }
+
+      if (camera &amp;&amp; !(child instanceof Container || child instanceof Text) &amp;&amp;
+        !this.isInCamera(child, camera)) {
+        continue
+      }
+
+      if (child.text) {
+        const { font, fill, align } &#x3D; child.style
+
+        ctx.save()
+
+        if (font &amp;&amp; font.length) ctx.font &#x3D; font
+        if (fill &amp;&amp; fill.length) ctx.fillStyle &#x3D; fill
+        if (align &amp;&amp; align.length) ctx.textAlign &#x3D; align
+
+        if (this.game) {
+          child.pos.set(container.pos.x, container.pos.y)
+
+          child.pos.x &#x3D; child.pos.x / ((camera as any).worldSize.width / this.game.height)
+          child.pos.y &#x3D; child.pos.y / ((camera as any).worldSize.height / this.game.height)
+        }
+
+        ctx.fillText(child.text, child.pos.x, child.pos.y)
+        ctx.restore()
+      }
+
+      if (child.texture) {
+        if (child.tileWidth &amp;&amp; child.frame) {
+          this.drawTileSprite(child, camera)
+        } else {
+          this.drawSprite(child, camera)
+        }
+      }
+
+      if (child.style &amp;&amp; child.width &amp;&amp; child.height) {
+        gl.useProgram(this.shaderProgramCol.program)
+        this.drawRect(child, camera)
+        gl.useProgram(this.shaderProgramTex.program)
+      }
+
+      if (child.hasChildren) {
+        this.renderRecursive(child, child.worldSize ? child : camera)
+      }
+
+      ctx.restore()
+    }
+  }
+
+  private drawSprite(sprite: Sprite, camera: Camera) {
+    const { gl, shaderProgramTex } &#x3D; this
+
+    this.buffers.setActive(&#x27;texture&#x27;,
+      shaderProgramTex.getAttribLocation(&#x27;a_texCoord&#x27;))
+    this.getTexture(gl, sprite)
+
+    const posMatrix &#x3D; this.getPositionMatrix(camera, sprite)
+    const texMatrix &#x3D; GLUtils.getScale(sprite.width / sprite.texture.img.width,
+      sprite.height / sprite.texture.img.height)
+
+    gl.uniformMatrix3fv(shaderProgramTex.getUniformLocation(&#x27;u_posMatrix&#x27;),
+      false, posMatrix)
+    gl.uniformMatrix3fv(shaderProgramTex.getUniformLocation(&#x27;u_texMatrix&#x27;),
+      false, texMatrix)
+
+    gl.uniform1f(shaderProgramTex.getUniformLocation(&#x27;u_texAlpha&#x27;),
+      this.globalAlpha)
+    gl.uniform1i(shaderProgramTex.getUniformLocation(&#x27;u_sampler&#x27;), 0)
+
+    gl.drawArrays(gl.TRIANGLES, 0, 6)
+  }
+
+  private drawTileSprite(sprite: TileSprite, camera: Camera) {
+    if (sprite.frame.x &lt; 0 || sprite.frame.y &lt; 0) {
+      return
+    }
+
+    const { gl, shaderProgramTex } &#x3D; this
+
+    this.buffers.setActive(&#x27;texture&#x27;,
+      shaderProgramTex.getAttribLocation(&#x27;a_texCoord&#x27;))
+    this.getTexture(gl, sprite)
+
+    const posMatrix &#x3D; this.getPositionMatrix(camera, sprite)
+    const texScaleMatrix &#x3D; GLUtils.getScale(
+      sprite.tileWidth / sprite.texture.img.width,
+      sprite.tileHeight / sprite.texture.img.height
+    )
+    const texOffsetMatrix &#x3D; GLUtils.getTranslation(
+      sprite.frame.x * sprite.tileWidth / sprite.texture.img.width,
+      sprite.frame.y * sprite.tileHeight / sprite.texture.img.height
+    )
+    const texMatrix &#x3D; GLUtils.multiplyMatrices(texScaleMatrix, texOffsetMatrix)
+
+    gl.uniformMatrix3fv(shaderProgramTex.getUniformLocation(&#x27;u_posMatrix&#x27;),
+      false, posMatrix)
+    gl.uniformMatrix3fv(shaderProgramTex.getUniformLocation(&#x27;u_texMatrix&#x27;),
+      false, texMatrix)
+
+    gl.uniform1f(shaderProgramTex.getUniformLocation(&#x27;u_texAlpha&#x27;),
+      this.globalAlpha)
+    gl.uniform1i(shaderProgramTex.getUniformLocation(&#x27;u_sampler&#x27;), 0)
+
+    gl.drawArrays(gl.TRIANGLES, 0, 6)
+  }
+
+  private drawRect(rect: Rect, camera: Camera) {
+    const { gl, shaderProgramCol } &#x3D; this
+
+    gl.bindBuffer(gl.ARRAY_BUFFER, this.buffers.buffer(&#x27;rect&#x27;))
+
+    const posMatrix &#x3D; this.getPositionMatrix(camera, rect)
+    const color &#x3D; this.getColorFromFillString(rect.style.fill, rect.alpha)
+
+    gl.uniformMatrix3fv(shaderProgramCol.getUniformLocation(&#x27;u_posMatrix&#x27;),
+      false, posMatrix)
+    gl.uniform4fv(shaderProgramCol.getUniformLocation(&#x27;u_color&#x27;), color)
+
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 6)
+  }
+
+  private getColorFromFillString(color: string, alpha: number &#x3D; 1) {
+    if (color[0] &#x3D;&#x3D;&#x3D; &#x27;#&#x27;) {
+      color &#x3D; color.substr(1)
+    }
+
+    if (color.length &#x3D;&#x3D;&#x3D; 3) {
+      color &#x3D; color[0] + color[0] + color[1] + color[1] + color[2] + color[2]
+    }
+
+    if (color.length &gt; 6) {
+      const parts &#x3D; color.split(&#x27;,&#x27;)
+      parts[0] &#x3D; parts[0].substr(parts[0].indexOf(&#x27;(&#x27;) + 1)
+
+      if (parts.length &gt; 4) {
+        throw new Error(&#x60;Invalid color string ${color}&#x60;)
+      }
+
+      if (parts.length &#x3D;&#x3D;&#x3D; 3) {
+        return [
+          parseInt(parts[0]), parseInt(parts[1]),
+          parseInt(parts[2].replace(&#x27;)&#x27;, &#x27;&#x27;)), alpha
+        ]
+      }
+
+      return [
+        parseInt(parts[0]), parseInt(parts[1]),
+        parseInt(parts[2]), parseFloat(parts[3].replace(&#x27;)&#x27;, &#x27;&#x27;))
+      ]
+    }
+
+    const r &#x3D; parseInt(color.substr(0, 2), 16) / 255
+    const g &#x3D; parseInt(color.substr(2, 2), 16) / 255
+    const b &#x3D; parseInt(color.substr(4, 2), 16) / 255
+
+    return [r, g, b, alpha]
+  }
+
+  private getTexture(gl: WebGLRenderingContext, sprite: Sprite | TileSprite) {
+    if (!Game.assets.completed) {
+      return null
+    }
+
+    const { img } &#x3D; sprite.texture
+
+    if (!img.complete) {
+      if (Game.debug) {
+        console.warn(&#x60;Image ${img.src} not yet loaded...&#x60;)
+      }
+
+      return null
+    }
+
+    if (this.textures.has(img.src)) {
+      const texture &#x3D; this.textures.get(img.src).texture
+
+      if (this.boundTexture !&#x3D;&#x3D; img.src) {
+        gl.bindTexture(gl.TEXTURE_2D, texture)
+        this.boundTexture &#x3D; img.src
+      }
+
+      return texture
+    }
+
+    const texture &#x3D; this.createTexture()
+    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, img)
+
+    this.textures.set(img.src, { texture })
+    this.boundTexture &#x3D; img.src
+
+    return texture
+  }
+
+  private createTexture() {
+    const { gl } &#x3D; this
+    const texture &#x3D; gl.createTexture()
+    gl.bindTexture(gl.TEXTURE_2D, texture)
+
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE)
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE)
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST)
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST)
+
+    return texture
+  }
+
+  private getPositionMatrix(camera: any, sprite: Sprite | TileSprite | Rect) {
+    const hasAnchor &#x3D; (sp: any) &#x3D;&gt; sp.anchor &amp;&amp; (sp.anchor.x || sp.anchor.y)
+
+    const cameraTranslation &#x3D; GLUtils.getCameraTranslation(camera)
+    const projectionMatrix &#x3D;
+      GLUtils.get2DProjectionMatrix(this.width, this.height)
+    const translationMatrix &#x3D; hasAnchor(sprite)
+      ? GLUtils.getTranslation(sprite.pos.x + (sprite as any).anchor.x,
+                               sprite.pos.y + (sprite as any).anchor.y)
+      : GLUtils.getTranslation(sprite.pos.x, sprite.pos.y)
+    const scaleMatrix &#x3D;
+      GLUtils.getScaleMatrix(sprite, sprite.width, sprite.height)
+
+    let originMatrix &#x3D; GLUtils.getTranslation(0, 0)
+
+    if ((sprite instanceof Sprite || sprite instanceof TileSprite)
+        &amp;&amp; sprite.rotation) {
+      const pivotMatrix &#x3D; GLUtils.getTranslation(-sprite.pivot.x, -sprite.pivot.y)
+      const unpivotMatrix &#x3D; GLUtils.getTranslation(sprite.pivot.x, sprite.pivot.y)
+
+      let rotMatrix &#x3D; GLUtils.getRotation(sprite.rotation)
+      rotMatrix &#x3D; GLUtils.multiplyMatrices(pivotMatrix, rotMatrix)
+
+      originMatrix &#x3D; GLUtils.multiplyMatrices(originMatrix, rotMatrix)
+      originMatrix &#x3D; GLUtils.multiplyMatrices(originMatrix, unpivotMatrix)
+    }
+
+    let posMatrix &#x3D; GLUtils.multiplyMatrices(scaleMatrix, originMatrix)
+    posMatrix &#x3D; GLUtils.multiplyMatrices(posMatrix, cameraTranslation)
+    posMatrix &#x3D; GLUtils.multiplyMatrices(posMatrix, translationMatrix)
+    posMatrix &#x3D; GLUtils.multiplyMatrices(posMatrix, projectionMatrix)
+
+    return posMatrix
+  }
+
+  private createTextCanvas() {
+    const canvas &#x3D; document.createElement(&#x27;canvas&#x27;)
+
+    canvas.width &#x3D; this.width
+    canvas.height &#x3D; this.height
+
+    canvas.id &#x3D; &#x27;kilo-text-canvas&#x27;
+    canvas.style.zIndex &#x3D; &#x27;1000&#x27;
+    canvas.style.position &#x3D; &#x27;absolute&#x27;
+    canvas.style.top &#x3D; &#x27;0&#x27;
+    canvas.style.left &#x3D; &#x27;0&#x27;
+
+    this.container.appendChild(canvas)
+    this.ctx &#x3D; canvas.getContext(&#x27;2d&#x27;)
+  }
+}
+</code></pre>
+    </div>
+</div>
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'interface';
+            var COMPODOC_CURRENT_PAGE_URL = 'TextureInfo.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

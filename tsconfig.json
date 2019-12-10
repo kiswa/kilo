@@ -11,7 +11,8 @@
   "typedocOptions": {
     "out": "docs",
     "categorizeByGroup": false,
-    "categoryOrder": ["kilo", "*"],
+    "entryPoint": "kilo",
+    "excludeExternals": true,
     "excludeNotExported": true,
     "excludePrivate": true,
     "theme": "minimal",
