@@ -1,13 +1,6 @@
-/**
- * @module kilo/sound
- */
 import { Assets } from '../assets'
 
-/**
- * Options for a Sound object.
- *
- * @category kilo/sound
- */
+/** Options for a Sound object. */
 export interface SoundOptions {
   /** Volume of the sound (from 0 to 1). */
   volume: number,
@@ -20,13 +13,11 @@ export interface SoundOptions {
  *
  * ### Example
  * ```typescript
- * const ding = new Sound('assets/sounds/ding.ogg')
- *
- * // When the sound should play.
- * ding.play()
- * ```
- *
- * @category kilo/sound
+const ding = new Sound('assets/sounds/ding.ogg')
+
+// When the sound should play.
+ding.play()
+```
  */
 export class Sound {
   /** Whether or not the sound is currently playing. */
@@ -35,16 +26,12 @@ export class Sound {
   private options: SoundOptions
   private audio: HTMLAudioElement
 
-  /**
-   * Gets the current volume setting.
-   */
+  /** Gets the current volume setting. */
   get volume() {
     return this.audio.volume
   }
 
-  /**
-   * Sets the volume of the sound.
-   */
+  /** Sets the volume of the sound. */
   set volume(volume) {
     this.options.volume = this.audio.volume = volume
   }
@@ -90,9 +77,7 @@ export class Sound {
     this.playing = true
   }
 
-  /**
-   * Stop the sound from playing.
-   */
+  /** Stop the sound from playing. */
   stop() {
     this.audio.pause()
     this.playing = false

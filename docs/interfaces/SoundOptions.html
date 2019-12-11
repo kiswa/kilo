@@ -69,7 +69,7 @@
                 <h3>Description</h3>
             </p>
             <p class="comment">
-                <p>Options for a Sound object.</p>
+                <p>Options for a Sound object. </p>
 
             </p>
 
@@ -180,11 +180,7 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Assets } from &#x27;../assets&#x27;
 
-/**
- * Options for a Sound object.
- *
- * @category kilo/sound
- */
+/** Options for a Sound object. */
 export interface SoundOptions {
   /** Volume of the sound (from 0 to 1). */
   volume: number,
@@ -197,13 +193,11 @@ export interface SoundOptions {
  *
  * ### Example
  * &#x60;&#x60;&#x60;typescript
- * const ding &#x3D; new Sound(&#x27;assets/sounds/ding.ogg&#x27;)
- *
- * // When the sound should play.
- * ding.play()
- * &#x60;&#x60;&#x60;
- *
- * @category kilo/sound
+const ding &#x3D; new Sound(&#x27;assets/sounds/ding.ogg&#x27;)
+
+// When the sound should play.
+ding.play()
+&#x60;&#x60;&#x60;
  */
 export class Sound {
   /** Whether or not the sound is currently playing. */
@@ -212,16 +206,12 @@ export class Sound {
   private options: SoundOptions
   private audio: HTMLAudioElement
 
-  /**
-   * Gets the current volume setting.
-   */
+  /** Gets the current volume setting. */
   get volume() {
     return this.audio.volume
   }
 
-  /**
-   * Sets the volume of the sound.
-   */
+  /** Sets the volume of the sound. */
   set volume(volume) {
     this.options.volume &#x3D; this.audio.volume &#x3D; volume
   }
@@ -267,9 +257,7 @@ export class Sound {
     this.playing &#x3D; true
   }
 
-  /**
-   * Stop the sound from playing.
-   */
+  /** Stop the sound from playing. */
   stop() {
     this.audio.pause()
     this.playing &#x3D; false

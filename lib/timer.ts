@@ -1,7 +1,3 @@
-/**
- * @module kilo
- */
-
  /**
   * Function called on each tick of a Timer.
   */
@@ -13,15 +9,13 @@
  *
  * ### Example
  * ```typescript
- * // Moving a sprite into position on a game scene over 2 seconds,
- * // with a half-second delay before starting.
- * const timer = new Timer((r: number) =>
- *   (sprite.pos.y = elasticOut(r) * game.height - game.height / 1.6),
- *   () => {}, 2, .5
- * )
- * ```
- *
- * @category kilo
+// Moving a sprite into position on a game scene over 2 seconds,
+// with a half-second delay before starting.
+const timer = new Timer((r: number) =>
+  (sprite.pos.y = elasticOut(r) * game.height - game.height / 1.6),
+  () => {}, 2, .5
+)
+```
  */
 export class Timer {
   /** Used by core loop to remove the object when dead. */

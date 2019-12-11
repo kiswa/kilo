@@ -71,7 +71,12 @@
             <p class="comment">
                 <p>Object containing optional control objects.</p>
 <p>Used to wrap supported controls for your game.</p>
-
+<h3 id="example">Example</h3>
+<div><pre class="line-numbers"><code class="language-typescript"> // For a game with keyboard and gamepad controls
+ const scene = new Scene(game, {
+   keys: new KeyControls(),
+   gamepad: new GamepadControls()
+ })</code></pre></div>
             </p>
 
 
@@ -142,6 +147,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Gamepad controls to be used if provided. </p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -176,6 +187,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Key controls to be used if provided. </p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -210,6 +227,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Mouse controls to be used if provided. </p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
             </section>
@@ -226,11 +249,21 @@ import { GamepadControls } from &#x27;./gamepad-controls&#x27;
  *
  * Used to wrap supported controls for your game.
  *
- * @category kilo/controls
+ * ### Example
+ * &#x60;&#x60;&#x60;typescript
+ // For a game with keyboard and gamepad controls
+ const scene &#x3D; new Scene(game, {
+   keys: new KeyControls(),
+   gamepad: new GamepadControls()
+ })
+ &#x60;&#x60;&#x60;
  */
 export interface Controls {
+  /** Key controls to be used if provided. */
   keys?: KeyControls
+  /** Mouse controls to be used if provided. */
   mouse?: MouseControls
+  /** Gamepad controls to be used if provided. */
   gamepad?: GamepadControls
 }
 </code></pre>

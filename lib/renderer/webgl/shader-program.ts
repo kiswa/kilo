@@ -1,20 +1,12 @@
-/**
- * @module kilo/renderer/webgl
- */
-
-/**
- * Interface for WebGL shader script sources.
- */
+/** Interface for WebGL shader script sources. */
 export interface Scripts {
+  /** Vertex shader source. */
   vertex: string
+  /** Fragment shader source. */
   fragment: string
 }
 
-/**
- * Thin wrapper around WebGLProgram, and WebGLShader to simplify usage.
- *
- * @category kilo/renderer/webgl
- */
+/** Thin wrapper around WebGLProgram, and WebGLShader to simplify usage. */
 export class ShaderProgram {
   private gl: WebGLRenderingContext
   private _program: WebGLProgram
@@ -22,9 +14,7 @@ export class ShaderProgram {
   private uniforms: { [name: string]: WebGLUniformLocation }
   private name: string
 
-  /**
-   * Gets the compiled WebGLProgram.
-   */
+  /** Gets the compiled WebGLProgram. */
   get program() {
     return this._program
   }

@@ -1,6 +1,3 @@
-/**
- * @module kilo
- */
 import { Container, TileSprite, Utils } from '.'
 import { Sprite, Rect, Vec } from './types'
 
@@ -8,24 +5,23 @@ import { Sprite, Rect, Vec } from './types'
  * Follows a subject to provide a viewport into a game world.
  *
  * ### Example
- * Assuming this is in a [[Scene]].
+ * Assumes this is in a {@link Scene}.
+ *
  * ```typescript
- * const camera = new Camera(player, { width: 640, height: 480 } as Rect, {
- *    width: map.mapWidth * map.tileWidth,
- *    height: map.mapHeight * map.tileHeight
- *  } as Rect)
- *
- * this.camera = this.add<Camera>(camera)
- * ```
- *
- * @category kilo
+const camera = new Camera(player, { width: 640, height: 480 } as Rect, {
+   width: map.mapWidth * map.tileWidth,
+   height: map.mapHeight * map.tileHeight
+ } as Rect)
+
+this.camera = this.add<Camera>(camera)
+```
  */
 export class Camera extends Container {
   /**
    * Amount to move towards subject per update.
    *
    * Range from 0 to 1 where 0 is not moving, and 1 is always on subject.
-   * @default .3
+   * Default is .3
    */
   easing: number
 
@@ -50,11 +46,11 @@ export class Camera extends Container {
   /**
    * Initialize Camera object.
    *
-   * The [[Rect]] parameters only require `width` and `height` properties.
+   * The {@link Rect} parameters only require `width` and `height` properties.
    *
-   * @param subject The [[TileSprite]] or [[Sprite]] for the camera to follow.
+   * @param subject The {@link TileSprite} or {@link Sprite} for the camera to follow.
    * @param viewport Size of the camera's view into the game.
-   * @param worldSize Size of the game world.
+   * @param worldSize Size of the game world. Uses `viewport` by default.
    */
   constructor(subject: TileSprite | Sprite, viewport: Rect,
               worldSize: Rect = viewport) {
@@ -82,6 +78,8 @@ export class Camera extends Container {
    * Set debug status on camera.
    *
    * When true, a rectangle displays on-screen showing camera tracking bounds.
+   *
+   * Only call after everything is added to the camera.
    *
    * @param debug Whether to turn debugging on or off.
    */

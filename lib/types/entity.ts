@@ -1,6 +1,3 @@
-/**
- * @module kilo/types
- */
 import { Vec } from '.'
 
 /** A type with an update function. */
@@ -9,11 +6,7 @@ type HasUpdate = {
   dead: boolean
 }
 
-/**
- * An abstract base class for all entities.
- *
- * @category kilo/types
- */
+/** An abstract base class for all entities. */
 export abstract class Entity {
   /** Whether or not the entity is visible. */
   visible: boolean
@@ -36,9 +29,7 @@ export abstract class Entity {
     return this.children.length > 0
   }
 
-  /**
-   * Initialize an Entity object.
-   */
+  /** Initialize an Entity object. */
   constructor() {
     this.visible = true
     this.dead = false

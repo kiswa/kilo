@@ -65,6 +65,13 @@
             <code>lib/types/vec.ts</code>
         </p>
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Interface with x and y coordinates. </p>
+
+            </p>
 
 
         <section>
@@ -183,15 +190,12 @@
  *
  * Most methods are chainable.
  *
- * ### Example
  * &#x60;&#x60;&#x60;typescript
- * const vector1 &#x3D; new Vec(4, 8)
- * const vector2 &#x3D; Vec.from(vector1)
- *
- * vector1.add(vector2).multiply(3)
- * &#x60;&#x60;&#x60;
- *
- * @category kilo/types
+const vector1 &#x3D; new Vec(4, 8)
+const vector2 &#x3D; Vec.from(vector1)
+
+vector1.add(vector2).multiply(3)
+&#x60;&#x60;&#x60;
  */
 export class Vec implements Point {
   /** X coordinate value. */
@@ -236,9 +240,9 @@ export class Vec implements Point {
    * Copies the x and y values from the provided Vec.
    *
    * @param vec The Vec to copy values from.
-   * @remarks Actual Parameters:&lt;br&gt; **vec**: *[[Vec]]* The Vec to copy values from.
    */
-  copy({ x, y }: Vec) {
+  copy(vec: Vec) {
+    const { x, y } &#x3D; vec
     return this.set(x, y)
   }
 
@@ -253,9 +257,10 @@ export class Vec implements Point {
    * Adds the x and y values from the provided Vec.
    *
    * @param vec The Vec to add values from.
-   * @remarks Actual Parameters:&lt;br&gt; **vec**: *[[Vec]]* The Vec to add values from.
    */
-  add({ x, y }: Vec) {
+  add(vec: Vec) {
+    const { x, y } &#x3D; vec
+
     this.x +&#x3D; x
     this.y +&#x3D; y
 
@@ -266,9 +271,10 @@ export class Vec implements Point {
    * Subtracts the x and y values from the provided Vec.
    *
    * @param vec The Vec to subtract values from.
-   * @remarks Actual Parameters:&lt;br&gt; **vec**: *[[Vec]]* The Vec to subtract values from.
    */
-  subtract({ x, y }: Vec) {
+  subtract(vec: Vec) {
+    const { x, y } &#x3D; vec
+
     this.x -&#x3D; x
     this.y -&#x3D; y
 
@@ -299,16 +305,12 @@ export class Vec implements Point {
     return this
   }
 
-  /**
-   * Gets the magnitude of the Vec.
-   */
+  /** Gets the magnitude of the Vec. */
   mag() {
     return Math.sqrt(this.x * this.x + this.y * this.y)
   }
 
-  /**
-   * Gets the normal of the Vec.
-   */
+  /** Gets the normal of the Vec. */
   normalize() {
     const mag &#x3D; this.mag()
 
@@ -323,9 +325,10 @@ export class Vec implements Point {
    * Gets the dot product of two Vecs.
    *
    * @param vec The Vec to get dot product from.
-   * @remarks Actual Parameters:&lt;br&gt; **vec**: *[[Vec]]* The Vec to get dot product from.
    */
-  dot({ x, y }: Vec) {
+  dot(vec: Vec) {
+    const{ x, y } &#x3D; vec
+
     return this.x * x + this.y * y
   }
 

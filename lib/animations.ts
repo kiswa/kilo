@@ -1,10 +1,8 @@
-/**
- * @module kilo
- */
 import { Point } from './types'
 
 /**
- * @hidden
+ * @ignore
+ * @internal
  */
 class Animation {
   frame: Point
@@ -39,16 +37,14 @@ class Animation {
  *
  * ### Example
  * ```typescript
- * // In the implementation of a class
- * this.anims = new Animations({ x: 0, y: 0, custom: 'properties' })
- * // Create 'idle' animation with two frames that change every half second.
- * this.anims.add('idle', [{ x: 0, y: 0 }, { x: 1, y: 0}], .5)
- *
- * // In the update of the same class
- * this.anims.play('idle')
- * ```
- *
- * @category kilo
+ // In the implementation of a class
+ this.anims = new Animations({ x: 0, y: 0, custom: 'properties' })
+ // Create 'idle' animation with two frames that change every half second.
+ this.anims.add('idle', [{ x: 0, y: 0 }, { x: 1, y: 0}], .5)
+
+ // In the update of the same class
+ this.anims.play('idle')
+```
  */
 export class Animations {
   private anims: Map<string, Animation>
@@ -95,9 +91,7 @@ export class Animations {
     this.anims.get(anim).reset()
   }
 
-  /**
-   * Stop the current animation.
-   */
+  /** Stop the current animation. */
   stop() {
     this.current = null
   }
@@ -105,7 +99,7 @@ export class Animations {
   /**
    * Update the current animation if one is set.
    *
-   * @remarks Called by [[TileSprite.update]].
+   * Called by [TileSprite.update()]{@link TileSprite#update}.
    *
    * @param dt Delta time since last update.
    */

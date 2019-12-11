@@ -1,6 +1,3 @@
-/**
- * @module kilo/sound
- */
 import { Sound, SoundOptions } from './sound'
 import { math } from '../utils'
 
@@ -9,18 +6,16 @@ import { math } from '../utils'
  *
  * ### Example
  * ```typescript
- * const ding = new SoundGroup([
- *   new Sound('assets/sounds/ding1.ogg'),
- *   new Sound('assets/sounds/ding2.ogg'),
- *   new Sound('assets/sounds/ding3.ogg'),
- *   new Sound('assets/sounds/ding4.ogg')
- * ])
- *
- * // When one of the sounds should play.
- * ding.play()
- * ```
- *
- * @category kilo/sound
+const ding = new SoundGroup([
+  new Sound('assets/sounds/ding1.ogg'),
+  new Sound('assets/sounds/ding2.ogg'),
+  new Sound('assets/sounds/ding3.ogg'),
+  new Sound('assets/sounds/ding4.ogg')
+])
+
+// When one of the sounds should play.
+ding.play()
+```
  */
 export class SoundGroup {
   private sounds: Sound[]
@@ -43,9 +38,7 @@ export class SoundGroup {
     math.randOneFrom(this.sounds).play(opts)
   }
 
-  /**
-   * Stop all sounds from playing.
-   */
+  /** Stop all sounds in the group from playing. */
   stop() {
     for (let i = 0; i < this.sounds.length; i++) {
       this.sounds[i].stop()

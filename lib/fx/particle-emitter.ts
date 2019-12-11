@@ -1,15 +1,10 @@
-/**
- * @module kilo/fx
- */
 import { Container, TileSprite } from '../'
 import { Rect, Vec } from '../types'
 import { Particle, ParticleOptions } from './particle'
 
 /**
- * Container which manages a pool of [[Particle]] objects (20 by default)
+ * Container which manages a pool of {@link Particle} objects (20 by default)
  * and emits them in random directions when the `play` method is called.
- *
- * @category kilo/fx
  */
 export class ParticleEmitter extends Container {
   private particles: Particle[]
@@ -21,7 +16,7 @@ export class ParticleEmitter extends Container {
    * @param numParticles The number of particles used.
    * @param display TileSprite (or Rect) to use for display.
    * @param options Options affecting particle behaviors.
-   * See [[ParticleOptions]] for default values if not passed in.
+   * See ParticleOptions for default values if not passed in.
    */
   constructor(numParticles = 20, display?: TileSprite | Rect,
               options?: ParticleOptions) {

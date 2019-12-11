@@ -64,14 +64,24 @@
             <code>lib/sound/web-audio.ts</code>
         </p>
 
-
-
-
             <p class="comment">
-                <h3>Example</h3>
+                <h3>Description</h3>
             </p>
-            <div class="io-description">
-            </div>
+            <p class="comment">
+                <p>Provides support for playing sounds using the
+<a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API">Web Audio API</a>.</p>
+<div><pre class="line-numbers"><code class="language-typescript">const audio = new WebAudio(&#39;assets/sounds/theme.ogg&#39;)
+
+if (!audio.hasWebAudio) {
+  // Do something else for sounds.
+}
+
+audio.master.value = .3 // Low volume
+audio.play()</code></pre></div>
+            </p>
+
+
+
 
             <section>
     <h3 id="index">Index</h3>
@@ -86,27 +96,7 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                    <span class="modifier">Private</span>
-                                <a href="#context">context</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Private</span>
-                                <a href="#element">element</a>
-                            </li>
-                            <li>
                                 <a href="#hasWebAudio">hasWebAudio</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Private</span>
-                                <a href="#masterNode">masterNode</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Private</span>
-                                <a href="#musicNode">musicNode</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Private</span>
-                                <a href="#sfxNode">sfxNode</a>
                             </li>
                         </ul>
                     </td>
@@ -178,7 +168,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">lib/sound/web-audio.ts:31</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">lib/sound/web-audio.ts:44</a></div>
                             </td>
                         </tr>
 
@@ -232,62 +222,6 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="context"></a>
-                        <span class="name">
-                            <b>
-                                <span class="modifier">Private</span>
-                            context</b>
-                            <a href="#context"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Type : </i>    <code>AudioContext</code>
-
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">lib/sound/web-audio.ts:28</a></div>
-                            </td>
-                        </tr>
-
-
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="element"></a>
-                        <span class="name">
-                            <b>
-                                <span class="modifier">Private</span>
-                            element</b>
-                            <a href="#element"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Type : </i>    <code>HTMLAudioElement</code>
-
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">lib/sound/web-audio.ts:27</a></div>
-                            </td>
-                        </tr>
-
-
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
                         <a name="hasWebAudio"></a>
                         <span class="name">
                             <b>
@@ -303,7 +237,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">lib/sound/web-audio.ts:25</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">lib/sound/web-audio.ts:18</a></div>
                             </td>
                         </tr>
 
@@ -313,90 +247,6 @@
 </div>
                     </td>
                 </tr>
-
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="masterNode"></a>
-                        <span class="name">
-                            <b>
-                                <span class="modifier">Private</span>
-                            masterNode</b>
-                            <a href="#masterNode"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Type : </i>    <code>GainNode</code>
-
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">lib/sound/web-audio.ts:29</a></div>
-                            </td>
-                        </tr>
-
-
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="musicNode"></a>
-                        <span class="name">
-                            <b>
-                                <span class="modifier">Private</span>
-                            musicNode</b>
-                            <a href="#musicNode"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Type : </i>    <code>GainNode</code>
-
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">lib/sound/web-audio.ts:31</a></div>
-                            </td>
-                        </tr>
-
-
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="sfxNode"></a>
-                        <span class="name">
-                            <b>
-                                <span class="modifier">Private</span>
-                            sfxNode</b>
-                            <a href="#sfxNode"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Type : </i>    <code>GainNode</code>
-
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">lib/sound/web-audio.ts:30</a></div>
-                            </td>
-                        </tr>
-
 
             </tbody>
         </table>
@@ -429,8 +279,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="98"
-                            class="link-to-prism">lib/sound/web-audio.ts:98</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="89"
+                            class="link-to-prism">lib/sound/web-audio.ts:89</a></div>
                 </td>
             </tr>
 
@@ -470,8 +320,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="93"
-                            class="link-to-prism">lib/sound/web-audio.ts:93</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="84"
+                            class="link-to-prism">lib/sound/web-audio.ts:84</a></div>
                 </td>
             </tr>
 
@@ -511,8 +361,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="61"
-                            class="link-to-prism">lib/sound/web-audio.ts:61</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="74"
+                            class="link-to-prism">lib/sound/web-audio.ts:74</a></div>
                 </td>
             </tr>
 
@@ -552,8 +402,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="66"
-                            class="link-to-prism">lib/sound/web-audio.ts:66</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="79"
+                            class="link-to-prism">lib/sound/web-audio.ts:79</a></div>
                 </td>
             </tr>
 
@@ -597,12 +447,12 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="73" class="link-to-prism">lib/sound/web-audio.ts:73</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">lib/sound/web-audio.ts:27</a></div>
                                 </td>
                             </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-description"><p>Gets the audio context.</p>
+                                <div class="io-description"><p>Gets the audio context. </p>
 </div>
 
                         </td>
@@ -626,7 +476,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="78" class="link-to-prism">lib/sound/web-audio.ts:78</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">lib/sound/web-audio.ts:32</a></div>
                                 </td>
                             </tr>
                     <tr>
@@ -655,7 +505,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="83" class="link-to-prism">lib/sound/web-audio.ts:83</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">lib/sound/web-audio.ts:37</a></div>
                                 </td>
                             </tr>
                     <tr>
@@ -684,7 +534,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="88" class="link-to-prism">lib/sound/web-audio.ts:88</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">lib/sound/web-audio.ts:42</a></div>
                                 </td>
                             </tr>
                     <tr>
@@ -711,6 +561,26 @@
   private masterNode: GainNode
   private sfxNode: GainNode
   private musicNode: GainNode
+
+  /** Gets the audio context. */
+  get ctx() {
+    return this.context
+  }
+
+  /** Gets the master node. */
+  get master() {
+    return this.masterNode
+  }
+
+  /** Gets the sound effects node. */
+  get sfx() {
+    return this.sfxNode
+  }
+
+  /** Gets the music node. */
+  get music() {
+    return this.musicNode
+  }
 
   /**
    * Initialize WebAudio instance.
@@ -747,28 +617,6 @@
   /** Pauses the audio element. */
   stop() {
     this.element.pause()
-  }
-
-  /**
-   * Gets the audio context.
-   */
-  get ctx() {
-    return this.context
-  }
-
-  /** Gets the master node. */
-  get master() {
-    return this.masterNode
-  }
-
-  /** Gets the sound effects node. */
-  get sfx() {
-    return this.sfxNode
-  }
-
-  /** Gets the music node. */
-  get music() {
-    return this.musicNode
   }
 
   /** Mutes the master node. */

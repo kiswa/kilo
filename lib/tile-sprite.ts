@@ -1,13 +1,8 @@
-/**
- * @module kilo
- */
 import { Animations } from '.'
 import { Point, Sprite, Texture, Vec } from './types'
 
 /**
- * An extended [[Sprite]] that adds frame data, animations, and tile size.
- *
- * @category kilo
+ * An extended {@link Sprite} that adds frame data, animations, and tile size.
  */
 export class TileSprite extends Sprite {
   /** The frame data. Should always have `x` and `y` properties. */

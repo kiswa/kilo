@@ -1,6 +1,3 @@
-/**
- * @module kilo/resolvers
- */
 import { Utils, TileMap } from '..'
 import { Sprite, Vec } from '../types'
 
@@ -11,8 +8,6 @@ import { Sprite, Vec } from '../types'
  * @param map The TileMap to use for collisions.
  * @param x Desired movement in the X axis.
  * @param y Desired movement in the Y axis.
- *
- * @category kilo/resolvers
  */
 export function stopMovement(ent: Sprite, map: TileMap, x = 0, y = 0) {
   const box = Utils.sprite.bounds(ent)

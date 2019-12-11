@@ -1,6 +1,3 @@
-/**
- * @module kilo/fx
- */
 import { Container, TileSprite } from '../'
 import { Rect, Vec } from '../types'
 import { math } from '../utils'
@@ -8,9 +5,7 @@ import { math } from '../utils'
 /**
  * Options used to determine particle behaviors.
  *
- * Ranges use a [[Vec]] where the x value is the minimum, and y is the maximum.
- *
- * @category kilo/fx
+ * Ranges use a {@link Vec} where the x value is the minimum, and y is the maximum.
  */
 export interface ParticleOptions {
   /**
@@ -45,11 +40,9 @@ export interface ParticleOptions {
 }
 
 /**
- * A single particle whose lifecycle is controlled by a [[ParticleEmitter]].
+ * A single particle whose lifecycle is controlled by a {@link ParticleEmitter}.
  *
  * Can be used alone if desired as a randomly moving and fading entity.
- *
- * @category kilo/fx
  */
 export class Particle extends Container {
   private options: ParticleOptions
@@ -61,7 +54,7 @@ export class Particle extends Container {
    *
    * @param display TileSprite (or Rect) to use for display.
    * @param options Options affecting particle behaviors.
-   * See [[ParticleOptions]] for default values if not passed in.
+   * See ParticleOptions for default values if not passed in.
    */
   constructor(display?: Rect | TileSprite, options?: ParticleOptions) {
     super()
@@ -84,9 +77,7 @@ export class Particle extends Container {
     ))
   }
 
-  /**
-   * Reset the particle with random values within established ranges.
-   */
+  /** Reset the particle with random values within established ranges. */
   reset() {
     const {
       horizontalVelRange: h,

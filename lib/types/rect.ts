@@ -1,13 +1,6 @@
-/**
- * @module kilo/types
- */
 import { Vec, Entity } from '.'
 
-/**
- * Style options for a Rect.
- *
- * @category kilo/types
- */
+/** Style options for a Rect. */
 export interface RectStyleOptions {
   /** The fill color. */
   fill: string
@@ -16,12 +9,9 @@ export interface RectStyleOptions {
 /**
  * Creates a rectangle for rendering.
  *
- * ### Example
  * ```typescript
- * const testObj = new Rect(32, 32, { fill: '#f00' })
- * ```
- *
- * @category kilo/types
+const testObj = new Rect(32, 32, { fill: '#f00' })
+```
  */
 export class Rect extends Entity {
   /** Height of the rectangle in pixels. */
@@ -51,7 +41,7 @@ export class Rect extends Entity {
   }
 
   /**
-   * Empty implementation from extending [[Entity]].
+   * Empty implementation from extending {@link Entity}.
    *
    * @param _ Not used.
    * @param __ Not used.

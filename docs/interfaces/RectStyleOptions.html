@@ -69,7 +69,7 @@
                 <h3>Description</h3>
             </p>
             <p class="comment">
-                <p>Style options for a Rect.</p>
+                <p>Style options for a Rect. </p>
 
             </p>
 
@@ -142,11 +142,7 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Vec, Entity } from &#x27;.&#x27;
 
-/**
- * Style options for a Rect.
- *
- * @category kilo/types
- */
+/** Style options for a Rect. */
 export interface RectStyleOptions {
   /** The fill color. */
   fill: string
@@ -155,12 +151,9 @@ export interface RectStyleOptions {
 /**
  * Creates a rectangle for rendering.
  *
- * ### Example
  * &#x60;&#x60;&#x60;typescript
- * const testObj &#x3D; new Rect(32, 32, { fill: &#x27;#f00&#x27; })
- * &#x60;&#x60;&#x60;
- *
- * @category kilo/types
+const testObj &#x3D; new Rect(32, 32, { fill: &#x27;#f00&#x27; })
+&#x60;&#x60;&#x60;
  */
 export class Rect extends Entity {
   /** Height of the rectangle in pixels. */
@@ -190,7 +183,7 @@ export class Rect extends Entity {
   }
 
   /**
-   * Empty implementation from extending [[Entity]].
+   * Empty implementation from extending {@link Entity}.
    *
    * @param _ Not used.
    * @param __ Not used.

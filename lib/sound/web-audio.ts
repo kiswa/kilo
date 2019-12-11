@@ -1,24 +1,17 @@
 /**
- * @module kilo/sound
- */
-
-/**
  * Provides support for playing sounds using the
- * [Web Audio API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API).
+ * [Web Audio API]{@link https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API}.
  *
- * ### Example
  * ```typescript
- * const audio = new WebAudio('assets/sounds/theme.ogg')
- *
- * if (!audio.hasWebAudio) {
- *   // Do something else for sounds.
- * }
- *
- * audio.master.value = .3 // Low volume
- * audio.play()
- * ```
- *
- * @category kilo/sound
+const audio = new WebAudio('assets/sounds/theme.ogg')
+
+if (!audio.hasWebAudio) {
+  // Do something else for sounds.
+}
+
+audio.master.value = .3 // Low volume
+audio.play()
+```
  */
 export class WebAudio {
   /** Whether or not WebAudio is supported. */
@@ -29,6 +22,26 @@ export class WebAudio {
   private masterNode: GainNode
   private sfxNode: GainNode
   private musicNode: GainNode
+
+  /** Gets the audio context. */
+  get ctx() {
+    return this.context
+  }
+
+  /** Gets the master node. */
+  get master() {
+    return this.masterNode
+  }
+
+  /** Gets the sound effects node. */
+  get sfx() {
+    return this.sfxNode
+  }
+
+  /** Gets the music node. */
+  get music() {
+    return this.musicNode
+  }
 
   /**
    * Initialize WebAudio instance.
@@ -65,28 +78,6 @@ export class WebAudio {
   /** Pauses the audio element. */
   stop() {
     this.element.pause()
-  }
-
-  /**
-   * Gets the audio context.
-   */
-  get ctx() {
-    return this.context
-  }
-
-  /** Gets the master node. */
-  get master() {
-    return this.masterNode
-  }
-
-  /** Gets the sound effects node. */
-  get sfx() {
-    return this.sfxNode
-  }
-
-  /** Gets the music node. */
-  get music() {
-    return this.musicNode
   }
 
   /** Mutes the master node. */

@@ -69,7 +69,7 @@
                 <h3>Description</h3>
             </p>
             <p class="comment">
-                <p>Interface to add extra layers above or below the main level layer.</p>
+                <p>Interface to add extra layers above or below the main level layer. </p>
 
             </p>
 
@@ -180,18 +180,15 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Point } from &#x27;../types&#x27;
 
-/**
- * Type for tile data.
- *
- * @category kilo/utils
- */
-export type TileData &#x3D; { [key: string]: any, frame: Point, x: number, y: number }
+/** Type for tile data. */
+export type TileData &#x3D; {
+  [key: string]: any,
+  frame: Point,
+  x: number,
+  y: number
+}
 
-/**
- * Interface for a Tiled map object.
- *
- * @category kilo/utils
- */
+/** Interface for a Tiled map object. */
 export interface TiledMap {
   /** Width of a tile in pixels. */
   tileWidth: number
@@ -213,6 +210,7 @@ export interface TiledMap {
    * @param mandatory Whether a missing object is an error.
    */
   getObjectByName(name: string, mandatory?: boolean): Tiled.Object
+
   /**
    * Gets an array of objects from the map by type.
    *
@@ -222,11 +220,7 @@ export interface TiledMap {
   getObjectsByType(type: string, mandatory?: boolean): Tiled.Object[]
 }
 
-/**
- * Interface to add extra layers above or below the main level layer.
- *
- * @category kilo/utils
- */
+/** Interface to add extra layers above or below the main level layer. */
 export interface ExtraLayer {
   /** Name of the layer to load. */
   name: string
@@ -234,28 +228,56 @@ export interface ExtraLayer {
   isAboveLevel: boolean
 }
 
+/**
+ * @ignore
+ */
 let tileWidth: number
+/**
+ * @ignore
+ */
 let tileHeight: number
+/**
+ * @ignore
+ */
 let mapWidth: number
+/**
+ * @ignore
+ */
 let mapHeight: number
+/**
+ * @ignore
+ */
 let tilesPerRow: number
+/**
+ * @ignore
+ */
 let levelIndex: number
 
+/**
+ * @ignore
+ */
 let tileset: Tiled.Tileset
+/**
+ * @ignore
+ */
 let layers: Tiled.Layer[]
+/**
+ * @ignore
+ */
 let tilesets: Tiled.Tileset[]
+/**
+ * @ignore
+ */
 let entities: Tiled.Object[]
 
 /**
  * Parses a Tiled map object into a simpler form.
  *
  * There must be at least two layers in the Tiled map:
- * &quot;level&quot;    - containing the tiles for the level
- * &quot;entities&quot; - containing at least one entity
+ * * &quot;level&quot;    - containing the tiles for the level
+ * * &quot;entities&quot; - containing at least one entity (usually player starting location)
  *
  * @param jsonObj Object from Tiled JSON export.
- *
- * @category kilo/utils
  */
 export function tiledParser(jsonObj: Tiled.Map,
                             extraLayers?: ExtraLayer[]): TiledMap {
@@ -301,6 +323,9 @@ export function tiledParser(jsonObj: Tiled.Map,
   }
 }
 
+/**
+ * @ignore
+ */
 const getLayer &#x3D; (name: string, mandatory &#x3D; true) &#x3D;&gt; {
   let layer &#x3D; undefined
 
@@ -322,6 +347,9 @@ const getLayer &#x3D; (name: string, mandatory &#x3D; true) &#x3D;&gt; {
   return layer
 }
 
+/**
+ * @ignore
+ */
 const loadTilesByLayer &#x3D; (levelLayer: Tiled.Layer,
                        extraLayers: ExtraLayer[]) &#x3D;&gt; {
   const tiles: any[] &#x3D; []
@@ -345,6 +373,9 @@ const loadTilesByLayer &#x3D; (levelLayer: Tiled.Layer,
   return tiles
 }
 
+/**
+ * @ignore
+ */
 const loadTiles &#x3D; (tiles: any[], layer: Tiled.Layer) &#x3D;&gt; {
   const index &#x3D; tiles.push([]) - 1
 
@@ -367,6 +398,9 @@ const loadTiles &#x3D; (tiles: any[], layer: Tiled.Layer) &#x3D;&gt; {
   }
 }
 
+/**
+ * @ignore
+ */
 const getTileset &#x3D; () &#x3D;&gt; {
   if (!tilesets || !tilesets[0]) {
     throw new Error(&#x27;Tiled Error: Missing tileset index 0.&#x27;)
@@ -375,6 +409,9 @@ const getTileset &#x3D; () &#x3D;&gt; {
   return tilesets[0]
 }
 
+/**
+ * @ignore
+ */
 const getTileProps &#x3D; (id: number) &#x3D;&gt; {
   const tmp: any &#x3D; {}
   let tile: any &#x3D; undefined
@@ -405,6 +442,9 @@ const getTileProps &#x3D; (id: number) &#x3D;&gt; {
   return tmp
 }
 
+/**
+ * @ignore
+ */
 const convertEntity &#x3D; (e: Tiled.Object) &#x3D;&gt; {
   const tmp &#x3D; {
     x: e.x,
@@ -424,6 +464,9 @@ const convertEntity &#x3D; (e: Tiled.Object) &#x3D;&gt; {
   return tmp
 }
 
+/**
+ * @ignore
+ */
 const getObjectsByType &#x3D; (type: string, mandatory &#x3D; false): Tiled.Object[] &#x3D;&gt; {
   const es &#x3D; []
   for (let i &#x3D; 0; i &lt; entities.length; i++) {
@@ -444,6 +487,9 @@ const getObjectsByType &#x3D; (type: string, mandatory &#x3D; false): Tiled.Obje
   return converted as any
 }
 
+/**
+ * @ignore
+ */
 const getObjectByName &#x3D; (name: string, mandatory &#x3D; false): Tiled.Object &#x3D;&gt; {
   let ent: any
 

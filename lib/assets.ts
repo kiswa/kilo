@@ -1,24 +1,15 @@
-/**
- * @module kilo
- */
 import { Game } from '.'
 
-/**
- * Function that is called when an asset is ready.
- */
+/** Function that is called when an asset is ready. */
 type ReadyCallback = () => void
 
-/**
- * Function that is called to provide progress status.
- */
+/** Function that is called to provide progress status. */
 type ProgressCallback = (complete: number, total: number) => void
 
 /**
  * Loads assets for use in a game.
  *
  * Assets are cached by URI to prevent multiple network calls for the same asset.
- *
- * @category kilo
  */
 export class Assets {
   private cache: any
@@ -29,16 +20,12 @@ export class Assets {
   private total: number
   private remaining: number
 
-  /**
-   * Get completed status of all assets.
-   */
+  /** Get completed status of all assets. */
   get completed() {
     return this.isCompleted
   }
 
-  /**
-   * Initialize Assets object.
-   */
+  /** Initialize Assets object. */
   constructor() {
     this.cache = {}
     this.readyListeners = []

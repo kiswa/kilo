@@ -1,12 +1,8 @@
 /**
- * @module kilo/resolvers
- */
-
-/**
- * @hidden
+ * @ignore
  */
 export { stopMovement } from './stop-move'
 /**
- * @hidden
+ * @ignore
  */
 export { wallSlide } from './wall-slide'

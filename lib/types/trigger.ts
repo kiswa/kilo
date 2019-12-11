@@ -1,6 +1,3 @@
-/**
- * @module kilo/types
- */
 import { HitBox, Rect, Sprite } from '.'
 
 /**
@@ -9,34 +6,32 @@ import { HitBox, Rect, Sprite } from '.'
  *
  * ### Example
  * ```typescript
- * const door = new Trigger(
- *   new HitBox(0, 0, 10, 10),
- *   () => { console.log('Trigger entered.') },
- *   () => { console.log('Trigger exited.') }
- * )
- *
- * // In collision checks.
- *
- * // Sprite collides, call onEnter if first time.
- * if (sprite.hit(player, door)) {
- *   if (doorEntered) {
- *     return
- *   }
- *
- *   doorEntered = true
- *   door.onEnter()
- *
- *   return
- * }
- *
- * // Sprite does not collide, call onExit if previously entered.
- * if (doorEntered) {
- *   doorEntered = false
- *   door.onExit()
- * }
- * ```
- *
- * @category kilo/types
+const door = new Trigger(
+  new HitBox(0, 0, 10, 10),
+  () => { console.log('Trigger entered.') },
+  () => { console.log('Trigger exited.') }
+)
+
+// In collision checks.
+
+// Sprite collides, call onEnter if first time.
+if (sprite.hit(player, door)) {
+  if (doorEntered) {
+    return
+  }
+
+  doorEntered = true
+  door.onEnter()
+
+  return
+}
+
+// Sprite does not collide, call onExit if previously entered.
+if (doorEntered) {
+  doorEntered = false
+  door.onExit()
+}
+```
  */
 export class Trigger extends Sprite {
   private _onEnter: Function
@@ -74,10 +69,12 @@ export class Trigger extends Sprite {
                                 { fill: 'rgba(255, 255, 0, .5)' }))
   }
 
+  /** Call to trigger onEnter callback. */
   onEnter(...args: any): any {
     this._onEnter(...args)
   }
 
+  /** Call to trigger onExit callback. */
   onExit(...args: any): any {
     this._onExit(...args)
   }

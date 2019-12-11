@@ -1,13 +1,6 @@
-/**
- * @module kilo/utils
- */
 import { Vec } from '../types'
 
-/**
- * Interface for properties needed for physics calculations.
- *
- * @category kilo/utils
- */
+/** Interface for properties needed for physics calculations. */
 export interface VecEntity {
   /** Vector for acceleration. */
   acc: Vec,
@@ -24,8 +17,6 @@ export interface VecEntity {
  *
  * @param e VecEntity to set acceleration on.
  * @param force Force to apply to VecEntity.
- *
- * @category kilo/utils
  */
 export function applyForce(e: VecEntity, force: Vec) {
   e.acc.x += force.x / e.mass
@@ -37,8 +28,6 @@ export function applyForce(e: VecEntity, force: Vec) {
  *
  * @param e VecEntity to apply friction to.
  * @param amount Amount of friction to apply.
- *
- * @category kilo/utils
  */
 export function applyFriction(e: VecEntity, amount: number) {
   const friction = e.vel.clone().multiply(-1).normalize().multiply(amount)
@@ -50,8 +39,6 @@ export function applyFriction(e: VecEntity, amount: number) {
  *
  * @param e VecEntity to apply horizontal friction to.
  * @param amount Amount of friction to apply.
- *
- * @category kilo/utils
  */
 export function applyHorizontalFriction(e: VecEntity, amount: number) {
   const friction = e.vel.clone().multiply(-1).normalize().multiply(amount)
@@ -66,8 +53,6 @@ export function applyHorizontalFriction(e: VecEntity, amount: number) {
  * @param e VecEntity to apply impulse to.
  * @param force Vec to apply as impulse.
  * @param dt Delta time since last update.
- *
- * @category kilo/utils
  */
 export function applyImpulse(e: VecEntity, force: Vec, dt: number) {
   applyForce(e, <Vec>{ x: force.x / dt, y: force.y / dt })
@@ -78,8 +63,6 @@ export function applyImpulse(e: VecEntity, force: Vec, dt: number) {
  *
  * @param e VecEntity to integrate.
  * @param dt Delta time since last update.
- *
- * @category kilo/utils
  */
 export function integrate(e: VecEntity, dt: number) {
   const vx = e.vel.x + e.acc.x * dt
@@ -98,8 +81,6 @@ export function integrate(e: VecEntity, dt: number) {
  *
  * @param e VecEntity to integrate.
  * @param dt Delta time since last update.
- *
- * @category kilo/utils
  */
 export function integratePos (e: VecEntity, dt: number) {
   const dis = integrate(e, dt)
@@ -112,8 +93,6 @@ export function integratePos (e: VecEntity, dt: number) {
  * Converts a velocity vector to a speed.
  *
  * @param vel The Vec to convert to a speed.
- *
- * @category kilo/utils
  */
 export function speed(vel: Vec) {
   return Math.sqrt(vel.x * vel.x + vel.y * vel.y)

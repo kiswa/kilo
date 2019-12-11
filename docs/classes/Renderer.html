@@ -68,17 +68,12 @@
                 <h3>Description</h3>
             </p>
             <p class="comment">
-                <p>Abstract class to extend for specific renderers.</p>
+                <p>Abstract class to extend for specific renderers. </p>
 
             </p>
 
 
 
-            <p class="comment">
-                <h3>Example</h3>
-            </p>
-            <div class="io-description">
-            </div>
 
             <section>
     <h3 id="index">Index</h3>
@@ -165,13 +160,13 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">lib/renderer/renderer.ts:27</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">lib/renderer/renderer.ts:18</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
-                            <div class="io-description"><p>Not to be called directly. </p>
+                            <div class="io-description"><p>Abstract class, so not to be called directly. </p>
 </div>
                             <div>
                                     <b>Parameters :</b>
@@ -255,7 +250,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">lib/renderer/renderer.ts:18</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">lib/renderer/renderer.ts:11</a></div>
                             </td>
                         </tr>
 
@@ -289,7 +284,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">lib/renderer/renderer.ts:20</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">lib/renderer/renderer.ts:13</a></div>
                             </td>
                         </tr>
 
@@ -323,7 +318,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">lib/renderer/renderer.ts:16</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">lib/renderer/renderer.ts:9</a></div>
                             </td>
                         </tr>
 
@@ -357,7 +352,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">lib/renderer/renderer.ts:14</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="7" class="link-to-prism">lib/renderer/renderer.ts:7</a></div>
                             </td>
                         </tr>
 
@@ -401,8 +396,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="61"
-                            class="link-to-prism">lib/renderer/renderer.ts:61</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="52"
+                            class="link-to-prism">lib/renderer/renderer.ts:52</a></div>
                 </td>
             </tr>
 
@@ -496,8 +491,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="53"
-                            class="link-to-prism">lib/renderer/renderer.ts:53</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="44"
+                            class="link-to-prism">lib/renderer/renderer.ts:44</a></div>
                 </td>
             </tr>
 
@@ -584,12 +579,12 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">lib/renderer/renderer.ts:25</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">lib/renderer/renderer.ts:16</a></div>
                                 </td>
                             </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-description"><p>Get the HTMLCanvasElement used for rendering.</p>
+                                <div class="io-description"><p>Get the HTMLCanvasElement used for rendering. </p>
 </div>
 
                         </td>
@@ -605,11 +600,7 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Container } from &#x27;..&#x27;
 import { Sprite } from &#x27;../types&#x27;
 
-/**
- * Abstract class to extend for specific renderers.
- *
- * @category kilo/renderer
- */
+/** Abstract class to extend for specific renderers. */
 export abstract class Renderer {
   /** Width of the canvas in pixels. */
   protected width: number
@@ -620,14 +611,12 @@ export abstract class Renderer {
   /** Containing element for the canvas. */
   protected container: HTMLElement
 
-  /**
-   * Get the HTMLCanvasElement used for rendering.
-   */
+  /** Get the HTMLCanvasElement used for rendering. */
   get canvasElement() {
     return this.canvas
   }
 
-  /** Not to be called directly. */
+  /** Abstract class, so not to be called directly. */
   constructor(width: number, height: number, container: HTMLElement) {
     this.width &#x3D; width
     this.height &#x3D; height

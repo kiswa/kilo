@@ -70,18 +70,13 @@
             <p class="comment">
                 <p>Follows a subject to provide a viewport into a game world.</p>
 <h3 id="example">Example</h3>
-<p>Assuming this is in a [[Scene]].</p>
-<p>```typescript</p>
-<ul>
-<li>const camera = new Camera(player, { width: 640, height: 480 } as Rect, {</li>
-<li>width: map.mapWidth * map.tileWidth,</li>
-<li>height: map.mapHeight * map.tileHeight</li>
-<li>} as Rect)</li>
-<li></li>
-<li>this.camera = this.add<Camera>(camera)</li>
-<li>```</li>
-</ul>
+<p>Assumes this is in a <a href="../classes/Scene.html">Scene</a>.</p>
+<div><pre class="line-numbers"><code class="language-typescript">const camera = new Camera(player, { width: 640, height: 480 } as Rect, {
+   width: map.mapWidth * map.tileWidth,
+   height: map.mapHeight * map.tileHeight
+ } as Rect)
 
+this.camera = this.add&lt;Camera&gt;(camera)</code></pre></div>
             </p>
 
             <p class="comment">
@@ -92,11 +87,6 @@
             </p>
 
 
-            <p class="comment">
-                <h3>Example</h3>
-            </p>
-            <div class="io-description">
-            </div>
 
             <section>
     <h3 id="index">Index</h3>
@@ -111,59 +101,7 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                    <span class="modifier">Private</span>
-                                <a href="#debug">debug</a>
-                            </li>
-                            <li>
                                 <a href="#easing">easing</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Private</span>
-                                <a href="#flashDuration">flashDuration</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Private</span>
-                                <a href="#flashRect">flashRect</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Private</span>
-                                <a href="#flashTime">flashTime</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Private</span>
-                                <a href="#height">height</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Private</span>
-                                <a href="#offset">offset</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Private</span>
-                                <a href="#shakeDecay">shakeDecay</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Private</span>
-                                <a href="#shakeLast">shakeLast</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Private</span>
-                                <a href="#shakePower">shakePower</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Private</span>
-                                <a href="#subject">subject</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Private</span>
-                                <a href="#tracking">tracking</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Private</span>
-                                <a href="#width">width</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Private</span>
-                                <a href="#worldSize">worldSize</a>
                             </li>
                             <li>
                                 <a href="#alpha">alpha</a>
@@ -196,14 +134,6 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                    <span class="modifier">Private</span>
-                                <a href="#doFlash">doFlash</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Private</span>
-                                <a href="#doShake">doShake</a>
-                            </li>
-                            <li>
                                 <a href="#flash">flash</a>
                             </li>
                             <li>
@@ -220,10 +150,6 @@
                             </li>
                             <li>
                                 <a href="#shake">shake</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Private</span>
-                                <a href="#unShake">unShake</a>
                             </li>
                             <li>
                                 <a href="#update">update</a>
@@ -270,14 +196,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">lib/camera.ts:48</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">lib/camera.ts:44</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
                             <div class="io-description"><p>Initialize Camera object.</p>
-<p>The [[Rect]] parameters only require <code>width</code> and <code>height</code> properties.</p>
+<p>The <a href="../classes/Rect.html">Rect</a> parameters only require <code>width</code> and <code>height</code> properties.</p>
 </div>
                             <div>
                                     <b>Parameters :</b>
@@ -303,7 +229,7 @@
                                                     </td>
                                                     
                                                         <td>
-                                                                <code><p>The [[TileSprite]] or [[Sprite]] for the camera to follow.</p>
+                                                                <code><p>The {</p>
 </code>
                                                         </td>
                                                 </tr>
@@ -335,7 +261,7 @@
                                                     </td>
                                                     
                                                         <td>
-                                                                <code><p>Size of the game world.</p>
+                                                                <code><p>Size of the game world. Uses <code>viewport</code> by default.</p>
 </code>
                                                         </td>
                                                 </tr>
@@ -357,34 +283,6 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="debug"></a>
-                        <span class="name">
-                            <b>
-                                <span class="modifier">Private</span>
-                            debug</b>
-                            <a href="#debug"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Type : </i>        <code><a href="../classes/Rect.html" target="_self" >Rect</a></code>
-
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">lib/camera.ts:43</a></div>
-                            </td>
-                        </tr>
-
-
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
                         <a name="easing"></a>
                         <span class="name">
                             <b>
@@ -401,353 +299,18 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">lib/camera.ts:30</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">lib/camera.ts:26</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
                         <div class="io-description"><p>Amount to move towards subject per update.</p>
-<p>Range from 0 to 1 where 0 is not moving, and 1 is always on subject.</p>
+<p>Range from 0 to 1 where 0 is not moving, and 1 is always on subject.
+Default is .3</p>
 </div>
                     </td>
                 </tr>
-
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="flashDuration"></a>
-                        <span class="name">
-                            <b>
-                                <span class="modifier">Private</span>
-                            flashDuration</b>
-                            <a href="#flashDuration"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
-
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">lib/camera.ts:37</a></div>
-                            </td>
-                        </tr>
-
-
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="flashRect"></a>
-                        <span class="name">
-                            <b>
-                                <span class="modifier">Private</span>
-                            flashRect</b>
-                            <a href="#flashRect"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Type : </i>        <code><a href="../classes/Rect.html" target="_self" >Rect</a></code>
-
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">lib/camera.ts:38</a></div>
-                            </td>
-                        </tr>
-
-
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="flashTime"></a>
-                        <span class="name">
-                            <b>
-                                <span class="modifier">Private</span>
-                            flashTime</b>
-                            <a href="#flashTime"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
-
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">lib/camera.ts:36</a></div>
-                            </td>
-                        </tr>
-
-
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="height"></a>
-                        <span class="name">
-                            <b>
-                                <span class="modifier">Private</span>
-                            height</b>
-                            <a href="#height"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
-
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">lib/camera.ts:41</a></div>
-                            </td>
-                        </tr>
-
-
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="offset"></a>
-                        <span class="name">
-                            <b>
-                                <span class="modifier">Private</span>
-                            offset</b>
-                            <a href="#offset"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Type : </i>        <code><a href="../classes/Vec.html" target="_self" >Vec</a></code>
-
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">lib/camera.ts:47</a></div>
-                            </td>
-                        </tr>
-
-
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="shakeDecay"></a>
-                        <span class="name">
-                            <b>
-                                <span class="modifier">Private</span>
-                            shakeDecay</b>
-                            <a href="#shakeDecay"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
-
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">lib/camera.ts:33</a></div>
-                            </td>
-                        </tr>
-
-
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="shakeLast"></a>
-                        <span class="name">
-                            <b>
-                                <span class="modifier">Private</span>
-                            shakeLast</b>
-                            <a href="#shakeLast"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Type : </i>        <code><a href="../classes/Vec.html" target="_self" >Vec</a></code>
-
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">lib/camera.ts:34</a></div>
-                            </td>
-                        </tr>
-
-
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="shakePower"></a>
-                        <span class="name">
-                            <b>
-                                <span class="modifier">Private</span>
-                            shakePower</b>
-                            <a href="#shakePower"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
-
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">lib/camera.ts:32</a></div>
-                            </td>
-                        </tr>
-
-
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="subject"></a>
-                        <span class="name">
-                            <b>
-                                <span class="modifier">Private</span>
-                            subject</b>
-                            <a href="#subject"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Type : </i>        <code><a href="../classes/Vec.html" target="_self" >Vec</a></code>
-
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">lib/camera.ts:48</a></div>
-                            </td>
-                        </tr>
-
-
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="tracking"></a>
-                        <span class="name">
-                            <b>
-                                <span class="modifier">Private</span>
-                            tracking</b>
-                            <a href="#tracking"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Type : </i>        <code><a href="../classes/Vec.html" target="_self" >Vec</a></code>
-
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">lib/camera.ts:46</a></div>
-                            </td>
-                        </tr>
-
-
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="width"></a>
-                        <span class="name">
-                            <b>
-                                <span class="modifier">Private</span>
-                            width</b>
-                            <a href="#width"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
-
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">lib/camera.ts:40</a></div>
-                            </td>
-                        </tr>
-
-
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="worldSize"></a>
-                        <span class="name">
-                            <b>
-                                <span class="modifier">Private</span>
-                            worldSize</b>
-                            <a href="#worldSize"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Type : </i>        <code><a href="../classes/Rect.html" target="_self" >Rect</a></code>
-
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">lib/camera.ts:44</a></div>
-                            </td>
-                        </tr>
-
 
             </tbody>
         </table>
@@ -777,7 +340,7 @@
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in         <code><a href="../classes/Entity.html#source" target="_self" >Entity:24</a></code>
+                                    <div class="io-line">Defined in         <code><a href="../classes/Entity.html#source" target="_self" >Entity:17</a></code>
 </div>
                             </td>
                         </tr>
@@ -817,7 +380,7 @@
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in         <code><a href="../classes/Entity.html#source" target="_self" >Entity:32</a></code>
+                                    <div class="io-line">Defined in         <code><a href="../classes/Entity.html#source" target="_self" >Entity:25</a></code>
 </div>
                             </td>
                         </tr>
@@ -857,7 +420,7 @@
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in         <code><a href="../classes/Entity.html#source" target="_self" >Entity:21</a></code>
+                                    <div class="io-line">Defined in         <code><a href="../classes/Entity.html#source" target="_self" >Entity:14</a></code>
 </div>
                             </td>
                         </tr>
@@ -897,7 +460,7 @@
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in         <code><a href="../classes/Entity.html#source" target="_self" >Entity:27</a></code>
+                                    <div class="io-line">Defined in         <code><a href="../classes/Entity.html#source" target="_self" >Entity:20</a></code>
 </div>
                             </td>
                         </tr>
@@ -937,7 +500,7 @@
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in         <code><a href="../classes/Entity.html#source" target="_self" >Entity:29</a></code>
+                                    <div class="io-line">Defined in         <code><a href="../classes/Entity.html#source" target="_self" >Entity:22</a></code>
 </div>
                             </td>
                         </tr>
@@ -977,7 +540,7 @@
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in         <code><a href="../classes/Entity.html#source" target="_self" >Entity:19</a></code>
+                                    <div class="io-line">Defined in         <code><a href="../classes/Entity.html#source" target="_self" >Entity:12</a></code>
 </div>
                             </td>
                         </tr>
@@ -1002,150 +565,6 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="doFlash"></a>
-                    <span class="name">
-                        <b>
-                            <span class="modifier">Private</span>
-                            doFlash
-                        </b>
-                        <a href="#doFlash"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>doFlash(dt: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="221"
-                            class="link-to-prism">lib/camera.ts:221</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>dt</td>
-                                    <td>
-                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="doShake"></a>
-                    <span class="name">
-                        <b>
-                            <span class="modifier">Private</span>
-                            doShake
-                        </b>
-                        <a href="#doShake"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>doShake(dt: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="239"
-                            class="link-to-prism">lib/camera.ts:239</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>dt</td>
-                                    <td>
-                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
                     <a name="flash"></a>
                     <span class="name">
                         <b>
@@ -1164,8 +583,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="151"
-                            class="link-to-prism">lib/camera.ts:151</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="149"
+                            class="link-to-prism">lib/camera.ts:149</a></div>
                 </td>
             </tr>
 
@@ -1264,8 +683,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="168"
-                            class="link-to-prism">lib/camera.ts:168</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="166"
+                            class="link-to-prism">lib/camera.ts:166</a></div>
                 </td>
             </tr>
 
@@ -1363,8 +782,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="88"
-                            class="link-to-prism">lib/camera.ts:88</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="86"
+                            class="link-to-prism">lib/camera.ts:86</a></div>
                 </td>
             </tr>
 
@@ -1373,6 +792,7 @@
                 <td class="col-md-4">
                     <div class="io-description"><p>Set debug status on camera.</p>
 <p>When true, a rectangle displays on-screen showing camera tracking bounds.</p>
+<p>Only call after everything is added to the camera.</p>
 </div>
 
                     <div class="io-description">
@@ -1441,8 +861,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="121"
-                            class="link-to-prism">lib/camera.ts:121</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="119"
+                            class="link-to-prism">lib/camera.ts:119</a></div>
                 </td>
             </tr>
 
@@ -1519,8 +939,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="110"
-                            class="link-to-prism">lib/camera.ts:110</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="108"
+                            class="link-to-prism">lib/camera.ts:108</a></div>
                 </td>
             </tr>
 
@@ -1612,8 +1032,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="140"
-                            class="link-to-prism">lib/camera.ts:140</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="138"
+                            class="link-to-prism">lib/camera.ts:138</a></div>
                 </td>
             </tr>
 
@@ -1694,47 +1114,6 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="unShake"></a>
-                    <span class="name">
-                        <b>
-                            <span class="modifier">Private</span>
-                            unShake
-                        </b>
-                        <a href="#unShake"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>unShake()</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="254"
-                            class="link-to-prism">lib/camera.ts:254</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
                     <a name="update"></a>
                     <span class="name">
                         <b>
@@ -1753,8 +1132,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="208"
-                            class="link-to-prism">lib/camera.ts:208</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="206"
+                            class="link-to-prism">lib/camera.ts:206</a></div>
                 </td>
             </tr>
 
@@ -1852,7 +1231,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-                        <div class="io-line">Defined in         <code><a href="../classes/Container.html#source" target="_self" >Container:29</a></code>
+                        <div class="io-line">Defined in         <code><a href="../classes/Container.html#source" target="_self" >Container:24</a></code>
 </div>
                 </td>
             </tr>
@@ -1943,7 +1322,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-                        <div class="io-line">Defined in         <code><a href="../classes/Container.html#source" target="_self" >Container:40</a></code>
+                        <div class="io-line">Defined in         <code><a href="../classes/Container.html#source" target="_self" >Container:35</a></code>
 </div>
                 </td>
             </tr>
@@ -2034,7 +1413,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-                        <div class="io-line">Defined in         <code><a href="../classes/Container.html#source" target="_self" >Container:54</a></code>
+                        <div class="io-line">Defined in         <code><a href="../classes/Container.html#source" target="_self" >Container:49</a></code>
 </div>
                 </td>
             </tr>
@@ -2134,7 +1513,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-                        <div class="io-line">Defined in         <code><a href="../classes/Entity.html#source" target="_self" >Entity:67</a></code>
+                        <div class="io-line">Defined in         <code><a href="../classes/Entity.html#source" target="_self" >Entity:58</a></code>
 </div>
                 </td>
             </tr>
@@ -2217,7 +1596,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-                        <div class="io-line">Defined in         <code><a href="../classes/Entity.html#source" target="_self" >Entity:78</a></code>
+                        <div class="io-line">Defined in         <code><a href="../classes/Entity.html#source" target="_self" >Entity:69</a></code>
 </div>
                 </td>
             </tr>
@@ -2302,7 +1681,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-                        <div class="io-line">Defined in         <code><a href="../classes/Entity.html#source" target="_self" >Entity:60</a></code>
+                        <div class="io-line">Defined in         <code><a href="../classes/Entity.html#source" target="_self" >Entity:51</a></code>
 </div>
                 </td>
             </tr>
@@ -2390,24 +1769,23 @@ import { Sprite, Rect, Vec } from &#x27;./types&#x27;
  * Follows a subject to provide a viewport into a game world.
  *
  * ### Example
- * Assuming this is in a [[Scene]].
+ * Assumes this is in a {@link Scene}.
+ *
  * &#x60;&#x60;&#x60;typescript
- * const camera &#x3D; new Camera(player, { width: 640, height: 480 } as Rect, {
- *    width: map.mapWidth * map.tileWidth,
- *    height: map.mapHeight * map.tileHeight
- *  } as Rect)
- *
- * this.camera &#x3D; this.add&lt;Camera&gt;(camera)
- * &#x60;&#x60;&#x60;
- *
- * @category kilo
+const camera &#x3D; new Camera(player, { width: 640, height: 480 } as Rect, {
+   width: map.mapWidth * map.tileWidth,
+   height: map.mapHeight * map.tileHeight
+ } as Rect)
+
+this.camera &#x3D; this.add&lt;Camera&gt;(camera)
+&#x60;&#x60;&#x60;
  */
 export class Camera extends Container {
   /**
    * Amount to move towards subject per update.
    *
    * Range from 0 to 1 where 0 is not moving, and 1 is always on subject.
-   * @default .3
+   * Default is .3
    */
   easing: number
 
@@ -2432,11 +1810,11 @@ export class Camera extends Container {
   /**
    * Initialize Camera object.
    *
-   * The [[Rect]] parameters only require &#x60;width&#x60; and &#x60;height&#x60; properties.
+   * The {@link Rect} parameters only require &#x60;width&#x60; and &#x60;height&#x60; properties.
    *
-   * @param subject The [[TileSprite]] or [[Sprite]] for the camera to follow.
+   * @param subject The {@link TileSprite} or {@link Sprite} for the camera to follow.
    * @param viewport Size of the camera&#x27;s view into the game.
-   * @param worldSize Size of the game world.
+   * @param worldSize Size of the game world. Uses &#x60;viewport&#x60; by default.
    */
   constructor(subject: TileSprite | Sprite, viewport: Rect,
               worldSize: Rect &#x3D; viewport) {
@@ -2464,6 +1842,8 @@ export class Camera extends Container {
    * Set debug status on camera.
    *
    * When true, a rectangle displays on-screen showing camera tracking bounds.
+   *
+   * Only call after everything is added to the camera.
    *
    * @param debug Whether to turn debugging on or off.
    */

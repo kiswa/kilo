@@ -1,16 +1,6 @@
-/**
- * @module kilo/types
- */
-
-/**
- * Descriptor for exported JSON from Tiled Map Editor.
- *
- * @category kilo/types
- */
+/** Descriptor for exported JSON from Tiled Map Editor. */
 declare namespace Tiled {
-  /**
-   * The Tiled map.
-   */
+  /** The Tiled map. */
   interface Map {
     /** Height of the map in tiles. */
     height: number
@@ -30,9 +20,7 @@ declare namespace Tiled {
     properties?: Property[]
   }
 
-  /**
-   * A Property object in Tiled.
-   */
+  /** A Property object in Tiled. */
   interface Property {
     /** The name of the property. */
     name: string
@@ -42,9 +30,7 @@ declare namespace Tiled {
     type: string
   }
 
-  /**
-   * A Tile in Tiled.
-   */
+  /** A Tile in Tiled. */
   interface Tile {
     /** The ID of the tile in the tileset. */
     id: number

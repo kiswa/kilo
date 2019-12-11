@@ -1,6 +1,3 @@
-/**
- * @module kilo
- */
 import { Game, Speed } from './game'
 import { Container } from './container'
 
@@ -28,7 +25,7 @@ import { TileSprite } from './tile-sprite'
 import { Timer } from './timer'
 
 /**
- * @hidden
+ * @ignore
  */
 export {
   Animations,

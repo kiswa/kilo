@@ -1,23 +1,18 @@
 /**
- * @module kilo/controls
- */
-
-/**
  * Type to enforce that keys object uses strings as keys, and boolean as values.
  */
 type KeyMap = {
   [s: string]: boolean
 }
 
+/**
+ * @ignore
+ */
 const passThroughKeys = [
   'F5', 'F12'
 ]
 
-/**
- * Provides access to keyboard inputs.
- *
- * @category kilo/controls
- */
+/** Provides access to keyboard inputs. */
 export class KeyControls {
   private keys: KeyMap
 
@@ -74,9 +69,7 @@ export class KeyControls {
     return val
   }
 
-  /**
-   * Initialize KeyControls object.
-   */
+  /** Initialize KeyControls object. */
   constructor() {
     this.reset()
 
@@ -116,9 +109,7 @@ export class KeyControls {
     return !!this.keys[key]
   }
 
-  /**
-   * Resets all keys to 'unpressed' state.
-   */
+  /** Resets all keys to 'unpressed' state. */
   reset() {
     this.keys = {}
   }

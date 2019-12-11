@@ -70,16 +70,10 @@
             <p class="comment">
                 <p>Simple 2D vector that provides vector math helpers.</p>
 <p>Most methods are chainable.</p>
-<h3 id="example">Example</h3>
-<p>```typescript</p>
-<ul>
-<li>const vector1 = new Vec(4, 8)</li>
-<li>const vector2 = Vec.from(vector1)</li>
-<li></li>
-<li>vector1.add(vector2).multiply(3)</li>
-<li>```</li>
-</ul>
+<div><pre class="line-numbers"><code class="language-typescript">const vector1 = new Vec(4, 8)
+const vector2 = Vec.from(vector1)
 
+vector1.add(vector2).multiply(3)</code></pre></div>
             </p>
 
 
@@ -90,11 +84,6 @@
                             <code><a href="../interfaces/Point.html" target="_self" >Point</a></code>
             </p>
 
-            <p class="comment">
-                <h3>Example</h3>
-            </p>
-            <div class="io-description">
-            </div>
 
             <section>
     <h3 id="index">Index</h3>
@@ -186,7 +175,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">lib/types/vec.ts:45</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">lib/types/vec.ts:34</a></div>
                             </td>
                         </tr>
 
@@ -272,7 +261,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">lib/types/vec.ts:34</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">lib/types/vec.ts:23</a></div>
                             </td>
                         </tr>
 
@@ -305,7 +294,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">lib/types/vec.ts:36</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">lib/types/vec.ts:25</a></div>
                             </td>
                         </tr>
 
@@ -340,15 +329,15 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>add(undefined: <a href="../classes/Vec.html">Vec</a>)</code>
+<code>add(vec: <a href="../classes/Vec.html">Vec</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="94"
-                            class="link-to-prism">lib/types/vec.ts:94</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="82"
+                            class="link-to-prism">lib/types/vec.ts:82</a></div>
                 </td>
             </tr>
 
@@ -366,10 +355,12 @@
                                     <td>Name</td>
                                     <td>Type</td>
                                     <td>Optional</td>
+                                    <td>Description</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
+                                    <td>vec</td>
                                     <td>
                                                 <code><a href="../classes/Vec.html" target="_self" >Vec</a></code>
                                     </td>
@@ -379,6 +370,10 @@
                                     </td>
 
 
+                                    <td>
+                                        <p>The Vec to add values from.</p>
+
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -418,8 +413,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="84"
-                            class="link-to-prism">lib/types/vec.ts:84</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="73"
+                            class="link-to-prism">lib/types/vec.ts:73</a></div>
                 </td>
             </tr>
 
@@ -452,15 +447,15 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>copy(undefined: <a href="../classes/Vec.html">Vec</a>)</code>
+<code>copy(vec: <a href="../classes/Vec.html">Vec</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="77"
-                            class="link-to-prism">lib/types/vec.ts:77</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="65"
+                            class="link-to-prism">lib/types/vec.ts:65</a></div>
                 </td>
             </tr>
 
@@ -478,10 +473,12 @@
                                     <td>Name</td>
                                     <td>Type</td>
                                     <td>Optional</td>
+                                    <td>Description</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
+                                    <td>vec</td>
                                     <td>
                                                 <code><a href="../classes/Vec.html" target="_self" >Vec</a></code>
                                     </td>
@@ -491,6 +488,10 @@
                                     </td>
 
 
+                                    <td>
+                                        <p>The Vec to copy values from.</p>
+
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -530,8 +531,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="131"
-                            class="link-to-prism">lib/types/vec.ts:131</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="122"
+                            class="link-to-prism">lib/types/vec.ts:122</a></div>
                 </td>
             </tr>
 
@@ -600,15 +601,15 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>dot(undefined: <a href="../classes/Vec.html">Vec</a>)</code>
+<code>dot(vec: <a href="../classes/Vec.html">Vec</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="164"
-                            class="link-to-prism">lib/types/vec.ts:164</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="150"
+                            class="link-to-prism">lib/types/vec.ts:150</a></div>
                 </td>
             </tr>
 
@@ -626,10 +627,12 @@
                                     <td>Name</td>
                                     <td>Type</td>
                                     <td>Optional</td>
+                                    <td>Description</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
+                                    <td>vec</td>
                                     <td>
                                                 <code><a href="../classes/Vec.html" target="_self" >Vec</a></code>
                                     </td>
@@ -639,6 +642,10 @@
                                     </td>
 
 
+                                    <td>
+                                        <p>The Vec to get dot product from.</p>
+
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -680,8 +687,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="43"
-                            class="link-to-prism">lib/types/vec.ts:43</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="32"
+                            class="link-to-prism">lib/types/vec.ts:32</a></div>
                 </td>
             </tr>
 
@@ -757,15 +764,15 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="141"
-                            class="link-to-prism">lib/types/vec.ts:141</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="130"
+                            class="link-to-prism">lib/types/vec.ts:130</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Gets the magnitude of the Vec.</p>
+                    <div class="io-description"><p>Gets the magnitude of the Vec. </p>
 </div>
 
                     <div class="io-description">
@@ -798,8 +805,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="119"
-                            class="link-to-prism">lib/types/vec.ts:119</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="110"
+                            class="link-to-prism">lib/types/vec.ts:110</a></div>
                 </td>
             </tr>
 
@@ -875,15 +882,15 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="148"
-                            class="link-to-prism">lib/types/vec.ts:148</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="135"
+                            class="link-to-prism">lib/types/vec.ts:135</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Gets the normal of the Vec.</p>
+                    <div class="io-description"><p>Gets the normal of the Vec. </p>
 </div>
 
                     <div class="io-description">
@@ -916,8 +923,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="64"
-                            class="link-to-prism">lib/types/vec.ts:64</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="53"
+                            class="link-to-prism">lib/types/vec.ts:53</a></div>
                 </td>
             </tr>
 
@@ -1002,15 +1009,15 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>subtract(undefined: <a href="../classes/Vec.html">Vec</a>)</code>
+<code>subtract(vec: <a href="../classes/Vec.html">Vec</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="107"
-                            class="link-to-prism">lib/types/vec.ts:107</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="96"
+                            class="link-to-prism">lib/types/vec.ts:96</a></div>
                 </td>
             </tr>
 
@@ -1028,10 +1035,12 @@
                                     <td>Name</td>
                                     <td>Type</td>
                                     <td>Optional</td>
+                                    <td>Description</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
+                                    <td>vec</td>
                                     <td>
                                                 <code><a href="../classes/Vec.html" target="_self" >Vec</a></code>
                                     </td>
@@ -1041,6 +1050,10 @@
                                     </td>
 
 
+                                    <td>
+                                        <p>The Vec to subtract values from.</p>
+
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -1080,8 +1093,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="173"
-                            class="link-to-prism">lib/types/vec.ts:173</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="161"
+                            class="link-to-prism">lib/types/vec.ts:161</a></div>
                 </td>
             </tr>
 
@@ -1127,15 +1140,12 @@
  *
  * Most methods are chainable.
  *
- * ### Example
  * &#x60;&#x60;&#x60;typescript
- * const vector1 &#x3D; new Vec(4, 8)
- * const vector2 &#x3D; Vec.from(vector1)
- *
- * vector1.add(vector2).multiply(3)
- * &#x60;&#x60;&#x60;
- *
- * @category kilo/types
+const vector1 &#x3D; new Vec(4, 8)
+const vector2 &#x3D; Vec.from(vector1)
+
+vector1.add(vector2).multiply(3)
+&#x60;&#x60;&#x60;
  */
 export class Vec implements Point {
   /** X coordinate value. */
@@ -1180,9 +1190,9 @@ export class Vec implements Point {
    * Copies the x and y values from the provided Vec.
    *
    * @param vec The Vec to copy values from.
-   * @remarks Actual Parameters:&lt;br&gt; **vec**: *[[Vec]]* The Vec to copy values from.
    */
-  copy({ x, y }: Vec) {
+  copy(vec: Vec) {
+    const { x, y } &#x3D; vec
     return this.set(x, y)
   }
 
@@ -1197,9 +1207,10 @@ export class Vec implements Point {
    * Adds the x and y values from the provided Vec.
    *
    * @param vec The Vec to add values from.
-   * @remarks Actual Parameters:&lt;br&gt; **vec**: *[[Vec]]* The Vec to add values from.
    */
-  add({ x, y }: Vec) {
+  add(vec: Vec) {
+    const { x, y } &#x3D; vec
+
     this.x +&#x3D; x
     this.y +&#x3D; y
 
@@ -1210,9 +1221,10 @@ export class Vec implements Point {
    * Subtracts the x and y values from the provided Vec.
    *
    * @param vec The Vec to subtract values from.
-   * @remarks Actual Parameters:&lt;br&gt; **vec**: *[[Vec]]* The Vec to subtract values from.
    */
-  subtract({ x, y }: Vec) {
+  subtract(vec: Vec) {
+    const { x, y } &#x3D; vec
+
     this.x -&#x3D; x
     this.y -&#x3D; y
 
@@ -1243,16 +1255,12 @@ export class Vec implements Point {
     return this
   }
 
-  /**
-   * Gets the magnitude of the Vec.
-   */
+  /** Gets the magnitude of the Vec. */
   mag() {
     return Math.sqrt(this.x * this.x + this.y * this.y)
   }
 
-  /**
-   * Gets the normal of the Vec.
-   */
+  /** Gets the normal of the Vec. */
   normalize() {
     const mag &#x3D; this.mag()
 
@@ -1267,9 +1275,10 @@ export class Vec implements Point {
    * Gets the dot product of two Vecs.
    *
    * @param vec The Vec to get dot product from.
-   * @remarks Actual Parameters:&lt;br&gt; **vec**: *[[Vec]]* The Vec to get dot product from.
    */
-  dot({ x, y }: Vec) {
+  dot(vec: Vec) {
+    const{ x, y } &#x3D; vec
+
     return this.x * x + this.y * y
   }
 

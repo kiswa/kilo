@@ -1,21 +1,19 @@
-/**
- * @module kilo
- */
 import { Container, TileSprite } from '.'
 import { HitBox, Point, Texture, Vec } from './types'
 import { TiledMap } from './utils'
 
+/**
+ * @ignore
+ */
 interface HasFrame {
   frame: Point
 }
 
 /**
- * A customized Container of [[TileSprite]] objects that provides helper methods
- * for accessing tiles.
+ * A customized Container of {@link TileSprite} objects that provides helper
+ * methods for accessing tiles.
  *
  * Only tiles on the 'level' layer are used. Other layers are only for display.
- *
- * @category kilo
  */
 export class TileMap extends Container {
   /** Width of the entire map in tiles. */
@@ -32,7 +30,8 @@ export class TileMap extends Container {
   /**
    * Initialize TileMap object.
    *
-   * @param tiles Array of arrays of objects with at least a [[Point]] `frame` property.
+   * @param tiles Array of arrays of objects with at least a
+   * {@link Point} `frame` property.
    * @param data TiledMap object.
    * @param texture Texture to use for tiles.
    */
@@ -75,7 +74,7 @@ export class TileMap extends Container {
   /**
    * Converts a map tile location to a pixel location.
    *
-   * @returns Top-left corner pixel coordinate.
+   * @returns Vec Top-left corner pixel coordinate.
    *
    * @param mapPos Map location to convert.
    */

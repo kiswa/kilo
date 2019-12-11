@@ -1,20 +1,16 @@
-/**
- * @module kilo/renderer
- */
 import { Renderer } from './renderer'
 import { Camera, Container, Game, Scene, TileSprite } from '../'
 import { Entity, Sprite, Text, Rect } from '../types'
 import { defaults, ShaderProgram, GlBuffer,  GLUtils } from './webgl'
 
+/**
+ * @ignore
+ */
 interface TextureInfo {
   texture: WebGLTexture
 }
 
-/**
- * Recursive rendering utilizing HTML5 canvas and WebGL.
- *
- * @category kilo/renderer
- */
+/** Recursive rendering utilizing HTML5 canvas and WebGL. */
 export class WebGLRenderer extends Renderer {
   private gl: WebGLRenderingContext
   private ctx: CanvasRenderingContext2D

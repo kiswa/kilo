@@ -1,12 +1,12 @@
-/**
- * @module kilo
- */
 import { Assets } from './assets'
 import { Renderer, CanvasRenderer, WebGLRenderer } from './renderer'
 import { Container, Scene } from '.'
 
 /**
  * Function called on each update.
+ *
+ * @param dt Delta time since last call.
+ * @param t Elapsed time since start.
  */
 type GameUpdate = (dt: number, t: number) => void
 
@@ -15,8 +15,6 @@ type GameUpdate = (dt: number, t: number) => void
  * Default game speed is "Normal".
  *
  * Can also be any number, but be careful.
- *
- * @category kilo
  */
 export enum Speed {
   Slow = .5,
@@ -24,13 +22,21 @@ export enum Speed {
   Fast = 2
 }
 
-/** @hidden */
+/**
+ * @ignore
+ */
 const STEP = 1 / 60
-/** @hidden */
+/**
+ * @ignore
+ */
 let MULTIPLIER = Speed.Normal
-/** @hidden */
+/**
+ * @ignore
+ */
 let SPEED = STEP / MULTIPLIER
-/** @hidden */
+/**
+ * @ignore
+ */
 const MAX_FRAME = SPEED * 5
 
 /**
@@ -38,13 +44,11 @@ const MAX_FRAME = SPEED * 5
  *
  * ### Example
  * ```typescript
- * // This is a boring 'game'.
- * const game = new Game(640, 480)
- *
- * game.run()
- * ```
- *
- * @category kilo
+ // This is a boring 'game'.
+ const game = new Game(640, 480)
+
+ game.run()
+ ```
  */
 export class Game {
   private _width: number
@@ -58,13 +62,19 @@ export class Game {
   private renderer: Renderer
   private _scene: Scene | Container
 
-  /** An Assetts instance for loading all game assets. */
+  /** An Assets instance for loading all game assets. */
   static assets: Assets = new Assets()
   /** Whether or not to enable debug display (shows FPS and UPS). */
   static debug: boolean = false
-  /** Frames per second. */
+  /**
+   * Frames per second.
+   * @remarks Only updated if debug is true.
+   */
   static FPS: number = 60
-  /** Updates per second. */
+  /**
+   * Updates per second.
+   * @remarks Only updated if debug is true.
+   */
   static UPS: number = 60
 
   /** Gets the width of the game screen. */
@@ -89,15 +99,13 @@ export class Game {
 
   /**
    * Gets the current speed multiplier of the game.
-   * @default [[Speed.Normal]]
+   * @default {@link Speed.Normal}
    */
   get speed() {
     return MULTIPLIER
   }
 
-  /**
-   * Sets the speed multiplier of the game.
-   */
+  /** Sets the speed multiplier of the game. */
   set speed(value: Speed | number) {
     MULTIPLIER = value
     SPEED = STEP / MULTIPLIER

@@ -68,45 +68,17 @@
                 <h3>Description</h3>
             </p>
             <p class="comment">
-                <p>Thin wrapper around WebGLBuffer objects, making them easier to manage.</p>
+                <p>Thin wrapper around WebGLBuffer objects, making them easier to manage. </p>
 
             </p>
 
 
 
-            <p class="comment">
-                <h3>Example</h3>
-            </p>
-            <div class="io-description">
-            </div>
 
             <section>
     <h3 id="index">Index</h3>
     <table class="table table-sm table-bordered index-table">
         <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <h6><b>Properties</b></h6>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <ul class="index-list">
-                            <li>
-                                    <span class="modifier">Private</span>
-                                <a href="#activeBuffer">activeBuffer</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Private</span>
-                                <a href="#buffers">buffers</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Private</span>
-                                <a href="#gl">gl</a>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
 
                 <tr>
                     <td class="col-md-4">
@@ -193,96 +165,6 @@
         </table>
 </section>
 
-            <section>
-    
-        <h3 id="inputs">
-            Properties
-        </h3>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="activeBuffer"></a>
-                        <span class="name">
-                            <b>
-                                <span class="modifier">Private</span>
-                            activeBuffer</b>
-                            <a href="#activeBuffer"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Type : </i>        <code><a href="../classes/BufferInfo.html" target="_self" >BufferInfo</a></code>
-
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">lib/renderer/webgl/gl-buffer.ts:20</a></div>
-                            </td>
-                        </tr>
-
-
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="buffers"></a>
-                        <span class="name">
-                            <b>
-                                <span class="modifier">Private</span>
-                            buffers</b>
-                            <a href="#buffers"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Type : </i>        <code><a href="../classes/BufferInfo.html" target="_self" >BufferInfo[]</a></code>
-
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">lib/renderer/webgl/gl-buffer.ts:19</a></div>
-                            </td>
-                        </tr>
-
-
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="gl"></a>
-                        <span class="name">
-                            <b>
-                                <span class="modifier">Private</span>
-                            gl</b>
-                            <a href="#gl"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Type : </i>    <code>WebGLRenderingContext</code>
-
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">lib/renderer/webgl/gl-buffer.ts:18</a></div>
-                            </td>
-                        </tr>
-
-
-            </tbody>
-        </table>
-</section>
 
             <section>
     
@@ -573,17 +455,17 @@ and prepares the buffer for use.</p>
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">const fullArea &#x3D; new Float32Array([0, 0, 1, 0, 0, 1, 0, 1, 1, 0, 1, 1])
 
+/** Data about a WebGL buffer. */
 class BufferInfo {
+  /** The WebGLBuffer. */
   buffer: WebGLBuffer
+  /** Buffer ID in the program. */
   id: number
+  /** Lookup name for the buffer. */
   name: string
 }
 
-/**
- * Thin wrapper around WebGLBuffer objects, making them easier to manage.
- *
- * @category kilo/renderer/webgl
- */
+/** Thin wrapper around WebGLBuffer objects, making them easier to manage. */
 export class GlBuffer {
   private gl: WebGLRenderingContext
   private buffers: BufferInfo[]

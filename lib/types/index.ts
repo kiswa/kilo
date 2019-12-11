@@ -1,36 +1,32 @@
 /**
- * @module kilo/types
- */
-
-/**
- * @hidden
+ * @ignore
  */
 export { Entity } from './entity'
 /**
- * @hidden
+ * @ignore
  */
 export { HitBox } from './hit-box'
 /**
- * @hidden
+ * @ignore
  */
 export { Point, Vec } from './vec'
 /**
- * @hidden
+ * @ignore
  */
 export { Rect } from './rect'
 /**
- * @hidden
+ * @ignore
  */
 export { Sprite } from './sprite'
 /**
- * @hidden
+ * @ignore
  */
 export { Text, TextOptions } from './text'
 /**
- * @hidden
+ * @ignore
  */
 export { Texture } from './texture'
 /**
- * @hidden
+ * @ignore
  */
 export { Trigger } from './trigger'

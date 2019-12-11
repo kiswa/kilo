@@ -64,14 +64,46 @@
             <code>lib/state.ts</code>
         </p>
 
-
-
-
             <p class="comment">
-                <h3>Example</h3>
+                <h3>Description</h3>
             </p>
-            <div class="io-description">
-            </div>
+            <p class="comment">
+                <p>Tracks state as provided, and provides information on status of the current
+state. Also allows transitioning to a prior state from a temporary state
+(e.g. a pause dialog back to game play).</p>
+<h3 id="example">Example</h3>
+<div><pre class="line-numbers"><code class="language-typescript">enum GameState {
+  Ready,
+  Playing,
+  Paused,
+  GameOver
+}
+
+// In the constructor of whatever needs state.
+this.state = new State&lt;GameState&gt;(GameState.Ready)
+
+// In the update of the scene/object/whatever.
+this.state.update(dt)
+
+switch (this.state) {
+  case GameState.Ready:
+    if (this.state.first) {
+      console.log(&#39;First frame of this state&#39;)
+    }
+
+    // Go to Playing state after 1.5 seconds
+    if (this.state.time &gt; 1.5) {
+      this.state.set(GameState.Playing)
+    }
+  break
+
+  default:
+    console.log(this.state.get())
+}</code></pre></div>
+            </p>
+
+
+
 
             <section>
     <h3 id="index">Index</h3>
@@ -87,22 +119,6 @@
                         <ul class="index-list">
                             <li>
                                 <a href="#first">first</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Private</span>
-                                <a href="#justSetState">justSetState</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Private</span>
-                                <a href="#last">last</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Private</span>
-                                <a href="#lastTime">lastTime</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Private</span>
-                                <a href="#state">state</a>
                             </li>
                             <li>
                                 <a href="#time">time</a>
@@ -160,20 +176,15 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">lib/state.ts:53</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">lib/state.ts:47</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
                             <div class="io-description"><p>Initialize State object.</p>
-<h4 id="example">Example</h4>
-<p>```typescript</p>
-<ul>
-<li>const state = new State<MyEnum>(MyEnum.StateOne)</li>
-<li>```</li>
-</ul>
-</div>
+<h3 id="example">Example</h3>
+<div><pre class="line-numbers"><code class="language-typescript">const state = new State&lt;MyEnum&gt;(MyEnum.StateOne)</code></pre></div></div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -236,7 +247,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">lib/state.ts:48</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">lib/state.ts:42</a></div>
                             </td>
                         </tr>
 
@@ -246,118 +257,6 @@
 </div>
                     </td>
                 </tr>
-
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="justSetState"></a>
-                        <span class="name">
-                            <b>
-                                <span class="modifier">Private</span>
-                            justSetState</b>
-                            <a href="#justSetState"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
-
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">lib/state.ts:53</a></div>
-                            </td>
-                        </tr>
-
-
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="last"></a>
-                        <span class="name">
-                            <b>
-                                <span class="modifier">Private</span>
-                            last</b>
-                            <a href="#last"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Type : </i>    <code>EnumType</code>
-
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">lib/state.ts:50</a></div>
-                            </td>
-                        </tr>
-
-
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="lastTime"></a>
-                        <span class="name">
-                            <b>
-                                <span class="modifier">Private</span>
-                            lastTime</b>
-                            <a href="#lastTime"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
-
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">lib/state.ts:51</a></div>
-                            </td>
-                        </tr>
-
-
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="state"></a>
-                        <span class="name">
-                            <b>
-                                <span class="modifier">Private</span>
-                            state</b>
-                            <a href="#state"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Type : </i>    <code>EnumType</code>
-
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">lib/state.ts:52</a></div>
-                            </td>
-                        </tr>
-
 
             </tbody>
         </table>
@@ -381,7 +280,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">lib/state.ts:46</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">lib/state.ts:40</a></div>
                             </td>
                         </tr>
 
@@ -423,15 +322,15 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="72"
-                            class="link-to-prism">lib/state.ts:72</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="64"
+                            class="link-to-prism">lib/state.ts:64</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Return to the previous state (if there is one).</p>
+                    <div class="io-description"><p>Return to the previous state (if there is one). </p>
 </div>
 
                     <div class="io-description">
@@ -464,15 +363,15 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="99"
-                            class="link-to-prism">lib/state.ts:99</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="89"
+                            class="link-to-prism">lib/state.ts:89</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Get the current state.</p>
+                    <div class="io-description"><p>Get the current state. </p>
 </div>
 
                     <div class="io-description">
@@ -505,8 +404,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="121"
-                            class="link-to-prism">lib/state.ts:121</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="111"
+                            class="link-to-prism">lib/state.ts:111</a></div>
                 </td>
             </tr>
 
@@ -582,8 +481,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="129"
-                            class="link-to-prism">lib/state.ts:129</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="119"
+                            class="link-to-prism">lib/state.ts:119</a></div>
                 </td>
             </tr>
 
@@ -659,8 +558,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="87"
-                            class="link-to-prism">lib/state.ts:87</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="79"
+                            class="link-to-prism">lib/state.ts:79</a></div>
                 </td>
             </tr>
 
@@ -736,8 +635,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="110"
-                            class="link-to-prism">lib/state.ts:110</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="100"
+                            class="link-to-prism">lib/state.ts:100</a></div>
                 </td>
             </tr>
 
@@ -816,10 +715,10 @@
   /**
    * Initialize State object.
    *
-   * #### Example
+   * ### Example
    * &#x60;&#x60;&#x60;typescript
-   * const state &#x3D; new State&lt;MyEnum&gt;(MyEnum.StateOne)
-   * &#x60;&#x60;&#x60;
+const state &#x3D; new State&lt;MyEnum&gt;(MyEnum.StateOne)
+&#x60;&#x60;&#x60;
    *
    * @param state The initial state to set.
    */
@@ -827,9 +726,7 @@
     this.set(state)
   }
 
-  /**
-   * Return to the previous state (if there is one).
-   */
+  /** Return to the previous state (if there is one). */
   back() {
     if (this.last &#x3D;&#x3D;&#x3D; undefined) return
 
@@ -854,9 +751,7 @@
     this.justSetState &#x3D; true
   }
 
-  /**
-   * Get the current state.
-   */
+  /** Get the current state. */
   get() {
     return this.state
   }

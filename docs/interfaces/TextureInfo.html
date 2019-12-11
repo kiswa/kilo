@@ -136,11 +136,7 @@ interface TextureInfo {
   texture: WebGLTexture
 }
 
-/**
- * Recursive rendering utilizing HTML5 canvas and WebGL.
- *
- * @category kilo/renderer
- */
+/** Recursive rendering utilizing HTML5 canvas and WebGL. */
 export class WebGLRenderer extends Renderer {
   private gl: WebGLRenderingContext
   private ctx: CanvasRenderingContext2D

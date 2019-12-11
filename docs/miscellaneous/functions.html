@@ -116,9 +116,6 @@
                             <a href="#integratePos" title="lib/utils/physics.ts"><b>integratePos</b>&nbsp;&nbsp;&nbsp;(lib/.../physics.ts)</a>
                         </li>
                         <li>
-                            <a href="#isHit" title="lib/utils/sprite.ts"><b>isHit</b>&nbsp;&nbsp;&nbsp;(lib/.../sprite.ts)</a>
-                        </li>
-                        <li>
                             <a href="#lerp" title="lib/utils/math.ts"><b>lerp</b>&nbsp;&nbsp;&nbsp;(lib/.../math.ts)</a>
                         </li>
                         <li>
@@ -132,9 +129,6 @@
                         </li>
                         <li>
                             <a href="#randomSeed" title="lib/utils/math.ts"><b>randomSeed</b>&nbsp;&nbsp;&nbsp;(lib/.../math.ts)</a>
-                        </li>
-                        <li>
-                            <a href="#randomSeeded" title="lib/utils/math.ts"><b>randomSeeded</b>&nbsp;&nbsp;&nbsp;(lib/.../math.ts)</a>
                         </li>
                         <li>
                             <a href="#randOneFrom" title="lib/utils/math.ts"><b>randOneFrom</b>&nbsp;&nbsp;&nbsp;(lib/.../math.ts)</a>
@@ -184,7 +178,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>addDebug(e)</code>
+<code>addDebug(entity)</code>
                 </td>
             </tr>
 
@@ -193,7 +187,7 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Adds display [[Rect]] for the sprite&#39;s size and hitbox (if set).</p>
+                    <div class="io-description"><p>Adds display <a href="../classes/Rect.html">Rect</a> for the sprite&#39;s size and hitbox (if set).</p>
 </div>
 
                     <div class="io-description">
@@ -208,7 +202,7 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>e</td>
+                                    <td>entity</td>
 
                                     <td>
                                         No
@@ -216,7 +210,7 @@
 
 
                                     <td>
-                                        <p>Sprite to have debug display added.</p>
+                                        <p>Sprite entity to have debug display added.</p>
 
                                     </td>
                                 </tr>
@@ -377,7 +371,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>center(sprite)</code>
+<code>center(entity)</code>
                 </td>
             </tr>
 
@@ -401,7 +395,7 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>sprite</td>
+                                    <td>entity</td>
 
                                     <td>
                                         No
@@ -510,7 +504,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>hit(e1, e2)</code>
+<code>hit(a, b)</code>
                 </td>
             </tr>
 
@@ -534,7 +528,7 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>e1</td>
+                                    <td>a</td>
 
                                     <td>
                                         No
@@ -547,7 +541,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>e2</td>
+                                    <td>b</td>
 
                                     <td>
                                         No
@@ -644,68 +638,6 @@
                                         <p>Function to call when a collision is detected.</p>
 
                                     </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="isHit"></a>
-                    <span class="name">
-                        <b>
-                            isHit
-                        </b>
-                        <a href="#isHit"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>isHit(a, b)</code>
-                </td>
-            </tr>
-
-
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>a</td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                                <tr>
-                                    <td>b</td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
                                 </tr>
                             </tbody>
                         </table>
@@ -1554,37 +1486,6 @@
                     </div>
                     <div>
                     </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="randomSeeded"></a>
-                    <span class="name">
-                        <b>
-                            randomSeeded
-                        </b>
-                        <a href="#randomSeeded"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>randomSeeded()</code>
-                </td>
-            </tr>
-
-
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-description"><p>Generates a random number from the seed.</p>
-</div>
-
                 </td>
             </tr>
         </tbody>
@@ -2520,9 +2421,11 @@
             <tr>
                 <td class="col-md-4">
                     <div class="io-description"><p>Parses a Tiled map object into a simpler form.</p>
-<p>There must be at least two layers in the Tiled map:
-&quot;level&quot;    - containing the tiles for the level
-&quot;entities&quot; - containing at least one entity</p>
+<p>There must be at least two layers in the Tiled map:</p>
+<ul>
+<li>&quot;level&quot;    - containing the tiles for the level</li>
+<li>&quot;entities&quot; - containing at least one entity (usually player starting location)</li>
+</ul>
 </div>
 
                     <div class="io-description">

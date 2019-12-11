@@ -1,13 +1,6 @@
-/**
- * @module kilo/controls
- */
 import { Vec } from '../types'
 
-/**
- * Provides access to mouse events.
- *
- * @category kilo/controls
- */
+/** Provides access to mouse events. */
 export class MouseControls {
   private el: HTMLCanvasElement
   private rect: ClientRect | DOMRect

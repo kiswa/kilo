@@ -1,45 +1,39 @@
 /**
- * @module kilo
- */
-
-/**
  * Tracks state as provided, and provides information on status of the current
  * state. Also allows transitioning to a prior state from a temporary state
  * (e.g. a pause dialog back to game play).
  *
  * ### Example
  * ```typescript
- * enum GameState {
- *   Ready,
- *   Playing,
- *   Paused,
- *   GameOver
- * }
- *
- * // In the constructor of whatever needs state.
- * this.state = new State<GameState>(GameState.Ready)
- *
- * // In the update of the scene/object/whatever.
- * this.state.update(dt)
- *
- * switch (this.state) {
- *   case GameState.Ready:
- *     if (this.state.first) {
- *       console.log('First frame of this state')
- *     }
- *
- *     // Go to Playing state after 1.5 seconds
- *     if (this.state.time > 1.5) {
- *       this.state.set(GameState.Playing)
- *     }
- *   break
- *
- *   default:
- *     console.log(this.state.get())
- * }
- * ```
- *
- * @category kilo
+enum GameState {
+  Ready,
+  Playing,
+  Paused,
+  GameOver
+}
+
+// In the constructor of whatever needs state.
+this.state = new State<GameState>(GameState.Ready)
+
+// In the update of the scene/object/whatever.
+this.state.update(dt)
+
+switch (this.state) {
+  case GameState.Ready:
+    if (this.state.first) {
+      console.log('First frame of this state')
+    }
+
+    // Go to Playing state after 1.5 seconds
+    if (this.state.time > 1.5) {
+      this.state.set(GameState.Playing)
+    }
+  break
+
+  default:
+    console.log(this.state.get())
+}
+```
  */
 export class State<EnumType> {
   /** Number of seconds in the current state. */
@@ -55,10 +49,10 @@ export class State<EnumType> {
   /**
    * Initialize State object.
    *
-   * #### Example
+   * ### Example
    * ```typescript
-   * const state = new State<MyEnum>(MyEnum.StateOne)
-   * ```
+const state = new State<MyEnum>(MyEnum.StateOne)
+```
    *
    * @param state The initial state to set.
    */
@@ -66,9 +60,7 @@ export class State<EnumType> {
     this.set(state)
   }
 
-  /**
-   * Return to the previous state (if there is one).
-   */
+  /** Return to the previous state (if there is one). */
   back() {
     if (this.last === undefined) return
 
@@ -93,9 +85,7 @@ export class State<EnumType> {
     this.justSetState = true
   }
 
-  /**
-   * Get the current state.
-   */
+  /** Get the current state. */
   get() {
     return this.state
   }

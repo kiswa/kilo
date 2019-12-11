@@ -1,19 +1,19 @@
 /**
- * @module kilo/renderer/webgl
+ * @ignore
  */
 const fullArea = new Float32Array([0, 0, 1, 0, 0, 1, 0, 1, 1, 0, 1, 1])
 
+/** Data about a WebGL buffer. */
 class BufferInfo {
+  /** The WebGLBuffer. */
   buffer: WebGLBuffer
+  /** Buffer ID in the program. */
   id: number
+  /** Lookup name for the buffer. */
   name: string
 }
 
-/**
- * Thin wrapper around WebGLBuffer objects, making them easier to manage.
- *
- * @category kilo/renderer/webgl
- */
+/** Thin wrapper around WebGLBuffer objects, making them easier to manage. */
 export class GlBuffer {
   private gl: WebGLRenderingContext
   private buffers: BufferInfo[]

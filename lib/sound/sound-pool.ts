@@ -1,6 +1,3 @@
-/**
- * @module kilo/sound
- */
 import { Sound, SoundOptions } from './sound'
 
 /**
@@ -8,13 +5,11 @@ import { Sound, SoundOptions } from './sound'
  *
  * ### Example
  * ```typescript
- * const dings = new SoundPool('assets/sounds/ding.ogg')
- *
- * // When the sound should play (and may already be playing).
- * dings.play()
- * ```
- *
- * @category kilo/sound
+const dings = new SoundPool('assets/sounds/ding.ogg')
+
+// When the sound should play (and may already be playing).
+dings.play()
+```
  */
 export class SoundPool {
   private count: number
@@ -48,9 +43,7 @@ export class SoundPool {
     this.sounds[index].play(options)
   }
 
-  /**
-   * Stop all sounds in the pool.
-   */
+  /** Stop all sounds in the pool. */
   stop() {
     for (let i = 0; i < this.sounds.length; i++) {
       this.sounds[i].stop()

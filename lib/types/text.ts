@@ -1,13 +1,6 @@
-/**
- * @module kilo/types
- */
 import { Entity } from '.'
 
-/**
- * Options for text display.
- *
- * @category kilo/types
- */
+/** Options for text display. */
 export interface TextOptions {
   /** The font to use. */
   font: string,
@@ -20,14 +13,13 @@ export interface TextOptions {
 /**
  * Displays text on the canvas.
  *
+ * When using WebGL for rendering a second canvas is used for text.
+ *
  * ### Example
  * ```typescript
- * const text = new Text('Hello world.', { '20px monospace', '#333' })
- * text.pos.set(20, 20)
- * ```
- *
- * @remarks When using WebGL for rendering a second canvas is used for text.
- * @category kilo/types
+const text = new Text('Hello world.', { '20px monospace', '#333' })
+text.pos.set(20, 20)
+```
  */
 export class Text extends Entity {
   /** The text to display. */
@@ -49,7 +41,7 @@ export class Text extends Entity {
   }
 
   /**
-   * Empty implementation from extending [[Entity]].
+   * Empty implementation from extending {@link Entity}.
    *
    * @param _ Not used.
    * @param __ Not used.

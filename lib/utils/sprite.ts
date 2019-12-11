@@ -1,31 +1,27 @@
-/**
- * @module kilo/utils
- */
 import { Container, Utils } from '../'
 import { Vec, Rect, Sprite, HitBox } from '../types'
 
 /**
- * Adds display [[Rect]] for the sprite's size and hitbox (if set).
+ * Adds display {@link Rect} for the sprite's size and hitbox (if set).
  *
- * @param e Sprite to have debug display added.
- *
- * @category kilo/utils
+ * @param entity Sprite entity to have debug display added.
  */
-export function addDebug(e: Sprite) {
-  const bb = new Rect(e.width, e.height, { fill: 'rgba(255, 0, 0, 0.3)' })
-  e.children.push(bb)
+export function addDebug(entity: Sprite) {
+  const bb = new Rect(entity.width, entity.height,
+    { fill: 'rgba(255, 0, 0, 0.3)' })
+  entity.children.push(bb)
 
-  if (e.hitBox) {
-    const { x, y, width, height } = e.hitBox
+  if (entity.hitBox) {
+    const { x, y, width, height } = entity.hitBox
     const hb = new Rect(width, height, { fill: 'rgba(255, 0, 0, 0.5)' })
 
     hb.pos.x = x
     hb.pos.y = y
 
-    e.children.push(hb)
+    entity.children.push(hb)
   }
 
-  return e
+  return entity
 }
 
 /**
@@ -33,8 +29,6 @@ export function addDebug(e: Sprite) {
  *
  * @param a Sprite to get angle from.
  * @param b Sprite to get angle to.
- *
- * @category kilo/utils
  */
 export function angle(a: Sprite, b: Sprite) {
   return Utils.math.angle(center(a), center(b))
@@ -44,8 +38,6 @@ export function angle(a: Sprite, b: Sprite) {
  * Gets the calculated bounds of a sprite.
  *
  * @param entity Sprite to get bounds from.
- *
- * @category kilo/utils
  */
 export function bounds(entity: Sprite) {
   const { pos, hitBox, width, height } = entity
@@ -57,12 +49,10 @@ export function bounds(entity: Sprite) {
 /**
  * Gets the center point of a tile sprite.
  *
- * @param sprite Sprite to get center from.
- *
- * @category kilo/utils
+ * @param entity Sprite to get center from.
  */
-export function center(sprite: Sprite) {
-  const { pos, width, height } = sprite
+export function center(entity: Sprite) {
+  const { pos, width, height } = entity
 
   return new Vec(
     pos.x + width / 2,
@@ -75,13 +65,14 @@ export function center(sprite: Sprite) {
  *
  * @param a Sprite to get distance from.
  * @param b Sprite to get distance to.
- *
- * @category kilo/utils
  */
 export function distance(a: Sprite, b: Sprite) {
   return Utils.math.distance(center(a), center(b))
 }
 
+/**
+ * @ignore
+ */
 function isHit(a: HitBox, b: HitBox) {
   return (
     a.x + a.width >= b.x &&
@@ -94,16 +85,14 @@ function isHit(a: HitBox, b: HitBox) {
 /**
  * Tests for collision between two sprites.
  *
- * @param e1 Sprite to test for collision.
- * @param e2 Other sprite to test for collision.
- *
- * @category kilo/utils
+ * @param a Sprite to test for collision.
+ * @param b Other sprite to test for collision.
  */
-export function hit(e1: Sprite, e2: Sprite) {
-  const a = bounds(e1)
-  const b = bounds(e2)
+export function hit(a: Sprite, b: Sprite) {
+  const e1 = bounds(a)
+  const e2 = bounds(b)
 
-  return isHit(a, b)
+  return isHit(e1, e2)
 }
 
 /**
@@ -112,8 +101,6 @@ export function hit(e1: Sprite, e2: Sprite) {
  * @param entity Sprite to check against children of container.
  * @param container Container of sprites to test against.
  * @param hitCallback Function to call when a collision is detected.
- *
- * @category kilo/utils
  */
 export function hits(entity: Sprite, container: Container, hitCallback: Function) {
   const a = bounds(entity)

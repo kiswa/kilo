@@ -1,11 +1,6 @@
-/**
- * @module kilo/renderer/webgl
- */
-
-/**
- * Default shader sources for both texture and color-based rendering.
- */
+/** Default shader sources for both texture and color-based rendering. */
 export const defaults = {
+  /** Default shaders. */
   shaders: {
     /** Texture-based rendering vertex shader. */
     vertexTexture: `

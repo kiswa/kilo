@@ -69,7 +69,7 @@
                 <h3>Description</h3>
             </p>
             <p class="comment">
-                <p>Options for text display.</p>
+                <p>Options for text display. </p>
 
             </p>
 
@@ -224,11 +224,7 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Entity } from &#x27;.&#x27;
 
-/**
- * Options for text display.
- *
- * @category kilo/types
- */
+/** Options for text display. */
 export interface TextOptions {
   /** The font to use. */
   font: string,
@@ -241,14 +237,13 @@ export interface TextOptions {
 /**
  * Displays text on the canvas.
  *
+ * When using WebGL for rendering a second canvas is used for text.
+ *
  * ### Example
  * &#x60;&#x60;&#x60;typescript
- * const text &#x3D; new Text(&#x27;Hello world.&#x27;, { &#x27;20px monospace&#x27;, &#x27;#333&#x27; })
- * text.pos.set(20, 20)
- * &#x60;&#x60;&#x60;
- *
- * @remarks When using WebGL for rendering a second canvas is used for text.
- * @category kilo/types
+const text &#x3D; new Text(&#x27;Hello world.&#x27;, { &#x27;20px monospace&#x27;, &#x27;#333&#x27; })
+text.pos.set(20, 20)
+&#x60;&#x60;&#x60;
  */
 export class Text extends Entity {
   /** The text to display. */
@@ -270,7 +265,7 @@ export class Text extends Entity {
   }
 
   /**
-   * Empty implementation from extending [[Entity]].
+   * Empty implementation from extending {@link Entity}.
    *
    * @param _ Not used.
    * @param __ Not used.

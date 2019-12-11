@@ -1,14 +1,7 @@
-/**
- * @module kilo/renderer/webgl
- */
 import { Sprite, Rect } from '../../types'
 import { TileSprite } from '../../tile-sprite'
 
-/**
- * Provides static methods for working with WebGL.
- *
- * @category kilo/renderer/webgl
- */
+/** Provides static methods for working with WebGL. */
 export class GLUtils {
   /**
    * Gets a translation matrix based upon camera position.

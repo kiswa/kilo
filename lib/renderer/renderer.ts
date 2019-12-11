@@ -1,14 +1,7 @@
-/**
- * @module kilo/renderer
- */
 import { Container } from '..'
 import { Sprite } from '../types'
 
-/**
- * Abstract class to extend for specific renderers.
- *
- * @category kilo/renderer
- */
+/** Abstract class to extend for specific renderers. */
 export abstract class Renderer {
   /** Width of the canvas in pixels. */
   protected width: number
@@ -19,14 +12,12 @@ export abstract class Renderer {
   /** Containing element for the canvas. */
   protected container: HTMLElement
 
-  /**
-   * Get the HTMLCanvasElement used for rendering.
-   */
+  /** Get the HTMLCanvasElement used for rendering. */
   get canvasElement() {
     return this.canvas
   }
 
-  /** Not to be called directly. */
+  /** Abstract class, so not to be called directly. */
   constructor(width: number, height: number, container: HTMLElement) {
     this.width = width
     this.height = height

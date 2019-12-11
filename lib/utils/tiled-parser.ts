@@ -1,22 +1,15 @@
-/**
- * @module kilo/utils
- */
-
 /// <reference path="../types/tiled.ts" />
 import { Point } from '../types'
 
-/**
- * Type for tile data.
- *
- * @category kilo/utils
- */
-export type TileData = { [key: string]: any, frame: Point, x: number, y: number }
+/** Type for tile data. */
+export type TileData = {
+  [key: string]: any,
+  frame: Point,
+  x: number,
+  y: number
+}
 
-/**
- * Interface for a Tiled map object.
- *
- * @category kilo/utils
- */
+/** Interface for a Tiled map object. */
 export interface TiledMap {
   /** Width of a tile in pixels. */
   tileWidth: number
@@ -38,6 +31,7 @@ export interface TiledMap {
    * @param mandatory Whether a missing object is an error.
    */
   getObjectByName(name: string, mandatory?: boolean): Tiled.Object
+
   /**
    * Gets an array of objects from the map by type.
    *
@@ -47,11 +41,7 @@ export interface TiledMap {
   getObjectsByType(type: string, mandatory?: boolean): Tiled.Object[]
 }
 
-/**
- * Interface to add extra layers above or below the main level layer.
- *
- * @category kilo/utils
- */
+/** Interface to add extra layers above or below the main level layer. */
 export interface ExtraLayer {
   /** Name of the layer to load. */
   name: string
@@ -59,28 +49,56 @@ export interface ExtraLayer {
   isAboveLevel: boolean
 }
 
+/**
+ * @ignore
+ */
 let tileWidth: number
+/**
+ * @ignore
+ */
 let tileHeight: number
+/**
+ * @ignore
+ */
 let mapWidth: number
+/**
+ * @ignore
+ */
 let mapHeight: number
+/**
+ * @ignore
+ */
 let tilesPerRow: number
+/**
+ * @ignore
+ */
 let levelIndex: number
 
+/**
+ * @ignore
+ */
 let tileset: Tiled.Tileset
+/**
+ * @ignore
+ */
 let layers: Tiled.Layer[]
+/**
+ * @ignore
+ */
 let tilesets: Tiled.Tileset[]
+/**
+ * @ignore
+ */
 let entities: Tiled.Object[]
 
 /**
  * Parses a Tiled map object into a simpler form.
  *
  * There must be at least two layers in the Tiled map:
- * "level"    - containing the tiles for the level
- * "entities" - containing at least one entity
+ * * "level"    - containing the tiles for the level
+ * * "entities" - containing at least one entity (usually player starting location)
  *
  * @param jsonObj Object from Tiled JSON export.
- *
- * @category kilo/utils
  */
 export function tiledParser(jsonObj: Tiled.Map,
                             extraLayers?: ExtraLayer[]): TiledMap {
@@ -126,6 +144,9 @@ export function tiledParser(jsonObj: Tiled.Map,
   }
 }
 
+/**
+ * @ignore
+ */
 const getLayer = (name: string, mandatory = true) => {
   let layer = undefined
 
@@ -147,6 +168,9 @@ const getLayer = (name: string, mandatory = true) => {
   return layer
 }
 
+/**
+ * @ignore
+ */
 const loadTilesByLayer = (levelLayer: Tiled.Layer,
                        extraLayers: ExtraLayer[]) => {
   const tiles: any[] = []
@@ -170,6 +194,9 @@ const loadTilesByLayer = (levelLayer: Tiled.Layer,
   return tiles
 }
 
+/**
+ * @ignore
+ */
 const loadTiles = (tiles: any[], layer: Tiled.Layer) => {
   const index = tiles.push([]) - 1
 
@@ -192,6 +219,9 @@ const loadTiles = (tiles: any[], layer: Tiled.Layer) => {
   }
 }
 
+/**
+ * @ignore
+ */
 const getTileset = () => {
   if (!tilesets || !tilesets[0]) {
     throw new Error('Tiled Error: Missing tileset index 0.')
@@ -200,6 +230,9 @@ const getTileset = () => {
   return tilesets[0]
 }
 
+/**
+ * @ignore
+ */
 const getTileProps = (id: number) => {
   const tmp: any = {}
   let tile: any = undefined
@@ -230,6 +263,9 @@ const getTileProps = (id: number) => {
   return tmp
 }
 
+/**
+ * @ignore
+ */
 const convertEntity = (e: Tiled.Object) => {
   const tmp = {
     x: e.x,
@@ -249,6 +285,9 @@ const convertEntity = (e: Tiled.Object) => {
   return tmp
 }
 
+/**
+ * @ignore
+ */
 const getObjectsByType = (type: string, mandatory = false): Tiled.Object[] => {
   const es = []
   for (let i = 0; i < entities.length; i++) {
@@ -269,6 +308,9 @@ const getObjectsByType = (type: string, mandatory = false): Tiled.Object[] => {
   return converted as any
 }
 
+/**
+ * @ignore
+ */
 const getObjectByName = (name: string, mandatory = false): Tiled.Object => {
   let ent: any
 

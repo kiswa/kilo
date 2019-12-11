@@ -1,17 +1,14 @@
-/**
- * @module kilo/utils
- */
 import * as math from './math'
 import * as sprite from './sprite'
 import * as physics from './physics'
 
 /**
- * @hidden
+ * @ignore
  */
 export * from './tiled-parser'
 
 /**
- * @hidden
+ * @ignore
  */
 export {
   math,

@@ -4,10 +4,10 @@
   "description": "A simple 2D game engine.",
   "main": "lib/index.ts",
   "scripts": {
-    "docs": "compodoc lib -p tsconfig.json -d docs --hideGenerator --theme stripe",
-    "docs:serve": "serve docs",
+    "docs": "compodoc lib",
+    "docs:serve": "compodoc lib --serve --watch",
     "test": "TS_NODE_PROJECT=test/tsconfig.json mocha -r ts-node/register test/**/*.spec.ts",
-    "test:cov": "TS_NODE_PROJECT=test/tsconfig.json nyc -r lcov -r json -e .ts -x test/**/*.spec.ts node_modules/.bin/mocha -r ts-node/register test/**/*.spec.ts"
+    "test:cov": "TS_NODE_PROJECT=test/tsconfig.json nyc -r html -r json-summary -e .ts -x test/**/*.spec.ts node_modules/.bin/mocha -r ts-node/register test/**/*.spec.ts"
   },
   "author": "Matthew Ross",
   "license": "MIT",
@@ -26,10 +26,22 @@
     "node-fetch": "^2.6.0",
     "nyc": "^14.1.1",
     "request": "^2.88.0",
-    "serve": "^11.2.0",
     "ts-node": "^8.5.4",
     "tslint": "^5.20.1",
     "typedoc": "^0.15.4",
     "typescript": "^3.7.3"
+  },
+  "compodoc": {
+    "customFavicon": "docs/favicon.png",
+    "customLogo": "docs/logo.png",
+    "disableRoutesGraph": true,
+    "disablePrivate": true,
+    "hideGenerator": true,
+    "output": "docs",
+    "port": 5000,
+    "silent": true,
+    "theme": "stripe",
+    "tsconfig": "tsconfig.json",
+    "unitTestCoverage": "coverage/coverage-summary.json"
   }
 }

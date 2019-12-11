@@ -1,24 +1,19 @@
-/**
- * @module kilo
- */
 import { Entity } from './types'
 
 /**
  * Holds game objects updated and/or rendered in the game loop.
  *
- * Basically, just an [[Entity]] with some helper methods.
+ * Basically, just an {@link Entity} with some helper methods.
  *
  * ### Example
  * ```typescript
- * const pickups = new Container()
- *
- * // Assuming there is a 'Pickup' type in your game.
- * mapData.pickupLocations.forEach(pos => {
- *  pickups.push(new Pickup(pos))
- * })
- * ```
- *
- * @category kilo
+const pickups = new Container()
+
+// Assuming there is a 'Pickup' type in your game.
+mapData.pickupLocations.forEach(pos => {
+ pickups.push(new Pickup(pos))
+})
+```
  */
 export class Container extends Entity {
   /**

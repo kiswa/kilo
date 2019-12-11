@@ -1,16 +1,11 @@
-/**
- * @module kilo
- */
 import { Container, Game } from '.'
 import { Controls } from './controls/controls'
 
 /**
- * A unique [[Container]] with a reference to the game and controls,
+ * A unique {@link Container} with a reference to the game and controls,
  * and a callback for the completion of the scene.
  *
  * To be implemented as your unique scenes.
- *
- * @category kilo
  */
 export abstract class Scene extends Container {
   /** The game object. */
