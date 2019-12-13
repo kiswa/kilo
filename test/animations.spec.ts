@@ -3,8 +3,6 @@ import { expect } from 'chai'
 import { Animations } from '../lib/'
 import { Vec } from '../lib/types'
 
-require('jsdom-global')('', { pretendToBeVisual: true })
-
 describe('Animations', () => {
   let anims: Animations
 

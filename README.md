@@ -1,13 +1,13 @@
 ![kilo](./docs/logo.png)
 # kilo
 
-A 2D game library written in TypeScript.
+A 2D game engine library written in TypeScript.
 
 ## Development
 
 Install dependencies:
 ```bash
-npm install
+npm install --python=/path/to/python2.7
 ```
 
 Run tests:
@@ -18,6 +18,8 @@ Run tests with coverage reporting:
 ```bash
 npm run test:cov
 ```
+
+Tests with coverage must be run before docs to provide unit test coverage data.
 
 Update docs:
 ```bash

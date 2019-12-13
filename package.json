@@ -14,6 +14,7 @@
   "devDependencies": {
     "@compodoc/compodoc": "^1.1.11",
     "@types/chai": "^4.2.7",
+    "@types/gl": "^4.1.0",
     "@types/mocha": "^5.2.7",
     "@types/node": "^12.12.17",
     "canvas": "^2.6.0",
@@ -43,5 +44,8 @@
     "theme": "stripe",
     "tsconfig": "tsconfig.json",
     "unitTestCoverage": "coverage/coverage-summary.json"
+  },
+  "mocha": {
+    "require": [ "jsdom-global/register" ]
   }
 }

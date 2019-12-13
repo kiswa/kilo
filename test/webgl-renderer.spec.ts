@@ -1,17 +1,18 @@
 import { expect } from 'chai'
+import { Image } from 'canvas'
+import createContext from 'gl'
 
 import { Container, Game } from '../lib'
 import { Rect, Sprite, Texture } from '../lib/types'
 import { WebGLRenderer } from '../lib/renderer/webgl-renderer'
-import { Image } from 'canvas'
 
 describe('WebGLRenderer', () => {
   const orig = document.createElement
-  const fast = 5
+  const fast = 3
   let glRenderer: WebGLRenderer
 
   before(() => {
-    const gl = require('gl')(640, 480)
+    const gl = createContext(640, 480)
 
     // Provide webgl context to canvas for tests
     ; (document.createElement as any) = (el: string) => {
@@ -56,7 +57,7 @@ describe('WebGLRenderer', () => {
     })
 
     describe('render', () => {
-      let container: any
+      let container: Container
       let entity: any
 
       const renderTiming = () => {
@@ -152,13 +153,11 @@ describe('WebGLRenderer', () => {
         const img = new Image()
 
         img.onload = () => {
-          (entity as any).texture = {
-            img: img
-          }
+          (entity as any).texture = { img }
 
           container.add(entity)
 
-          expect(renderTiming()).to.be.above(fast)
+          expect(renderTiming()).to.be.below(fast)
           done()
         }
 
@@ -170,12 +169,10 @@ describe('WebGLRenderer', () => {
       })
 
       it('handles sprites with frames', done => {
-        const img = new Image
+        const img = new Image()
 
         img.onload = () => {
-          (entity as any).texture = {
-            img: img
-          }
+          (entity as any).texture = { img }
           ; (entity as any).tileWidth = 8
           ; (entity as any).frame = { x: 0, y: 0 }
 
