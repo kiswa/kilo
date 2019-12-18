@@ -16,8 +16,8 @@
     "@types/chai": "^4.2.7",
     "@types/gl": "^4.1.0",
     "@types/mocha": "^5.2.7",
-    "@types/node": "^12.12.17",
-    "canvas": "^2.6.0",
+    "@types/node": "^12.12.21",
+    "canvas": "^2.6.1",
     "chai": "^4.2.0",
     "docma": "^3.2.2",
     "gl": "^4.4.0",
@@ -29,7 +29,7 @@
     "request": "^2.88.0",
     "ts-node": "^8.5.4",
     "tslint": "^5.20.1",
-    "typedoc": "^0.15.4",
+    "typedoc": "^0.15.5",
     "typescript": "^3.7.3"
   },
   "compodoc": {
@@ -46,6 +46,8 @@
     "unitTestCoverage": "coverage/coverage-summary.json"
   },
   "mocha": {
-    "require": [ "jsdom-global/register" ]
+    "require": [
+      "jsdom-global/register"
+    ]
   }
 }
