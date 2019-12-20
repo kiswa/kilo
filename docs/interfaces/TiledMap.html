@@ -743,6 +743,7 @@ const loadTiles &#x3D; (tiles: any[], layer: Tiled.Layer) &#x3D;&gt; {
     return
   }
 
+  console.log(layer.name)
   if (layer.name &#x3D;&#x3D;&#x3D; &#x27;level&#x27;) {
     levelIndex &#x3D; index
   }
@@ -789,9 +790,7 @@ const getTileProps &#x3D; (id: number) &#x3D;&gt; {
 
   if (!tile) return tmp
 
-  if (tile.type) {
-    tmp.type &#x3D; tile.type
-  }
+  tmp.type &#x3D; tile.type
 
   if (tile.properties) {
     for (let i &#x3D; 0; i &lt; tile.properties.length; i++) {

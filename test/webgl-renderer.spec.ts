@@ -1,15 +1,16 @@
 import { expect } from 'chai'
-import { Image } from 'canvas'
 import createContext from 'gl'
 
-import { Container, Game } from '../lib'
-import { Rect, Sprite, Texture } from '../lib/types'
+import { Container, Game, Camera, TileSprite, Scene } from '../lib'
+import { Rect, Sprite, Texture, Text, TextOptions } from '../lib/types'
 import { WebGLRenderer } from '../lib/renderer/webgl-renderer'
 
 describe('WebGLRenderer', () => {
   const orig = document.createElement
   const fast = 3
   let glRenderer: WebGLRenderer
+  const blackPixel = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCA' +
+    'QAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII='
 
   before(() => {
     const gl = createContext(640, 480)
@@ -39,7 +40,6 @@ describe('WebGLRenderer', () => {
   after(() => {
     document.createElement = orig
     window.close()
-    require('jsdom-global')('', { pretendToBeVisual: true })
   })
 
   describe('Methods', () => {
@@ -57,12 +57,11 @@ describe('WebGLRenderer', () => {
     })
 
     describe('render', () => {
-      let container: Container
-      let entity: any
+      let container: Container | Scene
 
-      const renderTiming = () => {
+      const renderTiming = (cont?: any, clear = true) => {
         const start = window.performance.now()
-        glRenderer.render(container)
+        glRenderer.render(cont ? cont : container, clear)
         const end = window.performance.now()
 
         return end - start
@@ -70,7 +69,6 @@ describe('WebGLRenderer', () => {
 
       beforeEach(() => {
         container = new Container()
-        entity = new Rect(10, 10)
       })
 
       it('exits early if nothing is visible', () => {
@@ -84,7 +82,25 @@ describe('WebGLRenderer', () => {
         expect(renderTiming()).to.be.below(1)
       })
 
+      it('exits early if nothing is in camera', () => {
+        class MyScene extends Scene {}
+        container = new MyScene(new Game(640, 480), () => {})
+
+        const fakeSprite: any = new Rect(10, 10)
+        fakeSprite.anchor = { x: 0, y: 0 }
+
+        const camera = new Camera(fakeSprite, new Rect(10, 10))
+        const entity = new Rect(3, 3)
+        entity.pos.set(30, 30)
+
+        camera.add(entity)
+        container.add(camera)
+
+        expect(renderTiming()).to.be.below(1)
+      })
+
       it('renders recursively', () => {
+        const entity = new Rect(10, 10)
         container.visible = true
         entity.visible = false
 
@@ -96,12 +112,24 @@ describe('WebGLRenderer', () => {
         entity.visible = true
         const one = new Rect(5, 5, { fill: 'rgba(255, 255, 255, .5)' })
         const two = new Rect(5, 5, { fill: 'ff0000' })
-        entity.children = [one, two]
+        const three = new Rect(5, 5, { fill: 'rgb(0, 0, 0)' })
+        entity.children = [one, two, three]
 
         expect(renderTiming()).to.be.above(fast)
+
+        const badColor = 'rgba(0, 0, 0, 0, 0)'
+        const badFn = () => {
+          const bad = new Rect(5, 5, { fill: badColor })
+          entity.children.push(bad)
+
+          renderTiming()
+        }
+
+        expect(badFn).to.throw(`Invalid color string ${badColor}`)
       })
 
       it('handles alpha, scale, and anchor points', () => {
+        const entity = new Rect(10, 10)
         entity.visible = true
         entity.alpha = .99
         ; (entity as any).anchor = { x: 5, y: 5 }
@@ -118,7 +146,7 @@ describe('WebGLRenderer', () => {
       })
 
       it('handles rotation and pivot points', () => {
-        entity = new Sprite(new Texture(''))
+        const entity = new Sprite(new Texture(blackPixel))
         entity.rotation = 15
         entity.pivot.set(5, 5)
 
@@ -128,65 +156,72 @@ describe('WebGLRenderer', () => {
 
         delete (entity as any).pivot
 
+        Game.debug = false
         expect(renderTiming()).to.be.below(fast)
+        Game.debug = true
       })
 
       it('handles text', () => {
-        (entity as any).text = 'Testing'
-        ; (entity as any).style = {
+        class MyScene extends Scene {}
+        container = new MyScene(new Game(640, 480), () => {})
+        const style: TextOptions = {
           font: 'arial',
           fill: 'red',
           align: 'center'
         }
-        entity.width = 0
+        const entity = new Text('Testing', style)
+        const text = new Text('asdf', style)
+        const fakeSprite: any = new Rect(10, 10)
+        fakeSprite.anchor = { x: 0, y: 0 }
 
+        const camera = new Camera(fakeSprite, new Rect(10, 10))
+        ; (text as any).style = {}
+
+        camera.add(entity)
+        camera.add(text)
+        container.add(camera)
+
+        expect(renderTiming()).to.be.below(fast)
+
+        container.remove(camera)
         container.add(entity)
 
         expect(renderTiming()).to.be.below(fast)
 
-        ; (entity as any).style = {}
+        ; (container as any).game = null
+        Game.debug = false
+        expect(renderTiming()).to.be.below(fast)
+        Game.debug = true
+      })
 
+      it('handles sprites', () => {
+        const entity = new Sprite(new Texture(blackPixel))
+
+        container.add(entity)
+
+        expect(renderTiming()).to.be.above(fast)
+
+        ; (glRenderer as any).boundTexture = ''
         expect(renderTiming()).to.be.below(fast)
       })
 
-      it('handles sprites', done => {
-        const img = new Image()
-
-        img.onload = () => {
-          (entity as any).texture = { img }
-
-          container.add(entity)
-
-          expect(renderTiming()).to.be.below(fast)
-          done()
+      it('handles sprites with frames', () => {
+        (Game.assets as any).isCompleted = false
+        class MyScene extends Scene {
+          constructor(game: Game) { super(game, () => {}) }
         }
+        const img = document.createElement('img')
+        const scene = new MyScene(new Game(640, 480))
+        const entity = new TileSprite(new Texture(blackPixel), 8, 8)
 
-        img.src = 'data:image/gif;base64,R0lGODlhEAAQAMQAAORHHOVSKudfOulrSO' +
-          'p3WOyDZu6QdvCchPGolfO0o/XBs/fNwfjZ0frl3/zy7////wAAAAAAAAAAAAAAAA' +
-          'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAkAABAALAAAAA' +
-          'AQABAAAAVVICSOZGlCQAosJ6mu7fiyZeKqNKToQGDsM8hBADgUXoGAiqhSvp5QAn' +
-          'QKGIgUhwFUYLCVDFCrKUE1lBavAViFIDlTImbKC5Gm2hB0SlBCBMQiB0UjIQA7'
-      })
+        entity.texture.img = img
 
-      it('handles sprites with frames', done => {
-        const img = new Image()
+        const internalEntity = scene.add<TileSprite>(entity)
 
-        img.onload = () => {
-          (entity as any).texture = { img }
-          ; (entity as any).tileWidth = 8
-          ; (entity as any).frame = { x: 0, y: 0 }
+        expect(renderTiming(scene)).to.be.below(fast)
 
-          container.add(entity)
-
-          expect(renderTiming()).to.be.below(fast)
-          done()
-        }
-
-        img.src = 'data:image/gif;base64,R0lGODlhEAAQAMQAAORHHOVSKudfOulrSO' +
-          'p3WOyDZu6QdvCchPGolfO0o/XBs/fNwfjZ0frl3/zy7////wAAAAAAAAAAAAAAAA' +
-          'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAkAABAALAAAAA' +
-          'AQABAAAAVVICSOZGlCQAosJ6mu7fiyZeKqNKToQGDsM8hBADgUXoGAiqhSvp5QAn' +
-          'QKGIgUhwFUYLCVDFCrKUE1lBavAViFIDlTImbKC5Gm2hB0SlBCBMQiB0UjIQA7'
+        internalEntity.frame.set(-1, -1)
+        expect(renderTiming(scene, false)).to.be.below(fast)
       })
 
       // it('handles drawing paths', () => {
@@ -206,9 +241,8 @@ describe('WebGLRenderer', () => {
       // })
 
       it('handles camera views', () => {
-        (entity as any).worldSize = { x: 3, y: 3 }
-        entity.width = 3
-        entity.height = 3
+        const sprite = new Sprite(({ img: undefined } as unknown as Texture))
+        const entity = new Camera(sprite, new Rect(10, 10))
         entity.pos.set(0, 0)
 
         const child = new Rect(3, 3)

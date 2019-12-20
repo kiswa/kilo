@@ -142,11 +142,11 @@ export class Assets {
 
   private load(url: string, factory: (url: string) => any, isJson = false) {
     if (this.cache[url]) {
-      Game.debug && console.info('cached', url)
+      Game.debug && console.info(`cached ${url}`)
       return this.cache[url]
     }
 
-    Game.debug && console.info('load', url)
+    Game.debug && console.info(`load ${url}`)
 
     this.remaining++
     this.total++

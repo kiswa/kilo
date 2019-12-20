@@ -204,6 +204,7 @@ const loadTiles = (tiles: any[], layer: Tiled.Layer) => {
     return
   }
 
+  console.log(layer.name)
   if (layer.name === 'level') {
     levelIndex = index
   }
@@ -250,9 +251,7 @@ const getTileProps = (id: number) => {
 
   if (!tile) return tmp
 
-  if (tile.type) {
-    tmp.type = tile.type
-  }
+  tmp.type = tile.type
 
   if (tile.properties) {
     for (let i = 0; i < tile.properties.length; i++) {

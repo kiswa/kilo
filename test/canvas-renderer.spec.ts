@@ -1,8 +1,8 @@
 import { expect } from 'chai'
 import { Image } from 'canvas'
 
-import { Container, Game } from '../lib'
-import { Rect } from '../lib/types'
+import { Container, Game, Scene, Camera } from '../lib'
+import { Rect, Text } from '../lib/types'
 import { CanvasRenderer } from '../lib/renderer/canvas-renderer'
 
 describe('CanvasRenderer', () => {
@@ -33,9 +33,9 @@ describe('CanvasRenderer', () => {
       let container: any
       let entity: any
 
-      const renderTiming = () => {
+      const renderTiming = (clear = true) => {
         const start = window.performance.now()
-        canvas.render(container)
+        canvas.render(container, clear)
         const end = window.performance.now()
 
         return end - start
@@ -58,14 +58,17 @@ describe('CanvasRenderer', () => {
         entity.visible = false
 
         container.add(entity)
-        container.alpha = .99
+        container.alpha = 1
 
-        expect(renderTiming()).to.be.above(fast)
+        Game.debug = false
+        expect(renderTiming(false)).to.be.below(fast)
+        Game.debug = true
 
         entity.visible = true
         entity.children = [new Rect(5, 5)]
+        entity.alpha = -1
 
-        expect(renderTiming()).to.be.below(fast)
+        expect(renderTiming()).to.be.above(fast)
       })
 
       it('handles alpha, scale, and anchor points', () => {
@@ -79,6 +82,7 @@ describe('CanvasRenderer', () => {
 
         delete (entity as any).anchor
         delete entity.scale
+        delete entity.width
 
         expect(renderTiming()).to.be.below(fast)
       })
@@ -165,27 +169,39 @@ describe('CanvasRenderer', () => {
         ]
 
         container.add(entity)
-
         expect(renderTiming()).to.be.below(fast)
 
         ; (entity as any).style = { fill: null }
+        expect(renderTiming()).to.be.below(fast)
 
+        entity.path.length = 0
         expect(renderTiming()).to.be.below(fast)
       })
 
       it('handles camera views', () => {
-        (entity as any).worldSize = { x: 3, y: 3 }
-        entity.width = 3
-        entity.height = 3
-        entity.pos.set(0, 0)
+        class MyScene extends Scene {}
+        const scene = new MyScene(new Game(640, 480), () => {})
+        const text = new Text('Testing', {
+          font: 'arial',
+          fill: 'red',
+          align: 'center'
+        })
+        const fakeSprite: any = new Rect(10, 10)
+        fakeSprite.anchor = { x: 0, y: 0 }
+
+        const camera = new Camera(fakeSprite, new Rect(10, 10))
+
+        camera.add(text)
+        scene.add(camera)
+        container.add(scene)
 
         const child = new Rect(3, 3)
-        child.pos.set(10, 10)
-        entity.children = [child]
+        child.pos.set(20, 20)
+        camera.add(child)
 
         const child1 = new Rect(3, 3)
         child1.pos.set(0, 10)
-        entity.children.push(child1)
+        camera.add(child1)
 
         container.add(entity)
 

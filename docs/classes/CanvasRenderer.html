@@ -783,10 +783,8 @@ export class CanvasRenderer extends Renderer {
                           camera?: Entity | Container) {
     const { ctx } &#x3D; this
 
-    if (container.alpha) {
-      ctx.save()
-      ctx.globalAlpha &#x3D; container.alpha
-    }
+    ctx.save()
+    ctx.globalAlpha &#x3D; container.alpha
 
     for (let i &#x3D; 0; i &lt; container.children.length; i++) {
       const child &#x3D; (container as any).children[i]
@@ -801,10 +799,7 @@ export class CanvasRenderer extends Renderer {
       }
 
       ctx.save()
-
-      if (child.alpha) {
-        ctx.globalAlpha &#x3D; child.alpha
-      }
+      ctx.globalAlpha &#x3D; child.alpha
 
       ctx.translate(Math.round(child.pos.x), Math.round(child.pos.y))
 
@@ -876,9 +871,7 @@ export class CanvasRenderer extends Renderer {
       ctx.restore()
     }
 
-    if (container.alpha) {
-      ctx.restore()
-    }
+    ctx.restore()
   }
 
 }

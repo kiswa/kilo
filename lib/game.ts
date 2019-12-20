@@ -66,15 +66,9 @@ export class Game {
   static assets: Assets = new Assets()
   /** Whether or not to enable debug display (shows FPS and UPS). */
   static debug: boolean = false
-  /**
-   * Frames per second.
-   * @remarks Only updated if debug is true.
-   */
+  /** Frames per second. Only updated if debug is true. */
   static FPS: number = 60
-  /**
-   * Updates per second.
-   * @remarks Only updated if debug is true.
-   */
+  /** Updates per second. Only updated if debug is true. */
   static UPS: number = 60
 
   /** Gets the width of the game screen. */
@@ -117,7 +111,9 @@ export class Game {
    * @param width Width of the game screen.
    * @param height Height of the game screen.
    * @param useWebGL Whether or not to render with WebGL. Falls back to canvas.
+   * Default is `true`.
    * @param container The element to append the canvas to.
+   * Default is `document.body`
    */
   constructor(width: number, height: number, useWebGL: boolean = true,
               container: HTMLElement = document.body) {

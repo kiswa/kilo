@@ -1,11 +1,5 @@
 import { Vec } from '.'
 
-/** A type with an update function. */
-type HasUpdate = {
-  update: Function
-  dead: boolean
-}
-
 /** An abstract base class for all entities. */
 export abstract class Entity {
   /** Whether or not the entity is visible. */
@@ -22,7 +16,7 @@ export abstract class Entity {
   scale: Vec
 
   /** An array of child entities for recursive update/render. */
-  children: HasUpdate[]
+  children: Partial<Entity>[]
 
   /** Whether or not there are any child entities. */
   get hasChildren(): boolean {
@@ -55,7 +49,7 @@ export abstract class Entity {
    *
    * @param child Child to add to the entity.
    */
-  add(child: HasUpdate) {
+  add(child: Partial<Entity>) {
     this.children.push(child)
 
     return child
@@ -66,7 +60,7 @@ export abstract class Entity {
    *
    * @param fn Function to call for each child.
    */
-  map(fn: (child: HasUpdate, index?: number) => void): any {
+  map(fn: (child: Partial<Entity>, index?: number) => void): any {
     const result: any[] = []
 
     for (const [i, child] of this.children.entries()) {

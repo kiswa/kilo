@@ -41,6 +41,10 @@ describe('ShaderProgram', () => {
     gl.getUniformLocation = fns.getUnLoc
   }
 
+  before(() => {
+    require('jsdom-global')('', { pretendToBeVisual: true })
+  })
+
   beforeEach(() => {
     prog = new ShaderProgram(gl, {
       vertex: `void main() {}`,

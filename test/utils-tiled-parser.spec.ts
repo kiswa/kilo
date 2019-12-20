@@ -60,8 +60,7 @@ describe('Utils - tiledParser', () => {
     tiledParser({ layers: [
       { name: 'level' },
       { name: 'entities', objects: [
-        { gid: 1, id: 1, x: 0, y: 0, height: 16, width: 16,
-          type: 'test', name: 'test' }
+        { gid: 1, id: 1, x: 0, y: 0, height: 16, width: 16, name: 'test' }
       ] }
     ], tilesets: [{}]
     } as any)
@@ -75,14 +74,20 @@ describe('Utils - tiledParser', () => {
       tilewidth: 16,
 
       layers: [
+        { name: 'test', data: [1, 2, 3], type: 'test', opacity: 1 },
         { name: 'level', type: '', opacity: 1, data: [1, 2, 3] },
-        { name: 'entities', type: '', opacity: 1, objects: [
-          { gid: 1, id: 1, x: 0, y: 0, height: 16, width: 16,
+        {
+          name: 'entities', type: '', opacity: 1,
+          objects: [{
+            gid: 1, id: 1, x: 0, y: 0, height: 16, width: 16,
             type: 'test', name: 'test', properties: [
               { name: 'test', value: 'test', type: 'test' }
-            ] }
-        ] },
-      ],
+            ]
+          }, {
+            gid: 2, id: 2, x: 0, y: 0, height: 16, width: 16,
+            type: 'test', name: 'test'
+          }]
+        }],
 
       tilesets: [
         {
@@ -93,9 +98,14 @@ describe('Utils - tiledParser', () => {
           image: '',
           imageheight: 128,
           imagewidth: 128,
-          tiles: [{ id: 1, type: 'test', properties: [
-            { name: 'prop', value: 'test', type: 'test' }
-          ] }]
+          tiles: [{
+            id: 1, type: 'test', properties: [
+              { name: 'prop', value: 'test', type: 'test' }
+            ]
+          },
+          {
+            id: 2, type: 'test'
+          }]
         }
       ],
 
@@ -120,7 +130,7 @@ describe('Utils - tiledParser', () => {
     expect(testObj.y).to.equal(-16)
 
     const testObjs = parsedMap.getObjectsByType('test')
-    expect(testObjs.length).to.equal(1)
+    expect(testObjs.length).to.equal(2)
     expect(testObjs[0].x).to.equal(testObj.x)
     expect(testObjs[0].y).to.equal(testObj.y)
   })

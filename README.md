@@ -1,4 +1,7 @@
-![kilo](./docs/logo.png)
+<p style="text-align: center;">
+  <img src="./docs/logo.png">
+</p>
+
 # kilo
 
 A 2D game engine library written in TypeScript.

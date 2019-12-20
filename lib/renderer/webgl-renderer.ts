@@ -100,7 +100,7 @@ export class WebGLRenderer extends Renderer {
   private renderRecursive(container: Entity | Container, camera?: Camera) {
     const { gl, ctx } = this
 
-    if (container.alpha) {
+    if (container.alpha >= 0) {
       this.globalAlpha = container.alpha
     }
 
@@ -131,8 +131,12 @@ export class WebGLRenderer extends Renderer {
         if (this.game) {
           child.pos.set(container.pos.x, container.pos.y)
 
-          child.pos.x = child.pos.x / ((camera as any).worldSize.width / this.game.height)
-          child.pos.y = child.pos.y / ((camera as any).worldSize.height / this.game.height)
+          if (camera) {
+            child.pos.x = child.pos.x /
+              ((camera as any).worldSize.width / this.game.height)
+            child.pos.y = child.pos.y /
+              ((camera as any).worldSize.height / this.game.height)
+          }
         }
 
         ctx.fillText(child.text, child.pos.x, child.pos.y)

@@ -1,8 +1,9 @@
 import { expect } from 'chai'
+import createContext from 'gl'
 
 import { Game, Container, Scene } from '../lib/'
 
-require('jsdom-global')('', { pretendToBeVisual: true })
+require('jsdom-global')('', { pretendToBeVisual: true, resources: 'usable' })
 
 describe('Game', () => {
   let game: Game
@@ -26,9 +27,9 @@ describe('Game', () => {
 
   const orig = document.createElement
 
-  before(() => {
-    const gl = require('gl')(640, 480)
-    //
+  const provideWebGL = () => {
+    const gl = createContext(640, 480)
+
     // Provide webgl context to canvas for tests
     ; (document.createElement as any) = (el: string) => {
       if (el === 'canvas') {
@@ -47,7 +48,9 @@ describe('Game', () => {
 
       return orig.call(document, el)
     }
-  })
+  }
+
+  before(provideWebGL)
 
   describe('Properties', () => {
     it('has static property FPS with default value', () => {
@@ -108,6 +111,32 @@ describe('Game', () => {
       restoreLog()
     })
 
+    it('handles failure to get webgl context', () => {
+    (document.createElement as any) = (el: string) => {
+      if (el === 'canvas') {
+        const newEl = orig.call(document, el)
+
+        ; (newEl as any).getContext = (ctx: string) => {
+          if (ctx === 'webgl') {
+            throw new Error()
+          }
+
+          return orig.call(document, 'canvas').getContext(ctx)
+        }
+
+        return newEl
+      }
+
+      return orig.call(document, el)
+    }
+
+      game = new Game(640, 480)
+
+      expect((game as any).isWebGL).to.equal(false)
+
+      provideWebGL()
+    })
+
     it('has method run', done => {
       game = new Game(640, 480)
       expect(game.run).to.be.a('function')
@@ -124,17 +153,27 @@ describe('Game', () => {
       }, 1000)
     })
 
-    it('has method setScene', () => {
+    it('has method setScene', done => {
       expect(game.setScene).to.be.a('function')
 
       class MyScene extends Scene {
+        constructor(game: Game, fn: Function) {
+          super(game, fn)
+        }
       }
 
       const scene = new MyScene(game, () => {})
 
-      game.setScene(scene)
       game.setScene(scene, 0)
       game.run()
+
+      game = new Game(640, 480)
+      game.setScene(scene, 1 / 60)
+      game.run()
+
+      setTimeout(() => {
+        done()
+      }, 100)
     })
   })
 

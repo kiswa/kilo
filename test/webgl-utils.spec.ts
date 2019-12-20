@@ -1,6 +1,6 @@
 import { expect } from 'chai'
 
-import {GLUtils} from '../lib/renderer/webgl'
+import { GLUtils } from '../lib/renderer/webgl'
 
 describe('GLUtils', () => {
   it('has static method getCameraTranslation', () => {
