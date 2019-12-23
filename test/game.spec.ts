@@ -150,7 +150,7 @@ describe('Game', () => {
 
       setTimeout(() => {
         done()
-      }, 1000)
+      }, 1000) // 1 second to allow for FPS/UPS update
     })
 
     it('has method setScene', done => {
@@ -164,8 +164,15 @@ describe('Game', () => {
 
       const scene = new MyScene(game, () => {})
 
-      game.setScene(scene, 0)
-      game.run()
+      setTimeout(() => {
+        game.setScene(scene, 0)
+        game.run()
+      }, 20)
+
+      setTimeout(() => {
+        game.setScene(scene)
+        game.run()
+      }, 20)
 
       game = new Game(640, 480)
       game.setScene(scene, 1 / 60)

@@ -49,7 +49,15 @@ describe('CanvasRenderer', () => {
       it('exits early if nothing is visible', () => {
         container.visible = false
 
-        expect(renderTiming()).to.be.below(fast)
+        const timing = (() => {
+          const start = window.performance.now()
+          canvas.render(container)
+          const end = window.performance.now()
+
+          return end - start
+        })()
+
+        expect(timing).to.be.below(fast)
       })
 
       it('renders recursively', () => {

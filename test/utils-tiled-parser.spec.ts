@@ -74,7 +74,7 @@ describe('Utils - tiledParser', () => {
       tilewidth: 16,
 
       layers: [
-        { name: 'test', data: [1, 2, 3], type: 'test', opacity: 1 },
+        { name: 'bg', data: [1, 2, 3], type: 'test', opacity: 1 },
         { name: 'level', type: '', opacity: 1, data: [1, 2, 3] },
         {
           name: 'entities', type: '', opacity: 1,

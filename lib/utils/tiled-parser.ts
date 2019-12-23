@@ -204,7 +204,6 @@ const loadTiles = (tiles: any[], layer: Tiled.Layer) => {
     return
   }
 
-  console.log(layer.name)
   if (layer.name === 'level') {
     levelIndex = index
   }

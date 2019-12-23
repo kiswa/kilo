@@ -198,6 +198,7 @@ describe('WebGLRenderer', () => {
         const entity = new Sprite(new Texture(blackPixel))
 
         container.add(entity)
+        container.add(entity)
 
         expect(renderTiming()).to.be.above(fast)
 

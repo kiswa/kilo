@@ -89,7 +89,13 @@ describe('Camera', () => {
       expect(anyCam.debug.pos.y).to.equal(-45.5)
       expect(camera.pos.x).to.equal(0)
       expect(camera.pos.y).to.equal(0)
-      camera.focus(1, false)
+
+      camera.focus(0, false)
+      spr.pos.set(0, 0)
+      camera.setTracking(0, 0)
+      camera.focus(0)
+      expect(camera.pos.x).to.equal(0)
+      expect(camera.pos.y).to.equal(0)
     })
 
     it('has method update', () => {

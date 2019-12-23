@@ -237,7 +237,7 @@ export class WebGLRenderer extends Renderer {
     gl.drawArrays(gl.TRIANGLE_STRIP, 0, 6)
   }
 
-  private getColorFromFillString(color: string, alpha: number = 1) {
+  private getColorFromFillString(color: string, alpha: number) {
     if (color[0] === '#') {
       color = color.substr(1)
     }
