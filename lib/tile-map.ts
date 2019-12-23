@@ -3,9 +3,10 @@ import { HitBox, Point, Texture, Vec } from './types'
 import { TiledMap } from './utils'
 
 /**
- * @ignore
+ * Simple interface requiring a frame property of type {@link Point}.
  */
 interface HasFrame {
+  /** The frame used by a {@link TileMap}.  */
   frame: Point
 }
 
@@ -27,11 +28,32 @@ export class TileMap extends Container {
   /** Index of the level layer in tiles data. */
   levelIndex: number
 
+  /** Gets the layers up to and including the level layer. */
+  get layersUpToLevel() {
+    const layers = []
+
+    for (let i = 0; i <= this.levelIndex; ++i) {
+      layers.push(this.children[i])
+    }
+
+    return layers
+  }
+
+  /** Gets the layers above the level layer. */
+  get layersAboveLevel() {
+    const layers = []
+
+    for (let i = this.levelIndex; i < this.children.length; ++i) {
+      layers.push(this.children[i])
+    }
+
+    return layers
+  }
+
   /**
    * Initialize TileMap object.
    *
-   * @param tiles Array of arrays of objects with at least a
-   * {@link Point} `frame` property.
+   * @param tiles Array of arrays of objects with at least a `frame` (Point) property.
    * @param data TiledMap object.
    * @param texture Texture to use for tiles.
    */

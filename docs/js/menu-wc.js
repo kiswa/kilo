@@ -173,6 +173,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="interfaces/ExtraLayer.html" data-type="entity-link">ExtraLayer</a>
                             </li>
                             <li class="link">
+                                <a href="interfaces/HasFrame.html" data-type="entity-link">HasFrame</a>
+                            </li>
+                            <li class="link">
                                 <a href="interfaces/Hits.html" data-type="entity-link">Hits</a>
                             </li>
                             <li class="link">

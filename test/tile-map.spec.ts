@@ -45,6 +45,35 @@ describe('TileMap', () => {
     })
   })
 
+  describe('Accessors', () => {
+    beforeEach(() => {
+      tiles.length = 0
+      tiles.push([])
+
+      for (let i = 0; i < 16; i++) {
+        tiles[0].push({ frame: new Vec(), x: 0, y: 0 })
+      }
+
+      data.tileWidth = 16
+      data.tileHeight = 16
+      data.mapWidth = 4
+      data.mapHeight = 4
+      data.tiles = tiles as any
+
+      map = new TileMap(tiles, data, tex)
+    })
+
+    it('has get accessor layersUpToLevel', () => {
+      expect(map).to.have.property('layersUpToLevel')
+      expect(map.layersUpToLevel.length).to.equal(1)
+    })
+
+    it('has get accessor layersAboveLevel', () => {
+      expect(map).to.have.property('layersUpToLevel')
+      expect(map.layersAboveLevel.length).to.equal(1)
+    })
+  })
+
   describe('Methods', () => {
     beforeEach(() => {
       tiles.length = 0

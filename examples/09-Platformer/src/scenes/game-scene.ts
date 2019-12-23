@@ -9,10 +9,13 @@ export class GameScene extends Scene {
   constructor(game: Game, controls: Controls, onComplete: Function) {
     super(game, onComplete, controls)
 
-    const extraLayer = { name: 'bg', isAboveLevel: false }
+    const extraLayers = [
+      { name: 'bg', isAboveLevel: false },
+      { name: 'fg', isAboveLevel: true }
+    ]
 
     Game.assets.json('assets/levels/example.json').then((mapData: any) => {
-      const tMap = Utils.tiledParser(mapData, [extraLayer])
+      const tMap = Utils.tiledParser(mapData, extraLayers)
 
       this.setupCamera(tMap, game)
     })
@@ -37,8 +40,15 @@ export class GameScene extends Scene {
     cam.setDebug()
     this.camera = this.add<Camera>(cam)
 
-    this.camera.add(level)
+    for (const layer of level.layersUpToLevel) {
+      this.camera.add(layer)
+    }
+
     this.camera.add(player)
+
+    for (const layer of level.layersAboveLevel) {
+      this.camera.add(layer)
+    }
   }
 }
 

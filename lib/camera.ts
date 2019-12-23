@@ -141,7 +141,7 @@ export class Camera extends Container {
   }
 
   /**
-   * Add a brief  overlay to 'flash' the viewport.
+   * Add a brief overlay to 'flash' the viewport.
    *
    * @param duration Time in seconds for flash to fade out.
    * @param color Color of the overlay used.
