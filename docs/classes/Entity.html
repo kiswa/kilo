@@ -124,6 +124,9 @@
                                 <a href="#map">map</a>
                             </li>
                             <li>
+                                <a href="#remove">remove</a>
+                            </li>
+                            <li>
                                     <span class="modifier">Abstract</span>
                                 <a href="#update">update</a>
                             </li>
@@ -403,7 +406,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>add(child: <a href="../classes/Entity.html">Partial<Entity></a>)</code>
+<code>add(child: T)</code>
                 </td>
             </tr>
 
@@ -415,10 +418,18 @@
                 </td>
             </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <b>Type parameters :</b>
+                    <ul class="type-parameters">
+                        <li>T</li>
+                    </ul>
+                </td>
+            </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Adds a child object to the entity.</p>
+                    <div class="io-description"><p>Add and return a child object.</p>
 </div>
 
                     <div class="io-description">
@@ -436,7 +447,7 @@
                                 <tr>
                                     <td>child</td>
                                     <td>
-                                                <code><a href="../classes/Entity.html" target="_self" >Partial&lt;Entity&gt;</a></code>
+                                            <code>T</code>
                                     </td>
 
                                     <td>
@@ -445,7 +456,7 @@
 
 
                                     <td>
-                                        <p>Child to add to the entity.</p>
+                                        <p>Object to add to the container.</p>
 
                                     </td>
                                 </tr>
@@ -455,7 +466,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                        <b>Returns : </b>    <code>T</code>
 
                     </div>
                     <div class="io-description">
@@ -487,15 +498,15 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="63"
-                            class="link-to-prism">lib/types/entity.ts:63</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="74"
+                            class="link-to-prism">lib/types/entity.ts:74</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Maps a function across all children.</p>
+                    <div class="io-description"><p>Map a function across all children.</p>
 </div>
 
                     <div class="io-description">
@@ -533,6 +544,91 @@
                     </div>
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="remove"></a>
+                    <span class="name">
+                        <b>
+                            remove
+                        </b>
+                        <a href="#remove"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>remove(child: T)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="63"
+                            class="link-to-prism">lib/types/entity.ts:63</a></div>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Type parameters :</b>
+                    <ul class="type-parameters">
+                        <li>T</li>
+                    </ul>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Remove and return a child object.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>child</td>
+                                    <td>
+                                            <code>T</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>Object to remove from the container.</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>T</code>
 
                     </div>
                     <div class="io-description">
@@ -732,18 +828,29 @@ export abstract class Entity {
   abstract update(dt: number, t: number): void
 
   /**
-   * Adds a child object to the entity.
+   * Add and return a child object.
    *
-   * @param child Child to add to the entity.
+   * @param child Object to add to the container.
    */
-  add(child: Partial&lt;Entity&gt;) {
+  add&lt;T&gt;(child: T) {
     this.children.push(child)
 
     return child
   }
 
   /**
-   * Maps a function across all children.
+   * Remove and return a child object.
+   *
+   * @param child Object to remove from the container.
+   */
+  remove&lt;T&gt;(child: T) {
+    this.children &#x3D; this.children.filter(ch &#x3D;&gt; ch !&#x3D;&#x3D; child)
+
+    return child
+  }
+
+  /**
+   * Map a function across all children.
    *
    * @param fn Function to call for each child.
    */

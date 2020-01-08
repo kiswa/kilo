@@ -142,6 +142,9 @@ text.pos.set(20, 20)</code></pre></div>
                                 <a href="#map">map</a>
                             </li>
                             <li>
+                                <a href="#remove">remove</a>
+                            </li>
+                            <li>
                                     <span class="modifier">Abstract</span>
                                 <a href="#update">update</a>
                             </li>
@@ -655,7 +658,7 @@ text.pos.set(20, 20)</code></pre></div>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>add(child: <a href="../classes/Entity.html">Partial<Entity></a>)</code>
+<code>add(child: T)</code>
                 </td>
             </tr>
 
@@ -673,10 +676,18 @@ text.pos.set(20, 20)</code></pre></div>
                 </td>
             </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <b>Type parameters :</b>
+                    <ul class="type-parameters">
+                        <li>T</li>
+                    </ul>
+                </td>
+            </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Adds a child object to the entity.</p>
+                    <div class="io-description"><p>Add and return a child object.</p>
 </div>
 
                     <div class="io-description">
@@ -694,7 +705,7 @@ text.pos.set(20, 20)</code></pre></div>
                                 <tr>
                                     <td>child</td>
                                     <td>
-                                                <code><a href="../classes/Entity.html" target="_self" >Partial&lt;Entity&gt;</a></code>
+                                            <code>T</code>
                                     </td>
 
                                     <td>
@@ -703,7 +714,7 @@ text.pos.set(20, 20)</code></pre></div>
 
 
                                     <td>
-                                        <p>Child to add to the entity.</p>
+                                        <p>Object to add to the container.</p>
 
                                     </td>
                                 </tr>
@@ -713,7 +724,7 @@ text.pos.set(20, 20)</code></pre></div>
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                        <b>Returns : </b>    <code>T</code>
 
                     </div>
                     <div class="io-description">
@@ -751,7 +762,7 @@ text.pos.set(20, 20)</code></pre></div>
             </tr>
             <tr>
                 <td class="col-md-4">
-                        <div class="io-line">Defined in         <code><a href="../classes/Entity.html#source" target="_self" >Entity:63</a></code>
+                        <div class="io-line">Defined in         <code><a href="../classes/Entity.html#source" target="_self" >Entity:74</a></code>
 </div>
                 </td>
             </tr>
@@ -759,7 +770,7 @@ text.pos.set(20, 20)</code></pre></div>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Maps a function across all children.</p>
+                    <div class="io-description"><p>Map a function across all children.</p>
 </div>
 
                     <div class="io-description">
@@ -797,6 +808,97 @@ text.pos.set(20, 20)</code></pre></div>
                     </div>
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="remove"></a>
+                    <span class="name">
+                        <b>
+                            remove
+                        </b>
+                        <a href="#remove"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>remove(child: T)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Inherited from         <code><a href="../classes/Entity.html" target="_self" >Entity</a></code>
+</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-line">Defined in         <code><a href="../classes/Entity.html#source" target="_self" >Entity:63</a></code>
+</div>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Type parameters :</b>
+                    <ul class="type-parameters">
+                        <li>T</li>
+                    </ul>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Remove and return a child object.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>child</td>
+                                    <td>
+                                            <code>T</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>Object to remove from the container.</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>T</code>
 
                     </div>
                     <div class="io-description">
