@@ -56,6 +56,8 @@ export class Player extends TileSprite {
     this.pivot.copy(center)
   }
 
+  onDeath() {}
+
   update(dt: number, t: number) {
     super.update(dt, t)
 
@@ -92,6 +94,17 @@ export class Player extends TileSprite {
 
     if (hits.up) {
       this.stopIfNotJumpthrough(bounds)
+    }
+
+    if (hits.down) {
+      const tile = this.gameMap.tileAtPixelPos(new Types.Vec(
+        this.pos.x + this.hitBox.x, this.pos.y + this.height
+      ))
+
+      if (tile.frame.type === 'death') {
+        this.dead = true
+        this.onDeath()
+      }
     }
 
     if (hits.down && !hits.up) {

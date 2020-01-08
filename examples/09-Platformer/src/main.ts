@@ -8,7 +8,7 @@ const controls = {
 }
 
 // Uncomment below line to show FPS & UPS counters
-Game.debug = true
+// Game.debug = true
 
 game.setScene(new GameScene(game, controls, () => {}))
 
