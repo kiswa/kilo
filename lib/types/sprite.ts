@@ -1,4 +1,5 @@
-import { Entity, Vec, Texture, HitBox } from '.'
+import { Vec, Texture, HitBox } from '.'
+import { Container } from '../container'
 
 /**
  * An entity with additional properties for collision testing and display.
@@ -18,7 +19,7 @@ bullet.hitBox.set(4, 2, 16, 12)
 bullet.anchor.set(16, 16)
 ```
  */
-export class Sprite extends Entity {
+export class Sprite extends Container {
   /** The hitbox of the sprite. */
   public hitBox: HitBox
   /** The rotation of the sprite. */
@@ -47,14 +48,14 @@ export class Sprite extends Entity {
     return this._pivot
   }
 
-  /** Gets the height. */
-  get height() {
-    return this._height
+  /** Gets the height of the sprite in pixels, accounting for scale. */
+  get height () {
+    return this._height * Math.abs(this.scale.y)
   }
 
-  /** Gets the width. */
-  get width() {
-    return this._width
+  /** Gets the width of the sprite in pixels, accounting for scale. */
+  get width () {
+    return this._width * Math.abs(this.scale.x)
   }
 
   /** Sets the height. */

@@ -45,18 +45,29 @@ export abstract class Entity {
   abstract update(dt: number, t: number): void
 
   /**
-   * Adds a child object to the entity.
+   * Add and return a child object.
    *
-   * @param child Child to add to the entity.
+   * @param child Object to add to the container.
    */
-  add(child: Partial<Entity>) {
+  add<T>(child: T) {
     this.children.push(child)
 
     return child
   }
 
   /**
-   * Maps a function across all children.
+   * Remove and return a child object.
+   *
+   * @param child Object to remove from the container.
+   */
+  remove<T>(child: T) {
+    this.children = this.children.filter(ch => ch !== child)
+
+    return child
+  }
+
+  /**
+   * Map a function across all children.
    *
    * @param fn Function to call for each child.
    */

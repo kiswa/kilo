@@ -15,6 +15,17 @@ class TestEntity extends Entity {
 describe('Entity', () => {
   let entity: TestEntity
 
+  class MockType {
+    x: number
+    updated = false
+    dead = false
+
+    update(_: number, __: number) {
+      this.updated = true
+    }
+  }
+
+
   describe('Properties', () => {
     beforeEach(() => {
       entity = new TestEntity()
@@ -67,6 +78,32 @@ describe('Entity', () => {
       entity = new TestEntity()
     })
 
+    it('has generic method add', () => {
+      expect(entity.add).to.be.a('function')
+
+      const t = entity.add<MockType>(new MockType())
+      expect(t).to.be.instanceof(MockType)
+    })
+
+    it('has generic method remove', () => {
+      expect(entity.remove).to.be.a('function')
+
+      const a = new MockType()
+      const b = new MockType()
+
+      a.x = 0
+      b.x = 1
+
+      entity.add(a)
+      entity.add(b)
+
+      expect(entity.children.length).to.equal(2)
+
+      const gone = entity.remove(a)
+      expect(entity.children.length).to.equal(1)
+      expect(gone).to.equal(a)
+    })
+
     it('has method update', () => {
       expect(entity.update).to.be.a('function')
 
@@ -75,20 +112,12 @@ describe('Entity', () => {
       expect(entity.visible).to.equal(false)
     })
 
-    it('has method add', () => {
-      expect(entity.add).to.be.a('function')
-
-      entity.add(new TestEntity())
-
-      expect(entity.hasChildren).to.equal(true)
-    })
-
     it('has method map', () => {
       expect(entity.map).to.be.a('function')
 
-      entity.add(new TestEntity())
+      entity.children.push(new TestEntity())
 
-      const result = entity.map((child, index) => {
+      const result = entity.map((child) => {
         child.dead = true
 
         return child

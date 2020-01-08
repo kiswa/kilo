@@ -3,7 +3,7 @@ import { Entity } from './types'
 /**
  * Holds game objects updated and/or rendered in the game loop.
  *
- * Basically, just an {@link Entity} with some helper methods.
+ * Basically, just an {@link Entity} with an `update` implementation.
  *
  * ### Example
  * ```typescript
@@ -16,28 +16,6 @@ mapData.pickupLocations.forEach(pos => {
 ```
  */
 export class Container extends Entity {
-  /**
-   * Add a child object.
-   *
-   * @param child Object to add to the container.
-   */
-  add<T>(child: any) {
-    this.children.push(child)
-
-    return <T>child
-  }
-
-  /**
-   * Remove a child object.
-   *
-   * @param child Object to remove from the container.
-   */
-  remove<T>(child: any) {
-    this.children = this.children.filter(ch => ch !== child)
-
-    return <T>child
-  }
-
   /**
    * Update each child in the container.
    *
