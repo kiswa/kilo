@@ -16,6 +16,11 @@ mapData.pickupLocations.forEach(pos => {
 ```
  */
 export class Container extends Entity {
+
+  constructor() {
+    super()
+  }
+
   /**
    * Update each child in the container.
    *

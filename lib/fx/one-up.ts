@@ -57,5 +57,9 @@ export class OneUp extends Container {
     this.pos.add(this.vel)
 
     this.dead = ((this.life -= dt) <= 0)
+
+    this.map((child) => {
+      child.pos.copy(this.pos)
+    })
   }
 }

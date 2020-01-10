@@ -42,6 +42,7 @@ export class TileSprite extends Sprite {
     this.frame.__proto__ = new Vec()
 
     this.anims = new Animations(this.frame)
+    this.hitBox.set(0, 0, this.width, this.height)
   }
 
   /**
