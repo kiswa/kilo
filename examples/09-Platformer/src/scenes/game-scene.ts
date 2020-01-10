@@ -3,6 +3,7 @@ import {
   Container,
   Controls,
   Game,
+  Resolvers,
   Scene,
   TileSprite,
   Types,
@@ -42,6 +43,8 @@ export class GameScene extends Scene {
     super.update(dt, t)
 
     Utils.sprite.hits(this.player, this.pickups, (pickup: TileSprite) => {
+      this.resolvePlayerPosition(pickup)
+
       if ((pickup as any).done) {
         return
       }
@@ -51,8 +54,16 @@ export class GameScene extends Scene {
 
       const one = this.camera.add<FX.OneUp>(new FX.OneUp(this.diamond))
       one.pos.set(pickup.pos.x, pickup.pos.y - 16)
-      console.log(pickup.pos, one.pos)
     })
+  }
+
+  private resolvePlayerPosition(pickup: TileSprite) {
+    this.player.vel.set(0, 0)
+    const box = Utils.sprite.bounds(this.player)
+
+    if (box.x + box.width > pickup.pos.x) {
+      this.player.pos.x = pickup.pos.x - this.player.width
+    }
   }
 
   private setupCamera(tMap: Utils.TiledMap, game: Game) {
@@ -100,6 +111,7 @@ export class GameScene extends Scene {
       this.camera.add(layer)
     }
 
+    // Uncomment below to see the camera bounds
     // this.camera.setDebug()
   }
 }
