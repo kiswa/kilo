@@ -22,14 +22,22 @@ const MIN_VEL = 200
 export class Player extends TileSprite {
   private controls: KeyControls
   private gameMap: TileMap
+  private debugText: Types.Text
+
+  private _hasKey: boolean
 
   vel: Types.Vec
   acc: Types.Vec
   mass: number
 
+  paused: boolean
   releasedAction: boolean
   falling: boolean
   fallingTimer: number
+
+  get hasKey() {
+    return this._hasKey
+  }
 
   constructor(controls: KeyControls, gameMap: TileMap) {
     super(new Types.Texture('assets/images/character.png'), 48, 48)
@@ -42,6 +50,7 @@ export class Player extends TileSprite {
     this.acc = new Types.Vec()
     this.mass = 1
 
+    this.paused = false
     this.releasedAction = false
     this.falling = false
     this.fallingTimer = 0
@@ -54,12 +63,37 @@ export class Player extends TileSprite {
 
     const center = Utils.sprite.center(this)
     this.pivot.copy(center)
+
+    this.debugText = this.add(new Types.Text('', {
+      fill: '#333',
+      font: '14px monospace',
+      align: 'center'
+    }))
   }
 
   onDeath() {}
 
+  addKey() {
+    this._hasKey = true
+
+    const key = this.add(new TileSprite(
+      new Types.Texture('assets/images/tilesheet.png'), 32, 32
+    ))
+
+    key.frame.set(8, 4)
+    key.pos.set(6, -10)
+
+    console.log(this.children)
+  }
+
   update(dt: number, t: number) {
     super.update(dt, t)
+
+    if (this.paused) {
+      return
+    }
+
+    this.debugText.text = `Children: ${this.hasChildren} Pos: ${this.pos}`
 
     const { x, action: jump } = this.controls
 

@@ -1,6 +1,7 @@
-import { Renderer } from './renderer'
 import { Camera, Container, Game, Scene, TileSprite } from '../'
 import { Entity, Sprite, Text, Rect } from '../types'
+
+import { Renderer } from './renderer'
 import { defaults, ShaderProgram, GlBuffer,  GLUtils } from './webgl'
 
 /**
@@ -100,7 +101,7 @@ export class WebGLRenderer extends Renderer {
   private renderRecursive(container: Entity | Container, camera?: Camera) {
     const { gl, ctx } = this
 
-    if (container.alpha >= 0) {
+    if (container instanceof Container && container.alpha >= 0) {
       this.globalAlpha = container.alpha
     }
 
@@ -115,28 +116,36 @@ export class WebGLRenderer extends Renderer {
       }
 
       if (camera && !(child instanceof Container || child instanceof Text) &&
-        !this.isInCamera(child, camera)) {
+          !this.isInCamera(child, camera)) {
         continue
+      }
+
+      let useOffset = false
+      const anyContainer = (container as any)
+
+      if (anyContainer.particles || anyContainer.life) {
+        useOffset = true
+
+        for (let child of container.children) {
+          child.pos.add(container.pos)
+        }
       }
 
       if (child.text) {
         const { font, fill, align } = child.style
 
         ctx.save()
+        ctx.globalAlpha = child.alpha
 
         if (font && font.length) ctx.font = font
         if (fill && fill.length) ctx.fillStyle = fill
         if (align && align.length) ctx.textAlign = align
 
-        if (this.game) {
-          child.pos.set(container.pos.x, container.pos.y)
-
-          if (camera) {
-            child.pos.x = child.pos.x /
-              ((camera as any).worldSize.width / this.game.height)
-            child.pos.y = child.pos.y /
-              ((camera as any).worldSize.height / this.game.height)
-          }
+        if (this.game && camera) {
+          child.pos.x = child.pos.x /
+            ((camera as any).worldSize.width / this.game.height)
+          child.pos.y = child.pos.y /
+            ((camera as any).worldSize.height / this.game.height)
         }
 
         ctx.fillText(child.text, child.pos.x, child.pos.y)
@@ -162,7 +171,17 @@ export class WebGLRenderer extends Renderer {
       }
 
       ctx.restore()
+
+      if (useOffset) {
+        useOffset = false
+
+        for (let child of container.children) {
+          child.pos.subtract(container.pos)
+        }
+      }
     }
+
+    this.globalAlpha = 1
   }
 
   private drawSprite(sprite: Sprite, camera: Camera) {

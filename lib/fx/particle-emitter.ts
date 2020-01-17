@@ -25,11 +25,9 @@ export class ParticleEmitter extends Container {
     this.particles = []
 
     for (let i = 0; i < numParticles; i++) {
-      this.particles.push(new Particle(display, options))
-    }
-
-    for (let i = 0; i < this.particles.length; i++) {
-      this.add(this.particles[i])
+      this.particles.push(this.add(
+        new Particle(display, options)
+      ))
     }
 
     this.lastPlay = 0
@@ -48,8 +46,8 @@ export class ParticleEmitter extends Container {
 
     this.pos.copy(pos)
 
-    for (let i = 0; i < this.particles.length; i++) {
-      this.particles[i].reset()
+    for (let particle of this.particles) {
+      particle.reset()
     }
   }
 }

@@ -127,7 +127,7 @@ describe('Utils - tiledParser', () => {
 
     const testObj = parsedMap.getObjectByName('test')
     expect(testObj.x).to.equal(0)
-    expect(testObj.y).to.equal(-16)
+    expect(testObj.y).to.equal(0)
 
     const testObjs = parsedMap.getObjectsByType('test')
     expect(testObjs.length).to.equal(2)

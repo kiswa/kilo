@@ -115,7 +115,7 @@ export class CanvasRenderer extends Renderer {
       }
 
       if (child.texture) {
-        const img = child.texture.img
+        const { img } = child.texture
 
         if (child.tileWidth && child.frame) {
           ctx.drawImage(img,

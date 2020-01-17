@@ -124,7 +124,6 @@ export function tiledParser(jsonObj: Tiled.Map,
     const props = getTileProps(e.gid - tileset.firstgid)
 
     e = { ...e, ...props }
-    e.y -= e.height
 
     entities.push(e)
   }

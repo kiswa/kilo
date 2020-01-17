@@ -4,11 +4,15 @@ import 'kilo/lib/types/tiled'
 
 const texture = new Types.Texture('assets/images/tilesheet.png')
 
+/*
+ * It is important to extend TileMap to allow for unique properties of your
+ * particular game map. In this case, the tile data is mapped into a new form
+ * and specific game objects are loaded for future use.
+ */
 export class TiledLevel extends TileMap {
   gameObjects: {
     player: Tiled.Object,
-    death: Tiled.Object[],
-    breakable: Tiled.Object[]
+    exit: Tiled.Object
   }
 
   constructor(data: Utils.TiledMap) {
@@ -24,8 +28,7 @@ export class TiledLevel extends TileMap {
   private getGameObjects(data: Utils.TiledMap) {
     return {
       player: data.getObjectByName('spawn', true),
-      death: data.getObjectsByType('death'),
-      breakable: data.getObjectsByType('breakable')
+      exit: data.getObjectByName('exit', true)
     }
   }
 }
