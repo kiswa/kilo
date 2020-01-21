@@ -22,6 +22,7 @@ export class GameScene extends Scene {
   private pickups: Container
   private key: TileSprite
   private tileSheet: Types.Texture
+  private emitterInitialPos: Types.Vec
 
   private collectedPickups: number
   private loaded: boolean
@@ -104,7 +105,23 @@ export class GameScene extends Scene {
     }
 
     if (this.gameWon) {
-      this.emitter.play(this.emitter.pos)
+      const randomPos = new Types.Vec(
+        this.emitterInitialPos.x +
+          Utils.math.randf(-this.game.width / 2.2, this.game.width / 2.2),
+        this.emitterInitialPos.y +
+          Utils.math.randf(-this.game.width / 2.2, this.game.width / 2.2)
+      )
+
+      if (Math.sin(t * 5) > 0.4) {
+        this.emitter.play(randomPos)
+      }
+
+      if (this.controls.keys.key('Escape')) {
+        this.camera.visible = false
+        this.game.setScene(
+          new GameScene(this.game, this.controls, this.onSceneComplete)
+        )
+      }
     }
   }
 
@@ -127,10 +144,20 @@ export class GameScene extends Scene {
       fill: '#333',
       align: 'center'
     })
-    winner.pos.set(this.player.pos.x - 220, this.game.height / 2 - 40)
+    winner.pos.set(this.player.pos.x - 250, this.game.height / 2 - 40)
+
+    const playAgain = new Types.Text('Press Esc to Play Again', {
+      font: '20px monospace',
+      fill: '#333',
+      align: 'center'
+    })
+    playAgain.pos.set(winner.pos.x, winner.pos.y + 20)
+
     this.emitter.pos.copy(winner.pos)
+    this.emitterInitialPos = Types.Vec.from(winner.pos)
 
     this.camera.add(winner)
+    this.camera.add(playAgain)
     this.gameWon = true
   }
 
@@ -225,8 +252,12 @@ export class GameScene extends Scene {
     )
 
     player.onDeath = () => {
+      const emitter = this.camera.add(new FX.ParticleEmitter(20, this.createHeart()))
+      emitter.play(player.pos)
+
       this.camera.flash()
       this.camera.shake()
+
       this.onSceneComplete()
     }
 
@@ -270,6 +301,13 @@ export class GameScene extends Scene {
     diamond.frame.set(8, 2)
 
     return diamond
+  }
+
+  private createHeart() {
+    const heart = new TileSprite(this.tileSheet, 32, 32)
+    heart.frame.set(11, 4)
+
+    return heart
   }
 }
 

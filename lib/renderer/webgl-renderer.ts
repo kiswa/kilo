@@ -1,5 +1,5 @@
 import { Camera, Container, Game, Scene, TileSprite } from '../'
-import { Entity, Sprite, Text, Rect } from '../types'
+import { Entity, Sprite, Text, Rect, Vec } from '../types'
 
 import { Renderer } from './renderer'
 import { defaults, ShaderProgram, GlBuffer,  GLUtils } from './webgl'
@@ -123,7 +123,8 @@ export class WebGLRenderer extends Renderer {
       let useOffset = false
       const anyContainer = (container as any)
 
-      if (anyContainer.particles || anyContainer.life) {
+      if (anyContainer.particles || anyContainer.life ||
+          container instanceof TileSprite) {
         useOffset = true
 
         for (let child of container.children) {
@@ -141,14 +142,13 @@ export class WebGLRenderer extends Renderer {
         if (fill && fill.length) ctx.fillStyle = fill
         if (align && align.length) ctx.textAlign = align
 
+        let drawPos = Vec.from(child.pos)
+
         if (this.game && camera) {
-          child.pos.x = child.pos.x /
-            ((camera as any).worldSize.width / this.game.height)
-          child.pos.y = child.pos.y /
-            ((camera as any).worldSize.height / this.game.height)
+          drawPos.add(camera.pos)
         }
 
-        ctx.fillText(child.text, child.pos.x, child.pos.y)
+        ctx.fillText(child.text, drawPos.x, drawPos.y)
         ctx.restore()
       }
 

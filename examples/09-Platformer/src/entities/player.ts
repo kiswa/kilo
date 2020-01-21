@@ -22,7 +22,6 @@ const MIN_VEL = 200
 export class Player extends TileSprite {
   private controls: KeyControls
   private gameMap: TileMap
-  private debugText: Types.Text
 
   private _hasKey: boolean
 
@@ -63,12 +62,6 @@ export class Player extends TileSprite {
 
     const center = Utils.sprite.center(this)
     this.pivot.copy(center)
-
-    this.debugText = this.add(new Types.Text('', {
-      fill: '#333',
-      font: '14px monospace',
-      align: 'center'
-    }))
   }
 
   onDeath() {}
@@ -82,8 +75,6 @@ export class Player extends TileSprite {
 
     key.frame.set(8, 4)
     key.pos.set(6, -10)
-
-    console.log(this.children)
   }
 
   update(dt: number, t: number) {
@@ -92,8 +83,6 @@ export class Player extends TileSprite {
     if (this.paused) {
       return
     }
-
-    this.debugText.text = `Children: ${this.hasChildren} Pos: ${this.pos}`
 
     const { x, action: jump } = this.controls
 
