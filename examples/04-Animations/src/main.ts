@@ -14,7 +14,10 @@ const npc2 = new TileSprite(texture, 40, 55)
 npc.anims.add('walk', [0, 1].map(x => ({ x, y: 0 } as any)), .25)
 npc.anims.play('walk')
 
-npc2.anims.add('walk', [0, 1].map(x => ({ x, y: 0 } as any)), .1)
+// The array below is the same as what is created by the map function above.
+// In this case, this format is actually simpler, but the map allows for
+// animations with several frames to be generated in a small amount of code.
+npc2.anims.add('walk', [{ x: 0, y: 1 }, { x: 1, y: 0 }], .1)
 npc2.anims.play('walk')
 
 npc.pos.set(0, 32)
@@ -31,6 +34,7 @@ game.run((dt: number, _: number) => {
   npc.pos.x += (npc.scale.x * dt * 100)
   npc2.pos.x += (npc2.scale.x * dt * 200)
 
+  // Keep the sprite inside the view
   if (npc.pos.x + npc.hitBox.x <= 0) {
     npc.anchor.x = 0
     npc.scale.x = 1

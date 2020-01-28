@@ -10,14 +10,17 @@ const controls = new KeyControls()
 // have elapsed, it can still cause the existing sound to stop partway through.
 // To allow overlapping sounds, use a SoundPool (see below).
 const coin = new Sound('../assets/sounds/coin.ogg')
+
 const coinTextA = new Types.Text('Press A to play coin sound.', {
   font: '14px monospace',
   fill: '#fff'
 })
+
 const coinTextS = new Types.Text('Press S to play coin sound from pool.', {
   font: '14px monospace',
   fill: '#fff'
 })
+
 const coinTextD = new Types.Text('Press D to play coin sound from group.', {
   font: '14px monospace',
   fill: '#fff'

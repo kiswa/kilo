@@ -25,3 +25,4 @@ game.run((dt: number, t: number) => {
   hello.pos.x += Math.cos(t) * .25
   hello.pos.y += Math.sin(t) * .25
 })
+

@@ -40,9 +40,9 @@ const initGame = (mapData: any) => {
     // The target for the camera to follow
     target,
     // Size of the viewport
-    <Types.Rect>{ width: game.width, height: game.height },
+    { width: game.width, height: game.height } as Types.Rect,
     // Size of the level
-    <Types.Rect>{ width: worldSize.x, height: worldSize.y }
+    { width: worldSize.x, height: worldSize.y } as Types.Rect
   )
   cam.focus(10)
 
