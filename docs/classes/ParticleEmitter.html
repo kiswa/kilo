@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>kilo documentation</title>
+        <title>@kiswa/kilo documentation</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -14,7 +14,7 @@
     <body>
 
         <div class="navbar navbar-default navbar-fixed-top visible-xs">
-            <a href="../" class="navbar-brand">kilo documentation</a>
+            <a href="../" class="navbar-brand">@kiswa/kilo documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
 
@@ -789,8 +789,8 @@ See ParticleOptions for default values if not passed in.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="43"
-                            class="link-to-prism">lib/fx/particle-emitter.ts:43</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="41"
+                            class="link-to-prism">lib/fx/particle-emitter.ts:41</a></div>
                 </td>
             </tr>
 
@@ -872,7 +872,7 @@ See ParticleOptions for default values if not passed in.</p>
             </tr>
             <tr>
                 <td class="col-md-4">
-                        <div class="io-line">Defined in         <code><a href="../classes/Container.html#source" target="_self" >Container:27</a></code>
+                        <div class="io-line">Defined in         <code><a href="../classes/Container.html#source" target="_self" >Container:32</a></code>
 </div>
                 </td>
             </tr>
@@ -1713,11 +1713,9 @@ export class ParticleEmitter extends Container {
     this.particles &#x3D; []
 
     for (let i &#x3D; 0; i &lt; numParticles; i++) {
-      this.particles.push(new Particle(display, options))
-    }
-
-    for (let i &#x3D; 0; i &lt; this.particles.length; i++) {
-      this.add(this.particles[i])
+      this.particles.push(this.add(
+        new Particle(display, options)
+      ))
     }
 
     this.lastPlay &#x3D; 0
@@ -1736,8 +1734,8 @@ export class ParticleEmitter extends Container {
 
     this.pos.copy(pos)
 
-    for (let i &#x3D; 0; i &lt; this.particles.length; i++) {
-      this.particles[i].reset()
+    for (let particle of this.particles) {
+      particle.reset()
     }
   }
 }
