@@ -1,6 +1,6 @@
 {
-  "name": "kilo",
-  "version": "1.0.0",
+  "name": "@kiswa/kilo",
+  "version": "0.1.0",
   "description": "A simple 2D game engine.",
   "main": "lib/index.ts",
   "scripts": {
@@ -50,5 +50,25 @@
     "require": [
       "jsdom-global/register"
     ]
-  }
+  },
+  "directories": {
+    "doc": "docs",
+    "example": "examples",
+    "lib": "lib",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kiswa/kilo.git"
+  },
+  "keywords": [
+    "TypeScript",
+    "2D",
+    "Game",
+    "Engine"
+  ],
+  "bugs": {
+    "url": "https://github.com/kiswa/kilo/issues"
+  },
+  "homepage": "https://github.com/kiswa/kilo#readme"
 }
