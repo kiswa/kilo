@@ -113,6 +113,7 @@ describe('WebGLRenderer', () => {
         const one = new Rect(5, 5, { fill: 'rgba(255, 255, 255, .5)' })
         const two = new Rect(5, 5, { fill: 'ff0000' })
         const three = new Rect(5, 5, { fill: 'rgb(0, 0, 0)' })
+        ; (entity as any).life = 1
         entity.children = [one, two, three]
 
         expect(renderTiming()).to.be.above(fast)

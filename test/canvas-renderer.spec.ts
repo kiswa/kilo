@@ -11,7 +11,7 @@ describe('CanvasRenderer', () => {
 
   describe('Accessors', () => {
     it('has get accessor canvasElement', () => {
-      expect(canvas.canvasElement).to.be.instanceof(HTMLCanvasElement)
+      expect(canvas.canvasElement).to.be.an('HTMLCanvasElement')
     })
   })
 
