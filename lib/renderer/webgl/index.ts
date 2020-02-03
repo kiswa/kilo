@@ -1,15 +1,4 @@
-import { defaults } from'./defaults'
-import { ShaderProgram } from './shader-program'
-import { GlBuffer } from './gl-buffer'
-import { GLUtils } from './utils'
-
-/**
- * @ignore
- */
-export {
-  defaults,
-  ShaderProgram,
-  GlBuffer,
-  GLUtils,
-}
-
+export { defaults } from'./defaults'
+export { ShaderProgram } from './shader-program'
+export { GlBuffer } from './gl-buffer'
+export { GLUtils } from './utils'

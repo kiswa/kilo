@@ -1,3 +1,8 @@
+/**
+ * @packageDocumentation
+ * @module kilo/Types
+ */
+
 /** Interface with x and y coordinates. */
 export interface Point {
   /** X axis coordinate */

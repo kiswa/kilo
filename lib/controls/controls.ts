@@ -1,3 +1,12 @@
+/**
+ * The Controls module provides the {@link Controls} interface, which is used
+ * when creating a {@link Scene}. It also contains the implementations of three
+ * different control types for use in a game.
+ *
+ * @packageDocumentation
+ * @module kilo/Controls
+ * @preferred
+ */
 import { KeyControls } from './key-controls'
 import { MouseControls } from './mouse-controls'
 import { GamepadControls } from './gamepad-controls'

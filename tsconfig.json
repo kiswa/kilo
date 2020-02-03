@@ -10,13 +10,12 @@
   },
   "typedocOptions": {
     "out": "docs",
-    "categorizeByGroup": false,
-    "entryPoint": "kilo",
+    "exclude": "**/*+(index).ts",
     "excludeExternals": true,
     "excludeNotExported": true,
     "excludePrivate": true,
+    "hideGenerator": true,
     "theme": "minimal",
-    "name": "kilo",
-    "hideGenerator": true
+    "target": "ES6"
   }
 }

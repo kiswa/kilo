@@ -1,3 +1,7 @@
+/**
+ * @packageDocumentation
+ * @module kilo/Renderer
+ */
 import { Camera, Container, Game, Scene, TileSprite } from '../'
 import { Entity, Sprite, Text, Rect, Vec } from '../types'
 

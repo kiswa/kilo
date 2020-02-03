@@ -1,3 +1,7 @@
+/**
+ * @packageDocumentation
+ * @module kilo
+ */
 import { Container, Game } from '.'
 import { Controls } from './controls/controls'
 

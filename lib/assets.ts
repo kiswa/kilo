@@ -1,3 +1,7 @@
+/**
+ * @packageDocumentation
+ * @module kilo
+ */
 import { Game } from '.'
 
 /** Function that is called when an asset is ready. */

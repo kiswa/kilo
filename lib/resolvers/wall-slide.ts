@@ -1,3 +1,17 @@
+/**
+ * The Resolvers module provides two different ways to resolve a collision.
+ *
+ * When using `stopMovement`, any collision is resolved with a {@link Vec} which
+ * represents zero movement.
+ *
+ * The `wallSlide` resolver is more detailed, and returns a {@link Resolution}
+ * which contains offsets needed to prevent overlap as well as a {@link Hits}
+ * object with information on what directions collisions were detected.
+ *
+ * @packageDocumentation
+ * @module kilo/Resolvers
+ * @preferred
+ */
 import { Sprite } from '../types'
 import { TileMap, Utils, TileSprite } from '..'
 

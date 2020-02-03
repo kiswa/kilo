@@ -1,11 +1,15 @@
+/**
+ * @packageDocumentation
+ * @module kilo/FX
+ */
 import { Container } from '../container'
 import { Vec, Rect } from '../types'
 import { TileSprite, Utils } from '..'
 
 /**
  * An effect where the provided {@link TileSprite} or {@link Rect}
- * (defaults to rectangle if not provided) is moved away from its starting
- * position at the specified speed and duration.
+ * (defaults to rectangle if not provided) is moved vertically from its starting
+ * position at the specified speed, and fades out over its duration.
  *
  * Default behavior is moving up and fading out over 0.6 seconds.
  *

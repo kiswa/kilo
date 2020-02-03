@@ -1,4 +1,9 @@
 /**
+ * @packageDocumentation
+ * @module kilo/Controls
+ */
+
+/**
  * Simplifies working with the
  * [Gamepad API]{@link https://developer.mozilla.org/en-US/docs/Web/API/Gamepad_API/Using_the_Gamepad_API}.
  */

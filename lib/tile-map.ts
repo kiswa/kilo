@@ -1,3 +1,7 @@
+/**
+ * @packageDocumentation
+ * @module kilo
+ */
 import { Container, TileSprite } from '.'
 import { HitBox, Point, Texture, Vec } from './types'
 import { TiledMap } from './utils'

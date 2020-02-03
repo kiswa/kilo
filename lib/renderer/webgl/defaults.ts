@@ -1,3 +1,13 @@
+/**
+ * The WebGL module provides helper classes and WebGL wrappers that simplify the
+ * use of WebGL within the {@link WebGLRenderer}. It is also the source of the
+ * default shaders use by kilo.
+ *
+ * @packageDocumentation
+ * @module kilo/Renderer/WebGL
+ * @preferred
+ */
+
 /** Default shader sources for both texture and color-based rendering. */
 export const defaults = {
   /** Default shaders. */

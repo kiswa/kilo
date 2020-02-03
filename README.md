@@ -1,5 +1,5 @@
 <p style="text-align: center;">
-  <img src="./docs/logo.png">
+  <img src="./logo.png">
 </p>
 
 # kilo

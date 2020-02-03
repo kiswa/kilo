@@ -1,3 +1,8 @@
+/**
+ * @packageDocumentation
+ * @ignore
+ */
+
 /** Descriptor for exported JSON from Tiled Map Editor. */
 declare namespace Tiled {
   /** The Tiled map. */

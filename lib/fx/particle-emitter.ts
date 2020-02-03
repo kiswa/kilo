@@ -1,3 +1,12 @@
+/**
+ * The FX module is primarily useful for the {@link ParticleEmitter} which can
+ * be used for a variety of effects in games. It also provides the {@link OneUp}
+ * effect, which is a good example of creating effects.
+ *
+ * @packageDocumentation
+ * @module kilo/FX
+ * @preferred
+ */
 import { Container, TileSprite } from '../'
 import { Rect, Vec } from '../types'
 import { Particle, ParticleOptions } from './particle'

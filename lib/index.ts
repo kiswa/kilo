@@ -1,53 +1,35 @@
-import { Game, Speed } from './game'
-import { Container } from './container'
+export { Game, Speed } from './game'
+export { Container } from './container'
 
 import * as Types from './types'
 import * as Utils from './utils'
 import * as FX from './fx'
 import * as Resolvers from './resolvers'
 
-import { Controls } from './controls/controls'
-import { GamepadControls } from './controls/gamepad-controls'
-import { KeyControls } from './controls/key-controls'
-import { MouseControls } from './controls/mouse-controls'
+export { Controls } from './controls/controls'
+export { GamepadControls } from './controls/gamepad-controls'
+export { KeyControls } from './controls/key-controls'
+export { MouseControls } from './controls/mouse-controls'
 
-import { Sound } from './sound/sound'
-import { SoundGroup } from './sound/sound-group'
-import { SoundPool } from './sound/sound-pool'
+export { Sound } from './sound/sound'
+export { SoundGroup } from './sound/sound-group'
+export { SoundPool } from './sound/sound-pool'
 
-import { Animations } from './animations'
-import { Assets } from './assets'
-import { Camera } from './camera'
-import { Scene } from './scene'
-import { State } from './state'
-import { TileMap } from './tile-map'
-import { TileSprite } from './tile-sprite'
-import { Timer } from './timer'
+export { Animations } from './animations'
+export { Assets } from './assets'
+export { Camera } from './camera'
+export { Scene } from './scene'
+export { State } from './state'
+export { TileMap } from './tile-map'
+export { TileSprite } from './tile-sprite'
+export { Timer } from './timer'
 
 /**
  * @ignore
  */
 export {
-  Animations,
-  Assets,
-  Camera,
-  Container,
-  Controls,
   FX,
-  Game,
-  GamepadControls,
-  KeyControls,
-  MouseControls,
   Resolvers,
-  Scene,
-  Sound,
-  SoundGroup,
-  SoundPool,
-  Speed,
-  State,
-  TileMap,
-  TileSprite,
-  Timer,
   Types,
   Utils,
 }

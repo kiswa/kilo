@@ -1,3 +1,7 @@
+/**
+ * @packageDocumentation
+ * @module kilo
+ */
 import { Point } from './types'
 
 /**

@@ -1,3 +1,7 @@
+/**
+ * @packageDocumentation
+ * @module kilo/FX
+ */
 import { Container, TileSprite } from '../'
 import { Rect, Vec } from '../types'
 import { math } from '../utils'

@@ -1,3 +1,8 @@
+/**
+ * @packageDocumentation
+ * @module kilo/Renderer/WebGL
+ */
+
 /** Interface for WebGL shader script sources. */
 export interface Scripts {
   /** Vertex shader source. */

@@ -1,13 +1,3 @@
-import { Renderer } from './renderer'
-import { CanvasRenderer } from './canvas-renderer'
-import { WebGLRenderer } from './webgl-renderer'
-
-/**
- * @ignore
- */
-export {
-  Renderer,
-  CanvasRenderer,
-  WebGLRenderer,
-}
-
+export { Renderer } from './renderer'
+export { CanvasRenderer } from './canvas-renderer'
+export { WebGLRenderer } from './webgl-renderer'

@@ -1,27 +1,25 @@
 {
   "name": "@kiswa/kilo",
+  "author": "Matthew Ross",
+  "license": "MIT",
   "version": "0.1.0",
   "description": "A simple 2D game engine.",
   "main": "lib/index.ts",
   "scripts": {
-    "docs": "compodoc lib",
-    "docs:serve": "compodoc lib --serve --watch",
+    "docs": "typedoc lib && cp logo.png docs/",
     "test": "TS_NODE_PROJECT=test/tsconfig.json mocha -r ts-node/register test/**/*.spec.ts",
     "test:cov": "TS_NODE_PROJECT=test/tsconfig.json nyc --cache=false -r lcov -r json-summary -e .ts -x test/**/*.spec.ts node_modules/.bin/mocha --require ts-node/register --require source-map-support/register test/**/*.spec.ts"
   },
-  "author": "Matthew Ross",
-  "license": "MIT",
+  "dependencies": {},
   "devDependencies": {
-    "@compodoc/compodoc": "^1.1.11",
     "@types/chai": "^4.2.8",
     "@types/gl": "^4.1.0",
     "@types/mocha": "^7.0.1",
-    "@types/node": "^13.5.3",
+    "@types/node": "^13.7.0",
     "canvas": "^2.6.1",
     "chai": "^4.2.0",
-    "docma": "^3.2.2",
     "gl": "^4.4.1",
-    "jsdom": "^16.0.1",
+    "jsdom": "^16.1.0",
     "jsdom-global": "^3.0.2",
     "mocha": "^7.0.1",
     "node-fetch": "^2.6.0",
@@ -31,20 +29,8 @@
     "ts-node": "^8.6.2",
     "tslint": "^6.0.0",
     "typedoc": "^0.16.9",
+    "typedoc-plugin-external-module-name": "^3.0.0",
     "typescript": "^3.7.5"
-  },
-  "compodoc": {
-    "customFavicon": "docs/favicon.png",
-    "customLogo": "docs/logo.png",
-    "disableRoutesGraph": true,
-    "disablePrivate": true,
-    "hideGenerator": true,
-    "output": "docs",
-    "port": 5000,
-    "silent": true,
-    "theme": "stripe",
-    "tsconfig": "tsconfig.json",
-    "unitTestCoverage": "coverage/coverage-summary.json"
   },
   "mocha": {
     "require": [

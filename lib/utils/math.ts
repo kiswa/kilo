@@ -1,3 +1,15 @@
+/**
+ * The Utils module provides access to quite a few helper functions, organized
+ * by type.
+ *
+ * There are `math`, `sprite`, and `physics` helpers. It is also the home to the
+ * `tiledParser`, which is used to parse JSON from exported
+ * [Tiled]{@link https://www.mapeditor.org/} maps.
+ *
+ * @packageDocumentation
+ * @module kilo/Utils
+ * @preferred
+ */
 import { Vec } from './../types'
 
 /**
@@ -14,6 +26,8 @@ let random = Math.random
  *
  * @param a Vec to get angle from.
  * @param b Vec to get angle to.
+ *
+ * @category math
  */
 export function angle(a: Vec, b: Vec) {
   const dx = a.x - b.x
@@ -26,6 +40,8 @@ export function angle(a: Vec, b: Vec) {
  * Gets a direction Vec to the provided angle.
  *
  * @param angle An angle in radians.
+ *
+ * @category math
  */
 export function dirTo(angle: number) {
   return new Vec(Math.cos(angle), Math.sin(angle))
@@ -37,6 +53,8 @@ export function dirTo(angle: number) {
  * @param {number} x Value to be clamped.
  * @param min Minimum allowed value.
  * @param max Maximum allowed value.
+ *
+ * @category math
  */
 export function clamp(x: number, min = 0, max = 1) {
   return Math.max(min, Math.min(x, max))
@@ -47,6 +65,8 @@ export function clamp(x: number, min = 0, max = 1) {
  *
  * @param a Vec to get distance from.
  * @param b Vec to get distance to.
+ *
+ * @category math
  */
 export function distance(a: Vec, b: Vec) {
   const dx = a.x - b.x
@@ -59,6 +79,8 @@ export function distance(a: Vec, b: Vec) {
  * Simple gaussian implementation.
  *
  * @param x Number to apply gauss to.
+ *
+ * @category math
  */
 export function gauss(x: number) {
   return Math.exp(-x * x)
@@ -70,6 +92,8 @@ export function gauss(x: number) {
  * @param x Number to apply gauss to.
  * @param center Number representing center.
  * @param dist Number represeting distance.
+ *
+ * @category math
  */
 export function gaussDistance(x: number, center: number, dist: number) {
   return gauss((x - center) / dist)
@@ -81,6 +105,8 @@ export function gaussDistance(x: number, center: number, dist: number) {
  * @param x Number to interpolate from.
  * @param min Minimum interpolation value.
  * @param max Maximum interpolation value.
+ *
+ * @category math
  */
 export function lerp(x: number, min = 0, max = 1) {
   return (x - min) / (max - min)
@@ -92,6 +118,8 @@ export function lerp(x: number, min = 0, max = 1) {
  * @param min Minimum number to mix.
  * @param max Maximum number to mix.
  * @param p Number to mix.
+ *
+ * @category math
  */
 export function mix(min: number, max: number, p: number) {
   return min * (1 - p) + max * p
@@ -102,6 +130,8 @@ export function mix(min: number, max: number, p: number) {
  *
  * @param min Minimum random value.
  * @param max Maximum random value.
+ *
+ * @category math
  */
 export function rand(min = 0, max?: number) {
   return Math.floor(randf(min, max))
@@ -112,6 +142,8 @@ export function rand(min = 0, max?: number) {
  *
  * @param min Minimum random value.
  * @param max Maximum random value.
+ *
+ * @category math
  */
 export function randf(min: number, max?: number) {
   if (max === null || max === undefined) {
@@ -126,6 +158,8 @@ export function randf(min: number, max?: number) {
  * Returns a random item from an array.
  *
  * @param items Array of items to select from.
+ *
+ * @category math
  */
 export function randOneFrom(items: any[]) {
   return items[rand(items.length)]
@@ -135,6 +169,8 @@ export function randOneFrom(items: any[]) {
  * Returns a boolean with a probability for true of 1 in the provided max.
  *
  * @param max Maximum random value
+ *
+ * @category math
  */
 export function randOneIn(max = 2) {
   return rand(0, max) === 0
@@ -144,6 +180,8 @@ export function randOneIn(max = 2) {
  * Sets the seed value for random number generation.
  *
  * @param s Seed value to use for random numbers.
+ *
+ * @category math
  */
 export function randomSeed(s?: number) {
   if  (!isNaN(s)) {
@@ -157,6 +195,8 @@ export function randomSeed(s?: number) {
  * Sets whether or not to use the seeded random number generator.
  *
  * @param useSeeded If seeded random number generator should be used.
+ *
+ * @category math
  */
 export function useSeededRandom(useSeeded = true) {
   randomSeeded()
@@ -170,6 +210,8 @@ export function useSeededRandom(useSeeded = true) {
  * @param value Value to step.
  * @param min Minimum interpolation value.
  * @param max Maximum interpolation value.
+ *
+ * @category math
  */
 export function smoothStep(value: number, min = 0, max = 1) {
   const x = clamp(lerp(value, min, max))
@@ -189,7 +231,11 @@ function randomSeeded() {
   return seed / maxInt32
 }
 
-/** A collection of easing functions. */
+/**
+ * A collection of easing functions.
+ *
+ * @category math
+ */
 export const ease = {
   quadIn(x: number) {
     return x * x

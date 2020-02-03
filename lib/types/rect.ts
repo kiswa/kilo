@@ -1,3 +1,7 @@
+/**
+ * @packageDocumentation
+ * @module kilo/Types
+ */
 import { Vec, Entity } from '.'
 
 /** Style options for a Rect. */

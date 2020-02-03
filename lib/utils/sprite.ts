@@ -1,3 +1,7 @@
+/**
+ * @packageDocumentation
+ * @module kilo/Utils
+ */
 import { Container, Utils } from '../'
 import { Vec, Rect, Sprite, HitBox } from '../types'
 
@@ -5,6 +9,8 @@ import { Vec, Rect, Sprite, HitBox } from '../types'
  * Adds display {@link Rect} for the sprite's size and hitbox (if set).
  *
  * @param entity Sprite entity to have debug display added.
+ *
+ * @category sprite
  */
 export function addDebug(entity: Sprite) {
   const bb = new Rect(entity.width, entity.height,
@@ -29,6 +35,8 @@ export function addDebug(entity: Sprite) {
  *
  * @param a Sprite to get angle from.
  * @param b Sprite to get angle to.
+ *
+ * @category sprite
  */
 export function angle(a: Sprite, b: Sprite) {
   return Utils.math.angle(center(a), center(b))
@@ -38,6 +46,8 @@ export function angle(a: Sprite, b: Sprite) {
  * Gets the calculated bounds of a sprite.
  *
  * @param entity Sprite to get bounds from.
+ *
+ * @category sprite
  */
 export function bounds(entity: Sprite) {
   const { pos, hitBox, width, height } = entity
@@ -50,6 +60,8 @@ export function bounds(entity: Sprite) {
  * Gets the center point of a tile sprite.
  *
  * @param entity Sprite to get center from.
+ *
+ * @category sprite
  */
 export function center(entity: Sprite) {
   const { pos, width, height } = entity
@@ -65,6 +77,8 @@ export function center(entity: Sprite) {
  *
  * @param a Sprite to get distance from.
  * @param b Sprite to get distance to.
+ *
+ * @category sprite
  */
 export function distance(a: Sprite, b: Sprite) {
   return Utils.math.distance(center(a), center(b))
@@ -87,6 +101,8 @@ function isHit(a: HitBox, b: HitBox) {
  *
  * @param a Sprite to test for collision.
  * @param b Other sprite to test for collision.
+ *
+ * @category sprite
  */
 export function hit(a: Sprite, b: Sprite) {
   const e1 = bounds(a)
@@ -101,6 +117,8 @@ export function hit(a: Sprite, b: Sprite) {
  * @param entity Sprite to check against children of container.
  * @param container Container of sprites to test against.
  * @param hitCallback Function to call when a collision is detected.
+ *
+ * @category sprite
  */
 export function hits(entity: Sprite, container: Container, hitCallback: Function) {
   const a = bounds(entity)

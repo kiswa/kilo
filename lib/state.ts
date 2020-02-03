@@ -1,4 +1,9 @@
 /**
+ * @packageDocumentation
+ * @module kilo
+ */
+
+/**
  * Tracks state as provided, and provides information on status of the current
  * state. Also allows transitioning to a prior state from a temporary state
  * (e.g. a pause dialog back to game play).

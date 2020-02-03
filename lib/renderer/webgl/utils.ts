@@ -1,3 +1,7 @@
+/**
+ * @packageDocumentation
+ * @module kilo/Renderer/WebGL
+ */
 import { Sprite, Rect } from '../../types'
 import { TileSprite } from '../../tile-sprite'
 

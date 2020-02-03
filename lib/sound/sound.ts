@@ -1,3 +1,13 @@
+/**
+ * The Sound module provides three ways of playing sounds using the
+ * [HTMLAudioElement]{@link https://developer.mozilla.org/en-US/docs/Web/API/HTMLAudioElement}.
+ * It also has a wrapper for the
+ * [Web Audio API]{@link https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API}.
+ *
+ * @packageDocumentation
+ * @module kilo/Sound
+ * @preferred
+ */
 import { Assets } from '../assets'
 
 /** Options for a Sound object. */

@@ -1,3 +1,7 @@
+/**
+ * @packageDocumentation
+ * @module kilo/Types
+ */
 import { Vec, Texture, HitBox } from '.'
 import { Container } from '../container'
 

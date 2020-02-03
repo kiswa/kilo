@@ -1,3 +1,10 @@
+/**
+ * The kilo module contains the main elements needed to create a game.
+ *
+ * @packageDocumentation
+ * @module kilo
+ * @preferred
+ */
 import { Assets } from './assets'
 import { Renderer, CanvasRenderer, WebGLRenderer } from './renderer'
 import { Container, Scene } from '.'

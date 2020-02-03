@@ -1,3 +1,7 @@
+/**
+ * @packageDocumentation
+ * @module kilo
+ */
 import { Container, TileSprite, Utils } from '.'
 import { Sprite, Rect, Vec } from './types'
 

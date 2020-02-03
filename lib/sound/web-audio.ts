@@ -1,4 +1,9 @@
 /**
+ * @packageDocumentation
+ * @module kilo/Sound
+ */
+
+/**
  * Provides support for playing sounds using the
  * [Web Audio API]{@link https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API}.
  *

@@ -1,3 +1,12 @@
+/**
+ * The Renderer module provides two separate rendering methods, HTML canvas and
+ * WebGL. By default, a {@link Game} will try to use WebGL, and fallback to
+ * canvas if it is not supported.
+ *
+ * @packageDocumentation
+ * @module kilo/Renderer
+ * @preferred
+ */
 import { Container } from '..'
 import { Sprite } from '../types'
 

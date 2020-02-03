@@ -1,4 +1,9 @@
 /**
+ * @packageDocumentation
+ * @module kilo/Controls
+ */
+
+/**
  * Type to enforce that keys object uses strings as keys, and boolean as values.
  */
 type KeyMap = {

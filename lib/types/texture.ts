@@ -1,3 +1,7 @@
+/**
+ * @packageDocumentation
+ * @module kilo/Types
+ */
 import { Game } from '..'
 
 /**

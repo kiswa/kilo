@@ -1,3 +1,11 @@
+/**
+ * The Types module provides all the types available in kilo (except for the
+ * {@link TileSprite}).
+ *
+ * @packageDocumentation
+ * @module kilo/Types
+ * @preferred
+ */
 import { Vec } from '.'
 
 /** An abstract base class for all entities. */

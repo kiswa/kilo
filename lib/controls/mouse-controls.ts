@@ -1,3 +1,7 @@
+/**
+ * @packageDocumentation
+ * @module kilo/Controls
+ */
 import { Vec } from '../types'
 
 /** Provides access to mouse events. */

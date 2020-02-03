@@ -1,4 +1,9 @@
 /**
+ * @packageDocumentation
+ * @module kilo/Types
+ */
+
+/**
  * Allows for more precise collision detection.
  *
  * ```typescript

@@ -1,3 +1,7 @@
+/**
+ * @packageDocumentation
+ * @module kilo/Resolvers
+ */
 import { Utils, TileMap } from '..'
 import { Sprite, Vec } from '../types'
 

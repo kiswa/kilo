@@ -1,3 +1,8 @@
+/**
+ * @packageDocumentation
+ * @module kilo
+ */
+
  /**
   * Function called on each tick of a Timer.
   */

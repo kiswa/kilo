@@ -1,3 +1,7 @@
+/**
+ * @packageDocumentation
+ * @module kilo
+ */
 import { Animations } from '.'
 import { Point, Sprite, Texture, Vec } from './types'
 
