@@ -118,7 +118,7 @@ describe('CanvasRenderer', () => {
 
         container.add(entity)
 
-        expect(renderTiming()).to.be.below(fast)
+        expect(renderTiming()).to.be.below(9)
 
         ; (entity as any).style = {}
 

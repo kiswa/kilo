@@ -7,7 +7,6 @@ import { WebGLRenderer } from '../lib/renderer/webgl-renderer'
 
 describe('WebGLRenderer', () => {
   const orig = document.createElement
-  const fast = 3
   let glRenderer: WebGLRenderer
   const blackPixel = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCA' +
     'QAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII='
@@ -96,7 +95,7 @@ describe('WebGLRenderer', () => {
         camera.add(entity)
         container.add(camera)
 
-        expect(renderTiming()).to.be.below(1)
+        expect(renderTiming()).to.be.below(2)
       })
 
       it('renders recursively', () => {
@@ -107,7 +106,7 @@ describe('WebGLRenderer', () => {
         container.add(entity)
         container.alpha = .99
 
-        expect(renderTiming()).to.be.below(fast)
+        expect(renderTiming()).to.be.below(2)
 
         entity.visible = true
         const one = new Rect(5, 5, { fill: 'rgba(255, 255, 255, .5)' })
@@ -116,7 +115,7 @@ describe('WebGLRenderer', () => {
         ; (entity as any).life = 1
         entity.children = [one, two, three]
 
-        expect(renderTiming()).to.be.above(fast)
+        expect(renderTiming()).to.be.above(1.5)
 
         const badColor = 'rgba(0, 0, 0, 0, 0)'
         const badFn = () => {
@@ -137,13 +136,13 @@ describe('WebGLRenderer', () => {
 
         container.add(entity)
 
-        expect(renderTiming()).to.be.below(fast)
+        expect(renderTiming()).to.be.below(2)
 
         delete (entity as any).anchor
         delete entity.scale
         delete container.alpha
 
-        expect(renderTiming()).to.be.below(fast)
+        expect(renderTiming()).to.be.below(2)
       })
 
       it('handles rotation and pivot points', () => {
@@ -153,12 +152,12 @@ describe('WebGLRenderer', () => {
 
         container.add(entity)
 
-        expect(renderTiming()).to.be.above(fast)
+        expect(renderTiming()).to.be.above(1.5)
 
         delete (entity as any).pivot
 
         Game.debug = false
-        expect(renderTiming()).to.be.below(fast)
+        expect(renderTiming()).to.be.below(2)
         Game.debug = true
       })
 
@@ -182,16 +181,16 @@ describe('WebGLRenderer', () => {
         camera.add(text)
         container.add(camera)
 
-        expect(renderTiming()).to.be.below(fast)
+        expect(renderTiming()).to.be.below(2)
 
         container.remove(camera)
         container.add(entity)
 
-        expect(renderTiming()).to.be.below(fast)
+        expect(renderTiming()).to.be.below(2)
 
         ; (container as any).game = null
         Game.debug = false
-        expect(renderTiming()).to.be.below(fast)
+        expect(renderTiming()).to.be.below(2)
         Game.debug = true
       })
 
@@ -201,10 +200,10 @@ describe('WebGLRenderer', () => {
         container.add(entity)
         container.add(entity)
 
-        expect(renderTiming()).to.be.above(fast)
+        expect(renderTiming()).to.be.above(2)
 
         ; (glRenderer as any).boundTexture = ''
-        expect(renderTiming()).to.be.below(fast)
+        expect(renderTiming()).to.be.below(5)
       })
 
       it('handles sprites with frames', () => {
@@ -220,10 +219,10 @@ describe('WebGLRenderer', () => {
 
         const internalEntity = scene.add<TileSprite>(entity)
 
-        expect(renderTiming(scene)).to.be.below(fast)
+        expect(renderTiming(scene)).to.be.below(2)
 
         internalEntity.frame.set(-1, -1)
-        expect(renderTiming(scene, false)).to.be.below(fast)
+        expect(renderTiming(scene, false)).to.be.below(2)
       })
 
       // it('handles drawing paths', () => {
@@ -257,7 +256,7 @@ describe('WebGLRenderer', () => {
 
         container.add(entity)
 
-        expect(renderTiming()).to.be.below(fast)
+        expect(renderTiming()).to.be.below(2)
       })
     })
 

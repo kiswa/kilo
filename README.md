@@ -4,32 +4,35 @@
 
 # kilo
 
-A 2D game engine library written in TypeScript.
+A simple 2D game engine library written in TypeScript.
 
-## Development
+kilo uses WebGL to render a 2D game world, but falls back to `canvas` when required.
 
-Install dependencies:
+## Examples
+
+In the `examples` directory are several demonstrations of various things that can be done with kilo. Each has its own README to explain what it does, and the code should be useful for your own creations.
+
+To see an example in action run `npm i` then `npm start` from within the example's directory. This starts the example (by default) on `http://localhost:9000` which you can browse to and see the example running.
+
+## Library Development
+
+### Install dependencies
 ```bash
-npm install --python=/path/to/python2.7
+npm i --python=/path/to/python2
 ```
 
-Run tests:
+### Run tests
 ```bash
 npm test
 ```
-Run tests with coverage reporting:
+### Run tests with coverage reporting
 ```bash
 npm run test:cov
 ```
 
-Tests with coverage must be run before docs to provide unit test coverage data.
-
-Update docs:
+### Update docs
 ```bash
 npm run docs
 ```
-To serve docs locally (at localhost:5000):
-```bash
-npm run docs:serve
-```
+
 
