@@ -14,6 +14,10 @@ In the `examples` directory are several demonstrations of various things that ca
 
 To see an example in action run `npm i` then `npm start` from within the example's directory. This starts the example (by default) on `http://localhost:9000` which you can browse to and see the example running.
 
+## Documentation
+
+The `docs` directory contains auto-generated documentation. It is available online at https://kiswa.github.io/kilo/.
+
 ## Library Development
 
 ### Install dependencies
