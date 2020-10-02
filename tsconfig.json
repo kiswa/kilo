@@ -6,8 +6,16 @@
     "noImplicitAny": true,
     "removeComments": true,
     "moduleResolution": "node",
-    "outDir": "./dist/"
+    "outDir": "./dist/",
+    "declaration": true
   },
+  "include": [
+    "lib/**/*"
+  ],
+  "exclude": [
+    "lib/**/*+(index).ts",
+    "examples"
+  ],
   "typedocOptions": {
     "out": "docs",
     "exclude": "**/*+(index).ts",
