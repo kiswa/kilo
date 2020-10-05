@@ -2,10 +2,11 @@
   "name": "@kiswa/kilo",
   "author": "Matthew Ross",
   "license": "MIT",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A simple 2D game engine.",
   "main": "lib/index.ts",
   "types": "dist/index.d.ts",
+  "files": ["dist/"],
   "scripts": {
     "build": "tsc",
     "docs": "typedoc lib && cp logo.png docs/",
