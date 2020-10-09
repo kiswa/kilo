@@ -18,7 +18,9 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({ template: './index.html' }),
 
-    new CopyWebpackPlugin([{ from: '../assets/', to: DEST + '/assets/' }]),
+    new CopyWebpackPlugin({
+      patterns: [{ from: '../assets/', to: DEST + '/assets/' }]
+    }),
   ],
 
   resolve: {
