@@ -44,9 +44,13 @@ module.exports = {
       {
         test: /\.ts$/,
         exclude: [/node_modules/],
-        use: 'awesome-typescript-loader'
+        use: 'ts-loader'
       }
     ]
+  },
+
+  optimization: {
+    usedExports: true,
   },
 
   devtool: 'cheap-module-source-map',
