@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "es6",
     "module": "es6",
-    "sourceMap": true,
+    "sourceMap": false,
     "noImplicitAny": true,
     "removeComments": true,
     "moduleResolution": "node",
