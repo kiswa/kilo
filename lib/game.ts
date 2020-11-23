@@ -171,8 +171,9 @@ export class Game {
    * Start the game loop.
    *
    * @param gameUpdate An update function to run for the game.
+   * @param clear Whether or not to clear the canvas between each update.
    */
-  run(gameUpdate: GameUpdate = () => {}) {
+  run(gameUpdate: GameUpdate = () => {}, clear = true) {
     let dt = 0
     let last = 0
 
@@ -194,7 +195,7 @@ export class Game {
       }
 
       frames++
-      this.renderer.render(this.scene)
+      this.renderer.render(this.scene, clear)
 
       if (Game.debug && window.performance.now() - lastTime >= 1000) {
         Game.FPS = Math.round(.25 * frames + .75 * Game.FPS)
