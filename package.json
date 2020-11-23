@@ -7,7 +7,9 @@
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "files": ["dist/"],
+  "files": [
+    "dist/"
+  ],
   "scripts": {
     "build": "tsc",
     "docs": "typedoc lib && cp logo.png docs/",
@@ -16,16 +18,16 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@types/chai": "^4.2.12",
+    "@types/chai": "^4.2.14",
     "@types/gl": "^4.1.0",
-    "@types/mocha": "^8.0.3",
-    "@types/node": "^14.11.2",
+    "@types/mocha": "^8.0.4",
+    "@types/node": "^14.14.9",
     "canvas": "^2.6.1",
     "chai": "^4.2.0",
     "gl": "^4.8.0",
     "jsdom": "^16.4.0",
     "jsdom-global": "^3.0.2",
-    "mocha": "^8.1.3",
+    "mocha": "^8.2.1",
     "node-fetch": "^2.6.1",
     "nyc": "^15.1.0",
     "request": "^2.88.2",
@@ -34,7 +36,7 @@
     "tslint": "^6.1.3",
     "typedoc": "^0.19.2",
     "typedoc-plugin-external-module-name": "^4.0.3",
-    "typescript": "^4.0.3"
+    "typescript": "^4.1.2"
   },
   "mocha": {
     "require": [
