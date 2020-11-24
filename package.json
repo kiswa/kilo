@@ -2,7 +2,7 @@
   "name": "@kiswa/kilo",
   "author": "Matthew Ross",
   "license": "MIT",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "A simple 2D game engine.",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
