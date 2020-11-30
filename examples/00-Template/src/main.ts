@@ -1,4 +1,4 @@
-import { Game, Types } from 'kilo/lib'
+import { Game } from 'kilo/lib'
 
 const game = new Game(320, 240)
 
