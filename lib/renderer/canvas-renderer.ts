@@ -12,6 +12,10 @@ export class CanvasRenderer extends Renderer {
   private ctx2: CanvasRenderingContext2D
   private buffer: HTMLCanvasElement
 
+  get canvasElement() {
+    return this.buffer
+  }
+
   /**
    * Initialize CanvasRenderer object.
    *
